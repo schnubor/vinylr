@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="stylesheets/normalize.css">
+        <link rel="stylesheet" href="stylesheets/screen.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+        <!-- Start of Woopra Code -->
+        <script>
+            (function(){
+            var t,i,e,n=window,o=document,a=arguments,s="script",r=["config","track","identify","visit","push","call"],c=function(){var t,i=this;for(i._e=[],t=0;r.length>t;t++)(function(t){i[t]=function(){return i._e.push([t].concat(Array.prototype.slice.call(arguments,0))),i}})(r[t])};for(n._w=n._w||{},t=0;a.length>t;t++)n._w[a[t]]=n[a[t]]=n[a[t]]||new c;i=o.createElement(s),i.async=1,i.src="//static.woopra.com/js/w.js",e=o.getElementsByTagName(s)[0],e.parentNode.insertBefore(i,e)
+            })("woopra");
+
+            woopra.config({
+                domain: 'vinyl.chko.org',
+                idle_timeout: 1800000
+            });
+            woopra.track();
+        </script>
+        <!-- End of Woopra Code -->
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <header>
+            <div class="container">
+                <h1>Vinylr</h1>
+                <h3>All your vinyls in one place. Anywhere. Anytime.</h3>
+                <br>
+                <p id="loading">Loading ...</p>
+                <div id="fb-button">
+                    <button class="fb-button" id="fb-auth" onclick="FB.login()"><img src="img/fb-logo.png"><span>Login with facebook</span></button>
+                </div>
+            </div>
+        </header>
+
+        <div id="loggedOutWrapper" class="container centeredtext">
+            <p><em>"Perfect choice for DJs and Vinyl lovers!"</em><br/> - Barack Obama</p>       
+        </div>
+
+        <div id="loggedInWrapper">
+
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/facebook.js"></script>
+
+    </body>
+</html>
