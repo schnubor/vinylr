@@ -1,6 +1,9 @@
+var VINYLS = null;
+
 var Main = (function()
 {
 
+  // this is where stuff happens
 	function _doAfterLogin(name, fbid, token){
 		_addUserToDb(name, fbid);
 		_getExistingData(fbid);
@@ -33,7 +36,9 @@ var Main = (function()
         		facebookid: fbid
      		},
       		success: function (response) {
-        		console.log("object received: "+response);
+            VINYLS = $.parseJSON(response);
+            console.log(VINYLS.length);
+
       		},
       		error: function () {
         		console.log('there is some error');
