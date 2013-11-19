@@ -1,4 +1,5 @@
 <?php
+	// Connect to Database (host, user, pw, db)
 	$con = mysqli_connect("localhost","root","","vinylr");
 	// Check connection
 	if (mysqli_connect_errno())

@@ -23,27 +23,9 @@
       });
   }
 
-  function addUserToDb(name, fbid){
-    console.log('calling ajax with '+name+' and '+fbid);
-    $.ajax({
-      type: 'POST',
-      url: './php/createuser.php',
-      data: {
-        username: name,
-        facebookid: fbid
-      },
-      success: function (response) {
-        console.log("record has been saved in database: "+response);
-      },
-      error: function () {
-        console.log('there is some error');
-      }
-    });
-  }
-
   function displayFacebookData(pic,name){
       if(pic && name){
-          console.log(FBDATA);
+          //console.log(FBDATA);
           $('#fb-button').fadeOut(function(){
               $('header').animate({
                   height: '170px'
@@ -52,7 +34,8 @@
                 $('#loggedInWrapper').append('<div id="currentuser"><img src="'+pic+'" alt="'+name+'"/><span>'+name+'</span></div>');
           });
 
-          addUserToDb(FBDATA.name, FBDATA.id);
+          // Proceed from here after login! --> main.js
+          Main.doAfterLogin(FBDATA.name, FBDATA.id, FBDATA.accessToken);
       }
   }
 
