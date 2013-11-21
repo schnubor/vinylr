@@ -30,12 +30,12 @@
               $('header').animate({
                   height: '170px'
               }, 1000, 'easeInOutCubic');
-              if(!$('#currentuser').length > 0)
+              if(!$('#currentuser').length > 0){
                 $('#loggedInWrapper').append('<div id="currentuser"><img src="'+pic+'" alt="'+name+'"/><span>'+name+'</span></div>');
+                Main.doAfterLogin(FBDATA.name, FBDATA.id, FBDATA.accessToken);
+              }
           });
-
-          // Proceed from here after login! --> main.js
-          Main.doAfterLogin(FBDATA.name, FBDATA.id, FBDATA.accessToken);
+            
       }
   }
 

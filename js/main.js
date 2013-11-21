@@ -50,7 +50,7 @@ var Main = (function()
       $('#currentuser > span').append(', you got '+vinyls.length+' vinyls in your collections right now. Keep on going!');
       $('#loggedInWrapper').append('<ul id="vinyldata"></ul>');
       index = 0;
-      $.each(vinyls, function(vinyls, i){
+      $.each(vinyls, function(){
         content = '<li>';
         content += '<span class="vinylid">'+VINYLS[index].VinylID+'</span>';
         content += '<span class="artist">'+VINYLS[index].Artist+'</span>';
