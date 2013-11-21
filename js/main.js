@@ -37,8 +37,7 @@ var Main = (function()
      		},
       		success: function (response) {
             VINYLS = $.parseJSON(response);
-            console.log(VINYLS.length);
-
+            _displayVinylData(VINYLS);
       		},
       		error: function () {
         		console.log('there is some error');
@@ -46,10 +45,28 @@ var Main = (function()
     	});
   	}
 
+    function _displayVinylData(vinyls){
+      console.log(vinyls);
+      $('#currentuser > span').append(', you got '+vinyls.length+' vinyls in your collections right now. Keep on going!');
+      $('#loggedInWrapper').append('<ul id="vinyldata"></ul>');
+      index = 0;
+      $.each(vinyls, function(vinyls, i){
+        content = '<li>';
+        content += '<span class="vinylid">'+VINYLS[index].VinylID+'</span>';
+        content += '<span class="artist">'+VINYLS[index].Artist+'</span>';
+        content += '</li>';
+        $('#vinyldata').append(content);
+        index += 1;
+      });
+      
+      
+    }
+
   	return{
   		doAfterLogin: _doAfterLogin,
   		addUserToDb: _addUserToDb,
-  		getExistingData: _getExistingData
+  		getExistingData: _getExistingData,
+      displayVinylData: _displayVinylData
   	}
 
 })();
