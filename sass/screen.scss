@@ -97,16 +97,37 @@ header{
 
 /* === LOGGED IN CONTENT ================== */
 
-#currentuser{
-    padding: 20px;
-    display: table;
+#leftSidebar{
+    
+    width: 300px;
+    float:left;
+    text-align: center;
 
-    span{
-        display: table-cell;
-        padding-left: 20px;
-        font-size: 36px;
-        vertical-align: middle;
-        height: 50px;
-        font-weight: bold;
+    #currentuser{
+        padding: 20px 0;
+
+        p{
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
     }
+
+    #vinylCount{
+        text-align: center;
+        width: 100%;
+
+        p{
+            font-weight: bold;
+            font-size: 5em;
+        }
+
+        span{
+            font-size: 1em;
+        }
+    }
+}
+
+#rightContent{
+    float: left;
 }

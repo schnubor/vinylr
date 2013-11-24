@@ -47,13 +47,20 @@ var Main = (function()
 
     function _displayVinylData(vinyls){
       console.log(vinyls);
-      $('#currentuser > span').append(', you got '+vinyls.length+' vinyls in your collections right now. Keep on going!');
-      $('#loggedInWrapper').append('<ul id="vinyldata"></ul>');
+      $('#leftSidebar').append('<div id="vinylCount"><p>'+vinyls.length+'</p><span>vinyls</span>');
+      $('#loggedInWrapper').append('<div id="rightContent"><ul id="vinyldata"></ul></div>');
       index = 0;
       $.each(vinyls, function(){
         content = '<li>';
         content += '<span class="vinylid">'+VINYLS[index].VinylID+'</span>';
         content += '<span class="artist">'+VINYLS[index].Artist+'</span>';
+        content += '<span class="album">'+VINYLS[index].Album+'</span>';
+        content += '<span class="label">'+VINYLS[index].Label+'</span>';
+        content += '<span class="catalog">'+VINYLS[index].Catalog+'</span>';
+        content += '<span class="album">'+VINYLS[index].Album+'</span>';
+        content += '<span class="year">'+VINYLS[index].Year+'</span>';
+        content += '<span class="format">'+VINYLS[index].Format+'</span>';
+        content += '<span class="type">'+VINYLS[index].Type+'</span>';
         content += '</li>';
         $('#vinyldata').append(content);
         index += 1;
