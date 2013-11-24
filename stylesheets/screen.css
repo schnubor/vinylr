@@ -198,4 +198,19 @@ header h3 {
 /* line 131, ../sass/screen.scss */
 #rightContent {
   float: left;
+  padding: 20px;
+}
+/* line 135, ../sass/screen.scss */
+#rightContent #vinyldata {
+  list-style: none;
+}
+/* line 139, ../sass/screen.scss */
+#rightContent #vinyldata li {
+  display: inline-block;
+  width: 200px;
+  border-radius: 4px;
+  border: solid thin #777;
+  float: left;
+  margin-right: 10px;
+  padding: 5px;
 }

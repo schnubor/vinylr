@@ -52,15 +52,16 @@ var Main = (function()
       index = 0;
       $.each(vinyls, function(){
         content = '<li>';
-        content += '<span class="vinylid">'+VINYLS[index].VinylID+'</span>';
-        content += '<span class="artist">'+VINYLS[index].Artist+'</span>';
-        content += '<span class="album">'+VINYLS[index].Album+'</span>';
-        content += '<span class="label">'+VINYLS[index].Label+'</span>';
-        content += '<span class="catalog">'+VINYLS[index].Catalog+'</span>';
-        content += '<span class="album">'+VINYLS[index].Album+'</span>';
-        content += '<span class="year">'+VINYLS[index].Year+'</span>';
-        content += '<span class="format">'+VINYLS[index].Format+'</span>';
-        content += '<span class="type">'+VINYLS[index].Type+'</span>';
+        content += '<div class="cover"><img src="img/nocover.jpg" alt="cover placeholder" /></div>';
+        content += '<div class="vinylid">#'+VINYLS[index].VinylID+'</div>';
+        content += '<div class="artist">'+VINYLS[index].Artist+'</div>';
+        content += '<div class="album">'+VINYLS[index].Album+'</div>';
+        content += '<div class="label">'+VINYLS[index].Label+'</div>';
+        content += '<div class="catalog">'+VINYLS[index].Catalog+'</div>';
+        content += '<div class="album">'+VINYLS[index].Album+'</div>';
+        content += '<div class="year">'+VINYLS[index].Year+'</div>';
+        content += '<div class="format">'+VINYLS[index].Format+'</div>';
+        content += '<div class="type">'+VINYLS[index].Type+'</div>';
         content += '</li>';
         $('#vinyldata').append(content);
         index += 1;
