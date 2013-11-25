@@ -66,9 +66,8 @@ var Main = (function()
         content += '<div class="vinylid">#'+VINYLS[index].VinylID+'</div>';
         content += '<div class="artist">'+VINYLS[index].Artist+'</div>';
         content += '<div class="album">'+VINYLS[index].Album+'</div>';
-        content += '<div class="label">'+VINYLS[index].Label+'</div>';
+        content += '<div class="label">'+VINYLS[index].Label+' | '+VINYLS[index].Year+'</div>';
         content += '<div class="catalog">'+VINYLS[index].Catalog+'</div>';
-        content += '<div class="year">'+VINYLS[index].Year+'</div>';
         content += '<div class="format">'+VINYLS[index].Format+'</div>';
         content += '<div class="type">'+VINYLS[index].Type+'</div>';
         content += '</li>';

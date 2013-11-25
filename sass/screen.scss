@@ -19,7 +19,7 @@ html{
 }
 
 body{
-    background-color: #cacaca;
+    background-color: #ddd;
     font-family: 'Lato', Helvetica, sans-serif;
     height: 100%;
     width: 100%;
@@ -172,6 +172,14 @@ header{
                 font-size: 18px;
                 letter-spacing: 1px;
                 font-weight: normal;
+            }
+
+            .label{
+                text-align: center;
+                font-size: 14px;
+                color: #cacaca;
+                letter-spacing: 1px;
+                padding: 5px 0;
             }
         }
 
