@@ -136,14 +136,43 @@ header{
 
         list-style: none;
 
-        li{
+        .vinyl{
             display: inline-block;
             width: 200px;
-            border-radius: 4px;
-            border: solid thin #777;
             float: left;
             margin-right: 10px;
-            padding: 5px;
+            background-color: white;
+            color: #202020;
+            position: relative;
+            transition: all .2s;
+
+            &:hover{
+                background-color: #ebde5d;
+            };
+
+            .vinylid{
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0,0,0,.5);
+                padding: 4px 8px;
+                color: white;
+            }
+
+            .artist{
+                text-align: center;
+                font-weight: 600;
+                letter-spacing: 1px;
+                padding: 5px 0;
+                font-size: 24px;
+            }
+
+            .album{
+                text-align: center;
+                font-size: 18px;
+                letter-spacing: 1px;
+                font-weight: normal;
+            }
         }
 
     }
