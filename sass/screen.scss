@@ -97,91 +97,90 @@ header{
 
 /* === LOGGED IN CONTENT ================== */
 
-#leftSidebar{
-    
-    width: 300px;
-    float:left;
+#currentuser{
     text-align: center;
+    height: 320px;
 
-    #currentuser{
-        padding: 20px 0;
-
-        p{
-            margin-top: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-    }
-
-    #vinylCount{
-        text-align: center;
-        width: 100%;
-
-        p{
-            font-weight: bold;
-            font-size: 5em;
-        }
-
-        span{
-            font-size: 1em;
-        }
+    p{
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: bold;
     }
 }
 
-#rightContent{
-    float: left;
-    padding: 20px;
+#vinylCount{
+    text-align: center;
+    width: 100%;
 
-    #vinyldata{
+    p{
+        font-weight: bold;
+        font-size: 5em;
+    }
 
-        list-style: none;
+    span{
+        font-size: 1em;
+    }
+}
 
-        .vinyl{
-            display: inline-block;
-            width: 200px;
-            float: left;
-            margin-right: 10px;
-            background-color: white;
-            color: #202020;
-            position: relative;
-            transition: all .2s;
+#vinyldata{
 
-            &:hover{
-                background-color: #ebde5d;
-            };
+    list-style: none;
+    margin: 10px 0 10px 10px;
 
-            .vinylid{
-                position: absolute;
-                top: 0;
-                left: 0;
-                background-color: rgba(0,0,0,.5);
-                padding: 4px 8px;
-                color: white;
-            }
+    li{
+        display: inline-block;
+        width: 200px;
+        float: left;
+        margin-right: 10px;
+        background-color: white;
+        color: #202020;
+        position: relative;
+        transition: all .2s;
+        min-height: 320px;
 
-            .artist{
-                text-align: center;
-                font-weight: 600;
-                letter-spacing: 1px;
-                padding: 5px 0;
-                font-size: 24px;
-            }
+        &:hover{
+            cursor: pointer;
+        };
 
-            .album{
-                text-align: center;
-                font-size: 18px;
-                letter-spacing: 1px;
-                font-weight: normal;
-            }
-
-            .label{
-                text-align: center;
-                font-size: 14px;
-                color: #cacaca;
-                letter-spacing: 1px;
-                padding: 5px 0;
-            }
+        .vinylid{
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,.5);
+            padding: 4px 8px;
+            color: white;
         }
 
+        .artist{
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 5px 0;
+            font-size: 24px;
+        }
+
+        .album{
+            text-align: center;
+            font-size: 18px;
+            letter-spacing: 1px;
+            font-weight: normal;
+        }
+
+        .label{
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            letter-spacing: 1px;
+            padding: 15px 0;
+            font-weight: 300;
+        }
+
+        .type{
+            text-align: center;
+            font-size: 12px;
+            font-weight: 300;
+            color: #777;
+            padding-top: 10px;
+        }
     }
 }

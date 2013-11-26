@@ -3,7 +3,7 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 17, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,45 +25,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -165,47 +165,39 @@ header h3 {
 
 /* === LOGGED IN CONTENT ================== */
 /* line 100, ../sass/screen.scss */
-#leftSidebar {
-  width: 300px;
-  float: left;
+#currentuser {
   text-align: center;
+  height: 320px;
 }
-/* line 106, ../sass/screen.scss */
-#leftSidebar #currentuser {
-  padding: 20px 0;
-}
-/* line 109, ../sass/screen.scss */
-#leftSidebar #currentuser p {
+/* line 104, ../sass/screen.scss */
+#currentuser p {
   margin-top: 20px;
   font-size: 24px;
   font-weight: bold;
 }
-/* line 116, ../sass/screen.scss */
-#leftSidebar #vinylCount {
+
+/* line 111, ../sass/screen.scss */
+#vinylCount {
   text-align: center;
   width: 100%;
 }
-/* line 120, ../sass/screen.scss */
-#leftSidebar #vinylCount p {
+/* line 115, ../sass/screen.scss */
+#vinylCount p {
   font-weight: bold;
   font-size: 5em;
 }
-/* line 125, ../sass/screen.scss */
-#leftSidebar #vinylCount span {
+/* line 120, ../sass/screen.scss */
+#vinylCount span {
   font-size: 1em;
 }
 
-/* line 131, ../sass/screen.scss */
-#rightContent {
-  float: left;
-  padding: 20px;
-}
-/* line 135, ../sass/screen.scss */
-#rightContent #vinyldata {
+/* line 125, ../sass/screen.scss */
+#vinyldata {
   list-style: none;
+  margin: 10px 0 10px 10px;
 }
-/* line 139, ../sass/screen.scss */
-#rightContent #vinyldata .vinyl {
+/* line 130, ../sass/screen.scss */
+#vinyldata li {
   display: inline-block;
   width: 200px;
   float: left;
@@ -214,13 +206,14 @@ header h3 {
   color: #202020;
   position: relative;
   transition: all .2s;
+  min-height: 320px;
 }
-/* line 149, ../sass/screen.scss */
-#rightContent #vinyldata .vinyl:hover {
-  background-color: #ebde5d;
+/* line 141, ../sass/screen.scss */
+#vinyldata li:hover {
+  cursor: pointer;
 }
-/* line 153, ../sass/screen.scss */
-#rightContent #vinyldata .vinyl .vinylid {
+/* line 145, ../sass/screen.scss */
+#vinyldata li .vinylid {
   position: absolute;
   top: 0;
   left: 0;
@@ -228,26 +221,35 @@ header h3 {
   padding: 4px 8px;
   color: white;
 }
-/* line 162, ../sass/screen.scss */
-#rightContent #vinyldata .vinyl .artist {
+/* line 154, ../sass/screen.scss */
+#vinyldata li .artist {
   text-align: center;
   font-weight: 600;
   letter-spacing: 1px;
   padding: 5px 0;
   font-size: 24px;
 }
-/* line 170, ../sass/screen.scss */
-#rightContent #vinyldata .vinyl .album {
+/* line 162, ../sass/screen.scss */
+#vinyldata li .album {
   text-align: center;
   font-size: 18px;
   letter-spacing: 1px;
   font-weight: normal;
 }
-/* line 177, ../sass/screen.scss */
-#rightContent #vinyldata .vinyl .label {
+/* line 169, ../sass/screen.scss */
+#vinyldata li .label {
   text-align: center;
-  font-size: 14px;
-  color: #cacaca;
+  font-size: 12px;
+  color: #777;
   letter-spacing: 1px;
-  padding: 5px 0;
+  padding: 15px 0;
+  font-weight: 300;
+}
+/* line 178, ../sass/screen.scss */
+#vinyldata li .type {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 300;
+  color: #777;
+  padding-top: 10px;
 }

@@ -5,11 +5,9 @@ Vinylr is your personal vinyl collection tool. Storing and sharing your collecti
 ## Todos:
 
 - create new control area with:
-	- user profile (pic and name)
-	- vinyl count
 	- sort and filter buttons
-	- add vinyl form
 	- search form
 
-- style vinyl tiles 
+- style vinyl tiles - DONE!
+- add vinyl form tile
 - set up filter and sort buttons for mixitup (see readme.md)

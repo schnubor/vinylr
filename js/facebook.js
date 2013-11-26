@@ -11,7 +11,7 @@
       $('#loading').fadeOut();
       $('#loggedOutWrapper').fadeOut();
 
-      FB.api('/me/picture?width=120&height=120', function(response){
+      FB.api('/me/picture?width=200&height=100', function(response){
           console.log(response.data.url);
           FBDATA.profilepic = response.data.url;
           displayFacebookData(FBDATA.profilepic,FBDATA.name);
@@ -31,7 +31,7 @@
                   height: '170px'
               }, 1000, 'easeInOutCubic');
               if(!$('#currentuser').length > 0){
-                $('#loggedInWrapper').append('<div id="leftSidebar"><div id="currentuser"><img src="'+pic+'" alt="'+name+'"/><br/><p>'+name+'</p></div></div>');
+                $('#loggedInWrapper').append('<ul id="vinyldata"><li id="currentuser"><img id="profilepic" src="'+pic+'" alt="'+name+'"/><br/><p>'+name+'</p></li></ul>');
                 Main.doAfterLogin(FBDATA.name, FBDATA.id, FBDATA.accessToken);
               }
           });

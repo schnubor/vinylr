@@ -49,8 +49,7 @@ var Main = (function()
     // Build actual Vinyl List and display it
     function _displayVinylData(vinyls){
       console.log(vinyls);
-      $('#leftSidebar').append('<div id="vinylCount"><p>'+vinyls.length+'</p><span>vinyls</span>');
-      $('#loggedInWrapper').append('<div id="rightContent"><ul id="vinyldata"></ul></div>');
+      $('#currentuser').append('<div id="vinylCount"><p>'+vinyls.length+'</p><span>vinyls</span>');
       index = 0;
       $.each(vinyls, function(){
         content = '<li class="mix vinyl" data-vinylid="'+VINYLS[index].VinylID+
@@ -66,10 +65,8 @@ var Main = (function()
         content += '<div class="vinylid">#'+VINYLS[index].VinylID+'</div>';
         content += '<div class="artist">'+VINYLS[index].Artist+'</div>';
         content += '<div class="album">'+VINYLS[index].Album+'</div>';
-        content += '<div class="label">'+VINYLS[index].Label+' | '+VINYLS[index].Year+'</div>';
-        content += '<div class="catalog">'+VINYLS[index].Catalog+'</div>';
-        content += '<div class="format">'+VINYLS[index].Format+'</div>';
-        content += '<div class="type">'+VINYLS[index].Type+'</div>';
+        content += '<div class="type">'+VINYLS[index].Format+' '+VINYLS[index].Type+'</div>';
+        content += '<div class="label">'+VINYLS[index].Label+' | '+VINYLS[index].Year+' | '+VINYLS[index].Catalog+'</div>';
         content += '</li>';
         $('#vinyldata').append(content);
         index += 1;
