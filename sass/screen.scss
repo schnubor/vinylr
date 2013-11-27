@@ -6,6 +6,17 @@
 @import "compass/reset";
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700|Playball);
 
+@mixin scale($x,$y){
+    transform: scale($x,$y);
+    -ms-transform: scale($x,$y);
+    -webkit-transform: scale($x,$y);
+}
+
+@mixin transition($attribute, $duration){
+    transition: $attribute $duration;
+    -webkit-transition: $attribute $duration;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -122,6 +133,29 @@ header{
     }
 }
 
+#addvinyl{
+    text-align: center;
+
+    p{
+        font-size: 8em;
+        font-weight: bold;
+        margin-top: 90px;
+        color: #2bab2a;
+        @include transition(all,0.2s);
+    }
+
+    &:hover{
+        p{
+            font-size: 9em;
+            margin-top: 80px;
+        }
+    };
+
+    span{
+        text-transform: uppercase;
+    }
+}
+
 #vinyldata{
 
     list-style: none;
@@ -135,12 +169,27 @@ header{
         background-color: white;
         color: #202020;
         position: relative;
-        transition: all .2s;
-        min-height: 320px;
+        height: 320px;
+        overflow: hidden;
+        @include transition(all,.2s);
 
         &:hover{
             cursor: pointer;
+
+            img{
+                @include scale(1.1,1.1);
+            }
         };
+
+        img{
+            @include transition(all,0.2s);
+        }
+
+        .cover{
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        }
 
         .vinylid{
             position: absolute;

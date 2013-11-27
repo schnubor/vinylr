@@ -8,6 +8,5 @@ Vinylr is your personal vinyl collection tool. Storing and sharing your collecti
 	- sort and filter buttons
 	- search form
 
-- style vinyl tiles - DONE!
-- add vinyl form tile
+- create overlay with add vinyl form
 - set up filter and sort buttons for mixitup (see readme.md)

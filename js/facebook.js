@@ -31,7 +31,7 @@
                   height: '170px'
               }, 1000, 'easeInOutCubic');
               if(!$('#currentuser').length > 0){
-                $('#loggedInWrapper').append('<ul id="vinyldata"><li id="currentuser"><img id="profilepic" src="'+pic+'" alt="'+name+'"/><br/><p>'+name+'</p></li></ul>');
+                $('#loggedInWrapper').append('<ul id="vinyldata"><li id="currentuser"><img id="profilepic" src="'+pic+'" alt="'+name+'"/><br/><p>'+name+'</p></li><li id="addvinyl"><p>+</p><span>add a new vinyl</span></li></ul>');
                 Main.doAfterLogin(FBDATA.name, FBDATA.id, FBDATA.accessToken);
               }
           });
