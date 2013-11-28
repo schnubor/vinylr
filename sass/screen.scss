@@ -37,7 +37,7 @@ body{
 }
 
 .container{
-    width: 960px;
+    width: 100%;
     margin: 0 auto;
 
     p{
@@ -166,6 +166,7 @@ header{
         width: 200px;
         float: left;
         margin-right: 10px;
+        margin-bottom: 10px;
         background-color: white;
         color: #202020;
         position: relative;
