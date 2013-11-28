@@ -141,15 +141,7 @@ header{
         font-weight: bold;
         margin-top: 90px;
         color: #2bab2a;
-        @include transition(all,0.2s);
     }
-
-    &:hover{
-        p{
-            font-size: 9em;
-            margin-top: 80px;
-        }
-    };
 
     span{
         text-transform: uppercase;
@@ -163,33 +155,33 @@ header{
 
     li{
         display: inline-block;
-        width: 200px;
+        width: 300px;
         float: left;
         margin-right: 10px;
         margin-bottom: 10px;
         background-color: white;
         color: #202020;
         position: relative;
-        height: 320px;
+        height: 420px;
         overflow: hidden;
         @include transition(all,.2s);
 
         &:hover{
             cursor: pointer;
 
-            img{
+            .cover img{
                 @include scale(1.1,1.1);
             }
         };
 
-        img{
-            @include transition(all,0.2s);
-        }
-
         .cover{
-            width: 200px;
-            height: 200px;
+            width: 300px;
+            height: 300px;
             overflow: hidden;
+
+            img{
+                @include transition(all,0.2s);
+            }
         }
 
         .vinylid{

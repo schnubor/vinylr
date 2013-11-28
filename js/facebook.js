@@ -11,7 +11,7 @@
       $('#loading').fadeOut();
       $('#loggedOutWrapper').fadeOut();
 
-      FB.api('/me/picture?width=200&height=100', function(response){
+      FB.api('/me/picture?width=300&height=200', function(response){
           console.log(response.data.url);
           FBDATA.profilepic = response.data.url;
           displayFacebookData(FBDATA.profilepic,FBDATA.name);
