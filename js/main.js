@@ -71,8 +71,7 @@ var Main = (function()
         $('#vinyldata').append(content);
         index += 1;
       });
-      
-      
+
     }
 
   	return{
@@ -83,3 +82,25 @@ var Main = (function()
   	}
 
 })();
+
+/* === Global stuff =========== */
+
+$(document).ready(function(){
+  console.log('document ready!');
+
+  // open overlay with add vinyl form
+  $('#loggedInWrapper').on('click', '#addvinyl', function(){
+    console.log('ding!');
+    $('#overlay').fadeIn(function(){
+      $(this).append('<p>Form goes here</p>');
+    });
+  });
+
+  // close overlay
+  $('#overlay').on('click', '.close', function(){
+    console.log('dong!');
+    $('#overlay').fadeOut();
+  });
+});
+
+
