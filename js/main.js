@@ -49,7 +49,7 @@ var Main = (function()
     // Build actual Vinyl List and display it
     function _displayVinylData(vinyls){
       console.log(vinyls);
-      $('#currentuser').append('<div id="vinylCount"><p>'+vinyls.length+'</p><span>vinyls</span>');
+      $('#currentuser').append('<div id="vinylCount"><p>'+vinyls.length+'</p><span>vinyls</span><br/>');
       index = 0;
       $.each(vinyls, function(){
         content = '<li class="mix vinyl" data-vinylid="'+VINYLS[index].VinylID+
@@ -83,23 +83,25 @@ var Main = (function()
 
 })();
 
-/* === Global stuff =========== */
+/* === Global Actions =========== */
 
 $(document).ready(function(){
   console.log('document ready!');
 
   // open overlay with add vinyl form
   $('#loggedInWrapper').on('click', '#addvinyl', function(){
-    console.log('ding!');
-    $('#overlay').fadeIn(function(){
-      $(this).append('<p>Form goes here</p>');
+    $('#overlay').fadeIn(200, function(){
+      $(this).append('');
     });
   });
 
   // close overlay
-  $('#overlay').on('click', '.close', function(){
-    console.log('dong!');
-    $('#overlay').fadeOut();
+  $('#overlay').on('click', '.close, #overlay', function(){
+    $('#addVinylForm').remove();
+    $('#overlay').fadeOut(200);
+  }).click(function(){
+    $('#addVinylForm').remove();
+    $('#overlay').fadeOut(200);
   });
 });
 

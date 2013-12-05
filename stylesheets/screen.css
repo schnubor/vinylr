@@ -171,50 +171,72 @@ header h3 {
 }
 /* line 115, ../sass/screen.scss */
 #currentuser p {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 24px;
   font-weight: bold;
 }
+/* line 121, ../sass/screen.scss */
+#currentuser button {
+  border: 0;
+  border-radius: 2px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #cacaca;
+  font-family: 'Lato', Helvetica, sans-serif;
+  color: white;
+  font-size: 10px;
+  text-transform: lowercase;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+/* line 133, ../sass/screen.scss */
+#currentuser button:hover {
+  background-color: #ff6800;
+}
 
-/* line 122, ../sass/screen.scss */
+/* line 139, ../sass/screen.scss */
 #vinylCount {
   text-align: center;
   width: 100%;
 }
-/* line 126, ../sass/screen.scss */
+/* line 143, ../sass/screen.scss */
 #vinylCount p {
   font-weight: bold;
   font-size: 5em;
 }
-/* line 131, ../sass/screen.scss */
+/* line 148, ../sass/screen.scss */
 #vinylCount span {
   font-size: 1em;
 }
 
-/* line 136, ../sass/screen.scss */
+/* line 153, ../sass/screen.scss */
 #addvinyl {
   text-align: center;
 }
-/* line 139, ../sass/screen.scss */
+/* line 156, ../sass/screen.scss */
 #addvinyl p {
   font-size: 8em;
   font-weight: bold;
   margin-top: 90px;
   color: #2bab2a;
 }
-/* line 146, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 #addvinyl span {
   text-transform: uppercase;
 }
 
 /* === ALL THE VINYLS ======================*/
-/* line 153, ../sass/screen.scss */
+/* line 170, ../sass/screen.scss */
 #vinyldata {
   list-style: none;
   margin: 10px auto;
   text-align: center;
 }
-/* line 159, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
+#vinyldata .vinyl:hover {
+  cursor: pointer;
+}
+/* line 180, ../sass/screen.scss */
 #vinyldata li {
   display: inline-block;
   width: 300px;
@@ -227,28 +249,24 @@ header h3 {
   transition: all 0.2s;
   -webkit-transition: all 0.2s;
 }
-/* line 170, ../sass/screen.scss */
-#vinyldata li:hover {
-  cursor: pointer;
-}
-/* line 173, ../sass/screen.scss */
+/* line 192, ../sass/screen.scss */
 #vinyldata li:hover .cover img {
   transform: scale(1.05, 1.05);
   -ms-transform: scale(1.05, 1.05);
   -webkit-transform: scale(1.05, 1.05);
 }
-/* line 178, ../sass/screen.scss */
+/* line 197, ../sass/screen.scss */
 #vinyldata li .cover {
   width: 300px;
   height: 300px;
   overflow: hidden;
 }
-/* line 183, ../sass/screen.scss */
+/* line 202, ../sass/screen.scss */
 #vinyldata li .cover img {
   transition: all 0.2s;
   -webkit-transition: all 0.2s;
 }
-/* line 188, ../sass/screen.scss */
+/* line 207, ../sass/screen.scss */
 #vinyldata li .vinylid {
   position: absolute;
   top: 0;
@@ -257,7 +275,7 @@ header h3 {
   padding: 4px 8px;
   color: white;
 }
-/* line 197, ../sass/screen.scss */
+/* line 216, ../sass/screen.scss */
 #vinyldata li .artist {
   text-align: center;
   font-weight: 600;
@@ -265,14 +283,14 @@ header h3 {
   padding: 5px 0;
   font-size: 24px;
 }
-/* line 205, ../sass/screen.scss */
+/* line 224, ../sass/screen.scss */
 #vinyldata li .album {
   text-align: center;
   font-size: 18px;
   letter-spacing: 1px;
   font-weight: normal;
 }
-/* line 212, ../sass/screen.scss */
+/* line 231, ../sass/screen.scss */
 #vinyldata li .label {
   text-align: center;
   font-size: 12px;
@@ -281,7 +299,7 @@ header h3 {
   padding: 15px 0;
   font-weight: 300;
 }
-/* line 221, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 #vinyldata li .type {
   text-align: center;
   font-size: 12px;
@@ -291,7 +309,7 @@ header h3 {
 }
 
 /* === OVERLAY ===================*/
-/* line 233, ../sass/screen.scss */
+/* line 252, ../sass/screen.scss */
 #overlay {
   position: fixed;
   height: 100%;
@@ -300,7 +318,7 @@ header h3 {
   background-color: rgba(0, 0, 0, 0.9);
   display: none;
 }
-/* line 241, ../sass/screen.scss */
+/* line 260, ../sass/screen.scss */
 #overlay .close {
   position: absolute;
   top: 0;

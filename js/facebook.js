@@ -31,7 +31,8 @@
                   height: '170px'
               }, 1000, 'easeInOutCubic');
               if(!$('#currentuser').length > 0){
-                $('#loggedInWrapper').append('<ul id="vinyldata"><li id="currentuser"><img id="profilepic" src="'+pic+'" alt="'+name+'"/><br/><p>'+name+'</p></li><li id="addvinyl"><p>+</p><span>add a new vinyl</span></li></ul>');
+                $('#loggedInWrapper').append('<ul id="vinyldata"><li id="currentuser"><img id="profilepic" src="'+pic+'" alt="'+name+'"/><br/><p>'+name+'</p><button onclick="FB.logout();">Logout</button></li><li id="addvinyl"><p>+</p><span>add a new vinyl</span></li></ul>');
+                $('#loggedInWrapper').fadeIn();
                 Main.doAfterLogin(FBDATA.name, FBDATA.id, FBDATA.accessToken);
               }
           });
@@ -40,11 +41,15 @@
   }
 
   function hideControls(){
-      $('#wrapper').fadeOut(function(){
+      // Remove User Data
+      $('#loggedInWrapper').html('').fadeOut(function(){
           $('header').animate({
-              height: '370px',
-              padding: '0'
-          }, 1000, 'easeInOutCubic');
+              height: '250px'
+          }, 1000, 'easeInOutCubic', function(){
+            displayFacebookButton();
+          });
+
+          $('#loggedOutWrapper').fadeIn();
       });
   }
 
@@ -80,6 +85,7 @@
         // and signed request each expire
         FBDATA.id = response.authResponse.userID;
         FBDATA.accessToken = response.authResponse.accessToken;
+        displayControls();
       } else if (response.status === 'not_authorized') {
         // the user is logged in to Facebook, 
         // but has not authenticated your app
@@ -96,14 +102,12 @@
     // will be handled. 
     FB.Event.subscribe('auth.authResponseChange', function(response) {
       // Here we specify what we do with the response anytime this event occurs. 
-      if (response.status === 'connected') { // all coo, go ahead
+      if (response.status === 'connected') { // all cool, go ahead
         displayControls();
       } else if (response.status === 'not_authorized') { // logged into facebook but not into the app
         hideControls();
-        displayFacebookButton();
       } else { // not logged into facebook
         hideControls();
-        displayFacebookButton();
       }
     });
   };

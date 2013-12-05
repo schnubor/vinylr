@@ -113,9 +113,26 @@ header{
     height: 320px;
 
     p{
-        margin-top: 20px;
+        margin-top: 10px;
         font-size: 24px;
         font-weight: bold;
+    }
+
+    button{
+        border: 0;
+        border-radius: 2px;
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #cacaca;
+        font-family: 'Lato', Helvetica, sans-serif;
+        color: white;
+        font-size: 10px;
+        text-transform: lowercase;
+        @include transition(all, .2s);
+
+        &:hover{
+            background-color: #ff6800;
+        }
     }
 }
 
@@ -156,6 +173,10 @@ header{
     margin: 10px auto;
     text-align: center;
 
+    .vinyl:hover{
+        cursor: pointer;
+    }
+
     li{
         display: inline-block;
         width: 300px;
@@ -168,8 +189,6 @@ header{
         @include transition(all,.2s);
 
         &:hover{
-            cursor: pointer;
-
             .cover img{
                 @include scale(1.05,1.05);
             }
