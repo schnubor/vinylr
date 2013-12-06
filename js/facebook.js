@@ -90,9 +90,11 @@
         // the user is logged in to Facebook, 
         // but has not authenticated your app
         displayFacebookButton();
+        console.warn('FB: not authorized');
       } else {
         // the user isn't logged in to Facebook.
         displayFacebookButton();
+        console.warn('FB: not logged in');
       }
     });
 
@@ -103,11 +105,15 @@
     FB.Event.subscribe('auth.authResponseChange', function(response) {
       // Here we specify what we do with the response anytime this event occurs. 
       if (response.status === 'connected') { // all cool, go ahead
+        FBDATA.id = response.authResponse.userID;
+        FBDATA.accessToken = response.authResponse.accessToken;
         displayControls();
       } else if (response.status === 'not_authorized') { // logged into facebook but not into the app
         hideControls();
+        console.warn('FB: not authorized');
       } else { // not logged into facebook
         hideControls();
+        console.warn('FB: not logged in');
       }
     });
   };
