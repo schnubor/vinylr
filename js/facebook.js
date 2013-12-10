@@ -1,39 +1,30 @@
   $(document.body).prepend('<div id="fb-root"></div>');
 
-  var FBDATA = {
-    id : '',
-    accessToken : '',
-    profilepic : '',
-    name : ''
-  }
+  var FBDATA = {}
 
   function displayControls() {
-      $('#loading').fadeOut();
-      $('#loggedOutWrapper').fadeOut();
+    $('#loading').fadeOut();
+    $('#loggedOutWrapper').fadeOut();
 
-      FB.api('/me/picture?width=300&height=200', function(response){
-          console.log(response.data.url);
-          FBDATA.profilepic = response.data.url;
-          displayFacebookData(FBDATA.profilepic,FBDATA.name);
-      });
-
-      FB.api('/me', function(response) {
-          FBDATA.name = response.name;
-          displayFacebookData(FBDATA.profilepic,FBDATA.name);
-      });
+    FB.api('/me', function(response) {
+      FBDATA = response;
+      console.log(FBDATA);
+      displayFacebookData(FBDATA.username,FBDATA.name);
+    });
   }
 
-  function displayFacebookData(pic,name){
-      if(pic && name){
-          //console.log(FBDATA);
+  function displayFacebookData(username,name){
+      if(username && name){
           $('#fb-button').fadeOut(function(){
               $('header').animate({
                   height: '170px'
               }, 1000, 'easeInOutCubic');
               if(!$('#currentuser').length > 0){
-                $('#loggedInWrapper').append('<ul id="vinyldata"><li id="currentuser"><img id="profilepic" src="'+pic+'" alt="'+name+'"/><br/><p>'+name+'</p><button onclick="FB.logout();">Logout</button></li><li id="addvinyl"><p>+</p><span>add a new vinyl</span></li></ul>');
+                $('#loggedInWrapper').append('<ul id="vinyldata"><li id="currentuser"><img id="profilepic" src="https://graph.facebook.com/'+username+'/picture?width=300&height=200" alt="'+name+'"/><br/><p>'+name+'</p><button onclick="FB.logout();">Logout</button></li><li id="addvinyl"><p>+</p><span>add a new vinyl</span></li></ul>');
                 $('#loggedInWrapper').fadeIn();
-                Main.doAfterLogin(FBDATA.name, FBDATA.id, FBDATA.accessToken);
+
+                // Jump to main.js
+                Main.doAfterLogin(FBDATA.name, FBDATA.id);
               }
           });
             
@@ -83,8 +74,9 @@
         // the user's ID, a valid access token, a signed
         // request, and the time the access token 
         // and signed request each expire
-        FBDATA.id = response.authResponse.userID;
-        FBDATA.accessToken = response.authResponse.accessToken;
+        
+        //FBDATA.id = response.authResponse.userID;
+        //FBDATA.accessToken = response.authResponse.accessToken;
         displayControls();
       } else if (response.status === 'not_authorized') {
         // the user is logged in to Facebook, 
@@ -105,8 +97,8 @@
     FB.Event.subscribe('auth.authResponseChange', function(response) {
       // Here we specify what we do with the response anytime this event occurs. 
       if (response.status === 'connected') { // all cool, go ahead
-        FBDATA.id = response.authResponse.userID;
-        FBDATA.accessToken = response.authResponse.accessToken;
+        //FBDATA.id = response.authResponse.userID;
+        //FBDATA.accessToken = response.authResponse.accessToken;
         displayControls();
       } else if (response.status === 'not_authorized') { // logged into facebook but not into the app
         hideControls();

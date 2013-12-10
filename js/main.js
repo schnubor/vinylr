@@ -4,7 +4,7 @@ var Main = (function()
 {
 
   // this is where stuff happens
-	function _doAfterLogin(name, fbid, token){
+	function _doAfterLogin(name, fbid){
 		_addUserToDb(name, fbid);
 		_getExistingData(fbid);
 	}
