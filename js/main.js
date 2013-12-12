@@ -30,6 +30,7 @@ var Main = (function()
 
     // After logged in, get users vinyl Data and display it on success
   	function _getExistingData(fbid){
+      console.log("calling _getExistingData");
   		$.ajax({
       		type: 'POST',
       		url: './php/getuservinyls.php',
@@ -37,8 +38,11 @@ var Main = (function()
         		facebookid: fbid
      		},
       		success: function (response) {
-            VINYLS = $.parseJSON(response);
-            _displayVinylData(VINYLS);
+            console.log(response);
+            if(response.length){
+              VINYLS = $.parseJSON(response);
+              _displayVinylData(VINYLS);
+            }
       		},
       		error: function () {
         		console.log('there is some error');
