@@ -101,10 +101,10 @@ $(document).ready(function(){
 
   // close overlay
   $('#overlay').on('click', '.close, #overlay', function(){
-    $('#addVinylForm').remove();
+    //$('#addVinylForm').remove();
     $('#overlay').fadeOut(200);
   }).click(function(){
-    $('#addVinylForm').remove();
+    //$('#addVinylForm').remove();
     $('#overlay').fadeOut(200);
   });
 });
