@@ -59,19 +59,23 @@
         <div id="overlay">
             <div class="close"></div>
             <div id="addVinylForm">
+                <h2>Add a new Vinyl</h2>
                 <form action="addVinyl.php" method="get">
-                    <input type="text" name="artist" required placeholder="Artist"><br>
-                    <input type="text" name="title" required placeholder="Title"><br>
-                    <input type="text" name="label" required placeholder="Label"><br>
+                    <input type="text" name="artist" required placeholder="Artist*"><br>
+                    <input type="text" name="title" required placeholder="Title*"><br>
+                    <input type="text" name="label" required placeholder="Label*"><br>
                     <input type="text" name="year" placeholder="Year"><br>
                     <input type="text" name="price" placeholder="Price"><br>
                     <input type="text" name="catalog" placeholder="Catalog Number"><br>
-                    <input type="radio" name="type" value="LP">LP<br>
-                    <input type="radio" name="type" value="EP">EP<br>
-                    <input type="radio" name="type" value="Album">Album<br>
-                    <input type="radio" name="size" value="12">12"<br>
-                    <input type="radio" name="size" value="7">7"<br>
-                    <input type="submit" value="Submit">
+                    <br/>
+                    <input type="radio" name="type" value="LP" checked><span>LP</span>
+                    <input type="radio" name="type" value="EP"><span>EP</span>
+                    <input type="radio" name="type" value="Album"><span style="margin: 0;">Album</span><br/>
+                    <br/>
+                    <input type="radio" name="size" value="12" checked><span>12"</span>
+                    <input type="radio" name="size" value="7"><span style="margin: 0;">7"</span><br>
+                    <br/>
+                    <input type="submit" value="Add Vinyl">
                 </form>
             </div>
         </div>
