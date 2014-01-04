@@ -56,23 +56,18 @@ var Main = (function()
       $('#currentuser').append('<div id="vinylCount"><p>'+vinyls.length+'</p><span>vinyls</span><br/>');
       index = 0;
       $.each(vinyls, function(){
-        content = '<li class="mix vinyl" data-vinylid="'+VINYLS[index].VinylID+
-                                      '" data-artist="'+VINYLS[index].Artist+
-                                      '" data-album="'+VINYLS[index].Album+
-                                      '" data-label="'+VINYLS[index].Label+
-                                      '" data-catalog="'+VINYLS[index].Catalog+
-                                      '" data-year="'+VINYLS[index].Year+
-                                      '" data-format="'+VINYLS[index].Format+
-                                      '" data-type="'+VINYLS[index].Type+
-                                      '">';
-        content += '<div class="cover"><img src="img/nocover.jpg" alt="cover placeholder" /></div>';
-        content += '<div class="vinylid">#'+VINYLS[index].VinylID+'</div>';
-        content += '<div class="artist">'+VINYLS[index].Artist+'</div>';
-        content += '<div class="album">'+VINYLS[index].Album+'</div>';
-        content += '<div class="type">'+VINYLS[index].Format+' '+VINYLS[index].Type+'</div>';
-        content += '<div class="label">'+VINYLS[index].Label+' | '+VINYLS[index].Year+' | '+VINYLS[index].Catalog+'</div>';
-        content += '</li>';
-        $('#vinyldata').append(content);
+        content = '<tr>';
+        content += '<td>'+VINYLS[index].VinylID+'</td>';
+        content += '<td>'+VINYLS[index].Artist+'</td>';
+        content += '<td>'+VINYLS[index].Album+'</td>';
+        content += '<td>'+VINYLS[index].Label+'</td>';
+        content += '<td>'+VINYLS[index].Format+' '+VINYLS[index].Type+'</td>';
+        content += '<td>'+VINYLS[index].Year+'</td>';
+        content += '<td>'+'12$'+'</td>';
+        content += '<td>'+VINYLS[index].Catalog+'</td>';
+        content += '</tr>';
+        
+        $('#tablecontent').append(content);
         index += 1;
       });
 
