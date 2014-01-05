@@ -18,7 +18,7 @@
           $('#fb-button').fadeOut(function(){
 
               if(!$('#currentuser').length > 0){ // if not already logged in
-                $('#loggedInWrapper').append('<ul id="vinyldata"><li id="currentuser"><img id="profilepic" src="https://graph.facebook.com/'+username+'/picture?width=300&height=200" alt="'+name+'"/><br/><p>'+name+'</p><button onclick="FB.logout();">Logout</button></li><li id="addvinyl"><p>+</p><span>add a new vinyl</span></li></ul>');
+                $('header .container').append('<div id="#currentuser"><img id="profilepic" src="https://graph.facebook.com/'+username+'/picture?width=300&height=200" alt="'+name+'"/><span>'+name+'</span><button onclick="FB.logout();">Logout</button></div>');
                 $('#loggedInWrapper').fadeIn();
 
                 // Jump to main.js
@@ -33,6 +33,7 @@
       // Remove User Data
       $('#loggedInWrapper').html('').fadeOut(function(){
           $('#loggedOutWrapper').fadeIn();
+          $('#currentuser').remove();
           displayFacebookButton();
       });
   }

@@ -63,8 +63,9 @@ var Main = (function()
         content += '<td>'+VINYLS[index].Label+'</td>';
         content += '<td>'+VINYLS[index].Format+' '+VINYLS[index].Type+'</td>';
         content += '<td>'+VINYLS[index].Year+'</td>';
-        content += '<td>'+'12$'+'</td>';
+        content += '<td>'+VINYLS[index].Price+'</td>';
         content += '<td>'+VINYLS[index].Catalog+'</td>';
+        content += '<td>'+VINYLS[index].Genre+'</td>';
         content += '</tr>';
         
         $('#tablecontent').append(content);
