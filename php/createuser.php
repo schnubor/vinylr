@@ -28,6 +28,8 @@
 	`Year` VARCHAR(255),
 	`Format` VARCHAR(255),
 	`Type` VARCHAR(255),
+	`Price` VARCHAR(255),
+	`Genre` VARCHAR(255),
 	PRIMARY KEY(VinylID)
 	);";
 	
