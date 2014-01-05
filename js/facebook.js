@@ -16,10 +16,8 @@
   function displayFacebookData(username,name){
       if(username && name){
           $('#fb-button').fadeOut(function(){
-              $('header').animate({
-                  height: '170px'
-              }, 1000, 'easeInOutCubic');
-              if(!$('#currentuser').length > 0){
+
+              if(!$('#currentuser').length > 0){ // if not already logged in
                 $('#loggedInWrapper').append('<ul id="vinyldata"><li id="currentuser"><img id="profilepic" src="https://graph.facebook.com/'+username+'/picture?width=300&height=200" alt="'+name+'"/><br/><p>'+name+'</p><button onclick="FB.logout();">Logout</button></li><li id="addvinyl"><p>+</p><span>add a new vinyl</span></li></ul>');
                 $('#loggedInWrapper').fadeIn();
 
@@ -34,13 +32,8 @@
   function hideControls(){
       // Remove User Data
       $('#loggedInWrapper').html('').fadeOut(function(){
-          $('header').animate({
-              height: '250px'
-          }, 1000, 'easeInOutCubic', function(){
-            displayFacebookButton();
-          });
-
           $('#loggedOutWrapper').fadeIn();
+          displayFacebookButton();
       });
   }
 

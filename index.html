@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="stylesheets/screen.css">
         <link rel="stylesheet" href="stylesheets/footable.core.css">
         <link rel="stylesheet" href="stylesheets/footable.standalone.css">
+        <link rel="stylesheet" href="stylesheets/font-awesome-4.0.3/css/font-awesome.min.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -57,11 +58,10 @@
         <header>
             <div class="container">
                 <h1>Vinylr</h1>
-                <h3>All your vinyls in one place. Anywhere. Anytime.</h3>
-                <br>
-                <p id="loading">Loading ...</p>
+                <h3>All your vinyls in one place.</h3>
+                <div id="loading" class="fa fa-spinner fa-spin"></div>
                 <div id="fb-button">
-                    <button class="fb-button" id="fb-auth" onclick="FB.login()"><img src="img/fb-logo.png"><span>Login with facebook</span></button>
+                    <button class="fb-button" id="fb-auth" onclick="FB.login()"><span class="fa fa-facebook fa-fw"></span><span>Login with facebook</span></button>
                 </div>
             </div>
         </header>

@@ -59,40 +59,56 @@ body{
 
 header{
     background-color: #202020;
-    padding: 50px 0;
-    text-align: center;
-    height: 250px;
+    text-align: left;
+    height: 60px;
+    padding: 10px 20px;
 
     h1{
         font-family: 'Playball', cursive;
-        font-size: 8em;
+        font-size: 2em;
         color: white;
-        text-shadow: 2px 2px 0px #cacaca;
-        text-align: center;
+        text-align: left;
+        display: inline-block;
+        height: 60px;
+        line-height: 60px;
     }
 
     h3{
-        color: #cacaca;
-        font-size: 1em;
+        color: #aaa;
+        font-size: 16px;
         font-weight: 300;
         text-align: center;
-        //text-transform: uppercase;
-        padding: 20px 0;
-        letter-spacing: 2px;
+        display: inline-block;
+        letter-spacing: 1px;
+        padding-left: 10px;
+        line-height: 60px;
+        height: 60px;
     }
 }
 
+#loading{
+    color: white;
+    float: right;
+    height: 60px;
+    line-height: 60px;
+}
+
 #fb-button{
-	display:none;
+	display: none;
+    float: right;
+    height: 60px;
+    line-height: 60px;
 }
 
 #fb-auth{
-    padding: 10px 20px 10px 0;
+    padding: 0 20px 0 10px;
     background-color: #3B5998;
     border-radius: 5px;
     color: white;
     font-family: 'Lato', Helvetica, sans-serif;
+    font-weight: light;
     border: 0;
+    height: 40px;
 
     img{
     	vertical-align: middle;
@@ -103,12 +119,17 @@ header{
     }
 
     span{
-    	vertical-align: middle;
-    	height: 20px;
+        height: 40px;
+        line-height: 40px;
     }
 }
 
 /* === LOGGED IN CONTENT ================== */
+
+#loggedInWrapper{
+    display: none;
+    padding: 10px;
+}
 
 #currentuser{
     text-align: center;
