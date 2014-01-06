@@ -18,7 +18,7 @@
           $('#fb-button').fadeOut(function(){
 
               if(!$('#currentuser').length > 0){ // if not already logged in
-                $('header .container').append('<div id="#currentuser"><img id="profilepic" src="https://graph.facebook.com/'+username+'/picture?width=300&height=200" alt="'+name+'"/><span>'+name+'</span><button onclick="FB.logout();">Logout</button></div>');
+                $('header').append('<div id="currentuser"><img id="profilepic" src="https://graph.facebook.com/'+username+'/picture?width=120&height=120" alt="'+name+'"/><span id="username">'+name+'</span><span id="logout" onclick="FB.logout();"><span class="fa fa-sign-out fa-fw"></span>Logout</span></div>');
                 $('#loggedInWrapper').fadeIn();
 
                 // Jump to main.js
@@ -30,8 +30,9 @@
   }
 
   function hideControls(){
-      // Remove User Data
-      $('#loggedInWrapper').html('').fadeOut(function(){
+      // Remove User Data 
+      $('#tablecontent').html(''); // Clear table content
+      $('#loggedInWrapper').fadeOut(function(){
           $('#loggedOutWrapper').fadeIn();
           $('#currentuser').remove();
           displayFacebookButton();

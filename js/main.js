@@ -53,7 +53,7 @@ var Main = (function()
     // Build actual Vinyl List and display it
     function _displayVinylData(vinyls){
       console.log(vinyls);
-      $('#currentuser').append('<div id="vinylCount"><p>'+vinyls.length+'</p><span>vinyls</span><br/>');
+      $('#loggedInWrapper').append('<div id="vinylCount"><p>'+vinyls.length+'</p><span>vinyls</span><br/>');
       index = 0;
       $.each(vinyls, function(){
         content = '<tr>';
