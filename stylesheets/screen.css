@@ -3,7 +3,7 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 17, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,50 +25,52 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
-/* line 25, ../sass/screen.scss */
+/* Mixins & Variables */
+/* General stuff */
+/* line 35, ../sass/screen.scss */
 input:focus,
 select:focus,
 textarea:focus,
@@ -76,13 +78,13 @@ button:focus {
   outline: none;
 }
 
-/* line 29, ../sass/screen.scss */
+/* line 39, ../sass/screen.scss */
 html {
   width: 100%;
   height: 100%;
 }
 
-/* line 34, ../sass/screen.scss */
+/* line 44, ../sass/screen.scss */
 body {
   background-color: #ddd;
   font-family: 'Lato', Helvetica, sans-serif;
@@ -90,34 +92,34 @@ body {
   width: 100%;
 }
 
-/* line 41, ../sass/screen.scss */
+/* line 51, ../sass/screen.scss */
 .container {
   width: 100%;
   margin: 0 auto;
 }
-/* line 45, ../sass/screen.scss */
+/* line 55, ../sass/screen.scss */
 .container p {
   padding: 20px 0;
 }
-/* line 48, ../sass/screen.scss */
+/* line 58, ../sass/screen.scss */
 .container p em {
   font-size: 2em;
 }
 
-/* line 54, ../sass/screen.scss */
+/* line 64, ../sass/screen.scss */
 .centeredtext {
   text-align: center;
 }
 
 /* === HEADER ======================== */
-/* line 60, ../sass/screen.scss */
+/* line 70, ../sass/screen.scss */
 header {
   background-color: #202020;
   text-align: left;
   height: 60px;
   padding: 10px 20px;
 }
-/* line 66, ../sass/screen.scss */
+/* line 76, ../sass/screen.scss */
 header h1 {
   font-family: 'Playball', cursive;
   font-size: 2em;
@@ -127,7 +129,7 @@ header h1 {
   height: 60px;
   line-height: 60px;
 }
-/* line 76, ../sass/screen.scss */
+/* line 86, ../sass/screen.scss */
 header h3 {
   color: #aaa;
   font-size: 16px;
@@ -140,7 +142,7 @@ header h3 {
   height: 60px;
 }
 
-/* line 89, ../sass/screen.scss */
+/* line 99, ../sass/screen.scss */
 #loading {
   color: white;
   float: right;
@@ -148,7 +150,7 @@ header h3 {
   line-height: 60px;
 }
 
-/* line 96, ../sass/screen.scss */
+/* line 106, ../sass/screen.scss */
 #fb-button {
   display: none;
   float: right;
@@ -156,7 +158,7 @@ header h3 {
   line-height: 60px;
 }
 
-/* line 103, ../sass/screen.scss */
+/* line 113, ../sass/screen.scss */
 #fb-auth {
   padding: 0 20px 0 10px;
   background-color: #3B5998;
@@ -167,20 +169,47 @@ header h3 {
   border: 0;
   height: 40px;
 }
-/* line 113, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 #fb-auth span {
   height: 40px;
   line-height: 40px;
 }
 
 /* === LOGGED IN CONTENT ================== */
-/* line 121, ../sass/screen.scss */
+/* line 131, ../sass/screen.scss */
 #loggedInWrapper {
   display: none;
   padding: 10px;
 }
+/* line 135, ../sass/screen.scss */
+#loggedInWrapper #filter {
+  border: 0;
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 10px;
+  margin-bottom: 10px;
+  float: left;
+  border: 1px solid #cacaca;
+}
+/* line 145, ../sass/screen.scss */
+#loggedInWrapper #addvinyl {
+  background-color: #ff6c00;
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 10px 0 5px;
+  color: white;
+  float: right;
+  border: 0;
+  opacity: .8;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+}
+/* line 156, ../sass/screen.scss */
+#loggedInWrapper #addvinyl:hover {
+  opacity: 1;
+}
 
-/* line 126, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 #currentuser {
   text-align: center;
   height: 320px;
@@ -190,145 +219,70 @@ header h3 {
   line-height: 60px;
   color: white;
 }
-/* line 135, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 #currentuser img {
   width: 40px;
   height: 40px;
   vertical-align: middle;
 }
-/* line 141, ../sass/screen.scss */
+/* line 178, ../sass/screen.scss */
 #currentuser #username {
   margin-left: 10px;
   margin-right: 20px;
 }
-/* line 146, ../sass/screen.scss */
+/* line 183, ../sass/screen.scss */
 #currentuser #logout {
   padding-left: 20px;
   border-left: 1px solid grey;
   cursor: pointer;
 }
-/* line 151, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 #currentuser #logout:hover {
-  color: #dd4223;
+  color: #ff6c00;
 }
 
-/* line 157, ../sass/screen.scss */
+/* line 194, ../sass/screen.scss */
 #vinylCount {
   text-align: center;
   width: 100%;
 }
-/* line 161, ../sass/screen.scss */
+/* line 198, ../sass/screen.scss */
 #vinylCount p {
   font-weight: bold;
   font-size: 5em;
 }
-/* line 166, ../sass/screen.scss */
+/* line 203, ../sass/screen.scss */
 #vinylCount span {
   font-size: 1em;
 }
 
-/* line 171, ../sass/screen.scss */
+/* line 208, ../sass/screen.scss */
 #addvinyl {
   cursor: pointer;
   text-align: center;
 }
-/* line 175, ../sass/screen.scss */
+/* line 212, ../sass/screen.scss */
 #addvinyl p {
   font-size: 8em;
   font-weight: bold;
   margin-top: 116px;
-  color: #ff6800;
+  color: #ff6c00;
 }
-/* line 182, ../sass/screen.scss */
+/* line 219, ../sass/screen.scss */
 #addvinyl span {
   text-transform: uppercase;
 }
 
-/* === ALL THE VINYLS ======================*/
-/* line 189, ../sass/screen.scss */
-#vinyldata {
-  list-style: none;
-  margin: 10px auto;
-  text-align: center;
-}
-/* line 195, ../sass/screen.scss */
-#vinyldata .vinyl:hover {
-  cursor: pointer;
-}
-/* line 199, ../sass/screen.scss */
-#vinyldata li {
-  display: inline-block;
-  width: 300px;
-  margin: 5px;
-  background-color: white;
-  color: #202020;
-  position: relative;
-  height: 420px;
-  overflow: hidden;
-  transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-}
-/* line 211, ../sass/screen.scss */
-#vinyldata li:hover .cover img {
-  transform: scale(1.05, 1.05);
-  -ms-transform: scale(1.05, 1.05);
-  -webkit-transform: scale(1.05, 1.05);
-}
-/* line 216, ../sass/screen.scss */
-#vinyldata li .cover {
-  width: 300px;
-  height: 300px;
-  overflow: hidden;
-}
-/* line 221, ../sass/screen.scss */
-#vinyldata li .cover img {
-  transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-}
+/* === ALL THE VINYLS ============*/
 /* line 226, ../sass/screen.scss */
-#vinyldata li .vinylid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 4px 8px;
-  color: white;
-}
-/* line 235, ../sass/screen.scss */
-#vinyldata li .artist {
-  text-align: center;
-  font-weight: 600;
-  letter-spacing: 1px;
-  padding: 5px 0;
-  font-size: 24px;
-}
-/* line 243, ../sass/screen.scss */
-#vinyldata li .album {
-  text-align: center;
-  font-size: 18px;
-  letter-spacing: 1px;
-  font-weight: normal;
-}
-/* line 250, ../sass/screen.scss */
-#vinyldata li .label {
-  text-align: center;
-  font-size: 12px;
-  color: #777;
-  letter-spacing: 1px;
-  padding: 15px 0;
-  font-weight: 300;
-}
-/* line 259, ../sass/screen.scss */
-#vinyldata li .type {
-  text-align: center;
-  font-size: 12px;
-  font-weight: 300;
-  color: #777;
-  padding-top: 10px;
+.footable {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
 
 /* === OVERLAY ===================*/
-/* line 271, ../sass/screen.scss */
+/* line 232, ../sass/screen.scss */
 #overlay {
   position: fixed;
   height: 100%;
@@ -337,7 +291,7 @@ header h3 {
   background-color: rgba(0, 0, 0, 0.9);
   display: none;
 }
-/* line 279, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 #overlay .close {
   position: absolute;
   top: 0;
@@ -349,7 +303,7 @@ header h3 {
   background-size: cover;
   cursor: pointer;
 }
-/* line 291, ../sass/screen.scss */
+/* line 252, ../sass/screen.scss */
 #overlay #addVinylForm {
   width: 420px;
   height: 420px;
@@ -361,46 +315,50 @@ header h3 {
   z-index: 100;
   text-align: center;
 }
-/* line 302, ../sass/screen.scss */
+/* line 263, ../sass/screen.scss */
 #overlay #addVinylForm h2 {
   text-align: center;
   text-transform: uppercase;
   margin-bottom: 20px;
   font-size: 2em;
 }
-/* line 309, ../sass/screen.scss */
+/* line 270, ../sass/screen.scss */
 #overlay #addVinylForm form {
   width: 100%;
 }
-/* line 312, ../sass/screen.scss */
+/* line 273, ../sass/screen.scss */
 #overlay #addVinylForm form input[type="text"] {
   margin-bottom: 10px;
   border: none;
-  border-radius: 4px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
   padding: 10px;
   width: calc(100% - 20px);
 }
-/* line 320, ../sass/screen.scss */
+/* line 281, ../sass/screen.scss */
 #overlay #addVinylForm form input[type="radio"] {
   margin: 0 5px 0 0;
 }
-/* line 324, ../sass/screen.scss */
+/* line 285, ../sass/screen.scss */
 #overlay #addVinylForm form span {
   margin-right: 20px;
 }
-/* line 328, ../sass/screen.scss */
+/* line 289, ../sass/screen.scss */
 #overlay #addVinylForm form input[type="submit"] {
   text-transform: uppercase;
   border: none;
-  border-radius: 4px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
   padding: 10px 20px;
-  background-color: #ff6800;
+  background-color: #ff6c00;
   color: white;
   text-shadow: 0 0 10px #202020;
   transition: all 0.2s;
   -webkit-transition: all 0.2s;
 }
-/* line 338, ../sass/screen.scss */
+/* line 299, ../sass/screen.scss */
 #overlay #addVinylForm form input[type="submit"]:hover {
   padding: 10px 40px;
   text-shadow: 0 0 10px white;

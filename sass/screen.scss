@@ -6,6 +6,8 @@
 @import "compass/reset";
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700|Playball);
 
+/* Mixins & Variables */
+
 @mixin scale($x,$y){
     transform: scale($x,$y);
     -ms-transform: scale($x,$y);
@@ -17,7 +19,15 @@
     -webkit-transition: $attribute $duration;
 }
 
-$orange: #ff6800;
+@mixin radius($value){
+    -moz-border-radius: $value;
+    -webkit-border-radius: $value;
+    border-radius: $value;
+}
+
+$orange: #ff6c00;
+
+/* General stuff */
 
 input:focus,
 select:focus,
@@ -121,6 +131,33 @@ header{
 #loggedInWrapper{
     display: none;
     padding: 10px;
+
+    #filter{
+        border: 0;
+        border-radius: 5px;
+        height: 40px;
+        padding: 0 10px;
+        margin-bottom: 10px;
+        float: left;
+        border: 1px solid #cacaca;
+    }
+
+    #addvinyl{
+        background-color: $orange;
+        border-radius: 5px;
+        height: 40px;
+        padding: 0 10px 0 5px;
+        color: white;
+        float: right;
+        border: 0;
+        opacity: .8;
+        @include transition(all,.4s);
+
+        &:hover{
+            opacity: 1;
+        }
+    }
+
 }
 
 #currentuser{
@@ -149,7 +186,7 @@ header{
         cursor: pointer;
 
         &:hover{
-            color: #dd4223;
+            color: $orange;
         };
     }
 }
@@ -184,86 +221,10 @@ header{
     }
 }
 
-/* === ALL THE VINYLS ======================*/
+/* === ALL THE VINYLS ============*/
 
-#vinyldata{
-
-    list-style: none;
-    margin: 10px auto;
-    text-align: center;
-
-    .vinyl:hover{
-        cursor: pointer;
-    }
-
-    li{
-        display: inline-block;
-        width: 300px;
-        margin: 5px;
-        background-color: white;
-        color: #202020;
-        position: relative;
-        height: 420px;
-        overflow: hidden;
-        @include transition(all,.2s);
-
-        &:hover{
-            .cover img{
-                @include scale(1.05,1.05);
-            }
-        };
-
-        .cover{
-            width: 300px;
-            height: 300px;
-            overflow: hidden;
-
-            img{
-                @include transition(all,0.2s);
-            }
-        }
-
-        .vinylid{
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: rgba(0,0,0,.5);
-            padding: 4px 8px;
-            color: white;
-        }
-
-        .artist{
-            text-align: center;
-            font-weight: 600;
-            letter-spacing: 1px;
-            padding: 5px 0;
-            font-size: 24px;
-        }
-
-        .album{
-            text-align: center;
-            font-size: 18px;
-            letter-spacing: 1px;
-            font-weight: normal;
-        }
-
-        .label{
-            text-align: center;
-            font-size: 12px;
-            color: #777;
-            letter-spacing: 1px;
-            padding: 15px 0;
-            font-weight: 300;
-        }
-
-        .type{
-            text-align: center;
-            font-size: 12px;
-            font-weight: 300;
-            color: #777;
-            padding-top: 10px;
-        }
-    }
+.footable{
+    @include radius(5px);
 }
 
 /* === OVERLAY ===================*/
@@ -312,7 +273,7 @@ header{
             input[type="text"]{
                 margin-bottom: 10px;
                 border: none;
-                border-radius: 4px;
+                @include radius(5px);
                 padding: 10px;
                 width: calc(100% - 20px);
             }
@@ -328,7 +289,7 @@ header{
             input[type="submit"]{
                 text-transform: uppercase;
                 border: none;
-                border-radius: 4px;
+                @include radius(5px);
                 padding: 10px 20px;
                 background-color: $orange;
                 color: white;
