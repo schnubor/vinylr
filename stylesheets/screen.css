@@ -182,34 +182,57 @@ header h3 {
   padding: 10px;
 }
 /* line 135, ../sass/screen.scss */
-#loggedInWrapper #filter {
-  border: 0;
+#loggedInWrapper #controls {
+  margin-bottom: 10px;
+}
+/* line 138, ../sass/screen.scss */
+#loggedInWrapper #controls #filter {
   border-radius: 5px;
   height: 40px;
   padding: 0 10px;
-  margin-bottom: 10px;
   float: left;
   border: 1px solid #cacaca;
+  width: 280px;
 }
-/* line 145, ../sass/screen.scss */
-#loggedInWrapper #addvinyl {
+/* line 147, ../sass/screen.scss */
+#loggedInWrapper #controls #vinylcount {
+  height: 40px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid #cacaca;
+  text-align: center;
+  padding: 0 10px;
+  color: #505050;
+  float: right;
+  line-height: 40px;
+  font-weight: bold;
+  font-size: 24px;
+  margin-right: 10px;
+}
+/* line 162, ../sass/screen.scss */
+#loggedInWrapper #controls #addvinyl {
   background-color: #ff6c00;
+  border: 1px solid #ff6c00;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
   border-radius: 5px;
   height: 40px;
   padding: 0 10px 0 5px;
   color: white;
   float: right;
-  border: 0;
   opacity: .8;
+  margin-top: 1px;
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
 }
-/* line 156, ../sass/screen.scss */
-#loggedInWrapper #addvinyl:hover {
+/* line 174, ../sass/screen.scss */
+#loggedInWrapper #controls #addvinyl:hover {
   opacity: 1;
 }
 
-/* line 163, ../sass/screen.scss */
+/* line 181, ../sass/screen.scss */
 #currentuser {
   text-align: center;
   height: 320px;
@@ -219,70 +242,63 @@ header h3 {
   line-height: 60px;
   color: white;
 }
-/* line 172, ../sass/screen.scss */
+/* line 190, ../sass/screen.scss */
 #currentuser img {
   width: 40px;
   height: 40px;
   vertical-align: middle;
 }
-/* line 178, ../sass/screen.scss */
+/* line 196, ../sass/screen.scss */
 #currentuser #username {
   margin-left: 10px;
   margin-right: 20px;
 }
-/* line 183, ../sass/screen.scss */
+/* line 201, ../sass/screen.scss */
 #currentuser #logout {
   padding-left: 20px;
   border-left: 1px solid grey;
   cursor: pointer;
 }
-/* line 188, ../sass/screen.scss */
+/* line 206, ../sass/screen.scss */
 #currentuser #logout:hover {
   color: #ff6c00;
 }
 
-/* line 194, ../sass/screen.scss */
+/* line 212, ../sass/screen.scss */
 #vinylCount {
   text-align: center;
   width: 100%;
 }
-/* line 198, ../sass/screen.scss */
+/* line 216, ../sass/screen.scss */
 #vinylCount p {
   font-weight: bold;
   font-size: 5em;
 }
-/* line 203, ../sass/screen.scss */
+/* line 221, ../sass/screen.scss */
 #vinylCount span {
   font-size: 1em;
 }
 
-/* line 208, ../sass/screen.scss */
+/* line 226, ../sass/screen.scss */
 #addvinyl {
   cursor: pointer;
   text-align: center;
 }
-/* line 212, ../sass/screen.scss */
+/* line 230, ../sass/screen.scss */
 #addvinyl p {
   font-size: 8em;
   font-weight: bold;
   margin-top: 116px;
   color: #ff6c00;
 }
-/* line 219, ../sass/screen.scss */
+/* line 237, ../sass/screen.scss */
 #addvinyl span {
   text-transform: uppercase;
 }
 
 /* === ALL THE VINYLS ============*/
-/* line 226, ../sass/screen.scss */
-.footable {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-}
-
 /* === OVERLAY ===================*/
-/* line 232, ../sass/screen.scss */
+/* line 250, ../sass/screen.scss */
 #overlay {
   position: fixed;
   height: 100%;
@@ -291,7 +307,7 @@ header h3 {
   background-color: rgba(0, 0, 0, 0.9);
   display: none;
 }
-/* line 240, ../sass/screen.scss */
+/* line 258, ../sass/screen.scss */
 #overlay .close {
   position: absolute;
   top: 0;
@@ -299,35 +315,30 @@ header h3 {
   width: 30px;
   height: 30px;
   margin: 20px 20px 0 0;
-  background: url("../img/close.png") no-repeat;
   background-size: cover;
   cursor: pointer;
+  color: white;
+  font-size: 2em;
 }
-/* line 252, ../sass/screen.scss */
-#overlay #addVinylForm {
-  width: 420px;
+/* line 271, ../sass/screen.scss */
+#overlay .overlayform {
+  width: 300px;
   height: 420px;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: -300px 0 0 -210px;
+  margin: -210px 0 0 -150px;
   color: white;
   z-index: 100;
   text-align: center;
 }
-/* line 263, ../sass/screen.scss */
-#overlay #addVinylForm h2 {
-  text-align: center;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  font-size: 2em;
-}
-/* line 270, ../sass/screen.scss */
-#overlay #addVinylForm form {
+/* line 282, ../sass/screen.scss */
+#overlay .overlayform form {
   width: 100%;
+  font-size: 12px;
 }
-/* line 273, ../sass/screen.scss */
-#overlay #addVinylForm form input[type="text"] {
+/* line 286, ../sass/screen.scss */
+#overlay .overlayform form input[type="text"] {
   margin-bottom: 10px;
   border: none;
   -moz-border-radius: 5px;
@@ -336,16 +347,16 @@ header h3 {
   padding: 10px;
   width: calc(100% - 20px);
 }
-/* line 281, ../sass/screen.scss */
-#overlay #addVinylForm form input[type="radio"] {
+/* line 294, ../sass/screen.scss */
+#overlay .overlayform form input[type="radio"] {
   margin: 0 5px 0 0;
 }
-/* line 285, ../sass/screen.scss */
-#overlay #addVinylForm form span {
+/* line 298, ../sass/screen.scss */
+#overlay .overlayform form span {
   margin-right: 20px;
 }
-/* line 289, ../sass/screen.scss */
-#overlay #addVinylForm form input[type="submit"] {
+/* line 302, ../sass/screen.scss */
+#overlay .overlayform form input[type="submit"] {
   text-transform: uppercase;
   border: none;
   -moz-border-radius: 5px;
@@ -358,8 +369,12 @@ header h3 {
   transition: all 0.2s;
   -webkit-transition: all 0.2s;
 }
-/* line 299, ../sass/screen.scss */
-#overlay #addVinylForm form input[type="submit"]:hover {
+/* line 312, ../sass/screen.scss */
+#overlay .overlayform form input[type="submit"]:hover {
   padding: 10px 40px;
   text-shadow: 0 0 10px white;
+}
+/* line 320, ../sass/screen.scss */
+#overlay .overlayform #response {
+  color: white;
 }

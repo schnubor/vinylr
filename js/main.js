@@ -53,7 +53,7 @@ var Main = (function()
     // Build actual Vinyl List and display it
     function _displayVinylData(vinyls){
       console.log(vinyls);
-      $('#loggedInWrapper').append('<div id="vinylCount"><p>'+vinyls.length+'</p><span>vinyls</span><br/>');
+      $('#vinylcount').text(vinyls.length);
       index = 0;
       $.each(vinyls, function(){
         content = '<tr>';
@@ -63,7 +63,7 @@ var Main = (function()
         content += '<td>'+VINYLS[index].Label+'</td>';
         content += '<td>'+VINYLS[index].Format+' '+VINYLS[index].Type+'</td>';
         content += '<td>'+VINYLS[index].Year+'</td>';
-        content += '<td>'+VINYLS[index].Price+'</td>';
+        content += '<td>'+VINYLS[index].Price+' €</td>';
         content += '<td>'+VINYLS[index].Catalog+'</td>';
         content += '<td>'+VINYLS[index].Genre+'</td>';
         content += '</tr>';
@@ -88,6 +88,21 @@ var Main = (function()
 $(document).ready(function(){
   console.log('document ready!');
 
+  var options = { 
+    target:        '#response',   // target element(s) to be updated with server response 
+    success:       successCallback,  // post-submit callback 
+    clearForm:     true        // clear all form fields after successful submit 
+
+    // other available options: 
+    //url:       url         // override for form's 'action' attribute 
+    //type:      type        // 'get' or 'post', override for form's 'method' attribute 
+    //dataType:  null        // 'xml', 'script', or 'json' (expected server response type) 
+    //resetForm: true        // reset the form after successful submit 
+
+    // $.ajax options can be used here too, for example: 
+    //timeout:   3000 
+  };
+
   // open overlay with add vinyl form
   $('#loggedInWrapper').on('click', '#addvinyl', function(){
     $('#overlay').fadeIn(200, function(){
@@ -96,13 +111,21 @@ $(document).ready(function(){
   });
 
   // close overlay
-  $('#overlay').on('click', '.close, #overlay', function(){
+  $('#overlay').on('click', '.close', function(){
     //$('#addVinylForm').remove();
     $('#overlay').fadeOut(200);
-  }).click(function(){
-    //$('#addVinylForm').remove();
-    $('#overlay').fadeOut(200);
+  })
+
+  function successCallback(){
+    alert('Success!');
+  }
+
+  // Submit Add Vinyl Form and send Ajax request
+  $('#addvinylform').ajaxForm(options, function() { 
+    alert("Thank you!"); 
   });
+
+
 });
 
 

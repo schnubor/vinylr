@@ -132,32 +132,50 @@ header{
     display: none;
     padding: 10px;
 
-    #filter{
-        border: 0;
-        border-radius: 5px;
-        height: 40px;
-        padding: 0 10px;
+    #controls{
         margin-bottom: 10px;
-        float: left;
-        border: 1px solid #cacaca;
-    }
 
-    #addvinyl{
-        background-color: $orange;
-        border-radius: 5px;
-        height: 40px;
-        padding: 0 10px 0 5px;
-        color: white;
-        float: right;
-        border: 0;
-        opacity: .8;
-        @include transition(all,.4s);
+        #filter{
+            border-radius: 5px;
+            height: 40px;
+            padding: 0 10px;
+            float: left;
+            border: 1px solid #cacaca;
+            width: 280px;
+        }
 
-        &:hover{
-            opacity: 1;
+        #vinylcount{
+            height: 40px;
+            @include radius(5px);
+            background-color: white;
+            border: 1px solid #cacaca;
+            text-align: center;
+            padding: 0 10px;
+            color: #505050;
+            float: right;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        #addvinyl{
+            background-color: $orange;
+            border: 1px solid $orange;
+            @include radius(5px);
+            height: 40px;
+            padding: 0 10px 0 5px;
+            color: white;
+            float: right;
+            opacity: .8;
+            margin-top: 1px;
+            @include transition(all,.4s);
+
+            &:hover{
+                opacity: 1;
+            }
         }
     }
-
 }
 
 #currentuser{
@@ -224,7 +242,7 @@ header{
 /* === ALL THE VINYLS ============*/
 
 .footable{
-    @include radius(5px);
+    //@include radius(5px);
 }
 
 /* === OVERLAY ===================*/
@@ -244,31 +262,26 @@ header{
         width: 30px;
         height: 30px;
         margin: 20px 20px 0 0;
-        background: url('../img/close.png') no-repeat;
         background-size: cover;
         cursor: pointer;
+        color: white;
+        font-size: 2em;
     }
 
-    #addVinylForm{
-        width: 420px;
+    .overlayform{
+        width: 300px;
         height: 420px;
         position:absolute;
         left:50%;
         top:50%;
-        margin:-300px 0 0 -210px;
+        margin: -210px 0 0 -150px;
         color: white;
         z-index: 100;
         text-align: center;
 
-        h2{
-            text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            font-size: 2em;
-        }
-
         form{
             width: 100%;
+            font-size: 12px;
 
             input[type="text"]{
                 margin-bottom: 10px;
@@ -302,6 +315,10 @@ header{
                 }
 
             }
+        }
+
+        #response{
+            color: white;
         }
     }
 }

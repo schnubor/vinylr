@@ -28,6 +28,7 @@
         <script src="js/footable.js" type="text/javascript"></script>
         <script src="js/footable.filter.js" type="text/javascript"></script>
         <script src="js/footable.sort.js" type="text/javascript"></script>
+        <script src="js/vendor/jquery.form.min.js" type="text/javascript"></script>
 
         <script type="text/javascript">
             $(function () {
@@ -74,43 +75,47 @@
         <!-- User logged in -->
         <div id="loggedInWrapper">
 
-            <p>
-                <input id="filter" type="text" placeholder="Search">
-                <button id="addvinyl"><span class="fa fa-plus fa-fw"></span>Add Vinyl</button>
-            </p>
+            <div id="content">
+                <div id="controls">
+                    <input id="filter" type="text" placeholder="Search">
+                    <button id="addvinyl"><span class="fa fa-plus fa-fw"></span>Add Vinyl</button>
+                    <div id="vinylcount"></div>
+                    <div style="clear:both;"></div>
+                </div>
 
-            <table class="footable" data-filter="#filter">
-                <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Artist</th>
-                      <th>Name</th>
-                      <th data-hide="phone">Label</th>
-                      <th data-hide="phone">Type</th>
-                      <th data-hide="phone,tablet">Year</th>
-                      <th data-hide="phone,tablet">Price</th>
-                      <th data-hide="phone,tablet">Catalog Number</th>
-                      <th data-hide="phone,tablet">Genre</th>
-                    </tr>
-                </thead>
-                <tbody id="tablecontent">
-                    
-                </tbody>
-            </table>
+                <table class="footable" data-filter="#filter">
+                    <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Artist</th>
+                          <th>Name</th>
+                          <th data-hide="phone">Label</th>
+                          <th data-hide="phone">Type</th>
+                          <th data-hide="phone,tablet">Year</th>
+                          <th data-hide="phone,tablet">Price in €</th>
+                          <th data-hide="phone,tablet">Catalog Number</th>
+                          <th data-hide="phone,tablet">Genre</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablecontent">
+                        
+                    </tbody>
+                </table>
+            </div><!-- end of content -->
 
         </div>
 
         <div id="overlay">
-            <div class="close"></div>
-            <div id="addVinylForm">
-                <h2>Add a new Vinyl</h2>
-                <form action="addVinyl.php" method="get">
+            <div class="close">&#x2715;</div>
+            <div class="overlayform">
+                <form id="addvinylform" action="php/addvinyl.php" method="post">
                     <input type="text" name="artist" required placeholder="Artist*"><br>
                     <input type="text" name="title" required placeholder="Title*"><br>
                     <input type="text" name="label" required placeholder="Label*"><br>
-                    <input type="text" name="year" placeholder="Year"><br>
-                    <input type="text" name="price" placeholder="Price"><br>
+                    <input type="text" name="year" placeholder="Release Year"><br>
+                    <input type="text" name="price" placeholder="Price in €"><br>
                     <input type="text" name="catalog" placeholder="Catalog Number"><br>
+                    <input type="text" name="genre" placeholder="Genres, comma separated e.g. Rock, Metal"><br>
                     <br/>
                     <input type="radio" name="type" value="LP" checked><span>LP</span>
                     <input type="radio" name="type" value="EP"><span>EP</span>
@@ -121,6 +126,7 @@
                     <br/>
                     <input type="submit" value="Add Vinyl">
                 </form>
+                <div id="response"></div>
             </div>
         </div>
 

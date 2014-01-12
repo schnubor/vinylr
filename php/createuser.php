@@ -10,6 +10,7 @@
 	$fbid = $_POST['facebookid'];
 	$username = $_POST['username'];
 
+	// Create new user in 'users' table
 	$sql = "INSERT INTO users (name, fbid)
 	VALUES
 	('$_POST[username]','$_POST[facebookid]')";
@@ -19,6 +20,8 @@
 	  echo('Error: ' . mysqli_error($con));
 	}
 	
+	// Create completly new table based on the FB id
+
 	$create = "CREATE TABLE IF NOT EXISTS `$fbid` (
 	`VinylID` INT AUTO_INCREMENT NOT NULL,
 	`Artist` VARCHAR(255),
