@@ -1,4 +1,5 @@
 var VINYLS = null;
+var latestVinyl = null;
 
 var Main = (function()
 {
@@ -112,6 +113,36 @@ $(document).ready(function(){
     //timeout:   3000 
   };
 
+  // Submit Add Vinyl Form and send Ajax request
+  $('#addvinylform').ajaxForm(options, function() { 
+    alert("Thank you!"); 
+  });
+
+  function successCallback(response){
+    var footable = $('.footable').data('footable');
+
+    if(response.length){
+      latestVinyl = $.parseJSON(response);
+      var row = '<tr>';
+      row += '<td>'+latestVinyl[0].VinylID+'</td>';
+      row += '<td>'+latestVinyl[0].Artist+'</td>';
+      row += '<td>'+latestVinyl[0].Album+'</td>';
+      row += '<td>'+latestVinyl[0].Label+'</td>';
+      row += '<td>'+latestVinyl[0].Format+' '+latestVinyl[0].Type+'</td>';
+      row += '<td>'+latestVinyl[0].Year+'</td>';
+      row += '<td>'+latestVinyl[0].Price+' €</td>';
+      row += '<td>'+latestVinyl[0].Catalog+'</td>';
+      row += '<td>'+latestVinyl[0].Genre+'</td>';
+      row+= '</tr>';
+    }
+
+    console.log(row);
+    footable.appendRow(row);
+    footable.redraw();
+  }
+
+  // ==================================================================
+
   // open overlay with add vinyl form
   $('#loggedInWrapper').on('click', '#addvinyl', function(){
     $('#overlay').fadeIn(200, function(){
@@ -124,16 +155,6 @@ $(document).ready(function(){
     //$('#addVinylForm').remove();
     $('#overlay').fadeOut(200);
   })
-
-  function successCallback(){
-    alert('Success!');
-  }
-
-  // Submit Add Vinyl Form and send Ajax request
-  $('#addvinylform').ajaxForm(options, function() { 
-    alert("Thank you!"); 
-  });
-
 
 });
 
