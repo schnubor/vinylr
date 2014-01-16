@@ -24,7 +24,7 @@
 	$result = mysqli_query($con, "SELECT * FROM `".$fbid."` ORDER BY VinylID DESC LIMIT 1") or die(mysqli_error($con));
 	$jsonData = array();
 
-	// return table as json
+	// return result as json
 	if($result){
 		if(mysqli_num_rows($result)){
 

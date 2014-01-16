@@ -75,6 +75,7 @@ var Main = (function()
       content += '<td>'+VINYLS[index].Price+' €</td>';
       content += '<td>'+VINYLS[index].Catalog+'</td>';
       content += '<td>'+VINYLS[index].Genre+'</td>';
+      content += '<td><span id="delete" class="fa fa-trash-o fa-fw"></span><span id="edit" class="fa fa-pencil fa-fw"></span></td>';
       content += '</tr>';
       
       $('#tablecontent').append(content);
@@ -133,6 +134,7 @@ $(document).ready(function(){
       row += '<td>'+latestVinyl[0].Price+' €</td>';
       row += '<td>'+latestVinyl[0].Catalog+'</td>';
       row += '<td>'+latestVinyl[0].Genre+'</td>';
+      row += '<td><span id="delete" class="fa fa-trash-o fa-fw"></span><span id="edit" class="fa fa-pencil fa-fw"></span></td>';
       row+= '</tr>';
     }
 

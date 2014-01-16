@@ -244,6 +244,16 @@ header{
 
 .footable{
     //@include radius(5px);
+
+    #edit, #delete{
+        cursor: pointer;
+        margin-right: 10px;
+        font-size: 18px;
+
+        &:hover{
+            color: $orange;
+        }
+    }
 }
 
 /* === OVERLAY ===================*/

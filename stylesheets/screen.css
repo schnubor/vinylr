@@ -3,7 +3,7 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 17, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,45 +25,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -298,8 +298,19 @@ header h3 {
 }
 
 /* === ALL THE VINYLS ============*/
+/* line 248, ../sass/screen.scss */
+.footable #edit, .footable #delete {
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 18px;
+}
+/* line 253, ../sass/screen.scss */
+.footable #edit:hover, .footable #delete:hover {
+  color: #ff6c00;
+}
+
 /* === OVERLAY ===================*/
-/* line 251, ../sass/screen.scss */
+/* line 261, ../sass/screen.scss */
 #overlay {
   position: fixed;
   height: 100%;
@@ -308,7 +319,7 @@ header h3 {
   background-color: rgba(0, 0, 0, 0.9);
   display: none;
 }
-/* line 259, ../sass/screen.scss */
+/* line 269, ../sass/screen.scss */
 #overlay .close {
   position: absolute;
   top: 0;
@@ -321,7 +332,7 @@ header h3 {
   color: white;
   font-size: 2em;
 }
-/* line 272, ../sass/screen.scss */
+/* line 282, ../sass/screen.scss */
 #overlay .overlayform {
   width: 300px;
   height: 420px;
@@ -333,12 +344,12 @@ header h3 {
   z-index: 100;
   text-align: center;
 }
-/* line 283, ../sass/screen.scss */
+/* line 293, ../sass/screen.scss */
 #overlay .overlayform form {
   width: 100%;
   font-size: 12px;
 }
-/* line 287, ../sass/screen.scss */
+/* line 297, ../sass/screen.scss */
 #overlay .overlayform form input[type="text"] {
   margin-bottom: 10px;
   border: none;
@@ -348,15 +359,15 @@ header h3 {
   padding: 10px;
   width: calc(100% - 20px);
 }
-/* line 295, ../sass/screen.scss */
+/* line 305, ../sass/screen.scss */
 #overlay .overlayform form input[type="radio"] {
   margin: 0 5px 0 0;
 }
-/* line 299, ../sass/screen.scss */
+/* line 309, ../sass/screen.scss */
 #overlay .overlayform form span {
   margin-right: 20px;
 }
-/* line 303, ../sass/screen.scss */
+/* line 313, ../sass/screen.scss */
 #overlay .overlayform form input[type="submit"] {
   text-transform: uppercase;
   border: none;
@@ -370,12 +381,12 @@ header h3 {
   transition: all 0.2s;
   -webkit-transition: all 0.2s;
 }
-/* line 313, ../sass/screen.scss */
+/* line 323, ../sass/screen.scss */
 #overlay .overlayform form input[type="submit"]:hover {
   padding: 10px 40px;
   text-shadow: 0 0 10px white;
 }
-/* line 321, ../sass/screen.scss */
+/* line 331, ../sass/screen.scss */
 #overlay .overlayform #response {
   color: white;
 }
