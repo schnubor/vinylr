@@ -128,7 +128,7 @@ header h1 {
   display: inline-block;
   height: 60px;
   line-height: 60px;
-  text-shadow: 0 0 10px white;
+  text-shadow: 0 0 10px #808080;
 }
 /* line 87, ../sass/screen.scss */
 header h3 {
