@@ -75,7 +75,7 @@ var Main = (function()
       content += '<td>'+VINYLS[index].Price+' €</td>';
       content += '<td>'+VINYLS[index].Catalog+'</td>';
       content += '<td>'+VINYLS[index].Genre+'</td>';
-      content += '<td><span id="delete" class="fa fa-trash-o fa-fw"></span><span id="edit" class="fa fa-pencil fa-fw"></span></td>';
+      content += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       content += '</tr>';
       
       $('#tablecontent').append(content);
@@ -114,7 +114,7 @@ $(document).ready(function(){
     //timeout:   3000 
   };
 
-  // Submit Add Vinyl Form and send Ajax request
+  // Submit Add Vinyl Form and send Ajax request with form data
   $('#addvinylform').ajaxForm(options, function() { 
     alert("Thank you!"); 
   });
@@ -122,6 +122,7 @@ $(document).ready(function(){
   function successCallback(response){
     var footable = $('.footable').data('footable');
 
+    // Display added vinyl
     if(response.length){
       latestVinyl = $.parseJSON(response);
       var row = '<tr>';
@@ -134,7 +135,7 @@ $(document).ready(function(){
       row += '<td>'+latestVinyl[0].Price+' €</td>';
       row += '<td>'+latestVinyl[0].Catalog+'</td>';
       row += '<td>'+latestVinyl[0].Genre+'</td>';
-      row += '<td><span id="delete" class="fa fa-trash-o fa-fw"></span><span id="edit" class="fa fa-pencil fa-fw"></span></td>';
+      row += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       row+= '</tr>';
     }
 
@@ -143,7 +144,7 @@ $(document).ready(function(){
     footable.redraw();
   }
 
-  // ==================================================================
+  // === ADD VINYL =========================================================
 
   // open overlay with add vinyl form
   $('#loggedInWrapper').on('click', '#addvinyl', function(){
@@ -158,6 +159,19 @@ $(document).ready(function(){
     $('#overlay').fadeOut(200);
   })
 
+  // === DELETE VINYL =====================================================
+
+  $('#loggedInWrapper').on('click', '.delete', function(){
+    var r=confirm("Press a button");
+    if (r==true)
+    {
+      console.log("delete pressed! "+FBDATA.id);
+      
+      // Todo: Ajax Request..
+
+    }
+  });
+  
 });
 
 
