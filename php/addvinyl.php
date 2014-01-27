@@ -1,11 +1,6 @@
 <?php
 	// Connect to Database (host, user, pw, db)
-	$con = mysqli_connect("localhost","root","","vinylr");
-	// Check connection
-	if (mysqli_connect_errno())
-	{
-	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
+	require('db_connect.php');
 
 	// 1. Write Vinyl to DB
 
