@@ -3,10 +3,10 @@
 	require('db_connect.php');
 
 	$fbid = $_POST['facebookid'];
-	$id = $_POST['id'];
+	$id = $_POST['vinylid'];
 	// 1. Write Vinyl to DB
 
-	$sql = "DELETE from `".$fbid."` where id=".$id;
+	$sql = "DELETE from `".$fbid."` where VinylID=".$id;
 
 	if (!mysqli_query($con,$sql))
 	{

@@ -13,7 +13,7 @@ var Main = (function()
 
 	// Add username with his fb id to db
 	function _addUserToDb(name, fbid){
-  	console.log('calling ajax with '+name+' and '+fbid);
+  	//console.log('calling ajax with '+name+' and '+fbid);
   	$.ajax({
     		type: 'POST',
     		url: './php/createuser.php',
@@ -25,7 +25,7 @@ var Main = (function()
       		console.log("record has been saved in database: "+response);
     		},
     		error: function () {
-      		console.log('there is some error');
+      		console.warn('there is some error in the createuser ajax request');
     		}
   	});
 	}
@@ -39,7 +39,7 @@ var Main = (function()
 
   // After logged in, get users vinyl Data and display it on success
 	function _getExistingData(fbid){
-    console.log("calling _getExistingData");
+    //console.log("calling _getExistingData");
 		$.ajax({
     		type: 'POST',
     		url: './php/getuservinyls.php',
@@ -47,21 +47,21 @@ var Main = (function()
       		facebookid: fbid
    		},
     		success: function (response) {
-          console.log(response);
+          //console.log(response);
           if(response.length){
             VINYLS = $.parseJSON(response);
             _displayVinylData(VINYLS);
           }
     		},
     		error: function () {
-      		console.log('there is some error');
+      		console.warn('there is some error in the getuservinyls ajax request');
     		}
   	});
 	}
 
   // Build actual Vinyl List and display it
   function _displayVinylData(vinyls){
-    console.log(vinyls);
+    //console.log(vinyls);
     $('#vinylcount').text(vinyls.length);
     index = 0;
     $.each(vinyls, function(){
@@ -139,7 +139,7 @@ $(document).ready(function(){
       row+= '</tr>';
     }
 
-    console.log(row);
+    //console.log(row);
     footable.appendRow(row);
     footable.redraw();
   }
@@ -162,13 +162,30 @@ $(document).ready(function(){
   // === DELETE VINYL =====================================================
 
   $('#loggedInWrapper').on('click', '.delete', function(){
-    var r=confirm("Press a button");
+    // get Vinly ID from DOM
+    var id = $(this).parent().siblings(':first-child').text();
+    var row = $(this).parents('tr:first');
+
+    // confirm delete
+    var r=confirm("Do you really want to delete this vinyl?");
     if (r==true)
     {
-      console.log("delete pressed! "+FBDATA.id);
-      
-      // Todo: Ajax Request..
-
+      $.ajax({
+        type: 'POST',
+        url: './php/deletevinyl.php',
+        data: {
+          facebookid: FBDATA.id,
+          vinylid: id
+        },
+        success: function (response) {
+          //console.log(response);
+          var footable = $('.footable').data('footable');
+          footable.removeRow(row);
+        },
+        error: function () {
+          console.warn('could not delete vinyl, ajax request failed');
+        }
+      });
     }
   });
   

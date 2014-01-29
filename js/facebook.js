@@ -40,7 +40,7 @@
   }
 
   function displayFacebookButton() {
-      console.log("_call displayFacebookButton");
+      //console.log("_call displayFacebookButton");
       $('#loading').fadeOut(function(){
           $('#fb-button').fadeIn();
       });
