@@ -66,6 +66,7 @@ var Main = (function()
     index = 0;
     $.each(vinyls, function(){
       content = '<tr>';
+      content += '<td></td>'
       content += '<td>'+VINYLS[index].VinylID+'</td>';
       content += '<td>'+VINYLS[index].Artist+'</td>';
       content += '<td>'+VINYLS[index].Album+'</td>';
@@ -81,6 +82,9 @@ var Main = (function()
       $('#tablecontent').append(content);
       index += 1;
     });
+
+    // redraw the whole table
+    $('.footable').trigger('footable_initialize');
 
   }
 
@@ -126,6 +130,7 @@ $(document).ready(function(){
     if(response.length){
       latestVinyl = $.parseJSON(response);
       var row = '<tr>';
+      row += '<td></td>';
       row += '<td>'+latestVinyl[0].VinylID+'</td>';
       row += '<td>'+latestVinyl[0].Artist+'</td>';
       row += '<td>'+latestVinyl[0].Album+'</td>';
