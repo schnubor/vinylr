@@ -92,12 +92,31 @@ var Main = (function()
     $('#vinylcount').text(vinylcount);
   }
 
+  // Get Vinyl Artworks from Google
+  function _getVinylArtwork(){
+
+  }
+
+  // check if element is in viewport or not (maybe used later)
+  function _isScrolledIntoView(elem){
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
+
+    var elemTop = $(elem).offset().top;
+    var elemBottom = elemTop + $(elem).height();
+
+    return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom)
+      && (elemBottom <= docViewBottom) &&  (elemTop >= docViewTop) );
+  }
+
 	return{
 		doAfterLogin: _doAfterLogin,
 		addUserToDb: _addUserToDb,
     updateForms: _updateForms,
 		getExistingData: _getExistingData,
-    displayVinylData: _displayVinylData
+    displayVinylData: _displayVinylData,
+    getVinylArtwork: _getVinylArtwork,
+    isScrolledIntoView: _isScrolledIntoView
 	}
 
 })();
