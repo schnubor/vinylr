@@ -4,7 +4,6 @@
 
 	$fbid = $_POST['facebookid'];
 	$id = $_POST['vinylid'];
-	// 1. Write Vinyl to DB
 
 	$sql = "DELETE from `".$fbid."` where VinylID=".$id;
 
@@ -12,4 +11,8 @@
 	{
 	  die('Error: ' . mysqli_error($con));
 	}
+
+	echo "delete done.";
+
+	mysqli_close($con);
 ?>

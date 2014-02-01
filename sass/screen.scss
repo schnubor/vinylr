@@ -254,6 +254,13 @@ header{
             color: $orange;
         }
     }
+
+    .vinyl-artwork{
+        width: 60px;
+        height: 60px;
+        background: url('../img/vinyl_PH.svg') no-repeat;
+        background-size: cover;
+    }
 }
 
 /* === OVERLAY ===================*/

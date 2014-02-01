@@ -1,5 +1,6 @@
 var VINYLS = null;
 var latestVinyl = null;
+var vinylcount = 0;
 
 var Main = (function()
 {
@@ -50,7 +51,7 @@ var Main = (function()
           //console.log(response);
           if(response.length){
             VINYLS = $.parseJSON(response);
-            _displayVinylData(VINYLS);
+            _displayVinylData(VINYLS); // display the resceived data
           }
     		},
     		error: function () {
@@ -61,13 +62,13 @@ var Main = (function()
 
   // Build actual Vinyl List and display it
   function _displayVinylData(vinyls){
-    //console.log(vinyls);
-    $('#vinylcount').text(vinyls.length);
-    index = 0;
+    
+    var index = 0;
+
     $.each(vinyls, function(){
       content = '<tr>';
-      content += '<td></td>'
-      content += '<td>'+VINYLS[index].VinylID+'</td>';
+      content += '<td><div class="vinyl-artwork"></div></td>'
+      content += '<td class="vinyl-id">'+VINYLS[index].VinylID+'</td>';
       content += '<td>'+VINYLS[index].Artist+'</td>';
       content += '<td>'+VINYLS[index].Album+'</td>';
       content += '<td>'+VINYLS[index].Label+'</td>';
@@ -86,6 +87,9 @@ var Main = (function()
     // redraw the whole table
     $('.footable').trigger('footable_initialize');
 
+    // update vinyl count
+    vinylcount = vinyls.length;
+    $('#vinylcount').text(vinylcount);
   }
 
 	return{
@@ -103,6 +107,7 @@ var Main = (function()
 $(document).ready(function(){
   console.log('document ready!');
 
+  // Options for the "Add Vinyl" Ajax call
   var options = { 
     target:        '#response',   // target element(s) to be updated with server response 
     success:       successCallback,  // post-submit callback 
@@ -130,8 +135,8 @@ $(document).ready(function(){
     if(response.length){
       latestVinyl = $.parseJSON(response);
       var row = '<tr>';
-      row += '<td></td>';
-      row += '<td>'+latestVinyl[0].VinylID+'</td>';
+      row += '<td><div class="vinyl-artwork"></div></td>';
+      row += '<td class="vinyl-id">'+latestVinyl[0].VinylID+'</td>';
       row += '<td>'+latestVinyl[0].Artist+'</td>';
       row += '<td>'+latestVinyl[0].Album+'</td>';
       row += '<td>'+latestVinyl[0].Label+'</td>';
@@ -144,12 +149,16 @@ $(document).ready(function(){
       row+= '</tr>';
     }
 
-    //console.log(row);
+    // Redraw the table
     footable.appendRow(row);
     footable.redraw();
+
+    // Update the vinyl count
+    vinylcount = vinylcount+1;
+    $('#vinylcount').text(vinylcount);
   }
 
-  // === ADD VINYL =========================================================
+  // === ADD VINYL OVERLAY =========================================================
 
   // open overlay with add vinyl form
   $('#loggedInWrapper').on('click', '#addvinyl', function(){
@@ -168,7 +177,7 @@ $(document).ready(function(){
 
   $('#loggedInWrapper').on('click', '.delete', function(){
     // get Vinly ID from DOM
-    var id = $(this).parent().siblings(':first-child').text();
+    var id = $(this).parent().siblings('.vinyl-id').text();
     var row = $(this).parents('tr:first');
 
     // confirm delete
@@ -183,9 +192,13 @@ $(document).ready(function(){
           vinylid: id
         },
         success: function (response) {
-          //console.log(response);
+          // remove vinyl from table
           var footable = $('.footable').data('footable');
           footable.removeRow(row);
+
+          // update vinyl count
+          vinylcount = vinylcount - 1;
+          $('#vinylcount').text(vinylcount);
         },
         error: function () {
           console.warn('could not delete vinyl, ajax request failed');
