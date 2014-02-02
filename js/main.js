@@ -68,15 +68,15 @@ var Main = (function()
     $.each(vinyls, function(){
       content = '<tr>';
       content += '<td><div class="vinyl-artwork"></div></td>'
-      content += '<td class="vinyl-id">'+VINYLS[index].VinylID+'</td>';
-      content += '<td>'+VINYLS[index].Artist+'</td>';
-      content += '<td>'+VINYLS[index].Album+'</td>';
-      content += '<td>'+VINYLS[index].Label+'</td>';
-      content += '<td>'+VINYLS[index].Format+' '+VINYLS[index].Type+'</td>';
-      content += '<td>'+VINYLS[index].Year+'</td>';
-      content += '<td>'+VINYLS[index].Price+' €</td>';
-      content += '<td>'+VINYLS[index].Catalog+'</td>';
-      content += '<td>'+VINYLS[index].Genre+'</td>';
+      content += '<td class="vinyl-id">'+vinyls[index].VinylID+'</td>';
+      content += '<td>'+vinyls[index].Artist+'</td>';
+      content += '<td>'+vinyls[index].Album+'</td>';
+      content += '<td>'+vinyls[index].Label+'</td>';
+      content += '<td>'+vinyls[index].Format+' '+vinyls[index].Type+'</td>';
+      content += '<td>'+vinyls[index].Year+'</td>';
+      content += '<td>'+vinyls[index].Price+' €</td>';
+      content += '<td>'+vinyls[index].Catalog+'</td>';
+      content += '<td>'+vinyls[index].Genre+'</td>';
       content += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       content += '</tr>';
       
@@ -90,11 +90,29 @@ var Main = (function()
     // update vinyl count
     vinylcount = vinyls.length;
     $('#vinylcount').text(vinylcount);
+
+    // get Vinyl Artworks
+    _getVinylArtwork(vinyls);
   }
 
-  // Get Vinyl Artworks from Google
-  function _getVinylArtwork(){
+  // Get all Vinyl Artworks from Google
+  function _getVinylArtwork(vinyls){
 
+    var count = 0;
+    var index = 0;
+
+    $.each(vinyls, function(){
+      console.log("calling getJSON with index="+index);
+      $.getJSON('https://ajax.googleapis.com/ajax/services/search/images?q='+vinyls[index].Artist+' '+vinyls[index].Album+'&v=1.0&callback=?', 
+      function(data) {
+        console.log(data.responseData.results[0].unescapedUrl);
+        console.log(vinyls, count);
+        $('#tablecontent').find('.vinyl-artwork').eq(count).html('<img src="'+data.responseData.results[0].unescapedUrl+'" alt="cover" width="60px" height="60px">');
+        count += 1;
+      });
+
+      index += 1;
+    });
   }
 
   // check if element is in viewport or not (maybe used later)
