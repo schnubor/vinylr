@@ -69,8 +69,8 @@ var Main = (function()
       content = '<tr>';
       content += '<td><div class="vinyl-artwork"></div></td>'
       content += '<td class="vinyl-id">'+vinyls[index].VinylID+'</td>';
-      content += '<td>'+vinyls[index].Artist+'</td>';
-      content += '<td>'+vinyls[index].Album+'</td>';
+      content += '<td class="vinyl-artist">'+vinyls[index].Artist+'</td>';
+      content += '<td class="vinyl-name">'+vinyls[index].Album+'</td>';
       content += '<td>'+vinyls[index].Label+'</td>';
       content += '<td>'+vinyls[index].Format+' '+vinyls[index].Type+'</td>';
       content += '<td>'+vinyls[index].Year+'</td>';
@@ -95,23 +95,19 @@ var Main = (function()
     _getVinylArtwork(vinyls);
   }
 
-  // Get all Vinyl Artworks from Google
+  // Get available Vinyl Artworks from Google
   function _getVinylArtwork(vinyls){
 
-    var count = 0;
-    var index = 0;
+    $('tr').each(function(i, el) {
+      var artist = $(el).children('.vinyl-artist').text();
+      var name = $(el).children('.vinyl-name').text();
+      console.log(artist, name)
 
-    $.each(vinyls, function(){
-      console.log("calling getJSON with index="+index);
-      $.getJSON('https://ajax.googleapis.com/ajax/services/search/images?q='+vinyls[index].Artist+' '+vinyls[index].Album+'&v=1.0&callback=?', 
+      $.getJSON('https://ajax.googleapis.com/ajax/services/search/images?q='+artist+' '+name+'&v=1.0&callback=?', 
       function(data) {
         console.log(data.responseData.results[0].unescapedUrl);
-        console.log(vinyls, count);
-        $('#tablecontent').find('.vinyl-artwork').eq(count).html('<img src="'+data.responseData.results[0].unescapedUrl+'" alt="cover" width="60px" height="60px">');
-        count += 1;
+        $(el).find('.vinyl-artwork').html('<img src="'+data.responseData.results[0].unescapedUrl+'" alt="cover" width="60px" height="60px">');
       });
-
-      index += 1;
     });
   }
 
@@ -174,8 +170,8 @@ $(document).ready(function(){
       var row = '<tr>';
       row += '<td><div class="vinyl-artwork"></div></td>';
       row += '<td class="vinyl-id">'+latestVinyl[0].VinylID+'</td>';
-      row += '<td>'+latestVinyl[0].Artist+'</td>';
-      row += '<td>'+latestVinyl[0].Album+'</td>';
+      row += '<td class="vinyl-artist">'+latestVinyl[0].Artist+'</td>';
+      row += '<td class="vinyl-name">'+latestVinyl[0].Album+'</td>';
       row += '<td>'+latestVinyl[0].Label+'</td>';
       row += '<td>'+latestVinyl[0].Format+' '+latestVinyl[0].Type+'</td>';
       row += '<td>'+latestVinyl[0].Year+'</td>';
