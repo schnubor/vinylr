@@ -66,7 +66,7 @@ var Main = (function()
     var index = 0;
 
     $.each(vinyls, function(){
-      content = '<tr>';
+      content = '<tr class="vinyl">';
       content += '<td><div class="vinyl-artwork"></div></td>'
       content += '<td class="vinyl-id">'+vinyls[index].VinylID+'</td>';
       content += '<td class="vinyl-artist">'+vinyls[index].Artist+'</td>';
@@ -76,6 +76,7 @@ var Main = (function()
       content += '<td>'+vinyls[index].Year+'</td>';
       content += '<td>'+vinyls[index].Price+' €</td>';
       content += '<td>'+vinyls[index].Catalog+'</td>';
+      content += '<td class="sample"></td>';
       content += '<td>'+vinyls[index].Genre+'</td>';
       content += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       content += '</tr>';
@@ -91,22 +92,25 @@ var Main = (function()
     vinylcount = vinyls.length;
     $('#vinylcount').text(vinylcount);
 
-    // get Vinyl Artworks
-    _getVinylArtwork(vinyls);
+    // fetch Vinyl Informations - this is where the magic happens
+    _vinylize();
   }
 
-  // Get available Vinyl Artworks from Google
-  function _getVinylArtwork(vinyls){
+  // Get available Vinyl Data from all sources
+  function _vinylize(){
 
-    $('tr').each(function(i, el) {
+    $('.vinyl').each(function(i, el) {
       var artist = $(el).children('.vinyl-artist').text();
       var name = $(el).children('.vinyl-name').text();
-      console.log(artist, name)
 
-      $.getJSON('https://ajax.googleapis.com/ajax/services/search/images?q='+artist+' '+name+'&v=1.0&callback=?', 
+      // get iTunes data
+      $.getJSON('http://itunes.apple.com/search?term='+artist+' '+name+'&limit=1&callback=?', 
       function(data) {
-        console.log(data.responseData.results[0].unescapedUrl);
-        $(el).find('.vinyl-artwork').html('<img src="'+data.responseData.results[0].unescapedUrl+'" alt="cover" width="60px" height="60px">');
+        var artworkUrl = data.results[0].artworkUrl100;
+        var sampleUrl = data.results[0].previewUrl;
+
+        $(el).find('.vinyl-artwork').html('<img src="'+artworkUrl+'" alt="cover" width="60px" height="60px">');
+        $(el).find('.sample').html('<audio controls><source src="'+sampleUrl+'" type="audio/mp4">Your browser does not support the audio element or format (m4a). Sorry.</audio>');
       });
     });
   }
@@ -129,7 +133,7 @@ var Main = (function()
     updateForms: _updateForms,
 		getExistingData: _getExistingData,
     displayVinylData: _displayVinylData,
-    getVinylArtwork: _getVinylArtwork,
+    vinylize: _vinylize,
     isScrolledIntoView: _isScrolledIntoView
 	}
 
@@ -167,7 +171,7 @@ $(document).ready(function(){
     // Display added vinyl
     if(response.length){
       latestVinyl = $.parseJSON(response);
-      var row = '<tr>';
+      var row = '<tr class="vinyl">';
       row += '<td><div class="vinyl-artwork"></div></td>';
       row += '<td class="vinyl-id">'+latestVinyl[0].VinylID+'</td>';
       row += '<td class="vinyl-artist">'+latestVinyl[0].Artist+'</td>';
@@ -177,6 +181,7 @@ $(document).ready(function(){
       row += '<td>'+latestVinyl[0].Year+'</td>';
       row += '<td>'+latestVinyl[0].Price+' €</td>';
       row += '<td>'+latestVinyl[0].Catalog+'</td>';
+      row += '<td class="sample"></td>';
       row += '<td>'+latestVinyl[0].Genre+'</td>';
       row += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       row+= '</tr>';
