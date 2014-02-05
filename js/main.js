@@ -105,7 +105,7 @@ var Main = (function()
       // get artwork, audio sample and genre from iTunes
       $.getJSON('http://itunes.apple.com/search?term='+artist+' '+name+'&limit=1&callback=?', 
       function(data) {
-        console.log(data);
+        //console.log(data);
         var artworkUrl = data.results[0].artworkUrl100;
         var sampleUrl = data.results[0].previewUrl;
         var genre = data.results[0].primaryGenreName;
@@ -119,9 +119,11 @@ var Main = (function()
         $(el).find('.itunes').html('<a href="'+itunesUrl+'" title="buy on iTunes" target="_blank">iTunes</a>');
       });
 
+      // get Wikipedia information for record label information
       $.getJSON('http://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles='+name+'&rvsection=0&callback=?',
       function(data) {
         console.log(data);
+        // Todo: Parse...
       });
     });
   }
