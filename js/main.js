@@ -73,11 +73,10 @@ var Main = (function()
       content += '<td class="vinyl-name">'+vinyls[index].Album+'</td>';
       content += '<td>'+vinyls[index].Label+'</td>';
       content += '<td>'+vinyls[index].Format+' '+vinyls[index].Type+'</td>';
-      content += '<td>'+vinyls[index].Year+'</td>';
-      content += '<td>'+vinyls[index].Price+' €</td>';
-      content += '<td>'+vinyls[index].Catalog+'</td>';
+      content += '<td class="itunes"></td>';
+      content += '<td class="price">'+vinyls[index].Price+' €</td>';
       content += '<td class="sample"></td>';
-      content += '<td>'+vinyls[index].Genre+'</td>';
+      content += '<td class="genre">'+vinyls[index].Genre+'</td>';
       content += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       content += '</tr>';
       
@@ -100,17 +99,29 @@ var Main = (function()
   function _vinylize(){
 
     $('.vinyl').each(function(i, el) {
-      var artist = $(el).children('.vinyl-artist').text();
-      var name = $(el).children('.vinyl-name').text();
+      var artist = $(el).children('.vinyl-artist').text().replace(/ /g, '+');
+      var name = $(el).children('.vinyl-name').text().replace(/ /g, '+');
 
-      // get iTunes data
+      // get artwork, audio sample and genre from iTunes
       $.getJSON('http://itunes.apple.com/search?term='+artist+' '+name+'&limit=1&callback=?', 
       function(data) {
+        console.log(data);
         var artworkUrl = data.results[0].artworkUrl100;
         var sampleUrl = data.results[0].previewUrl;
+        var genre = data.results[0].primaryGenreName;
+        var price = data.results[0].collectionPrice;
+        var itunesUrl = data.results[0].collectionViewUrl;
 
         $(el).find('.vinyl-artwork').html('<img src="'+artworkUrl+'" alt="cover" width="60px" height="60px">');
-        $(el).find('.sample').html('<audio controls><source src="'+sampleUrl+'" type="audio/mp4">Your browser does not support the audio element or format (m4a). Sorry.</audio>');
+        $(el).find('.sample').html('<audio controls style="vertical-align: middle;" onplay="<Main class=""></Main>audioHandler()"><source src="'+sampleUrl+'" type="audio/mp4">Your browser does not support the audio element or format (m4a). Sorry.</audio>');
+        $(el).find('.genre').text(genre);
+        $(el).find('.price').text(price+'$');
+        $(el).find('.itunes').html('<a href="'+itunesUrl+'" title="buy on iTunes" target="_blank">iTunes</a>');
+      });
+
+      $.getJSON('http://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles='+name+'&rvsection=0&callback=?',
+      function(data) {
+        console.log(data);
       });
     });
   }
@@ -127,6 +138,12 @@ var Main = (function()
       && (elemBottom <= docViewBottom) &&  (elemTop >= docViewTop) );
   }
 
+  // pause all other audio players when another audio is playing
+  function _audioHandler(){
+    console.log("playing!");
+    // Todo: stop all others audio players..
+  }
+
 	return{
 		doAfterLogin: _doAfterLogin,
 		addUserToDb: _addUserToDb,
@@ -134,7 +151,8 @@ var Main = (function()
 		getExistingData: _getExistingData,
     displayVinylData: _displayVinylData,
     vinylize: _vinylize,
-    isScrolledIntoView: _isScrolledIntoView
+    isScrolledIntoView: _isScrolledIntoView,
+    audioHandler: _audioHandler
 	}
 
 })();
@@ -178,11 +196,10 @@ $(document).ready(function(){
       row += '<td class="vinyl-name">'+latestVinyl[0].Album+'</td>';
       row += '<td>'+latestVinyl[0].Label+'</td>';
       row += '<td>'+latestVinyl[0].Format+' '+latestVinyl[0].Type+'</td>';
-      row += '<td>'+latestVinyl[0].Year+'</td>';
-      row += '<td>'+latestVinyl[0].Price+' €</td>';
-      row += '<td>'+latestVinyl[0].Catalog+'</td>';
+      row += '<td class="itunes"></td>';
+      row += '<td class="price">'+latestVinyl[0].Price+' €</td>';
       row += '<td class="sample"></td>';
-      row += '<td>'+latestVinyl[0].Genre+'</td>';
+      row += '<td class="genre">'+latestVinyl[0].Genre+'</td>';
       row += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       row+= '</tr>';
     }
