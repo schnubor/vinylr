@@ -4,9 +4,9 @@
 
 	// 1. Write Vinyl to DB
 
-	$sql = "INSERT INTO `$_POST[fbid]` (Artist, Album, Label, Catalog, Year, Format, Type, Price, Genre)
+	$sql = "INSERT INTO `$_POST[fbid]` (Artist, Album, Format, Type)
 	VALUES
-	('$_POST[artist]','$_POST[title]','$_POST[label]','$_POST[catalog]','$_POST[year]','$_POST[size]','$_POST[type]','$_POST[price]','$_POST[genre]')";
+	('$_POST[artist]','$_POST[title]','$_POST[size]','$_POST[type]')";
 
 	if (!mysqli_query($con,$sql))
 	{
