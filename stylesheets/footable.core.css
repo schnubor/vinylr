@@ -172,6 +172,7 @@
 }
 .footable-row-detail-value {
   display: table-cell;
+  padding-bottom: 10px;
 }
 .footable-odd {
   background-color: #f7f7f7;

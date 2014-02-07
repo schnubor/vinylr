@@ -123,13 +123,6 @@ var Main = (function()
         $(el).find('.date').text(date);
       });
 
-      // get Wikipedia information for record label information
-      $.getJSON('http://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles='+name+'&rvsection=0&callback=?',
-      function(data) {
-        //console.log(data);
-        // Todo: Parse...
-      });
-
       // get Deezer Data
       $.getJSON('http://api.deezer.com/search/album?q='+artist+' '+name+'&output=jsonp&callback=?', 
       function(data){
@@ -168,7 +161,7 @@ var Main = (function()
   // pause all other audio players when another audio is playing
   function _audioHandler(){
     console.log("playing!");
-    // Todo: stop all others audio players..
+    // TODO: stop all others audio players..
   }
 
 	return{
@@ -240,6 +233,8 @@ $(document).ready(function(){
     // Update the vinyl count
     vinylcount = vinylcount+1;
     $('#vinylcount').text(vinylcount);
+
+    // TODO: get vinyl data...
   }
 
   // === ADD VINYL OVERLAY =========================================================
