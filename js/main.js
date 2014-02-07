@@ -77,6 +77,7 @@ var Main = (function()
       content += '<td class="itunes"></td>';
       content += '<td class="price"></td>';
       content += '<td class="sample"></td>';
+      content += '<td class="artistpic"></td>';
       content += '<td class="genre"></td>';
       content += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       content += '</tr>';
@@ -143,8 +144,10 @@ var Main = (function()
             duration = data.duration;
             deezerlink = data.link;
             artistPic = data.artist.picture;
+            artistName = data.artist.title;
 
             $(el).find('.label').text(label);
+            $(el).find('.artistpic').html('<img src="'+artistPic+'" alt="artistpic" />');
         });
       });
     });
@@ -224,6 +227,7 @@ $(document).ready(function(){
       row += '<td class="itunes"></td>';
       row += '<td class="price"></td>';
       row += '<td class="sample"></td>';
+      row += '<td class="artistpic"></td>';
       row += '<td class="genre"></td>';
       row += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       row+= '</tr>';
