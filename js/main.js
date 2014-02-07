@@ -71,12 +71,13 @@ var Main = (function()
       content += '<td class="vinyl-id">'+vinyls[index].VinylID+'</td>';
       content += '<td class="vinyl-artist">'+vinyls[index].Artist+'</td>';
       content += '<td class="vinyl-name">'+vinyls[index].Album+'</td>';
-      content += '<td>'+vinyls[index].Label+'</td>';
-      content += '<td>'+vinyls[index].Format+' '+vinyls[index].Type+'</td>';
+      content += '<td class="label"></td>';
+      content += '<td class="format">'+vinyls[index].Format+' '+vinyls[index].Type+'</td>';
+      content += '<td class="date"></td>';
       content += '<td class="itunes"></td>';
-      content += '<td class="price">'+vinyls[index].Price+' €</td>';
+      content += '<td class="price"></td>';
       content += '<td class="sample"></td>';
-      content += '<td class="genre">'+vinyls[index].Genre+'</td>';
+      content += '<td class="genre"></td>';
       content += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       content += '</tr>';
       
@@ -111,19 +112,40 @@ var Main = (function()
         var genre = data.results[0].primaryGenreName;
         var price = data.results[0].collectionPrice;
         var itunesUrl = data.results[0].collectionViewUrl;
+        var date = data.results[0].releaseDate.substring(0, 10); // truncate the time
 
         $(el).find('.vinyl-artwork').html('<img src="'+artworkUrl+'" alt="cover" width="60px" height="60px">');
         $(el).find('.sample').html('<audio controls style="vertical-align: middle;" onplay="<Main class=""></Main>audioHandler()"><source src="'+sampleUrl+'" type="audio/mp4">Your browser does not support the audio element or format (m4a). Sorry.</audio>');
         $(el).find('.genre').text(genre);
         $(el).find('.price').text(price+'$');
         $(el).find('.itunes').html('<a href="'+itunesUrl+'" title="buy on iTunes" target="_blank">iTunes</a>');
+        $(el).find('.date').text(date);
       });
 
       // get Wikipedia information for record label information
       $.getJSON('http://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles='+name+'&rvsection=0&callback=?',
       function(data) {
-        console.log(data);
+        //console.log(data);
         // Todo: Parse...
+      });
+
+      // get Deezer Data
+      $.getJSON('http://api.deezer.com/search/album?q='+artist+' '+name+'&output=jsonp&callback=?', 
+      function(data){
+        //console.log(data);
+        albumID = data.data[0].id;
+        //console.log(albumID);
+
+        $.getJSON('http://api.deezer.com/album/'+albumID+'&output=jsonp&callback=?', 
+        function(data){
+            console.log(data);
+            label = data.label;
+            duration = data.duration;
+            deezerlink = data.link;
+            artistPic = data.artist.picture;
+
+            $(el).find('.label').text(label);
+        });
       });
     });
   }
@@ -196,12 +218,13 @@ $(document).ready(function(){
       row += '<td class="vinyl-id">'+latestVinyl[0].VinylID+'</td>';
       row += '<td class="vinyl-artist">'+latestVinyl[0].Artist+'</td>';
       row += '<td class="vinyl-name">'+latestVinyl[0].Album+'</td>';
-      row += '<td>'+latestVinyl[0].Label+'</td>';
-      row += '<td>'+latestVinyl[0].Format+' '+latestVinyl[0].Type+'</td>';
+      row += '<td class="label"></td>';
+      row += '<td class="format">'+latestVinyl[0].Format+' '+latestVinyl[0].Type+'</td>';
+      row += '<td class="date"></td>';
       row += '<td class="itunes"></td>';
-      row += '<td class="price">'+latestVinyl[0].Price+' €</td>';
+      row += '<td class="price"></td>';
       row += '<td class="sample"></td>';
-      row += '<td class="genre">'+latestVinyl[0].Genre+'</td>';
+      row += '<td class="genre"></td>';
       row += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       row+= '</tr>';
     }
