@@ -94,11 +94,11 @@ var Main = (function()
     $('#vinylcount').text(vinylcount);
 
     // fetch Vinyl Informations - this is where the magic happens
-    _vinylize();
+    _vinylize_all();
   }
 
   // Get available Vinyl Data from all sources
-  function _vinylize(){
+  function _vinylize_all(){
 
     $('.vinyl').each(function(i, el) {
       var artist = $(el).children('.vinyl-artist').text().replace(/ /g, '+');
@@ -170,7 +170,7 @@ var Main = (function()
     updateForms: _updateForms,
 		getExistingData: _getExistingData,
     displayVinylData: _displayVinylData,
-    vinylize: _vinylize,
+    vinylize_all: _vinylize_all,
     isScrolledIntoView: _isScrolledIntoView,
     audioHandler: _audioHandler
 	}
