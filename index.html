@@ -113,8 +113,8 @@
             <div class="close">&#x2715;</div>
             <div class="overlayform">
                 <form id="addvinylform" action="php/addvinyl.php" method="post">
-                    <input type="text" name="artist" required placeholder="Artist*"><br>
-                    <input type="text" name="title" required placeholder="Title*"><br>
+                    <input type="text" class="artist" name="artist" required placeholder="Artist*"><br>
+                    <input type="text" class="title" name="title" required placeholder="Title*"><br>
                     <br/>
                     <input type="radio" name="type" value="LP"><span>LP</span>
                     <input type="radio" name="type" value="EP"><span>EP</span>
@@ -123,8 +123,25 @@
                     <input type="radio" name="size" value="12in" checked><span>12"</span>
                     <input type="radio" name="size" value="7in"><span style="margin: 0;">7"</span><br>
                     <br/>
-                    <input type="submit" value="Add Vinyl">
+                    <!-- hidden inputs -->
+                    <input type="hidden" name="label">
+                    <input type="hidden" name="genre">
+                    <input type="hidden" name="artistpic">
+                    <input type="hidden" name="duration">
+                    <input type="hidden" name="sample">
+                    <input type="hidden" name="itunes">
+                    <input type="hidden" name="deezer">
+                    <input type="hidden" name="artwork">
+                    <input type="hidden" name="price">
+                    <input type="hidden" name="release">
+                    <input type="hidden" name="count" value="1">
+                    <input type="hidden" name="color" value="black">
+                    <input type="hidden" name="tracklist" value="not yet implemented">
+                    <!-- search and submit -->
+                    <button id="searchbutton" type="button" onclick="Main.fetchData();">search</button>
+                    <input type="submit" value="Add Vinyl" style="display: none">
                 </form>
+                <div id="searchresult"></div>
                 <div id="response"></div>
             </div>
         </div>

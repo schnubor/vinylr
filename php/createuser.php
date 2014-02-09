@@ -4,16 +4,6 @@
 	
 	$fbid = $_POST['facebookid'];
 	$username = $_POST['username'];
-
-	// Create new user in 'users' table
-	$sql = "INSERT INTO users (name, fbid)
-	VALUES
-	('$_POST[username]','$_POST[facebookid]')";
-
-	if (!mysqli_query($con,$sql))
-	{
-	  echo('Error: ' . mysqli_error($con));
-	}
 	
 	// Create completly new table based on the FB id
 
@@ -22,12 +12,15 @@
 	`Artist` VARCHAR(255),
 	`Album` VARCHAR(255),
 	`Label` VARCHAR(255),
-	`Catalog` VARCHAR(255),
-	`Year` VARCHAR(255),
-	`Format` VARCHAR(255),
-	`Type` VARCHAR(255),
+	`Sample` VARCHAR(255),
+	`Release` VARCHAR(255),
 	`Price` VARCHAR(255),
 	`Genre` VARCHAR(255),
+	`Duration` VARCHAR(255),
+	`Tracklist` VARCHAR(255),
+	`Format` VARCHAR(255),
+	`Artistpic` VARCHAR(255),
+	`iTunes` VARCHAR(255),
 	PRIMARY KEY(VinylID)
 	);";
 	

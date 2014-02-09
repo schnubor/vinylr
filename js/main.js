@@ -67,18 +67,18 @@ var Main = (function()
 
     $.each(vinyls, function(){
       content = '<tr class="vinyl">';
-      content += '<td><div class="vinyl-artwork"></div></td>'
+      content += '<td><div class="vinyl-artwork"><img src="'+vinyls[index].Artwork+'" alt="'+vinyls[index].Artist+' - '+vinyls[index].Album+'"></div></td>'
       content += '<td class="vinyl-id">'+vinyls[index].VinylID+'</td>';
       content += '<td class="vinyl-artist">'+vinyls[index].Artist+'</td>';
       content += '<td class="vinyl-name">'+vinyls[index].Album+'</td>';
-      content += '<td class="label"></td>';
-      content += '<td class="format">'+vinyls[index].Format+' '+vinyls[index].Type+'</td>';
-      content += '<td class="date"></td>';
-      content += '<td class="itunes"></td>';
-      content += '<td class="price"></td>';
-      content += '<td class="sample"></td>';
-      content += '<td class="artistpic"></td>';
-      content += '<td class="genre"></td>';
+      content += '<td class="label">'+vinyls[index].Label+'</td>';
+      content += '<td class="format">'+vinyls[index].Count+'x '+vinyls[index].Format+' '+vinyls[index].Type+' '+vinyls[index].Color+'</td>';
+      content += '<td class="date">'+vinyls[index].Releasedate+'</td>';
+      content += '<td class="itunes"><a href="'+vinyls[index].iTunes+'" title="buy digital version of'+vinyls[index].Artist+' - '+vinyls[index].Album+'">iTunes</a></td>';
+      content += '<td class="price">'+vinyls[index].Price+'</td>';
+      content += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+vinyls[index].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
+      content += '<td class="artistpic"><img src="'+vinyls[index].Artistpic+'" alt="'+vinyls[index].Artist+'"></td>';
+      content += '<td class="genre">'+vinyls[index].Genre+'</td>';
       content += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       content += '</tr>';
       
@@ -92,58 +92,6 @@ var Main = (function()
     // update vinyl count
     vinylcount = vinyls.length;
     $('#vinylcount').text(vinylcount);
-
-    // fetch Vinyl Informations - this is where the magic happens
-    _vinylize_all();
-  }
-
-  // Get available Vinyl Data from all sources
-  function _vinylize_all(){
-
-    $('.vinyl').each(function(i, el) {
-      var artist = $(el).children('.vinyl-artist').text().replace(/ /g, '+');
-      var name = $(el).children('.vinyl-name').text().replace(/ /g, '+');
-
-      // get artwork, audio sample and genre from iTunes
-      $.getJSON('http://itunes.apple.com/search?term='+artist+' '+name+'&limit=1&callback=?', 
-      function(data) {
-        //console.log(data);
-        var artworkUrl = data.results[0].artworkUrl100;
-        var sampleUrl = data.results[0].previewUrl;
-        var genre = data.results[0].primaryGenreName;
-        var price = data.results[0].collectionPrice;
-        var itunesUrl = data.results[0].collectionViewUrl;
-        var date = data.results[0].releaseDate.substring(0, 10); // truncate the time
-
-        $(el).find('.vinyl-artwork').html('<img src="'+artworkUrl+'" alt="cover" width="60px" height="60px">');
-        $(el).find('.sample').html('<audio controls style="vertical-align: middle;" onplay="<Main class=""></Main>audioHandler()"><source src="'+sampleUrl+'" type="audio/mp4">Your browser does not support the audio element or format (m4a). Sorry.</audio>');
-        $(el).find('.genre').text(genre);
-        $(el).find('.price').text(price+'$');
-        $(el).find('.itunes').html('<a href="'+itunesUrl+'" title="buy on iTunes" target="_blank">iTunes</a>');
-        $(el).find('.date').text(date);
-      });
-
-      // get Deezer Data
-      $.getJSON('http://api.deezer.com/search/album?q='+artist+' '+name+'&output=jsonp&callback=?', 
-      function(data){
-        //console.log(data);
-        albumID = data.data[0].id;
-        //console.log(albumID);
-
-        $.getJSON('http://api.deezer.com/album/'+albumID+'&output=jsonp&callback=?', 
-        function(data){
-            console.log(data);
-            label = data.label;
-            duration = data.duration;
-            deezerlink = data.link;
-            artistPic = data.artist.picture;
-            artistName = data.artist.title;
-
-            $(el).find('.label').text(label);
-            $(el).find('.artistpic').html('<img src="'+artistPic+'" alt="artistpic" />');
-        });
-      });
-    });
   }
 
   // check if element is in viewport or not (maybe used later)
@@ -164,15 +112,77 @@ var Main = (function()
     // TODO: stop all others audio players..
   }
 
+  // fetch vinyl Data before submitting form
+  function _fetchData(){
+    console.log("calling _fetchData");
+
+    artist = $('input[name=artist]').val();
+    album = $('input[name=title]').val();
+
+    vinyl = {};
+
+    $.when(
+
+    // 1st get Label, Duration, artist pic and deezerlink from Deezer
+    $.getJSON('http://api.deezer.com/search/album?q='+artist+' '+album+'&output=jsonp&callback=?', 
+      function(result1){
+        //console.log(data);
+        albumID = result1.data[0].id;
+        
+        $.getJSON('http://api.deezer.com/album/'+albumID+'&output=jsonp&callback=?', 
+        function(data){
+            //console.log(data);
+            vinyl.label = data.label;
+            vinyl.duration = data.duration;
+            vinyl.deezerlink = data.link;
+            vinyl.artistPic = data.artist.picture;
+        });
+      }),
+
+    // 2nd get artwork, audio sample and genre from iTunes
+    $.getJSON('http://itunes.apple.com/search?term='+artist+' '+album+'&limit=1&callback=?', 
+      function(data) {
+        //console.log('http://itunes.apple.com/search?term='+artist+' '+album+'&limit=1&callback=?');
+        //console.log(data);
+        vinyl.artworkUrl = data.results[0].artworkUrl100;
+        vinyl.sampleUrl = data.results[0].previewUrl;
+        vinyl.genre = data.results[0].primaryGenreName;
+        vinyl.price = data.results[0].collectionPrice;
+        vinyl.itunesUrl = data.results[0].collectionViewUrl;
+        vinyl.date = data.results[0].releaseDate.substring(0, 10); // truncate the time
+      })
+    ).done(function(){
+      console.log(vinyl);
+      $('#searchresult').text('Vinyl found!');
+
+      // fill input values
+      $('input[name=genre]').val(vinyl.genre);
+      $('input[name=label]').val(vinyl.label);
+      $('input[name=artistpic]').val(vinyl.artistPic);
+      $('input[name=artwork]').val(vinyl.artworkUrl);
+      $('input[name=sample]').val(vinyl.sampleUrl);
+      $('input[name=itunes]').val(vinyl.itunesUrl);
+      $('input[name=deezer]').val(vinyl.deezerlink);
+      $('input[name=release]').val(vinyl.date);
+      $('input[name=price]').val(vinyl.price);
+      $('input[name=duration]').val(vinyl.duration);
+
+      // hide search button; show submit button
+      $('#searchbutton').hide();
+      $('input[type=submit]').css('display','inline-block');
+    });
+
+  }
+
 	return{
 		doAfterLogin: _doAfterLogin,
 		addUserToDb: _addUserToDb,
     updateForms: _updateForms,
 		getExistingData: _getExistingData,
     displayVinylData: _displayVinylData,
-    vinylize_all: _vinylize_all,
     isScrolledIntoView: _isScrolledIntoView,
-    audioHandler: _audioHandler
+    audioHandler: _audioHandler,
+    fetchData: _fetchData
 	}
 
 })();
