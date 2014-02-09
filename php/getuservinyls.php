@@ -1,11 +1,6 @@
 <?php
 	// Connect to Database (host, user, pw, db)
-	$con = mysqli_connect("localhost","root","","vinylr");
-	// Check connection
-	if (mysqli_connect_errno())
-	{
-	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
+	require('db_connect.php');
 
 	$fbid = $_POST['facebookid'];
 	$result = mysqli_query($con, "SELECT * FROM `".$fbid."`") or die(mysqli_error($con));

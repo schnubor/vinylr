@@ -1,33 +1,26 @@
 <?php
 	// Connect to Database (host, user, pw, db)
-	$con = mysqli_connect("localhost","root","","vinylr");
-	// Check connection
-	if (mysqli_connect_errno())
-	{
-	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
+	require('db_connect.php');
 	
 	$fbid = $_POST['facebookid'];
 	$username = $_POST['username'];
-
-	$sql = "INSERT INTO users (name, fbid)
-	VALUES
-	('$_POST[username]','$_POST[facebookid]')";
-
-	if (!mysqli_query($con,$sql))
-	{
-	  echo('Error: ' . mysqli_error($con));
-	}
 	
+	// Create completly new table based on the FB id
+
 	$create = "CREATE TABLE IF NOT EXISTS `$fbid` (
 	`VinylID` INT AUTO_INCREMENT NOT NULL,
 	`Artist` VARCHAR(255),
 	`Album` VARCHAR(255),
 	`Label` VARCHAR(255),
-	`Catalog` VARCHAR(255),
-	`Year` VARCHAR(255),
+	`Sample` VARCHAR(255),
+	`Release` VARCHAR(255),
+	`Price` VARCHAR(255),
+	`Genre` VARCHAR(255),
+	`Duration` VARCHAR(255),
+	`Tracklist` VARCHAR(255),
 	`Format` VARCHAR(255),
-	`Type` VARCHAR(255),
+	`Artistpic` VARCHAR(255),
+	`iTunes` VARCHAR(255),
 	PRIMARY KEY(VinylID)
 	);";
 	

@@ -16,11 +16,9 @@
   function displayFacebookData(username,name){
       if(username && name){
           $('#fb-button').fadeOut(function(){
-              $('header').animate({
-                  height: '170px'
-              }, 1000, 'easeInOutCubic');
-              if(!$('#currentuser').length > 0){
-                $('#loggedInWrapper').append('<ul id="vinyldata"><li id="currentuser"><img id="profilepic" src="https://graph.facebook.com/'+username+'/picture?width=300&height=200" alt="'+name+'"/><br/><p>'+name+'</p><button onclick="FB.logout();">Logout</button></li><li id="addvinyl"><p>+</p><span>add a new vinyl</span></li></ul>');
+
+              if(!$('#currentuser').length > 0){ // if not already logged in
+                $('header').append('<div id="currentuser"><img id="profilepic" src="https://graph.facebook.com/'+username+'/picture?width=120&height=120" alt="'+name+'"/><span id="username">'+name+'</span><span id="logout" onclick="FB.logout();"><span class="fa fa-sign-out fa-fw"></span>Logout</span></div>');
                 $('#loggedInWrapper').fadeIn();
 
                 // Jump to main.js
@@ -32,20 +30,17 @@
   }
 
   function hideControls(){
-      // Remove User Data
-      $('#loggedInWrapper').html('').fadeOut(function(){
-          $('header').animate({
-              height: '250px'
-          }, 1000, 'easeInOutCubic', function(){
-            displayFacebookButton();
-          });
-
+      // Remove User Data 
+      $('#tablecontent').html(''); // Clear table content
+      $('#loggedInWrapper').fadeOut(function(){
           $('#loggedOutWrapper').fadeIn();
+          $('#currentuser').remove();
+          displayFacebookButton();
       });
   }
 
   function displayFacebookButton() {
-      console.log("_call displayFacebookButton");
+      //console.log("_call displayFacebookButton");
       $('#loading').fadeOut(function(){
           $('#fb-button').fadeIn();
       });
