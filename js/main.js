@@ -116,62 +116,66 @@ var Main = (function()
   function _fetchData(){
     console.log("calling _fetchData");
 
-    artist = $('input[name=artist]').val();
-    album = $('input[name=title]').val();
+    var artist = $('input[name=artist]').val();
+    var album = $('input[name=title]').val();
 
-    vinyl = {};
+    var vinyl = {};
+    var albumID;
 
     $.when(
-
-    // 1st get Label, Duration, artist pic and deezerlink from Deezer
-    $.getJSON('http://api.deezer.com/search/album?q='+artist+' '+album+'&output=jsonp&callback=?', 
-      function(result1){
-        //console.log(data);
-        albumID = result1.data[0].id;
-        
+      // 1st get Album ID from Deezer
+      $.getJSON('http://api.deezer.com/search/album?q='+artist+' '+album+'&output=jsonp&callback=?', 
+        function(result1){
+          //console.log(data);
+          albumID = result1.data[0].id;
+        })
+    ).done(function(){
+      $.when(
+        // 2nd get Label, Duration, Deezer link and Artistpic from Deezer
         $.getJSON('http://api.deezer.com/album/'+albumID+'&output=jsonp&callback=?', 
-        function(data){
+          function(data){
             //console.log(data);
             vinyl.label = data.label;
             vinyl.duration = data.duration;
             vinyl.deezerlink = data.link;
             vinyl.artistPic = data.artist.picture;
+          })
+      ).done(function(){
+          $.when(
+            // 3rd get artwork, audio sample and genre from iTunes
+            $.getJSON('http://itunes.apple.com/search?term='+artist+' '+album+'&limit=1&callback=?', 
+              function(data) {
+                //console.log('http://itunes.apple.com/search?term='+artist+' '+album+'&limit=1&callback=?');
+                //console.log(data);
+                vinyl.artworkUrl = data.results[0].artworkUrl100;
+                vinyl.sampleUrl = data.results[0].previewUrl;
+                vinyl.genre = data.results[0].primaryGenreName;
+                vinyl.price = data.results[0].collectionPrice;
+                vinyl.itunesUrl = data.results[0].collectionViewUrl;
+                vinyl.date = data.results[0].releaseDate.substring(0, 10); // truncate the time
+              })
+          ).done(function(){
+            console.log(vinyl);
+            $('#searchresult').text('Vinyl found!');
+
+            // fill input values
+            $('input[name=genre]').val(vinyl.genre);
+            $('input[name=label]').val(vinyl.label);
+            $('input[name=artistpic]').val(vinyl.artistPic);
+            $('input[name=artwork]').val(vinyl.artworkUrl);
+            $('input[name=sample]').val(vinyl.sampleUrl);
+            $('input[name=itunes]').val(vinyl.itunesUrl);
+            $('input[name=deezer]').val(vinyl.deezerlink);
+            $('input[name=release]').val(vinyl.date);
+            $('input[name=price]').val(vinyl.price);
+            $('input[name=duration]').val(vinyl.duration);
+
+            // hide search button; show submit button
+            $('#searchbutton').hide();
+            $('#submitbutton').css('display','inline-block');
+          });
         });
-      }),
-
-    // 2nd get artwork, audio sample and genre from iTunes
-    $.getJSON('http://itunes.apple.com/search?term='+artist+' '+album+'&limit=1&callback=?', 
-      function(data) {
-        //console.log('http://itunes.apple.com/search?term='+artist+' '+album+'&limit=1&callback=?');
-        //console.log(data);
-        vinyl.artworkUrl = data.results[0].artworkUrl100;
-        vinyl.sampleUrl = data.results[0].previewUrl;
-        vinyl.genre = data.results[0].primaryGenreName;
-        vinyl.price = data.results[0].collectionPrice;
-        vinyl.itunesUrl = data.results[0].collectionViewUrl;
-        vinyl.date = data.results[0].releaseDate.substring(0, 10); // truncate the time
-      })
-    ).done(function(){
-      console.log(vinyl);
-      $('#searchresult').text('Vinyl found!');
-
-      // fill input values
-      $('input[name=genre]').val(vinyl.genre);
-      $('input[name=label]').val(vinyl.label);
-      $('input[name=artistpic]').val(vinyl.artistPic);
-      $('input[name=artwork]').val(vinyl.artworkUrl);
-      $('input[name=sample]').val(vinyl.sampleUrl);
-      $('input[name=itunes]').val(vinyl.itunesUrl);
-      $('input[name=deezer]').val(vinyl.deezerlink);
-      $('input[name=release]').val(vinyl.date);
-      $('input[name=price]').val(vinyl.price);
-      $('input[name=duration]').val(vinyl.duration);
-
-      // hide search button; show submit button
-      $('#searchbutton').hide();
-      $('input[type=submit]').css('display','inline-block');
     });
-
   }
 
 	return{
@@ -194,15 +198,16 @@ $(document).ready(function(){
 
   // Options for the "Add Vinyl" Ajax call
   var options = { 
-    target:        '#response',   // target element(s) to be updated with server response 
-    success:       successCallback,  // post-submit callback 
-    clearForm:     true        // clear all form fields after successful submit 
+    //target:        '#response',   // target element(s) to be updated with server response 
+    success: successCallback,  // post-submit callback 
+    //clearForm: true,        // clear all form fields after successful submit
+    resetForm: true        // reset the form after successful submit 
 
     // other available options: 
     //url:       url         // override for form's 'action' attribute 
     //type:      type        // 'get' or 'post', override for form's 'method' attribute 
     //dataType:  null        // 'xml', 'script', or 'json' (expected server response type) 
-    //resetForm: true        // reset the form after successful submit 
+    
 
     // $.ajax options can be used here too, for example: 
     //timeout:   3000 
@@ -220,21 +225,27 @@ $(document).ready(function(){
     if(response.length){
       latestVinyl = $.parseJSON(response);
       var row = '<tr class="vinyl">';
-      row += '<td><div class="vinyl-artwork"></div></td>';
+      row += '<td><div class="vinyl-artwork"><img src="'+latestVinyl[0].Artwork+'" alt="'+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'"></div></td>'
       row += '<td class="vinyl-id">'+latestVinyl[0].VinylID+'</td>';
       row += '<td class="vinyl-artist">'+latestVinyl[0].Artist+'</td>';
       row += '<td class="vinyl-name">'+latestVinyl[0].Album+'</td>';
-      row += '<td class="label"></td>';
-      row += '<td class="format">'+latestVinyl[0].Format+' '+latestVinyl[0].Type+'</td>';
-      row += '<td class="date"></td>';
-      row += '<td class="itunes"></td>';
-      row += '<td class="price"></td>';
-      row += '<td class="sample"></td>';
-      row += '<td class="artistpic"></td>';
-      row += '<td class="genre"></td>';
+      row += '<td class="label">'+latestVinyl[0].Label+'</td>';
+      row += '<td class="format">'+latestVinyl[0].Count+'x '+latestVinyl[0].Format+' '+latestVinyl[0].Type+' '+latestVinyl[0].Color+'</td>';
+      row += '<td class="date">'+latestVinyl[0].Releasedate+'</td>';
+      row += '<td class="itunes"><a href="'+latestVinyl[0].iTunes+'" title="buy digital version of'+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'">iTunes</a></td>';
+      row += '<td class="price">'+latestVinyl[0].Price+'</td>';
+      row += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+latestVinyl[0].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
+      row += '<td class="artistpic"><img src="'+latestVinyl[0].Artistpic+'" alt="'+latestVinyl[0].Artist+'"></td>';
+      row += '<td class="genre">'+latestVinyl[0].Genre+'</td>';
       row += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
-      row+= '</tr>';
+      row += '</tr>';
     }
+
+    // reset the form / overlay
+    $('#searchbutton').css('display','inline-block');
+    $('#submitbutton').hide();
+    $('#searchresult').text('');
+    $('#overlay').fadeOut(200);
 
     // Redraw the table
     footable.appendRow(row);
@@ -243,8 +254,6 @@ $(document).ready(function(){
     // Update the vinyl count
     vinylcount = vinylcount+1;
     $('#vinylcount').text(vinylcount);
-
-    // TODO: get vinyl data...
   }
 
   // === ADD VINYL OVERLAY =========================================================
