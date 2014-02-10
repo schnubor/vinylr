@@ -247,86 +247,95 @@ header h3 {
 #currentuser img {
   width: 40px;
   height: 40px;
+  border-radius: 5px;
   vertical-align: middle;
 }
-/* line 197, ../sass/screen.scss */
+/* line 198, ../sass/screen.scss */
 #currentuser #username {
   margin-left: 10px;
   margin-right: 20px;
 }
-/* line 202, ../sass/screen.scss */
+/* line 203, ../sass/screen.scss */
 #currentuser #logout {
   padding-left: 20px;
   border-left: 1px solid grey;
   cursor: pointer;
 }
-/* line 207, ../sass/screen.scss */
+/* line 208, ../sass/screen.scss */
 #currentuser #logout:hover {
   color: #ff6c00;
 }
 
-/* line 213, ../sass/screen.scss */
+/* line 214, ../sass/screen.scss */
 #vinylCount {
   text-align: center;
   width: 100%;
 }
-/* line 217, ../sass/screen.scss */
+/* line 218, ../sass/screen.scss */
 #vinylCount p {
   font-weight: bold;
   font-size: 5em;
 }
-/* line 222, ../sass/screen.scss */
+/* line 223, ../sass/screen.scss */
 #vinylCount span {
   font-size: 1em;
 }
 
-/* line 227, ../sass/screen.scss */
+/* line 228, ../sass/screen.scss */
 #addvinyl {
   cursor: pointer;
   text-align: center;
 }
-/* line 231, ../sass/screen.scss */
+/* line 232, ../sass/screen.scss */
 #addvinyl p {
   font-size: 8em;
   font-weight: bold;
   margin-top: 116px;
   color: #ff6c00;
 }
-/* line 238, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 #addvinyl span {
   text-transform: uppercase;
 }
 
 /* === ALL THE VINYLS ============*/
-/* line 248, ../sass/screen.scss */
+/* line 246, ../sass/screen.scss */
+.footable {
+  text-transform: capitalize;
+}
+/* line 250, ../sass/screen.scss */
 .footable .edit, .footable .delete {
   cursor: pointer;
   margin-right: 10px;
   font-size: 18px;
 }
-/* line 253, ../sass/screen.scss */
+/* line 255, ../sass/screen.scss */
 .footable .edit:hover, .footable .delete:hover {
   color: #ff6c00;
 }
-/* line 258, ../sass/screen.scss */
+/* line 260, ../sass/screen.scss */
 .footable .vinyl-artwork {
   width: 60px;
   height: 60px;
   background: url("../img/vinyl_PH.svg") no-repeat;
   background-size: cover;
 }
-/* line 264, ../sass/screen.scss */
+/* line 266, ../sass/screen.scss */
 .footable .vinyl-artwork img {
   width: 60px;
   height: 60px;
 }
-/* line 270, ../sass/screen.scss */
+/* line 272, ../sass/screen.scss */
 .footable .artwork-column {
   width: 60px;
 }
+/* line 276, ../sass/screen.scss */
+.footable audio {
+  vertical-align: middle;
+}
 
 /* === OVERLAY ===================*/
-/* line 277, ../sass/screen.scss */
+/* line 283, ../sass/screen.scss */
 #overlay {
   position: fixed;
   height: 100%;
@@ -335,7 +344,7 @@ header h3 {
   background-color: rgba(0, 0, 0, 0.9);
   display: none;
 }
-/* line 285, ../sass/screen.scss */
+/* line 291, ../sass/screen.scss */
 #overlay .close {
   position: absolute;
   top: 0;
@@ -348,7 +357,7 @@ header h3 {
   color: white;
   font-size: 2em;
 }
-/* line 298, ../sass/screen.scss */
+/* line 304, ../sass/screen.scss */
 #overlay .overlayform {
   width: 300px;
   height: 200px;
@@ -360,12 +369,12 @@ header h3 {
   z-index: 100;
   text-align: center;
 }
-/* line 309, ../sass/screen.scss */
+/* line 315, ../sass/screen.scss */
 #overlay .overlayform form {
   width: 100%;
   font-size: 12px;
 }
-/* line 313, ../sass/screen.scss */
+/* line 319, ../sass/screen.scss */
 #overlay .overlayform form input[type="text"] {
   margin-bottom: 10px;
   border: none;
@@ -375,15 +384,15 @@ header h3 {
   padding: 10px;
   width: calc(100% - 20px);
 }
-/* line 321, ../sass/screen.scss */
+/* line 327, ../sass/screen.scss */
 #overlay .overlayform form input[type="radio"] {
   margin: 0 5px 0 0;
 }
-/* line 325, ../sass/screen.scss */
+/* line 331, ../sass/screen.scss */
 #overlay .overlayform form span {
   margin-right: 20px;
 }
-/* line 329, ../sass/screen.scss */
+/* line 335, ../sass/screen.scss */
 #overlay .overlayform form input[type="submit"] {
   text-transform: uppercase;
   border: none;
@@ -397,18 +406,18 @@ header h3 {
   transition: all 0.2s;
   -webkit-transition: all 0.2s;
 }
-/* line 339, ../sass/screen.scss */
+/* line 345, ../sass/screen.scss */
 #overlay .overlayform form input[type="submit"]:hover {
   padding: 10px 40px;
   text-shadow: 0 0 10px white;
 }
-/* line 347, ../sass/screen.scss */
+/* line 353, ../sass/screen.scss */
 #overlay .overlayform #response {
   color: white;
 }
 
 /* === FOOTER ===================*/
-/* line 355, ../sass/screen.scss */
+/* line 361, ../sass/screen.scss */
 footer {
   font-size: 12px;
   color: #808080;

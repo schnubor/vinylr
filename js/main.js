@@ -74,7 +74,7 @@ var Main = (function()
       content += '<td class="label">'+vinyls[index].Label+'</td>';
       content += '<td class="format">'+vinyls[index].Count+'x '+vinyls[index].Format+' '+vinyls[index].Type+' '+vinyls[index].Color+'</td>';
       content += '<td class="date">'+vinyls[index].Releasedate+'</td>';
-      content += '<td class="itunes"><a href="'+vinyls[index].iTunes+'" title="buy digital version of'+vinyls[index].Artist+' - '+vinyls[index].Album+'">iTunes</a></td>';
+      content += '<td class="itunes"><a href="'+vinyls[index].iTunes+'" title="buy digital version of '+vinyls[index].Artist+' - '+vinyls[index].Album+'">iTunes</a></td>';
       content += '<td class="price">'+vinyls[index].Price+'</td>';
       content += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+vinyls[index].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
       content += '<td class="artistpic"><img src="'+vinyls[index].Artistpic+'" alt="'+vinyls[index].Artist+'"></td>';
@@ -232,7 +232,7 @@ $(document).ready(function(){
       row += '<td class="label">'+latestVinyl[0].Label+'</td>';
       row += '<td class="format">'+latestVinyl[0].Count+'x '+latestVinyl[0].Format+' '+latestVinyl[0].Type+' '+latestVinyl[0].Color+'</td>';
       row += '<td class="date">'+latestVinyl[0].Releasedate+'</td>';
-      row += '<td class="itunes"><a href="'+latestVinyl[0].iTunes+'" title="buy digital version of'+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'">iTunes</a></td>';
+      row += '<td class="itunes"><a href="'+latestVinyl[0].iTunes+'" title="buy digital version of '+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'">iTunes</a></td>';
       row += '<td class="price">'+latestVinyl[0].Price+'</td>';
       row += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+latestVinyl[0].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
       row += '<td class="artistpic"><img src="'+latestVinyl[0].Artistpic+'" alt="'+latestVinyl[0].Artist+'"></td>';
