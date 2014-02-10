@@ -18,7 +18,11 @@
 	`Genre` VARCHAR(255),
 	`Duration` VARCHAR(255),
 	`Tracklist` VARCHAR(255),
+	`Count` VARCHAR(255),
 	`Format` VARCHAR(255),
+	`Type` VARCHAR(255),
+	`Color` VARCHAR(255),
+	`Artwork` VARCHAR(255),
 	`Artistpic` VARCHAR(255),
 	`iTunes` VARCHAR(255),
 	PRIMARY KEY(VinylID)

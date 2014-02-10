@@ -36,6 +36,9 @@ var Main = (function()
     if(!$('#hiddenfbidinput').length){ // if not already present
       $('#addvinylform').prepend('<input type="hidden" id="hiddenfbidinput" name="fbid" value="'+fbid+'">');
     }
+    else{ //already present, so just update fbid value
+      $('#hiddenfbidinput').val(fbid);
+    }
   }
 
   // After logged in, get users vinyl Data and display it on success
@@ -52,6 +55,10 @@ var Main = (function()
           if(response.length){
             VINYLS = $.parseJSON(response);
             _displayVinylData(VINYLS); // display the resceived data
+          }
+          else{ // no vinyls in DB yet
+            $('.footable').hide();
+            $('#vinylcount').text('0');
           }
     		},
     		error: function () {
@@ -219,6 +226,12 @@ $(document).ready(function(){
   });
 
   function successCallback(response){
+
+    // if .footable is hidden, show it
+    $('.footable:hidden').show();
+    // redraw the whole table
+    $('.footable').trigger('footable_initialize');
+
     var footable = $('.footable').data('footable');
 
     // Display added vinyl
