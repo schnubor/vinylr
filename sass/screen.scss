@@ -191,6 +191,7 @@ header{
     img{
         width: 40px;
         height: 40px;
+        border-radius: 5px;
         vertical-align: middle;
     }
 
@@ -243,7 +244,8 @@ header{
 /* === ALL THE VINYLS ============*/
 
 .footable{
-    //@include radius(5px);
+
+    text-transform: capitalize;
 
     .edit, .delete{
         cursor: pointer;
@@ -269,6 +271,10 @@ header{
 
     .artwork-column{
         width: 60px;
+    }
+
+    audio{
+        vertical-align: middle;
     }
 }
 
