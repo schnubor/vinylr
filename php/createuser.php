@@ -13,7 +13,7 @@
 	`Album` VARCHAR(255),
 	`Label` VARCHAR(255),
 	`Sample` VARCHAR(255),
-	`Release` VARCHAR(255),
+	`Releasedate` VARCHAR(255),
 	`Price` VARCHAR(255),
 	`Genre` VARCHAR(255),
 	`Duration` VARCHAR(255),

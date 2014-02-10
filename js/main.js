@@ -198,7 +198,7 @@ $(document).ready(function(){
 
   // Options for the "Add Vinyl" Ajax call
   var options = { 
-    //target:        '#response',   // target element(s) to be updated with server response 
+    target: '#response',   // target element(s) to be updated with server response 
     success: successCallback,  // post-submit callback 
     //clearForm: true,        // clear all form fields after successful submit
     resetForm: true        // reset the form after successful submit 
