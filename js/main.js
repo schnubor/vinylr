@@ -101,18 +101,6 @@ var Main = (function()
     $('#vinylcount').text(vinylcount);
   }
 
-  // check if element is in viewport or not (maybe used later)
-  function _isScrolledIntoView(elem){
-    var docViewTop = $(window).scrollTop();
-    var docViewBottom = docViewTop + $(window).height();
-
-    var elemTop = $(elem).offset().top;
-    var elemBottom = elemTop + $(elem).height();
-
-    return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom)
-      && (elemBottom <= docViewBottom) &&  (elemTop >= docViewTop) );
-  }
-
   // pause all other audio players when another audio is playing
   function _audioHandler(){
     console.log("playing!");
@@ -191,7 +179,6 @@ var Main = (function()
     updateForms: _updateForms,
 		getExistingData: _getExistingData,
     displayVinylData: _displayVinylData,
-    isScrolledIntoView: _isScrolledIntoView,
     audioHandler: _audioHandler,
     fetchData: _fetchData
 	}
