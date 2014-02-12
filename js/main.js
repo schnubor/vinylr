@@ -151,7 +151,8 @@ var Main = (function()
               })
           ).done(function(){
             console.log(vinyl);
-            $('#searchresult').text('Vinyl found!');
+            // Preview the vinyl
+            $('#preview').text('Vinyl found!');
 
             // fill input values
             $('input[name=genre]').val(vinyl.genre);
