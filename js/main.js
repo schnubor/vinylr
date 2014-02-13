@@ -5,6 +5,15 @@ var vinylcount = 0;
 var Main = (function()
 {
 
+  function _init(){
+    Select.init(); // style selectboxes
+    $("#colorpicker").spectrum({
+      color: "#000000",
+      showInput: true,
+      preferedFormat: "hex6"
+    });
+  }
+
   // this is where stuff happens
 	function _doAfterLogin(name, fbid){
 		_addUserToDb(name, fbid);
@@ -111,6 +120,9 @@ var Main = (function()
   function _fetchData(){
     console.log("calling _fetchData");
 
+    var pickercolor = $("#colorpicker").spectrum("get");
+    console.log(pickercolor);
+
     var artist = $('input[name=artist]').val();
     var album = $('input[name=title]').val();
 
@@ -165,6 +177,7 @@ var Main = (function()
             $('input[name=release]').val(vinyl.date);
             $('input[name=price]').val(vinyl.price);
             $('input[name=duration]').val(vinyl.duration);
+            $('input[name=color]').val(pickercolor); 
 
             // hide search button; show submit button
             $('#searchbutton').hide();
@@ -175,6 +188,7 @@ var Main = (function()
   }
 
 	return{
+    init: _init,
 		doAfterLogin: _doAfterLogin,
 		addUserToDb: _addUserToDb,
     updateForms: _updateForms,
@@ -190,6 +204,7 @@ var Main = (function()
 
 $(document).ready(function(){
   console.log('document ready!');
+  Main.init();
 
   // Options for the "Add Vinyl" Ajax call
   var options = { 

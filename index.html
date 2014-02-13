@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Vinylr</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="stylesheets/footable.core.css">
         <link rel="stylesheet" href="stylesheets/footable.standalone.css">
         <link rel="stylesheet" href="stylesheets/font-awesome-4.0.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="stylesheets/select-theme-default.css" />
+        <link rel="stylesheet" href="stylesheets/spectrum.css" />
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -29,6 +31,8 @@
         <script src="js/footable.filter.js" type="text/javascript"></script>
         <script src="js/footable.sort.js" type="text/javascript"></script>
         <script src="js/vendor/jquery.form.min.js" type="text/javascript"></script>
+        <script src="js/vendor/select.min.js"></script>
+        <script src="js/vendor/spectrum.js"></script>
 
         <script type="text/javascript">
             $(function () {
@@ -114,14 +118,24 @@
             <div class="overlayform">
                 <form id="addvinylform" action="php/addvinyl.php" method="post">
                     <input type="text" class="artist" name="artist" required placeholder="Artist*"><br>
-                    <input type="text" class="title" name="title" required placeholder="Title*"><br>
+                    <input type="text" class="title" name="title" required placeholder="Title*">
                     <br/>
-                    <input type="radio" name="type" value="LP"><span>LP</span>
-                    <input type="radio" name="type" value="EP"><span>EP</span>
-                    <input type="radio" name="type" value="Album" checked><span style="margin: 0;">Album</span><br/>
-                    <br/>
-                    <input type="radio" name="size" value="12in" checked><span>12"</span>
-                    <input type="radio" name="size" value="7in"><span style="margin: 0;">7"</span><br>
+                    <select name="count">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <select name="size">
+                        <option value="12in">12"</option>
+                        <option value="7in">7"</option>
+                    </select>
+                    <select name="type">
+                        <option value="Album">Album</option>
+                        <option value="EP">EP</option>
+                        <option value="LP">LP</option>
+                    </select>
+                    <input type='text' name="color" id="colorpicker" value="#000000"/>
                     <br/>
                     <!-- hidden inputs -->
                     <input type="hidden" name="label">
@@ -134,8 +148,6 @@
                     <input type="hidden" name="artwork">
                     <input type="hidden" name="price">
                     <input type="hidden" name="release">
-                    <input type="hidden" name="count" value="1">
-                    <input type="hidden" name="color" value="black">
                     <input type="hidden" name="tracklist" value="not yet implemented">
                     <!-- search and submit -->
                     <button id="searchbutton" type="button" onclick="Main.fetchData();">search</button>
