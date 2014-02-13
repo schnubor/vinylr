@@ -1,0 +1,234 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700|Playball);
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 17, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../usr/local/rvm/gems/ruby-2.0.0-p247@global/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* Mixins & Variables */
+/* General stuff */
+/* line 38, ../sass/global.scss */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/* line 42, ../sass/global.scss */
+html {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 47, ../sass/global.scss */
+body {
+  background-color: #ddd;
+  font-family: 'Lato', Helvetica, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 54, ../sass/global.scss */
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+/* line 58, ../sass/global.scss */
+.container p {
+  padding: 20px 0;
+}
+/* line 61, ../sass/global.scss */
+.container p em {
+  font-size: 2em;
+}
+
+/* line 67, ../sass/global.scss */
+.centeredtext {
+  text-align: center;
+}
+
+/* === LOGGED IN CONTENT ================== */
+/* line 73, ../sass/global.scss */
+#loggedInWrapper {
+  display: none;
+  padding: 10px;
+}
+/* line 77, ../sass/global.scss */
+#loggedInWrapper #controls {
+  margin-bottom: 10px;
+}
+/* line 80, ../sass/global.scss */
+#loggedInWrapper #controls #filter {
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 10px;
+  float: left;
+  border: 1px solid #cacaca;
+  width: 280px;
+}
+/* line 89, ../sass/global.scss */
+#loggedInWrapper #controls #vinylcount {
+  height: 40px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid #cacaca;
+  text-align: center;
+  padding: 0 10px;
+  color: #505050;
+  float: right;
+  line-height: 40px;
+  font-weight: bold;
+  font-size: 24px;
+  margin-right: 10px;
+}
+/* line 104, ../sass/global.scss */
+#loggedInWrapper #controls #addvinyl {
+  background-color: #ff6c00;
+  border: 1px solid #ff6c00;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 10px 0 5px;
+  color: white;
+  float: right;
+  opacity: .8;
+  margin-top: 1px;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+}
+/* line 116, ../sass/global.scss */
+#loggedInWrapper #controls #addvinyl:hover {
+  opacity: 1;
+}
+
+/* line 123, ../sass/global.scss */
+#currentuser {
+  text-align: center;
+  height: 320px;
+  display: inline-block;
+  float: right;
+  height: 60px;
+  line-height: 60px;
+  color: white;
+}
+/* line 132, ../sass/global.scss */
+#currentuser img {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  vertical-align: middle;
+}
+/* line 139, ../sass/global.scss */
+#currentuser #username {
+  margin-left: 10px;
+  margin-right: 20px;
+}
+/* line 144, ../sass/global.scss */
+#currentuser #logout {
+  padding-left: 20px;
+  border-left: 1px solid grey;
+  cursor: pointer;
+}
+/* line 149, ../sass/global.scss */
+#currentuser #logout:hover {
+  color: #ff6c00;
+}
+
+/* line 155, ../sass/global.scss */
+#vinylCount {
+  text-align: center;
+  width: 100%;
+}
+/* line 159, ../sass/global.scss */
+#vinylCount p {
+  font-weight: bold;
+  font-size: 5em;
+}
+/* line 164, ../sass/global.scss */
+#vinylCount span {
+  font-size: 1em;
+}
+
+/* line 169, ../sass/global.scss */
+#addvinyl {
+  cursor: pointer;
+  text-align: center;
+}
+/* line 173, ../sass/global.scss */
+#addvinyl p {
+  font-size: 8em;
+  font-weight: bold;
+  margin-top: 116px;
+  color: #ff6c00;
+}
+/* line 180, ../sass/global.scss */
+#addvinyl span {
+  text-transform: uppercase;
+}

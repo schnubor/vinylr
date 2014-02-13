@@ -1,0 +1,79 @@
+@import "global.scss";
+
+/* === OVERLAY ===================*/
+
+#overlay{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: rgba(0,0,0,0.9);
+    display: none;
+
+    .close{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 30px;
+        margin: 20px 20px 0 0;
+        background-size: cover;
+        cursor: pointer;
+        color: white;
+        font-size: 2em;
+    }
+
+    .overlayform{
+        width: 300px;
+        height: 200px;
+        position:absolute;
+        left:50%;
+        top:50%;
+        margin: -100px 0 0 -150px;
+        color: white;
+        z-index: 100;
+        text-align: center;
+
+        form{
+            width: 100%;
+            font-size: 12px;
+
+            input[type="text"]{
+                margin-bottom: 10px;
+                border: none;
+                @include radius(5px);
+                padding: 10px;
+                width: calc(100% - 20px);
+            }
+
+            input[type="radio"]{
+                margin: 0 5px 0 0;
+            }
+
+            span{
+                margin-right: 20px;
+            }
+
+            input[type="submit"]{
+                text-transform: uppercase;
+                border: none;
+                @include radius(5px);
+                padding: 10px 20px;
+                background-color: $orange;
+                color: white;
+                text-shadow: 0 0 10px #202020;
+                @include transition(all,.2s);
+
+                &:hover{
+                    padding: 10px 40px;
+                    text-shadow: 0 0 10px white;
+                }
+
+            }
+        }
+
+        #response{
+            color: white;
+        }
+    }
+}

@@ -1,0 +1,43 @@
+@import "global.scss";
+
+/* === ALL THE VINYLS ============*/
+
+.footable{
+
+    text-transform: capitalize;
+
+    .edit, .delete{
+        cursor: pointer;
+        margin-right: 10px;
+        font-size: 18px;
+
+        &:hover{
+            color: $orange;
+        }
+    }
+    
+    .vinyl-artwork{
+        width: 60px;
+        height: 60px;
+        background: url('../img/vinyl_PH.svg') no-repeat;
+        background-size: cover;
+
+        img{
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    .artwork-column{
+        width: 60px;
+    }
+
+    audio{
+        vertical-align: middle;
+    }
+
+    i{
+        font-size: 32px;
+        vertical-align: middle;
+    }
+}

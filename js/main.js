@@ -88,7 +88,7 @@ var Main = (function()
       content += '<td class="vinyl-artist">'+vinyls[index].Artist+'</td>';
       content += '<td class="vinyl-name">'+vinyls[index].Album+'</td>';
       content += '<td class="label">'+vinyls[index].Label+'</td>';
-      content += '<td class="format">'+vinyls[index].Format+' '+vinyls[index].Type+' | '+vinyls[index].Count+'x <i class="fa fa-fw fa-dot-circle-o" style="color:'+vinyls[index].Color+';"></i></td>';
+      content += '<td class="format">'+vinyls[index].Format+' '+vinyls[index].Type+' | '+vinyls[index].Count+'x <i class="fa fa-fw fa-circle" style="color:'+vinyls[index].Color+';"></i></td>';
       content += '<td class="date">'+vinyls[index].Releasedate+'</td>';
       content += '<td class="itunes"><a href="'+vinyls[index].iTunes+'" title="buy digital version of '+vinyls[index].Artist+' - '+vinyls[index].Album+'">iTunes</a></td>';
       content += '<td class="price">'+vinyls[index].Price+'</td>';
@@ -247,7 +247,7 @@ $(document).ready(function(){
       row += '<td class="vinyl-artist">'+latestVinyl[0].Artist+'</td>';
       row += '<td class="vinyl-name">'+latestVinyl[0].Album+'</td>';
       row += '<td class="label">'+latestVinyl[0].Label+'</td>';
-      row += '<td class="format">'+latestVinyl[0].Format+' '+latestVinyl[0].Type+' | '+latestVinyl[0].Count+'x <i class="fa fa-fw fa-dot-circle-o" style="color:'+latestVinyl[0].Color+';"></i></td>';
+      row += '<td class="format">'+latestVinyl[0].Format+' '+latestVinyl[0].Type+' | '+latestVinyl[0].Count+'x <i class="fa fa-fw fa-circle" style="color:'+latestVinyl[0].Color+';"></i></td>';
       row += '<td class="date">'+latestVinyl[0].Releasedate+'</td>';
       row += '<td class="itunes"><a href="'+latestVinyl[0].iTunes+'" title="buy digital version of '+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'">iTunes</a></td>';
       row += '<td class="price">'+latestVinyl[0].Price+'</td>';
