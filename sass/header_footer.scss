@@ -17,6 +17,8 @@ header{
         height: 60px;
         line-height: 60px;
         text-shadow: 0 0 10px #808080;
+        margin: 0;
+        vertical-align: top;
     }
 
     h3{
@@ -27,8 +29,9 @@ header{
         display: inline-block;
         letter-spacing: 1px;
         padding-left: 10px;
-        line-height: 60px;
+        line-height: 70px;
         height: 60px;
+        margin: 0;
     }
 }
 
