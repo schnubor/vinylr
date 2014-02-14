@@ -1,3 +1,4 @@
+
 @import "global.scss";
 
 /* === OVERLAY ===================*/
@@ -54,22 +55,17 @@
                 margin-right: 20px;
             }
 
+            // Add Vinyl Button
             input[type="submit"]{
                 text-transform: uppercase;
-                border: none;
-                @include radius(5px);
-                padding: 10px 20px;
-                background-color: $orange;
-                color: white;
-                text-shadow: 0 0 10px #202020;
-                @include transition(all,.2s);
-
-                &:hover{
-                    padding: 10px 40px;
-                    text-shadow: 0 0 10px white;
-                }
-
             }
+
+            // Search Button
+        }// end of form
+
+        // Preview
+        #preview{
+                
         }
 
         #response{

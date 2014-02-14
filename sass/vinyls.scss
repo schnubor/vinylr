@@ -6,6 +6,7 @@
 
     text-transform: capitalize;
 
+    // Controls
     .edit, .delete{
         cursor: pointer;
         margin-right: 10px;
@@ -16,6 +17,7 @@
         }
     }
     
+    // Artwork
     .vinyl-artwork{
         width: 60px;
         height: 60px;
@@ -27,17 +29,36 @@
             height: 60px;
         }
     }
-
+    
     .artwork-column{
         width: 60px;
     }
-
+    
+    // Audio Sample
     audio{
         vertical-align: middle;
     }
 
-    i{
-        font-size: 32px;
-        vertical-align: middle;
+    // Vinyl Color
+    .circle
+    {
+        display: inline-block;
+        width:32px;
+        height:32px;
+        border-radius:16px;
+        font-size:18px;
+        color: $white;
+        line-height:32px;
+        text-align:center;
+        background:#000;
+    }
+
+    // Genres
+    .genre{
+
+
+        &.electronic{
+
+        }
     }
 }

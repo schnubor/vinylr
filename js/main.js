@@ -88,7 +88,7 @@ var Main = (function()
       content += '<td class="vinyl-artist">'+vinyls[index].Artist+'</td>';
       content += '<td class="vinyl-name">'+vinyls[index].Album+'</td>';
       content += '<td class="label">'+vinyls[index].Label+'</td>';
-      content += '<td class="format">'+vinyls[index].Format+' '+vinyls[index].Type+' | '+vinyls[index].Count+'x <i class="fa fa-fw fa-circle" style="color:'+vinyls[index].Color+';"></i></td>';
+      content += '<td class="format">'+vinyls[index].Format+' '+vinyls[index].Type+' | <div class="circle" style="background-color:'+vinyls[index].Color+';">'+vinyls[index].Count+'</div></td>';
       content += '<td class="date">'+vinyls[index].Releasedate+'</td>';
       content += '<td class="itunes"><a href="'+vinyls[index].iTunes+'" title="buy digital version of '+vinyls[index].Artist+' - '+vinyls[index].Album+'">iTunes</a></td>';
       content += '<td class="price">'+vinyls[index].Price+'</td>';
@@ -164,9 +164,7 @@ var Main = (function()
               })
           ).done(function(){
             console.log(vinyl);
-            // Preview the vinyl
-            $('#preview').text('Vinyl found!');
-
+            
             // fill input values
             $('input[name=genre]').val(vinyl.genre);
             $('input[name=label]').val(vinyl.label);
@@ -178,7 +176,10 @@ var Main = (function()
             $('input[name=release]').val(vinyl.date);
             $('input[name=price]').val(vinyl.price);
             $('input[name=duration]').val(vinyl.duration);
-            $('input[name=color]').val(pickercolor); 
+            $('input[name=color]').val(pickercolor);
+
+            // Preview the vinyl
+            $('#preview').text('Vinyl found!');
 
             // hide search button; show submit button
             $('#searchbutton').hide();
@@ -209,7 +210,7 @@ $(document).ready(function(){
 
   // Options for the "Add Vinyl" Ajax call
   var options = { 
-    target: '#response',   // target element(s) to be updated with server response 
+    //target: '#response',   // target element(s) to be updated with server response 
     success: successCallback,  // post-submit callback 
     //clearForm: true,        // clear all form fields after successful submit
     resetForm: true        // reset the form after successful submit 
@@ -247,7 +248,7 @@ $(document).ready(function(){
       row += '<td class="vinyl-artist">'+latestVinyl[0].Artist+'</td>';
       row += '<td class="vinyl-name">'+latestVinyl[0].Album+'</td>';
       row += '<td class="label">'+latestVinyl[0].Label+'</td>';
-      row += '<td class="format">'+latestVinyl[0].Format+' '+latestVinyl[0].Type+' | '+latestVinyl[0].Count+'x <i class="fa fa-fw fa-circle" style="color:'+latestVinyl[0].Color+';"></i></td>';
+      row += '<td class="format">'+latestVinyl[0].Format+' '+latestVinyl[0].Type+' | <div class="circle" style="background-color:'+latestVinyl[0].Color+';">'+latestVinyl[0].Count+'</div></td>';
       row += '<td class="date">'+latestVinyl[0].Releasedate+'</td>';
       row += '<td class="itunes"><a href="'+latestVinyl[0].iTunes+'" title="buy digital version of '+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'">iTunes</a></td>';
       row += '<td class="price">'+latestVinyl[0].Price+'</td>';
@@ -261,7 +262,7 @@ $(document).ready(function(){
     // reset the form / overlay
     $('#searchbutton').css('display','inline-block');
     $('#submitbutton').hide();
-    $('#searchresult').text('');
+    $('#searchresult, #response').text('');
     $('#overlay').fadeOut(200);
 
     // Redraw the table
