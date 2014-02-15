@@ -53,30 +53,32 @@ body {
   height: 40px;
   border-radius: 3px;
   border: 0;
-  background-color: #e27a3f;
+  background-color: #45b29d;
   color: white;
   font-size: 14px;
   text-transform: uppercase;
   font-family: 'Lato';
   letter-spacing: 1px;
   font-weight: 300;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
 }
-/* line 90, ../sass/global.scss */
+/* line 91, ../sass/global.scss */
 .button:hover {
-  background-color: #F27229;
+  background-color: #e27a3f;
 }
 
 /* === LOGGED IN CONTENT ================== */
-/* line 97, ../sass/global.scss */
+/* line 98, ../sass/global.scss */
 #loggedInWrapper {
   display: none;
   padding: 10px;
 }
-/* line 101, ../sass/global.scss */
+/* line 102, ../sass/global.scss */
 #loggedInWrapper #controls {
   margin-bottom: 10px;
 }
-/* line 104, ../sass/global.scss */
+/* line 105, ../sass/global.scss */
 #loggedInWrapper #controls #filter {
   border-radius: 5px;
   height: 40px;
@@ -84,8 +86,10 @@ body {
   float: left;
   border: 1px solid #cacaca;
   width: 280px;
+  font-family: 'Lato';
+  line-height: 42px;
 }
-/* line 113, ../sass/global.scss */
+/* line 116, ../sass/global.scss */
 #loggedInWrapper #controls #vinylcount {
   height: 40px;
   -moz-border-radius: 5px;
@@ -102,10 +106,10 @@ body {
   font-size: 24px;
   margin-right: 10px;
 }
-/* line 128, ../sass/global.scss */
+/* line 131, ../sass/global.scss */
 #loggedInWrapper #controls #addvinyl {
-  background-color: #e27a3f;
-  border: 1px solid #e27a3f;
+  background-color: #45b29d;
+  border: 1px solid #45b29d;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -115,15 +119,15 @@ body {
   float: right;
   opacity: .8;
   margin-top: 1px;
-  transition: all 0.4s;
-  -webkit-transition: all 0.4s;
+  transition: 0.4s all;
+  -webkit-transition: 0.4s all;
 }
-/* line 140, ../sass/global.scss */
+/* line 143, ../sass/global.scss */
 #loggedInWrapper #controls #addvinyl:hover {
   opacity: 1;
 }
 
-/* line 147, ../sass/global.scss */
+/* line 150, ../sass/global.scss */
 #currentuser {
   text-align: center;
   height: 320px;
@@ -133,57 +137,57 @@ body {
   line-height: 60px;
   color: white;
 }
-/* line 156, ../sass/global.scss */
+/* line 159, ../sass/global.scss */
 #currentuser img {
   width: 40px;
   height: 40px;
   border-radius: 5px;
   vertical-align: middle;
 }
-/* line 163, ../sass/global.scss */
+/* line 166, ../sass/global.scss */
 #currentuser #username {
   margin-left: 10px;
   margin-right: 20px;
 }
-/* line 168, ../sass/global.scss */
+/* line 171, ../sass/global.scss */
 #currentuser #logout {
   padding-left: 20px;
   border-left: 1px solid grey;
   cursor: pointer;
 }
-/* line 173, ../sass/global.scss */
+/* line 176, ../sass/global.scss */
 #currentuser #logout:hover {
   color: #e27a3f;
 }
 
-/* line 179, ../sass/global.scss */
+/* line 182, ../sass/global.scss */
 #vinylCount {
   text-align: center;
   width: 100%;
 }
-/* line 183, ../sass/global.scss */
+/* line 186, ../sass/global.scss */
 #vinylCount p {
   font-weight: bold;
   font-size: 5em;
 }
-/* line 188, ../sass/global.scss */
+/* line 191, ../sass/global.scss */
 #vinylCount span {
   font-size: 1em;
 }
 
-/* line 193, ../sass/global.scss */
+/* line 196, ../sass/global.scss */
 #addvinyl {
   cursor: pointer;
   text-align: center;
 }
-/* line 197, ../sass/global.scss */
+/* line 200, ../sass/global.scss */
 #addvinyl p {
   font-size: 8em;
   font-weight: bold;
   margin-top: 116px;
   color: #e27a3f;
 }
-/* line 204, ../sass/global.scss */
+/* line 207, ../sass/global.scss */
 #addvinyl span {
   text-transform: uppercase;
 }
@@ -234,4 +238,5 @@ body {
   line-height: 32px;
   text-align: center;
   background: #000;
+  text-indent: -9999px;
 }
