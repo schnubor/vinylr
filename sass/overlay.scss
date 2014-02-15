@@ -26,11 +26,11 @@
 
     .overlayform{
         width: 300px;
-        height: 200px;
+        height: 400px;
         position:absolute;
         left:50%;
         top:50%;
-        margin: -100px 0 0 -150px;
+        margin: -200px 0 0 -150px;
         color: white;
         z-index: 100;
         text-align: center;
@@ -65,11 +65,29 @@
 
         // Preview
         #preview{
-                
-        }
+            display: none;
+            margin-top: 20px;
 
-        #response{
-            color: white;
+            .general-info{
+                .artwork{
+                    width: 100px;
+                    height: 100px;
+                    padding: 10px;
+                    border: 1px solid #777;
+                    margin: 0 auto;
+                }
+
+                .label-release-genre{
+                    margin-top: 10px;
+                    color: #777;
+                    font-weight: 300;
+                }
+            }
+            
+            .additional-info{
+                margin-top: 10px;
+            }
+
         }
     }
 }

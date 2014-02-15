@@ -179,14 +179,24 @@ var Main = (function()
             $('input[name=color]').val(pickercolor);
 
             // Preview the vinyl
-            $('#preview').text('Vinyl found!');
-
-            // hide search button; show submit button
-            $('#searchbutton').hide();
-            $('#submitbutton').css('display','inline-block');
+            _showPreview(vinyl);
+ 
           });
         });
     });
+  }
+
+  function _showPreview(vinyl){
+    
+    // hide search button; show submit button; show preview
+    $('#searchbutton').hide();
+    $('#submitbutton').fadeIn();
+    $('#preview').fadeIn();
+
+    $('#preview .artwork').html('<img src="'+vinyl.artworkUrl+'" alt="artwork" width="100" height="100">');
+    $('#preview .label-release-genre').html(vinyl.label+', '+vinyl.genre+', '+vinyl.date);
+    $('#preview .sample').html('<audio controls onplay="Main.audioHandler()"><source src="'+vinyl.sampleUrl+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio>');
+
   }
 
 	return{
@@ -197,7 +207,8 @@ var Main = (function()
 		getExistingData: _getExistingData,
     displayVinylData: _displayVinylData,
     audioHandler: _audioHandler,
-    fetchData: _fetchData
+    fetchData: _fetchData,
+    showPreview: _showPreview
 	}
 
 })();
@@ -262,7 +273,7 @@ $(document).ready(function(){
     // reset the form / overlay
     $('#searchbutton').css('display','inline-block');
     $('#submitbutton').hide();
-    $('#searchresult, #response').text('');
+    $('#preview').hide();
     $('#overlay').fadeOut(200);
 
     // Redraw the table

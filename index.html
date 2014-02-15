@@ -154,21 +154,20 @@
                     <input type="hidden" name="tracklist" value="not yet implemented">
                     <!-- search and submit -->
                     <button id="searchbutton" type="button" class="button" onclick="Main.fetchData();">search</button>
+                    
+                    <div id="preview">
+                        <div class="general-info">
+                            <div class="artwork"></div>
+                            <div class="label-release-genre"></div>
+                        </div>
+                        <div class="additional-info">
+                            <div class="sample"></div>
+                        </div>
+                    </div>
+
                     <input id="submitbutton" class="button" type="submit" value="Add Vinyl" style="display: none">
                 </form>
-                <div id="preview">
-                    <div class="left-side">
-                        <div class="artwork"></div>
-                        <div class="type"></div>
-                    </div>
-                    <div class="right-side">
-                        <div class="artist-and-title"></div>
-                        <div class="label-release-genre"></div>
-                        <div class="sample"></div>
-                        <div class="price"></div>
-                        <div class="buy"></div>
-                    </div>
-                </div>
+                
             </div>
         </div>
 

@@ -214,11 +214,11 @@ body {
 /* line 27, ../sass/overlay.scss */
 #overlay .overlayform {
   width: 300px;
-  height: 200px;
+  height: 400px;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: -100px 0 0 -150px;
+  margin: -200px 0 0 -150px;
   color: white;
   z-index: 100;
   text-align: center;
@@ -250,7 +250,26 @@ body {
 #overlay .overlayform form input[type="submit"] {
   text-transform: uppercase;
 }
-/* line 71, ../sass/overlay.scss */
-#overlay .overlayform #response {
-  color: white;
+/* line 67, ../sass/overlay.scss */
+#overlay .overlayform #preview {
+  display: none;
+  margin-top: 20px;
+}
+/* line 72, ../sass/overlay.scss */
+#overlay .overlayform #preview .general-info .artwork {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #777;
+  margin: 0 auto;
+}
+/* line 80, ../sass/overlay.scss */
+#overlay .overlayform #preview .general-info .label-release-genre {
+  margin-top: 10px;
+  color: #777;
+  font-weight: 300;
+}
+/* line 87, ../sass/overlay.scss */
+#overlay .overlayform #preview .additional-info {
+  margin-top: 10px;
 }
