@@ -69,8 +69,17 @@ $(document).ready(function(){
 
   // Edit vinyl callback after ajax success
   function displayEditedVinyl(response){
-    console.log("call displayEditedVinyl()");
-    console.log(response);
+    
+    var editedVinyl = $.parseJSON(response);
+
+    $('tbody').find('.editing').find('.count').text(editedVinyl[0].Count);
+    $('tbody').find('.editing').find('.circle').text(editedVinyl[0].Color);
+    $('tbody').find('.editing').find('.format').text(editedVinyl[0].Format+" "+editedVinyl[0].Type);
+    $('tbody').find('.editing').find('.circle').css('background-color', editedVinyl[0].Color);
+    $('tbody').find('.editing').removeClass('editing');
+
+    $('.footable').trigger('footable_redraw');
+
     Main.resetOverlay();
   }
 
@@ -96,6 +105,9 @@ $(document).ready(function(){
     var count = $(this).parent().parent().find('.count').text();
     var color = $(this).parent().parent().find('.circle').text();
     var vinylid = $(this).parent().parent().find('.vinyl-id').text();
+    var row = $(this).parent().parent().addClass('editing');
+
+    console.log(row);
 
     $('#overlay').fadeIn(200, function(){
       $('.overlayform').load('../views/editvinyl.html', function(){ // load edit vinyl form
