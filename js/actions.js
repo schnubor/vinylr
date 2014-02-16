@@ -42,11 +42,11 @@ var Main = (function()
 
   // Update Add and Edit forms with hidden input containing FB ID
   function _updateForms(fbid){
-    if(!$('#hiddenfbidinput').length){ // if not already present
+    if($('#addvinylform').length){
       $('#addvinylform').prepend('<input type="hidden" id="hiddenfbidinput" name="fbid" value="'+fbid+'">');
     }
-    else{ //already present, so just update fbid value
-      $('#hiddenfbidinput').val(fbid);
+    else{
+      $('#editvinylform').prepend('<input type="hidden" id="hiddenfbidinput" name="fbid" value="'+fbid+'">');
     }
   }
 
@@ -131,8 +131,6 @@ var Main = (function()
 
     var vinyl = {};
     var albumID;
-
-    _updateForms(FBDATA.id);
 
     $.when(
       // 1st get Album ID from Deezer

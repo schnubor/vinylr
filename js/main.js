@@ -4,25 +4,26 @@ $(document).ready(function(){
   console.log('document ready!');
 
   // Options for the "Add Vinyl" Ajax call
-  var options = { 
-    //target: '#response',   // target element(s) to be updated with server response 
+  var addOptions = { 
     success: displayAddedVinyl,  // post-submit callback 
+    resetForm: true        // reset the form after successful submit
+    //target: '#response',   // target element(s) to be updated with server response 
     //clearForm: true,        // clear all form fields after successful submit
-    resetForm: true        // reset the form after successful submit 
-
     // other available options: 
     //url:       url         // override for form's 'action' attribute 
     //type:      type        // 'get' or 'post', override for form's 'method' attribute 
     //dataType:  null        // 'xml', 'script', or 'json' (expected server response type) 
-    
-
     // $.ajax options can be used here too, for example: 
     //timeout:   3000 
   };
 
-  // Submit Add Vinyl Form and send Ajax request with form data
-  $('#addvinylform').ajaxForm(options);
+  // Options for the "Add Vinyl" Ajax call
+  var editOptions = {  
+    success: displayEditedVinyl,  // post-submit callback 
+    resetForm: true        // reset the form after successful submit 
+  };
 
+  // Add vinyl callback after ajax success
   function displayAddedVinyl(response){
 
     // if .footable is hidden, show it
@@ -66,15 +67,23 @@ $(document).ready(function(){
     $('#vinylcount').text(vinylcount);
   }
 
+  // Edit vinyl callback after ajax success
+  function displayEditedVinyl(response){
+    console.log("call displayEditedVinyl()");
+    console.log(response);
+    Main.resetOverlay();
+  }
+
   // === ADD VINYL OVERLAY =========================================================
 
   // open overlay with add vinyl form
   $('#loggedInWrapper').on('click', '#addvinyl', function(){
     $('#overlay').fadeIn(200, function(){
-      $('.overlayform').load('../views/addvinyl.html', function(){
-        Main.init();
-        // Submit Add Vinyl Form and send Ajax request with form data
-        $('#addvinylform').ajaxForm(options);
+      $('.overlayform').load('../views/addvinyl.html', function(){ // load add vinyl form
+        Main.init(); // init select boxes and colorpicker
+        Main.updateForms(FBDATA.id); // IMPORTANT: add FB id to form
+        // assign ajaxForm to add vinyl form
+        $('#addvinylform').ajaxForm(addOptions);
       });
     });
   });
@@ -84,22 +93,29 @@ $(document).ready(function(){
   // open overlay with add vinyl form
   $('#loggedInWrapper').on('click', '.edit', function(){
 
-    var row = $(this);
-    console.log(row);
+    var count = $(this).parent().parent().find('.count').text();
+    var color = $(this).parent().parent().find('.circle').text();
+    var vinylid = $(this).parent().parent().find('.vinyl-id').text();
 
     $('#overlay').fadeIn(200, function(){
-      $('.overlayform').load('../views/editvinyl.html', function(){
-        Main.init();
+      $('.overlayform').load('../views/editvinyl.html', function(){ // load edit vinyl form
+        Main.init(); // init select boxes and colorpicker
+        Main.updateForms(FBDATA.id); // IMPORTANT: add FB id to form
+        $('#editvinylform').prepend('<input type="hidden" name="vinylid" value="'+vinylid+'">'); // add vinyl id as hidden input
+        $('#colorpicker').spectrum('set', color); // set color
+        $('#editvinylform').ajaxForm(editOptions); // assign ajaxForm to add vinyl form -> on submit -> displayEditedVinyl()
       });
     });
   });
+
+  // === CLOSE OVERLAY =========================================================
 
   // close overlay
   $('#overlay').on('click', '.close', function(){
     Main.resetOverlay();
   });
 
-  // === DELETE VINYL =====================================================
+  // === DELETE VINYL ===============================================================
 
   $('#loggedInWrapper').on('click', '.delete', function(){
     // get Vinly ID from DOM
