@@ -12,7 +12,7 @@
 
 	// 1. Write Vinyl to DB
 
-	$sql = "UPDATE `".$fbid."` SET Color='".$color."' WHERE VinylID='".$vinylid."'";
+	$sql = "UPDATE `".$fbid."` SET Color='".$color."', Count='".$count."', Type='".$type."', Format='".$size."' WHERE VinylID='".$vinylid."'";
 
 	if (!mysqli_query($con,$sql))
 	{
