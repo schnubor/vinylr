@@ -5,7 +5,7 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /* Mixins & Variables */
 /* General stuff */
-/* line 43, ../sass/global.scss */
+/* line 45, ../sass/global.scss */
 input:focus,
 select:focus,
 textarea:focus,
@@ -13,13 +13,13 @@ button:focus {
   outline: none;
 }
 
-/* line 47, ../sass/global.scss */
+/* line 49, ../sass/global.scss */
 html {
   width: 100%;
   height: 100%;
 }
 
-/* line 52, ../sass/global.scss */
+/* line 54, ../sass/global.scss */
 body {
   background-color: #ddd;
   font-family: 'Lato', Helvetica, sans-serif;
@@ -27,26 +27,26 @@ body {
   width: 100%;
 }
 
-/* line 59, ../sass/global.scss */
+/* line 61, ../sass/global.scss */
 .container {
   width: 100%;
   margin: 0 auto;
 }
-/* line 63, ../sass/global.scss */
+/* line 65, ../sass/global.scss */
 .container p {
   padding: 20px 0;
 }
-/* line 66, ../sass/global.scss */
+/* line 68, ../sass/global.scss */
 .container p em {
   font-size: 2em;
 }
 
-/* line 72, ../sass/global.scss */
+/* line 74, ../sass/global.scss */
 .centeredtext {
   text-align: center;
 }
 
-/* line 76, ../sass/global.scss */
+/* line 78, ../sass/global.scss */
 .button {
   margin-top: 10px;
   width: 100%;
@@ -63,22 +63,22 @@ body {
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
 }
-/* line 91, ../sass/global.scss */
+/* line 93, ../sass/global.scss */
 .button:hover {
   background-color: #e27a3f;
 }
 
 /* === LOGGED IN CONTENT ================== */
-/* line 98, ../sass/global.scss */
+/* line 100, ../sass/global.scss */
 #loggedInWrapper {
   display: none;
   padding: 10px;
 }
-/* line 102, ../sass/global.scss */
+/* line 104, ../sass/global.scss */
 #loggedInWrapper #controls {
   margin-bottom: 10px;
 }
-/* line 105, ../sass/global.scss */
+/* line 107, ../sass/global.scss */
 #loggedInWrapper #controls #filter {
   border-radius: 5px;
   height: 40px;
@@ -89,7 +89,7 @@ body {
   font-family: 'Lato';
   line-height: 42px;
 }
-/* line 116, ../sass/global.scss */
+/* line 118, ../sass/global.scss */
 #loggedInWrapper #controls #vinylcount {
   height: 40px;
   -moz-border-radius: 5px;
@@ -106,7 +106,7 @@ body {
   font-size: 24px;
   margin-right: 10px;
 }
-/* line 131, ../sass/global.scss */
+/* line 133, ../sass/global.scss */
 #loggedInWrapper #controls #addvinyl {
   background-color: #45b29d;
   border: 1px solid #45b29d;
@@ -117,77 +117,44 @@ body {
   padding: 0 10px 0 5px;
   color: white;
   float: right;
-  opacity: .8;
+  opacity: 1;
   margin-top: 1px;
   transition: 0.4s all;
   -webkit-transition: 0.4s all;
 }
-/* line 143, ../sass/global.scss */
+/* line 145, ../sass/global.scss */
 #loggedInWrapper #controls #addvinyl:hover {
-  opacity: 1;
+  opacity: .8;
 }
 
-/* line 150, ../sass/global.scss */
-#currentuser {
-  text-align: center;
-  height: 320px;
-  display: inline-block;
-  float: right;
-  height: 60px;
-  line-height: 60px;
-  color: white;
-}
-/* line 159, ../sass/global.scss */
-#currentuser img {
-  width: 40px;
-  height: 40px;
-  border-radius: 5px;
-  vertical-align: middle;
-}
-/* line 166, ../sass/global.scss */
-#currentuser #username {
-  margin-left: 10px;
-  margin-right: 20px;
-}
-/* line 171, ../sass/global.scss */
-#currentuser #logout {
-  padding-left: 20px;
-  border-left: 1px solid grey;
-  cursor: pointer;
-}
-/* line 176, ../sass/global.scss */
-#currentuser #logout:hover {
-  color: #e27a3f;
-}
-
-/* line 182, ../sass/global.scss */
+/* line 152, ../sass/global.scss */
 #vinylCount {
   text-align: center;
   width: 100%;
 }
-/* line 186, ../sass/global.scss */
+/* line 156, ../sass/global.scss */
 #vinylCount p {
   font-weight: bold;
   font-size: 5em;
 }
-/* line 191, ../sass/global.scss */
+/* line 161, ../sass/global.scss */
 #vinylCount span {
   font-size: 1em;
 }
 
-/* line 196, ../sass/global.scss */
+/* line 166, ../sass/global.scss */
 #addvinyl {
   cursor: pointer;
   text-align: center;
 }
-/* line 200, ../sass/global.scss */
+/* line 170, ../sass/global.scss */
 #addvinyl p {
   font-size: 8em;
   font-weight: bold;
   margin-top: 116px;
   color: #e27a3f;
 }
-/* line 207, ../sass/global.scss */
+/* line 177, ../sass/global.scss */
 #addvinyl span {
   text-transform: uppercase;
 }

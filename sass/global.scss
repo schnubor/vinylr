@@ -29,6 +29,8 @@
 $grey: #202020;
 $white: #FAFAFA;
 
+$fb-blue: #3B5998;
+
 $blue: #334D5C;
 $green: #45B29D;
 $yellow: #EFC94C;
@@ -136,46 +138,14 @@ body{
             padding: 0 10px 0 5px;
             color: white;
             float: right;
-            opacity: .8;
+            opacity: 1;
             margin-top: 1px;
             @include transition(all,.4s);
 
             &:hover{
-                opacity: 1;
+                opacity: .8;
             }
         }
-    }
-}
-
-#currentuser{
-    text-align: center;
-    height: 320px;
-    display: inline-block;
-    float: right;
-    height: 60px;
-    line-height: 60px;
-    color: white;    
-
-    img{
-        width: 40px;
-        height: 40px;
-        border-radius: 5px;
-        vertical-align: middle;
-    }
-
-    #username{
-        margin-left: 10px;
-        margin-right: 20px;
-    }
-
-    #logout{
-        padding-left: 20px;
-        border-left: 1px solid grey;
-        cursor: pointer;
-
-        &:hover{
-            color: $orange;
-        };
     }
 }
 
