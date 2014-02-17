@@ -1,0 +1,93 @@
+
+@import "global.scss";
+
+/* === OVERLAY ===================*/
+
+#overlay{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: rgba(0,0,0,0.9);
+    display: none;
+
+    .close{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 30px;
+        margin: 20px 20px 0 0;
+        background-size: cover;
+        cursor: pointer;
+        color: white;
+        font-size: 2em;
+    }
+
+    .overlayform{
+        width: 300px;
+        height: 400px;
+        position:absolute;
+        left:50%;
+        top:50%;
+        margin: -200px 0 0 -150px;
+        color: white;
+        z-index: 100;
+        text-align: center;
+
+        form{
+            width: 100%;
+            font-size: 12px;
+
+            input[type="text"]{
+                margin-bottom: 10px;
+                border: none;
+                @include radius(5px);
+                padding: 10px;
+                width: calc(100% - 20px);
+            }
+
+            input[type="radio"]{
+                margin: 0 5px 0 0;
+            }
+
+            span{
+                margin-right: 20px;
+            }
+
+            // Add Vinyl Button
+            input[type="submit"]{
+                text-transform: uppercase;
+            }
+
+            // Search Button
+        }// end of form
+
+        // Preview
+        #preview{
+            display: none;
+            margin-top: 20px;
+
+            .general-info{
+                .artwork{
+                    width: 100px;
+                    height: 100px;
+                    padding: 10px;
+                    border: 1px solid #777;
+                    margin: 0 auto;
+                }
+
+                .label-release-genre{
+                    margin-top: 10px;
+                    color: #777;
+                    font-weight: 300;
+                }
+            }
+            
+            .additional-info{
+                margin-top: 10px;
+            }
+
+        }
+    }
+}

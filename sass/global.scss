@@ -1,0 +1,183 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700|Playball);
+
+/* Mixins & Variables */
+
+@mixin scale($x,$y){
+    transform: scale($x,$y);
+    -ms-transform: scale($x,$y);
+    -webkit-transform: scale($x,$y);
+}
+
+@mixin transition($duration, $attribute){
+    transition: $attribute $duration;
+    -webkit-transition: $attribute $duration;
+}
+
+@mixin radius($value){
+    -moz-border-radius: $value;
+    -webkit-border-radius: $value;
+    border-radius: $value;
+}
+
+// Colors
+
+$grey: #202020;
+$white: #FAFAFA;
+
+$fb-blue: #3B5998;
+
+$blue: #334D5C;
+$green: #45B29D;
+$yellow: #EFC94C;
+$orange: #E27A3F;
+$red: #DF5A49;
+
+/* General stuff */
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+html{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    background-color: #ddd;
+    font-family: 'Lato', Helvetica, sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+.container{
+    width: 100%;
+    margin: 0 auto;
+
+    p{
+        padding: 20px 0;
+
+        em{
+            font-size: 2em;
+        }
+    }
+}
+
+.centeredtext{
+    text-align: center;
+}
+
+.button{
+    margin-top: 10px;
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    border: 0;
+    background-color: $green;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: 'Lato';
+    letter-spacing: 1px;
+    font-weight: 300;
+    @include transition(.4s,all);
+
+    &:hover{
+        background-color: $orange;
+    }
+}
+
+/* === LOGGED IN CONTENT ================== */
+
+#loggedInWrapper{
+    display: none;
+    padding: 10px;
+
+    #controls{
+        margin-bottom: 10px;
+
+        #filter{
+            border-radius: 5px;
+            height: 40px;
+            padding: 0 10px;
+            float: left;
+            border: 1px solid #cacaca;
+            width: 280px;
+            font-family: 'Lato';
+            line-height: 42px;
+        }
+
+        #vinylcount{
+            height: 40px;
+            @include radius(5px);
+            background-color: white;
+            border: 1px solid #cacaca;
+            text-align: center;
+            padding: 0 10px;
+            color: #505050;
+            float: right;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        #addvinyl{
+            background-color: $green;
+            border: 1px solid $green;
+            @include radius(5px);
+            height: 40px;
+            padding: 0 10px 0 5px;
+            color: white;
+            float: right;
+            opacity: 1;
+            margin-top: 1px;
+            @include transition(all,.4s);
+
+            &:hover{
+                opacity: .8;
+            }
+        }
+    }
+}
+
+#vinylCount{
+    text-align: center;
+    width: 100%;
+
+    p{
+        font-weight: bold;
+        font-size: 5em;
+    }
+
+    span{
+        font-size: 1em;
+    }
+}
+
+#addvinyl{
+    cursor: pointer;
+    text-align: center;
+
+    p{
+        font-size: 8em;
+        font-weight: bold;
+        margin-top: 116px;
+        color: $orange;
+    }
+
+    span{
+        text-transform: uppercase;
+    }
+}
+
+
+

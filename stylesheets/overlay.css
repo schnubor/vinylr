@@ -1,0 +1,246 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700|Playball);
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Mixins & Variables */
+/* General stuff */
+/* line 45, ../sass/global.scss */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/* line 49, ../sass/global.scss */
+html {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 54, ../sass/global.scss */
+body {
+  background-color: #ddd;
+  font-family: 'Lato', Helvetica, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 61, ../sass/global.scss */
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+/* line 65, ../sass/global.scss */
+.container p {
+  padding: 20px 0;
+}
+/* line 68, ../sass/global.scss */
+.container p em {
+  font-size: 2em;
+}
+
+/* line 74, ../sass/global.scss */
+.centeredtext {
+  text-align: center;
+}
+
+/* line 78, ../sass/global.scss */
+.button {
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  border: 0;
+  background-color: #45b29d;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: 'Lato';
+  letter-spacing: 1px;
+  font-weight: 300;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+}
+/* line 93, ../sass/global.scss */
+.button:hover {
+  background-color: #e27a3f;
+}
+
+/* === LOGGED IN CONTENT ================== */
+/* line 100, ../sass/global.scss */
+#loggedInWrapper {
+  display: none;
+  padding: 10px;
+}
+/* line 104, ../sass/global.scss */
+#loggedInWrapper #controls {
+  margin-bottom: 10px;
+}
+/* line 107, ../sass/global.scss */
+#loggedInWrapper #controls #filter {
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 10px;
+  float: left;
+  border: 1px solid #cacaca;
+  width: 280px;
+  font-family: 'Lato';
+  line-height: 42px;
+}
+/* line 118, ../sass/global.scss */
+#loggedInWrapper #controls #vinylcount {
+  height: 40px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid #cacaca;
+  text-align: center;
+  padding: 0 10px;
+  color: #505050;
+  float: right;
+  line-height: 40px;
+  font-weight: bold;
+  font-size: 24px;
+  margin-right: 10px;
+}
+/* line 133, ../sass/global.scss */
+#loggedInWrapper #controls #addvinyl {
+  background-color: #45b29d;
+  border: 1px solid #45b29d;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 10px 0 5px;
+  color: white;
+  float: right;
+  opacity: 1;
+  margin-top: 1px;
+  transition: 0.4s all;
+  -webkit-transition: 0.4s all;
+}
+/* line 145, ../sass/global.scss */
+#loggedInWrapper #controls #addvinyl:hover {
+  opacity: .8;
+}
+
+/* line 152, ../sass/global.scss */
+#vinylCount {
+  text-align: center;
+  width: 100%;
+}
+/* line 156, ../sass/global.scss */
+#vinylCount p {
+  font-weight: bold;
+  font-size: 5em;
+}
+/* line 161, ../sass/global.scss */
+#vinylCount span {
+  font-size: 1em;
+}
+
+/* line 166, ../sass/global.scss */
+#addvinyl {
+  cursor: pointer;
+  text-align: center;
+}
+/* line 170, ../sass/global.scss */
+#addvinyl p {
+  font-size: 8em;
+  font-weight: bold;
+  margin-top: 116px;
+  color: #e27a3f;
+}
+/* line 177, ../sass/global.scss */
+#addvinyl span {
+  text-transform: uppercase;
+}
+
+/* === OVERLAY ===================*/
+/* line 6, ../sass/overlay.scss */
+#overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+}
+/* line 14, ../sass/overlay.scss */
+#overlay .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  margin: 20px 20px 0 0;
+  background-size: cover;
+  cursor: pointer;
+  color: white;
+  font-size: 2em;
+}
+/* line 27, ../sass/overlay.scss */
+#overlay .overlayform {
+  width: 300px;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -200px 0 0 -150px;
+  color: white;
+  z-index: 100;
+  text-align: center;
+}
+/* line 38, ../sass/overlay.scss */
+#overlay .overlayform form {
+  width: 100%;
+  font-size: 12px;
+}
+/* line 42, ../sass/overlay.scss */
+#overlay .overlayform form input[type="text"] {
+  margin-bottom: 10px;
+  border: none;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  width: calc(100% - 20px);
+}
+/* line 50, ../sass/overlay.scss */
+#overlay .overlayform form input[type="radio"] {
+  margin: 0 5px 0 0;
+}
+/* line 54, ../sass/overlay.scss */
+#overlay .overlayform form span {
+  margin-right: 20px;
+}
+/* line 59, ../sass/overlay.scss */
+#overlay .overlayform form input[type="submit"] {
+  text-transform: uppercase;
+}
+/* line 67, ../sass/overlay.scss */
+#overlay .overlayform #preview {
+  display: none;
+  margin-top: 20px;
+}
+/* line 72, ../sass/overlay.scss */
+#overlay .overlayform #preview .general-info .artwork {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #777;
+  margin: 0 auto;
+}
+/* line 80, ../sass/overlay.scss */
+#overlay .overlayform #preview .general-info .label-release-genre {
+  margin-top: 10px;
+  color: #777;
+  font-weight: 300;
+}
+/* line 87, ../sass/overlay.scss */
+#overlay .overlayform #preview .additional-info {
+  margin-top: 10px;
+}

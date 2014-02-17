@@ -1,0 +1,109 @@
+@import "global.scss";
+
+/* === HEADER ======================== */
+
+header{
+    background-color: $grey;
+    text-align: left;
+    height: 60px;
+    padding: 10px 20px;
+
+    h1{
+        font-family: 'Playball', cursive;
+        font-size: 2em;
+        color: white;
+        text-align: left;
+        display: inline-block;
+        height: 60px;
+        line-height: 60px;
+        text-shadow: 0 0 10px #808080;
+        margin: 0;
+        vertical-align: top;
+        letter-spacing: -1px;
+    }
+
+    h3{
+        color: #aaa;
+        font-size: 16px;
+        font-weight: 300;
+        text-align: center;
+        display: inline-block;
+        letter-spacing: 1px;
+        padding-left: 10px;
+        line-height: 70px;
+        height: 60px;
+        margin: 0;
+    }
+
+    #currentuser{
+        text-align: center;
+        height: 320px;
+        display: inline-block;
+        float: right;
+        height: 60px;
+        line-height: 60px;
+        color: white;    
+
+        img{
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            vertical-align: middle;
+        }
+
+        #username{
+            margin-left: 10px;
+            margin-right: 20px;
+        }
+
+        #logout{
+            padding-left: 20px;
+            border-left: 1px solid grey;
+            cursor: pointer;
+
+            &:hover{
+                color: $green;
+            };
+        }
+    }
+}
+
+#loading{
+    color: white;
+    float: right;
+    height: 60px;
+    line-height: 60px;
+}
+
+#fb-button{
+	display: none;
+    float: right;
+    height: 60px;
+    line-height: 60px;
+}
+
+#fb-auth{
+    padding: 0 20px 0 10px;
+    background-color: $fb-blue;
+    border-radius: 5px;
+    color: white;
+    font-family: 'Lato', Helvetica, sans-serif;
+    font-weight: light;
+    border: 0;
+    height: 40px;
+
+    span{
+        height: 40px;
+        line-height: 40px;
+    }
+}
+
+/* === FOOTER ===================*/
+
+footer{
+    font-size: 12px;
+    color: #808080;
+    text-align: center;
+    padding: 10px 0 20px 0;
+    font-weight: lighter;
+}
