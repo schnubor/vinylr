@@ -130,65 +130,97 @@ var Main = (function()
     var album = $('input[name=title]').val();
 
     var vinyl = {};
-    var albumID;
+    var releaseID;
 
     $.when(
-      // 1st get Album ID from Deezer
-      $.getJSON('http://api.deezer.com/search/album?q='+artist+' '+album+'&output=jsonp&callback=?', 
-        function(result1){
-          //console.log(result1);
-          if(typeof result1.data[0] === 'undefined'){  // nothing was found
-            alert("Sorry, couldn't find this vinyl. Please try again.")
+      // 1st get Release ID from Discogs
+      $.getJSON('http://api.discogs.com/database/search?type=release&q=title:'+album+'%20AND%20artist:'+artist+'%20AND%20format:%22vinyl%22&callback=?', 
+        function(data){
+          if(typeof data.data.results[0] === 'undefined'){  // nothing was found
+            alert("Sorry, couldn't find this vinyl. Please try again.");
+            return;
           }
           else{ 
-            albumID = result1.data[0].id;
+            releaseID = data.data.results[0].id;
           }
         })
     ).done(function(){
       $.when(
-        // 2nd get Label, Duration, Deezer link and Artistpic from Deezer
-        $.getJSON('http://api.deezer.com/album/'+albumID+'&output=jsonp&callback=?', 
+        // 2nd get Discogs Release infos
+        $.getJSON('http://api.discogs.com/releases/'+releaseID, 
           function(data){
-            //console.log(data);
-            vinyl.label = data.label;
-            vinyl.duration = data.duration;
-            vinyl.deezerlink = data.link;
-            vinyl.artistPic = data.artist.picture;
+            console.log(data);
+
+            vinyl.label = data.labels[0].name;
+            vinyl.genre = data.styles.join();
+            vinyl.date = data.released;
+
+            console.log(data.labels[0].name);
           })
       ).done(function(){
+        $.when(
+          // 3rd get Album ID from Deezer
+          $.getJSON('http://api.deezer.com/search/album?q='+artist+' '+album+'&output=jsonp&callback=?', 
+            function(result1){
+              //console.log(result1);
+              if(typeof result1.data[0] === 'undefined'){  // nothing was found
+                albumID = 'undefined';
+              }
+              else{ 
+                albumID = result1.data[0].id;
+              }
+            })
+        ).done(function(){
           $.when(
-            // 3rd get artwork, audio sample and genre from iTunes
-            $.getJSON('http://itunes.apple.com/search?term='+artist+' '+album+'&limit=1&callback=?', 
-              function(data) {
+            // 4th get Duration, Deezer link and Artistpic from Deezer
+            $.getJSON('http://api.deezer.com/album/'+albumID+'&output=jsonp&callback=?', 
+              function(data){
                 //console.log(data);
-                vinyl.artworkUrl = data.results[0].artworkUrl100;
-                vinyl.sampleUrl = data.results[0].previewUrl;
-                vinyl.genre = data.results[0].primaryGenreName;
-                vinyl.price = data.results[0].collectionPrice;
-                vinyl.itunesUrl = data.results[0].collectionViewUrl;
-                vinyl.date = data.results[0].releaseDate.substring(0, 10); // truncate the time
+                if(albumID !== 'undefined'){
+                  vinyl.duration = data.duration;
+                  vinyl.deezerlink = data.link;
+                  vinyl.artistPic = data.artist.picture;
+                }
+                else{
+                  vinyl.duration = '';
+                  vinyl.deezerlink = '';
+                  vinyl.artistPic = '';
+                } 
               })
           ).done(function(){
-            console.log(vinyl);
-            
-            // fill input values
-            $('input[name=genre]').val(vinyl.genre);
-            $('input[name=label]').val(vinyl.label);
-            $('input[name=artistpic]').val(vinyl.artistPic);
-            $('input[name=artwork]').val(vinyl.artworkUrl);
-            $('input[name=sample]').val(vinyl.sampleUrl);
-            $('input[name=itunes]').val(vinyl.itunesUrl);
-            $('input[name=deezer]').val(vinyl.deezerlink);
-            $('input[name=release]').val(vinyl.date);
-            $('input[name=price]').val(vinyl.price);
-            $('input[name=duration]').val(vinyl.duration);
-            $('input[name=color]').val(pickercolor);
+            $.when(
+              // 5th get artwork, audio sample from iTunes
+              $.getJSON('http://itunes.apple.com/search?term='+artist+' '+album+'&limit=1&callback=?', 
+                function(data) {
+                  //console.log(data);
+                  vinyl.artworkUrl = data.results[0].artworkUrl100;
+                  vinyl.sampleUrl = data.results[0].previewUrl;
+                  vinyl.price = data.results[0].collectionPrice;
+                  vinyl.itunesUrl = data.results[0].collectionViewUrl;
+                })
+            ).done(function(){
+              console.log(vinyl);
+              
+              // fill input values
+              $('input[name=genre]').val(vinyl.genre);
+              $('input[name=label]').val(vinyl.label);
+              $('input[name=artistpic]').val(vinyl.artistPic);
+              $('input[name=artwork]').val(vinyl.artworkUrl);
+              $('input[name=sample]').val(vinyl.sampleUrl);
+              $('input[name=itunes]').val(vinyl.itunesUrl);
+              $('input[name=deezer]').val(vinyl.deezerlink);
+              $('input[name=release]').val(vinyl.date);
+              $('input[name=price]').val(vinyl.price);
+              $('input[name=duration]').val(vinyl.duration);
+              $('input[name=color]').val(pickercolor);
 
-            // Preview the vinyl
-            _showPreview(vinyl);
- 
+              // Preview the vinyl
+              _showPreview(vinyl);
+   
+            });
           });
         });
+      });
     });
   }
 
