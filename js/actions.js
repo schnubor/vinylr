@@ -175,7 +175,6 @@ var Main = (function()
             // 4th get Duration, Deezer link and Artistpic from Deezer
             $.getJSON('http://api.deezer.com/album/'+albumID+'&output=jsonp&callback=?', 
               function(data){
-                //console.log(data);
                 if(albumID !== 'undefined'){
                   vinyl.duration = data.duration;
                   vinyl.deezerlink = data.link;
