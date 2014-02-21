@@ -24,6 +24,7 @@
 	`Color` VARCHAR(255),
 	`Artwork` VARCHAR(255),
 	`Artistpic` VARCHAR(255),
+	`Video` VARCHAR(255),
 	`iTunes` VARCHAR(255),
 	PRIMARY KEY(VinylID)
 	);";

@@ -96,6 +96,7 @@ var Main = (function()
       content += '<td class="price">'+vinyls[index].Price+'</td>';
       content += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+vinyls[index].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
       content += '<td class="artistpic"><img src="'+vinyls[index].Artistpic+'" alt="'+vinyls[index].Artist+'"></td>';
+      content += '<td class="video">'+vinyls[index].Video.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, '<iframe width="300" height="170" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen style="vertical-align: middle;"></iframe>')+'</td>';
       content += '<td class="genre">'+vinyls[index].Genre+'</td>';
       content += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       content += '</tr>';
@@ -154,6 +155,9 @@ var Main = (function()
             vinyl.label = data.labels[0].name;
             vinyl.genre = data.styles.join();
             vinyl.date = data.released;
+            vinyl.artist = data.artists[0].name;
+            vinyl.title = data.title;
+            vinyl.video = data.videos[0].uri;
 
             console.log(data.labels[0].name);
           })
@@ -212,6 +216,9 @@ var Main = (function()
               $('input[name=price]').val(vinyl.price);
               $('input[name=duration]').val(vinyl.duration);
               $('input[name=color]').val(pickercolor);
+              $('input[name=video]').val(vinyl.video);
+              $('input[name=artist-corrected]').val(vinyl.artist);
+              $('input[name=album-corrected]').val(vinyl.title);
 
               // Preview the vinyl
               _showPreview(vinyl);
