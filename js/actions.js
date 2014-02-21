@@ -153,7 +153,7 @@ var Main = (function()
             console.log(data);
 
             vinyl.label = data.labels[0].name;
-            vinyl.genre = data.styles.join();
+            vinyl.genre = data.genres.join();
             vinyl.date = data.released;
             vinyl.artist = data.artists[0].name;
             vinyl.title = data.title;
