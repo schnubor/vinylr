@@ -66,8 +66,10 @@ var Main = (function()
             _displayVinylData(VINYLS); // display the resceived data
           }
           else{ // no vinyls in DB yet
+            console.log("no vinyls yet");
             $('.footable').hide();
-            $('#vinylcount').text('0');
+            vinylcount = 0;
+            $('#vinylcount').text(vinylcount);
           }
     		},
     		error: function () {
@@ -78,7 +80,12 @@ var Main = (function()
 
   // Build actual Vinyl List and display it
   function _displayVinylData(vinyls){
-    
+    console.log("call _displayVinylData");
+
+    if(!$('.footable').is(':visible')){
+      $('.footable').show();
+    }
+
     var index = 0;
 
     $.each(vinyls, function(){
