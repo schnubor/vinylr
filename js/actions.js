@@ -103,7 +103,12 @@ var Main = (function()
       content += '<td class="price">'+vinyls[index].Price+'</td>';
       content += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+vinyls[index].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
       content += '<td class="artistpic"><img src="'+vinyls[index].Artistpic+'" alt="'+vinyls[index].Artist+'"></td>';
-      content += '<td class="video">'+vinyls[index].Video.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, '<iframe width="300" height="170" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen style="vertical-align: middle;"></iframe>')+'</td>';
+      if(vinyls[index].Video != '-'){
+        content += '<td class="video">'+vinyls[index].Video.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, '<iframe width="300" height="170" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen style="vertical-align: middle;"></iframe>')+'</td>';
+      }
+      else{
+        content += '<td class="video">-</td>';
+      }
       content += '<td class="genre">'+vinyls[index].Genre+'</td>';
       content += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       content += '</tr>';
@@ -140,6 +145,8 @@ var Main = (function()
     var vinyl = {};
     var releaseID;
 
+    console.log('http://api.discogs.com/database/search?type=release&q=title:'+album+'%20AND%20artist:'+artist+'%20AND%20format:%22vinyl%22&callback=?');
+
     $.when(
       // 1st get Release ID from Discogs
       $.getJSON('http://api.discogs.com/database/search?type=release&q=title:'+album+'%20AND%20artist:'+artist+'%20AND%20format:%22vinyl%22&callback=?', 
@@ -160,11 +167,17 @@ var Main = (function()
             console.log(data);
 
             vinyl.label = data.labels[0].name;
-            vinyl.genre = data.genres.join();
+            vinyl.genre = data.genres.join(', ');
             vinyl.date = data.released;
             vinyl.artist = data.artists[0].name;
             vinyl.title = data.title;
-            vinyl.video = data.videos[0].uri;
+            // check if videos are found
+            if(typeof data.videos != 'undefined'){
+              vinyl.video = data.videos[0].uri;
+            }
+            else{ // found videos
+              vinyl.video = '-';
+            }
 
             console.log(data.labels[0].name);
           })
@@ -192,9 +205,9 @@ var Main = (function()
                   vinyl.artistPic = data.artist.picture;
                 }
                 else{
-                  vinyl.duration = '';
-                  vinyl.deezerlink = '';
-                  vinyl.artistPic = '';
+                  vinyl.duration = '-';
+                  vinyl.deezerlink = '-';
+                  vinyl.artistPic = '-';
                 } 
               })
           ).done(function(){

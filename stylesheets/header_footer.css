@@ -269,3 +269,13 @@ footer {
   padding: 10px 0 20px 0;
   font-weight: lighter;
 }
+/* line 110, ../sass/header_footer.scss */
+footer a {
+  text-decoration: none;
+  font-weight: normal;
+  color: #808080;
+}
+/* line 115, ../sass/header_footer.scss */
+footer a:hover {
+  text-decoration: underline;
+}
