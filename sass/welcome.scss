@@ -1,0 +1,40 @@
+@import "global.scss";
+
+#header-bg{
+	background: url('../img/header-image2.jpg') no-repeat;
+	background-position: 0 -100px;
+	background-size: cover;
+	background-color: black;
+	background-opacity: .8;
+	height: 400px;
+	width: 100%;
+	position: relative;
+
+	.header-content{
+		margin: 0 auto;
+		text-align: center;
+		padding: 50px;
+		top: 50%;
+		position: absolute;
+		height: 250px;
+		width: calc(100% - 100px);
+		margin-top: -150px;
+
+		img{
+			width: 120px;
+			height: 120px;
+			display: block;
+			margin: 0 auto;
+		}
+
+		.title-text{
+			margin: 0;
+			color: white;
+			margin-top: 20px;
+			font-weight: 200;
+			font-size: 56px;
+		}
+	}
+
+	
+}

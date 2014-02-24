@@ -17,7 +17,7 @@
 	`Price` VARCHAR(255),
 	`Genre` VARCHAR(255),
 	`Duration` VARCHAR(255),
-	`Tracklist` VARCHAR(255),
+	`Tracklist` VARCHAR(2048),
 	`Count` VARCHAR(255),
 	`Format` VARCHAR(255),
 	`Type` VARCHAR(255),

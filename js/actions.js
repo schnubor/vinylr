@@ -109,6 +109,7 @@ var Main = (function()
       else{
         content += '<td class="video">-</td>';
       }
+      content += '<td class="genre">'+vinyls[index].Tracklist+'</td>';
       content += '<td class="genre">'+vinyls[index].Genre+'</td>';
       content += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       content += '</tr>';
@@ -145,8 +146,6 @@ var Main = (function()
     var vinyl = {};
     var releaseID;
 
-    console.log('http://api.discogs.com/database/search?type=release&q=title:'+album+'%20AND%20artist:'+artist+'%20AND%20format:%22vinyl%22&callback=?');
-
     $.when(
       // 1st get Release ID from Discogs
       $.getJSON('http://api.discogs.com/database/search?type=release&q=title:'+album+'%20AND%20artist:'+artist+'%20AND%20format:%22vinyl%22&callback=?', 
@@ -171,6 +170,21 @@ var Main = (function()
             vinyl.date = data.released;
             vinyl.artist = data.artists[0].name;
             vinyl.title = data.title;
+            // check if tracklist is found
+            if(typeof data.videos != 'undefined'){
+              vinyl.tracklist = data.tracklist[0].position+". ";
+              vinyl.tracklist += data.tracklist[0].title+" ";
+              vinyl.tracklist += data.tracklist[0].duration+";"
+
+              for(var i=1; i<data.tracklist.length; i++){
+                vinyl.tracklist += data.tracklist[i].position+". ";
+                vinyl.tracklist += data.tracklist[i].title+" ";
+                vinyl.tracklist += data.tracklist[i].duration+";"
+              }
+            }
+            else{
+              vinyl.tracklist = '-';
+            }
             // check if videos are found
             if(typeof data.videos != 'undefined'){
               vinyl.video = data.videos[0].uri;
@@ -239,6 +253,7 @@ var Main = (function()
               $('input[name=video]').val(vinyl.video);
               $('input[name=artist-corrected]').val(vinyl.artist);
               $('input[name=album-corrected]').val(vinyl.title);
+              $('input[name=tracklist]').val(vinyl.tracklist);
 
               // Preview the vinyl
               _showPreview(vinyl);
