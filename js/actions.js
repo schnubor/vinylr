@@ -103,13 +103,21 @@ var Main = (function()
       content += '<td class="price">'+vinyls[index].Price+'</td>';
       content += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+vinyls[index].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
       content += '<td class="artistpic"><img src="'+vinyls[index].Artistpic+'" alt="'+vinyls[index].Artist+'"></td>';
+      // Video
       if(vinyls[index].Video != '-'){
         content += '<td class="video">'+vinyls[index].Video.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, '<iframe width="300" height="170" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen style="vertical-align: middle;"></iframe>')+'</td>';
       }
       else{
         content += '<td class="video">-</td>';
       }
-      content += '<td class="genre">'+vinyls[index].Tracklist+'</td>';
+      // Tracklist
+      var tracklist = vinyls[index].Tracklist.split(";");
+      content += '<td class="tracklist">'+tracklist[0]+'<br/>'
+      for(var i=1; i<tracklist.length; i++){
+        content += tracklist[i]+'<br/>'
+      }
+      content += '</td>';
+
       content += '<td class="genre">'+vinyls[index].Genre+'</td>';
       content += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       content += '</tr>';
@@ -136,6 +144,9 @@ var Main = (function()
   function _fetchData(){
     console.log("calling _fetchData");
 
+    $('#searchbutton').hide();
+    $('#searching').show();
+
     var pickercolor = $("#colorpicker").spectrum("get").toHexString();
     $('input[name=color]').val(pickercolor);
     console.log(pickercolor);
@@ -146,6 +157,7 @@ var Main = (function()
     var vinyl = {};
     var releaseID;
 
+    setTimeout(function)
     $.when(
       // 1st get Release ID from Discogs
       $.getJSON('http://api.discogs.com/database/search?type=release&q=title:'+album+'%20AND%20artist:'+artist+'%20AND%20format:%22vinyl%22&callback=?', 
@@ -178,7 +190,7 @@ var Main = (function()
 
               for(var i=1; i<data.tracklist.length; i++){
                 vinyl.tracklist += data.tracklist[i].position+". ";
-                vinyl.tracklist += data.tracklist[i].title+" ";
+                vinyl.tracklist += data.tracklist[i].title+" - ";
                 vinyl.tracklist += data.tracklist[i].duration+";"
               }
             }
@@ -229,11 +241,20 @@ var Main = (function()
               // 5th get artwork, audio sample from iTunes
               $.getJSON('http://itunes.apple.com/search?term='+artist+' '+album+'&limit=1&callback=?', 
                 function(data) {
-                  //console.log(data);
-                  vinyl.artworkUrl = data.results[0].artworkUrl100;
-                  vinyl.sampleUrl = data.results[0].previewUrl;
-                  vinyl.price = data.results[0].collectionPrice;
-                  vinyl.itunesUrl = data.results[0].collectionViewUrl;
+                  console.log("iTunes data:");
+                  console.log(data);
+                  if(data.results.length != 0){
+                    vinyl.artworkUrl = data.results[0].artworkUrl100;
+                    vinyl.sampleUrl = data.results[0].previewUrl;
+                    vinyl.price = data.results[0].collectionPrice;
+                    vinyl.itunesUrl = data.results[0].collectionViewUrl;
+                  }
+                  else{ // no data found on iTunes
+                    vinyl.artworkUrl = "/img/vinyl_PH.svg";
+                    vinyl.sampleUrl = "no sample available";
+                    vinyl.price = "not found";
+                    vinyl.itunesUrl = "not found";
+                  }
                 })
             ).done(function(){
               console.log(vinyl);
@@ -268,7 +289,7 @@ var Main = (function()
   // Show preview of vinyl after search
   function _showPreview(vinyl){
     // hide search button; show submit button; show preview
-    $('#searchbutton').hide();
+    $('#searchbutton, #searching').hide();
     $('#submitbutton').fadeIn();
     $('#preview').fadeIn();
 

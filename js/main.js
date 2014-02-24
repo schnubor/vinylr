@@ -50,8 +50,21 @@ $(document).ready(function(){
       row += '<td class="price">'+latestVinyl[0].Price+'</td>';
       row += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+latestVinyl[0].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
       row += '<td class="artistpic"><img src="'+latestVinyl[0].Artistpic+'" alt="'+latestVinyl[0].Artist+'"></td>';
-      row += '<td class="video">'+latestVinyl[0].Video.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, '<iframe width="300" height="170" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen style="vertical-align: middle;"></iframe>')+'</td>';
-      row += '<td class="tracklist">'+latestVinyl[0].Tracklist+'</td>';
+      // Video
+      if(latestVinyl[0].Video != '-'){
+        row += '<td class="video">'+latestVinyl[0].Video.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, '<iframe width="300" height="170" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen style="vertical-align: middle;"></iframe>')+'</td>';
+      }
+      else{
+        row += '<td class="video">-</td>';
+      }
+      // Tracklist
+      var tracklist = latestVinyl[0].Tracklist.split(";");
+      row += '<td class="tracklist">'+tracklist[0]+'<br/>'
+      for(var i=1; i<tracklist.length; i++){
+        row += tracklist[i]+'<br/>'
+      }
+      row += '</td>';
+
       row += '<td class="genre">'+latestVinyl[0].Genre+'</td>';
       row += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       row += '</tr>';

@@ -222,11 +222,17 @@ body {
   text-transform: uppercase;
 }
 /* line 67, ../sass/overlay.scss */
+#overlay .overlayform #searching {
+  font-size: 40px;
+  margin-top: 60px;
+  color: white;
+}
+/* line 74, ../sass/overlay.scss */
 #overlay .overlayform #preview {
   display: none;
   margin-top: 20px;
 }
-/* line 72, ../sass/overlay.scss */
+/* line 79, ../sass/overlay.scss */
 #overlay .overlayform #preview .general-info .artwork {
   width: 100px;
   height: 100px;
@@ -234,13 +240,13 @@ body {
   border: 1px solid #777;
   margin: 0 auto;
 }
-/* line 80, ../sass/overlay.scss */
+/* line 87, ../sass/overlay.scss */
 #overlay .overlayform #preview .general-info .label-release-genre {
   margin-top: 10px;
   color: #777;
   font-weight: 300;
 }
-/* line 87, ../sass/overlay.scss */
+/* line 94, ../sass/overlay.scss */
 #overlay .overlayform #preview .additional-info {
   margin-top: 10px;
 }
