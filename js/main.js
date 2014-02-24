@@ -6,8 +6,8 @@ $(document).ready(function(){
   // Options for the "Add Vinyl" Ajax call
   var addOptions = { 
     success: displayAddedVinyl,  // post-submit callback 
-    resetForm: true,        // reset the form after successful submit
-    target: '#response'   // target element(s) to be updated with server response 
+    resetForm: true        // reset the form after successful submit
+    //target: '#debug-response'   // target element(s) to be updated with server response 
     //clearForm: true,        // clear all form fields after successful submit
     // other available options: 
     //url:       url         // override for form's 'action' attribute 
