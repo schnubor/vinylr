@@ -183,16 +183,18 @@ var Main = (function()
             vinyl.date = data.released;
             vinyl.artist = data.artists[0].name;
             vinyl.title = data.title;
+            vinyl.artworkUrl = data.images[0].uri150.replace("http://api.discogs.com","http://s.pixogs.com");
+            console.log(vinyl.artworkUrl);
             // check if tracklist is found
             if(typeof data.videos != 'undefined'){
               vinyl.tracklist = data.tracklist[0].position+". ";
-              vinyl.tracklist += data.tracklist[0].title+" ";
-              vinyl.tracklist += data.tracklist[0].duration+";"
+              vinyl.tracklist += data.tracklist[0].title;
+              vinyl.tracklist += " "+data.tracklist[0].duration+";"
 
               for(var i=1; i<data.tracklist.length; i++){
                 vinyl.tracklist += data.tracklist[i].position+". ";
-                vinyl.tracklist += data.tracklist[i].title+" - ";
-                vinyl.tracklist += data.tracklist[i].duration+";"
+                vinyl.tracklist += data.tracklist[i].title;
+                vinyl.tracklist += " "+data.tracklist[i].duration+";"
               }
             }
             else{
@@ -245,13 +247,13 @@ var Main = (function()
                   console.log("iTunes data:");
                   console.log(data);
                   if(data.results.length != 0){
-                    vinyl.artworkUrl = data.results[0].artworkUrl100;
+                    //vinyl.artworkUrl = data.results[0].artworkUrl100;
                     vinyl.sampleUrl = data.results[0].previewUrl;
                     vinyl.price = data.results[0].collectionPrice;
                     vinyl.itunesUrl = data.results[0].collectionViewUrl;
                   }
                   else{ // no data found on iTunes
-                    vinyl.artworkUrl = "/img/vinyl_PH.svg";
+                    //vinyl.artworkUrl = "/img/vinyl_PH.svg";
                     vinyl.sampleUrl = "no sample available";
                     vinyl.price = "not found";
                     vinyl.itunesUrl = "not found";
