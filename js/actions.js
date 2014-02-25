@@ -157,13 +157,14 @@ var Main = (function()
     var vinyl = {};
     var releaseID;
 
-    setTimeout(function)
     $.when(
       // 1st get Release ID from Discogs
       $.getJSON('http://api.discogs.com/database/search?type=release&q=title:'+album+'%20AND%20artist:'+artist+'%20AND%20format:%22vinyl%22&callback=?', 
         function(data){
           if(typeof data.data.results[0] === 'undefined'){  // nothing was found
             alert("Sorry, couldn't find this vinyl. Please try again.");
+            $('#searchbutton').show();
+            $('#searching').hide();
             return;
           }
           else{ 
