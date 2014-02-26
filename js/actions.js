@@ -236,7 +236,7 @@ var Main = (function()
                 else{
                   vinyl.duration = '-';
                   vinyl.deezerlink = '-';
-                  vinyl.artistPic = '-';
+                  vinyl.artistPic = 'img/artist_PH.svg';
                 } 
               })
           ).done(function(){

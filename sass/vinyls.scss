@@ -63,3 +63,27 @@
         }
     }
 }
+
+.pagination{
+    
+    text-align: center;
+
+    ul{
+        list-style-type: none;
+
+        li{
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 18px;
+
+            a{
+                text-decoration: none;  
+                color: $grey;
+
+                &:hover{
+                    color: $green;
+                }
+            }
+        }
+    }
+}
