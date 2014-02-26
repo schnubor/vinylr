@@ -223,11 +223,15 @@ body {
   font-size: 18px;
 }
 /* line 79, ../sass/vinyls.scss */
+.pagination ul li.footable-page-arrow {
+  font-size: 26px;
+}
+/* line 83, ../sass/vinyls.scss */
 .pagination ul li a {
   text-decoration: none;
   color: #202020;
 }
-/* line 83, ../sass/vinyls.scss */
+/* line 87, ../sass/vinyls.scss */
 .pagination ul li a:hover {
   color: #45b29d;
 }
