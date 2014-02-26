@@ -275,8 +275,8 @@ var Main = (function()
               $('input[name=duration]').val(vinyl.duration);
               $('input[name=color]').val(pickercolor);
               $('input[name=video]').val(vinyl.video);
-              $('input[name=artist-corrected]').val(vinyl.artist);
-              $('input[name=album-corrected]').val(vinyl.title);
+              $('input[name=artist_corrected]').val(vinyl.artist);
+              $('input[name=album_corrected]').val(vinyl.title);
               $('input[name=tracklist]').val(vinyl.tracklist);
 
               // Preview the vinyl

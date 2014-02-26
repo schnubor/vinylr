@@ -4,9 +4,11 @@
 
 	// 1. Write Vinyl to DB
 	$tracklist = mysql_real_escape_string($_POST['tracklist']);
+	$artist = mysql_real_escape_string($_POST['artist_corrected']);
+	$album = mysql_real_escape_string($_POST['album_corrected']);
 	$sql = "INSERT INTO `$_POST[fbid]` (Artist, Album, Label, Sample, Releasedate, Price, Genre, Duration, Tracklist, Count, Format, Type, Color, Artwork, Artistpic, Video, iTunes)
 	VALUES
-	('$_POST[artist]','$_POST[title]','$_POST[label]','$_POST[sample]','$_POST[release]','$_POST[price]','$_POST[genre]','$_POST[duration]','$tracklist','$_POST[count]','$_POST[size]','$_POST[type]','$_POST[color]','$_POST[artwork]','$_POST[artistpic]','$_POST[video]','$_POST[itunes]')";
+	('$artist','$album','$_POST[label]','$_POST[sample]','$_POST[release]','$_POST[price]','$_POST[genre]','$_POST[duration]','$tracklist','$_POST[count]','$_POST[size]','$_POST[type]','$_POST[color]','$_POST[artwork]','$_POST[artistpic]','$_POST[video]','$_POST[itunes]')";
 
 	if (!mysqli_query($con,$sql))
 	{
