@@ -135,14 +135,14 @@ $(document).ready(function(){
     });
   });
 
-  // === CLOSE OVERLAY =========================================================
+  // === CLOSE OVERLAY ==============================================================
 
   // close overlay
   $('#overlay').on('click', '.close', function(){
     Main.resetOverlay();
   });
 
-  // === DELETE VINYL ===============================================================
+  // === Delete Vinyl ===============================================================
 
   $('#loggedInWrapper').on('click', '.delete', function(){
     // get Vinly ID from DOM

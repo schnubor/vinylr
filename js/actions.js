@@ -213,7 +213,7 @@ var Main = (function()
       ).done(function(){
         $.when(
           // 3rd get Album ID from Deezer
-          $.getJSON('http://api.deezer.com/search/album?q='+artist+' '+album+'&output=jsonp&callback=?', 
+          $.getJSON('http://api.deezer.com/search/album?q='+vinyl.artist+' '+vinyl.title+'&output=jsonp&callback=?', 
             function(result1){
               //console.log(result1);
               if(typeof result1.data[0] === 'undefined'){  // nothing was found
@@ -242,7 +242,7 @@ var Main = (function()
           ).done(function(){
             $.when(
               // 5th get artwork, audio sample from iTunes
-              $.getJSON('http://itunes.apple.com/search?term='+artist+' '+album+'&limit=1&callback=?', 
+              $.getJSON('http://itunes.apple.com/search?term='+vinyl.artist+' '+vinyl.title+'&limit=1&callback=?', 
                 function(data) {
                   console.log("iTunes data:");
                   console.log(data);
