@@ -24,6 +24,10 @@
     border-radius: $value;
 }
 
+@mixin font($font){
+    font-family: $font, Helvetica, sans-serif;
+}
+
 // Colors
 
 $grey: #202020;
@@ -130,21 +134,28 @@ body{
             margin-right: 10px;
         }
 
-        #addvinyl{
+        #addvinyl, #stats{
             background-color: $green;
             border: 1px solid $green;
             @include radius(5px);
             height: 40px;
-            padding: 0 10px 0 5px;
+            padding: 0 20px 0 15px;
             color: white;
             float: right;
-            opacity: 1;
             margin-top: 1px;
+            font-weight: 300;
             @include transition(all,.4s);
+            @include font(Lato);
 
             &:hover{
-                opacity: .8;
+
             }
+        }
+
+        #stats{
+            background-color: $orange;
+            border: 1px solid $orange;
+            margin-left: 10px;
         }
     }
 }
