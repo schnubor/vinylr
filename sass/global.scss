@@ -37,8 +37,10 @@ $fb-blue: #3B5998;
 
 $blue: #334D5C;
 $green: #45B29D;
+$dark-green: #368A7A;
 $yellow: #EFC94C;
 $orange: #E27A3F;
+$dark-orange: #BF6736;
 $red: #DF5A49;
 
 /* General stuff */
@@ -134,7 +136,7 @@ body{
             margin-right: 10px;
         }
 
-        #addvinyl, #stats{
+        .addvinyl, .stats{
             background-color: $green;
             border: 1px solid $green;
             @include radius(5px);
@@ -148,14 +150,18 @@ body{
             @include font(Lato);
 
             &:hover{
-
+                background-color: $dark-green;
             }
         }
 
-        #stats{
+        .stats{
             background-color: $orange;
             border: 1px solid $orange;
             margin-left: 10px;
+
+            &:hover{
+                background-color: $dark-orange;
+            }
         }
     }
 }

@@ -52,7 +52,8 @@ $(document).ready(function(){
       row += '<td class="artistpic"><img src="'+latestVinyl[0].Artistpic+'" alt="'+latestVinyl[0].Artist+'"></td>';
       // Video
       if(latestVinyl[0].Video != '-'){
-        row += '<td class="video">'+latestVinyl[0].Video.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, '<iframe width="300" height="170" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen style="vertical-align: middle;"></iframe>')+'</td>';
+        //row += '<td class="video">'+latestVinyl[0].Video.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, '<iframe width="300" height="170" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen style="vertical-align: middle;"></iframe>')+'</td>';
+        row += '<td class="video"><a href="'+latestVinyl[0].Video+'">'+latestVinyl[0].Video+'</a></td>';
       }
       else{
         row += '<td class="video">-</td>';
@@ -101,7 +102,7 @@ $(document).ready(function(){
   // === ADD VINYL OVERLAY =========================================================
 
   // open overlay with add vinyl form
-  $('#loggedInWrapper').on('click', '#addvinyl', function(){
+  $('#loggedInWrapper').on('click', '.addvinyl', function(){
     $('#overlay').fadeIn(200, function(){
       $('.overlayform').load('../views/addvinyl.html', function(){ // load add vinyl form
         Main.init(); // init select boxes and colorpicker

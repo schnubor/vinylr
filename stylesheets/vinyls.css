@@ -5,7 +5,7 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /* Mixins & Variables */
 /* General stuff */
-/* line 49, ../sass/global.scss */
+/* line 51, ../sass/global.scss */
 input:focus,
 select:focus,
 textarea:focus,
@@ -13,13 +13,13 @@ button:focus {
   outline: none;
 }
 
-/* line 53, ../sass/global.scss */
+/* line 55, ../sass/global.scss */
 html {
   width: 100%;
   height: 100%;
 }
 
-/* line 58, ../sass/global.scss */
+/* line 60, ../sass/global.scss */
 body {
   background-color: #ddd;
   font-family: 'Lato', Helvetica, sans-serif;
@@ -27,26 +27,26 @@ body {
   width: 100%;
 }
 
-/* line 65, ../sass/global.scss */
+/* line 67, ../sass/global.scss */
 .container {
   width: 100%;
   margin: 0 auto;
 }
-/* line 69, ../sass/global.scss */
+/* line 71, ../sass/global.scss */
 .container p {
   padding: 20px 0;
 }
-/* line 72, ../sass/global.scss */
+/* line 74, ../sass/global.scss */
 .container p em {
   font-size: 2em;
 }
 
-/* line 78, ../sass/global.scss */
+/* line 80, ../sass/global.scss */
 .centeredtext {
   text-align: center;
 }
 
-/* line 82, ../sass/global.scss */
+/* line 84, ../sass/global.scss */
 .button {
   margin-top: 10px;
   width: 100%;
@@ -63,22 +63,22 @@ body {
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
 }
-/* line 97, ../sass/global.scss */
+/* line 99, ../sass/global.scss */
 .button:hover {
   background-color: #e27a3f;
 }
 
 /* === LOGGED IN CONTENT ================== */
-/* line 104, ../sass/global.scss */
+/* line 106, ../sass/global.scss */
 #loggedInWrapper {
   display: none;
   padding: 10px;
 }
-/* line 108, ../sass/global.scss */
+/* line 110, ../sass/global.scss */
 #loggedInWrapper #controls {
   margin-bottom: 10px;
 }
-/* line 111, ../sass/global.scss */
+/* line 113, ../sass/global.scss */
 #loggedInWrapper #controls #filter {
   border-radius: 5px;
   height: 40px;
@@ -89,7 +89,7 @@ body {
   font-family: 'Lato';
   line-height: 42px;
 }
-/* line 122, ../sass/global.scss */
+/* line 124, ../sass/global.scss */
 #loggedInWrapper #controls #vinylcount {
   height: 40px;
   -moz-border-radius: 5px;
@@ -106,8 +106,8 @@ body {
   font-size: 24px;
   margin-right: 10px;
 }
-/* line 137, ../sass/global.scss */
-#loggedInWrapper #controls #addvinyl, #loggedInWrapper #controls #stats {
+/* line 139, ../sass/global.scss */
+#loggedInWrapper #controls .addvinyl, #loggedInWrapper #controls .stats {
   background-color: #45b29d;
   border: 1px solid #45b29d;
   -moz-border-radius: 5px;
@@ -123,81 +123,85 @@ body {
   -webkit-transition: 0.4s all;
   font-family: Lato, Helvetica, sans-serif;
 }
-/* line 155, ../sass/global.scss */
-#loggedInWrapper #controls #stats {
+/* line 152, ../sass/global.scss */
+#loggedInWrapper #controls .addvinyl:hover, #loggedInWrapper #controls .stats:hover {
+  background-color: #368a7a;
+}
+/* line 157, ../sass/global.scss */
+#loggedInWrapper #controls .stats {
   background-color: #e27a3f;
   border: 1px solid #e27a3f;
   margin-left: 10px;
 }
+/* line 162, ../sass/global.scss */
+#loggedInWrapper #controls .stats:hover {
+  background-color: #bf6736;
+}
 
-/* line 163, ../sass/global.scss */
+/* line 169, ../sass/global.scss */
 #vinylCount {
   text-align: center;
   width: 100%;
 }
-/* line 167, ../sass/global.scss */
+/* line 173, ../sass/global.scss */
 #vinylCount p {
   font-weight: bold;
   font-size: 5em;
 }
-/* line 172, ../sass/global.scss */
+/* line 178, ../sass/global.scss */
 #vinylCount span {
   font-size: 1em;
 }
 
-/* line 177, ../sass/global.scss */
+/* line 183, ../sass/global.scss */
 #addvinyl {
   cursor: pointer;
   text-align: center;
 }
-/* line 181, ../sass/global.scss */
+/* line 187, ../sass/global.scss */
 #addvinyl p {
   font-size: 8em;
   font-weight: bold;
   margin-top: 116px;
   color: #e27a3f;
 }
-/* line 188, ../sass/global.scss */
+/* line 194, ../sass/global.scss */
 #addvinyl span {
   text-transform: uppercase;
 }
 
 /* === ALL THE VINYLS ============*/
-/* line 5, ../sass/vinyls.scss */
-.footable {
-  text-transform: capitalize;
-}
-/* line 10, ../sass/vinyls.scss */
+/* line 8, ../sass/vinyls.scss */
 .footable .edit, .footable .delete {
   cursor: pointer;
   margin-right: 10px;
   font-size: 18px;
 }
-/* line 15, ../sass/vinyls.scss */
+/* line 13, ../sass/vinyls.scss */
 .footable .edit:hover, .footable .delete:hover {
   color: #45b29d;
 }
-/* line 21, ../sass/vinyls.scss */
+/* line 19, ../sass/vinyls.scss */
 .footable .vinyl-artwork {
   width: 60px;
   height: 60px;
   background: url("../img/vinyl_PH.svg") no-repeat;
   background-size: cover;
 }
-/* line 27, ../sass/vinyls.scss */
+/* line 25, ../sass/vinyls.scss */
 .footable .vinyl-artwork img {
   width: 60px;
   height: 60px;
 }
-/* line 33, ../sass/vinyls.scss */
+/* line 31, ../sass/vinyls.scss */
 .footable .artwork-column {
   width: 60px;
 }
-/* line 38, ../sass/vinyls.scss */
+/* line 36, ../sass/vinyls.scss */
 .footable audio {
   vertical-align: middle;
 }
-/* line 44, ../sass/vinyls.scss */
+/* line 42, ../sass/vinyls.scss */
 .footable .circle {
   display: inline-block;
   width: 32px;
@@ -214,35 +218,35 @@ body {
   text-indent: -9999px;
 }
 
-/* line 68, ../sass/vinyls.scss */
+/* line 64, ../sass/vinyls.scss */
 .pagination {
   text-align: center;
 }
-/* line 72, ../sass/vinyls.scss */
+/* line 68, ../sass/vinyls.scss */
 .pagination ul {
   list-style-type: none;
 }
-/* line 75, ../sass/vinyls.scss */
+/* line 71, ../sass/vinyls.scss */
 .pagination ul li {
   display: inline-block;
   margin: 0 10px;
   font-size: 18px;
 }
-/* line 80, ../sass/vinyls.scss */
+/* line 76, ../sass/vinyls.scss */
 .pagination ul li.footable-page-arrow {
   font-size: 26px;
 }
-/* line 85, ../sass/vinyls.scss */
+/* line 81, ../sass/vinyls.scss */
 .pagination ul li.active a {
   color: #e27a3f;
   font-weight: bold;
 }
-/* line 91, ../sass/vinyls.scss */
+/* line 87, ../sass/vinyls.scss */
 .pagination ul li a {
   text-decoration: none;
   color: #202020;
 }
-/* line 95, ../sass/vinyls.scss */
+/* line 91, ../sass/vinyls.scss */
 .pagination ul li a:hover {
   color: #45b29d;
 }

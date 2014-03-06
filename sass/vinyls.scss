@@ -4,8 +4,6 @@
 
 .footable{
 
-    text-transform: capitalize;
-
     // Controls
     .edit, .delete{
         cursor: pointer;
@@ -57,8 +55,6 @@
 
     // Genres
     .genre{
-
-
         &.electronic{
 
         }
