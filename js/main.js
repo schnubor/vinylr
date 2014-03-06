@@ -35,52 +35,59 @@ $(document).ready(function(){
 
     // Display added vinyl
     if(response.length){
-      latestVinyl = $.parseJSON(response);
-      var row = '<tr class="vinyl">';
-      row += '<td><div class="vinyl-artwork"><img src="'+latestVinyl[0].Artwork+'" alt="'+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'"></div></td>'
-      row += '<td class="vinyl-id">'+latestVinyl[0].VinylID+'</td>';
-      row += '<td class="vinyl-artist">'+latestVinyl[0].Artist+'</td>';
-      row += '<td class="vinyl-name">'+latestVinyl[0].Album+'</td>';
-      row += '<td class="label">'+latestVinyl[0].Label+'</td>';
-      row += '<td class="format">'+latestVinyl[0].Format+' '+latestVinyl[0].Type+'</td>';
-      row += '<td class="count">'+latestVinyl[0].Count+'</td>'
-      row += '<td class="color"><div class="circle" style="background-color:'+latestVinyl[0].Color+';">'+latestVinyl[0].Color+'</div></td>'
-      row += '<td class="date">'+latestVinyl[0].Releasedate+'</td>';
-      row += '<td class="itunes"><a href="'+latestVinyl[0].iTunes+'" title="buy digital version of '+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'">iTunes</a></td>';
-      row += '<td class="price">'+latestVinyl[0].Price+'</td>';
-      row += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+latestVinyl[0].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
-      row += '<td class="artistpic"><img src="'+latestVinyl[0].Artistpic+'" alt="'+latestVinyl[0].Artist+'"></td>';
-      // Video
-      if(latestVinyl[0].Video != '-'){
-        //row += '<td class="video">'+latestVinyl[0].Video.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, '<iframe width="300" height="170" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen style="vertical-align: middle;"></iframe>')+'</td>';
-        row += '<td class="video"><a href="'+latestVinyl[0].Video+'">'+latestVinyl[0].Video+'</a></td>';
+      if(response != "already exists!"){
+        latestVinyl = $.parseJSON(response);
+        var row = '<tr class="vinyl">';
+        row += '<td><div class="vinyl-artwork"><img src="'+latestVinyl[0].Artwork+'" alt="'+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'"></div></td>'
+        row += '<td class="vinyl-id">'+latestVinyl[0].VinylID+'</td>';
+        row += '<td class="vinyl-artist">'+latestVinyl[0].Artist+'</td>';
+        row += '<td class="vinyl-name">'+latestVinyl[0].Album+'</td>';
+        row += '<td class="label">'+latestVinyl[0].Label+'</td>';
+        row += '<td class="format">'+latestVinyl[0].Format+' '+latestVinyl[0].Type+'</td>';
+        row += '<td class="count">'+latestVinyl[0].Count+'</td>'
+        row += '<td class="color"><div class="circle" style="background-color:'+latestVinyl[0].Color+';">'+latestVinyl[0].Color+'</div></td>'
+        row += '<td class="date">'+latestVinyl[0].Releasedate+'</td>';
+        row += '<td class="itunes"><a href="'+latestVinyl[0].iTunes+'" title="buy digital version of '+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'">iTunes</a></td>';
+        row += '<td class="price">'+latestVinyl[0].Price+'</td>';
+        row += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+latestVinyl[0].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
+        row += '<td class="artistpic"><img src="'+latestVinyl[0].Artistpic+'" alt="'+latestVinyl[0].Artist+'"></td>';
+        // Video
+        if(latestVinyl[0].Video != '-'){
+          //row += '<td class="video">'+latestVinyl[0].Video.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, '<iframe width="300" height="170" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen style="vertical-align: middle;"></iframe>')+'</td>';
+          row += '<td class="video"><a href="'+latestVinyl[0].Video+'" target="_blank">'+latestVinyl[0].Video+'</a></td>';
+        }
+        else{
+          row += '<td class="video">-</td>';
+        }
+        // Tracklist
+        var tracklist = latestVinyl[0].Tracklist.split(";");
+        row += '<td class="tracklist">'+tracklist[0]+'<br/>'
+        for(var i=1; i<tracklist.length; i++){
+          row += tracklist[i]+'<br/>'
+        }
+        row += '</td>';
+
+        row += '<td class="genre">'+latestVinyl[0].Genre+'</td>';
+        row += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
+        row += '</tr>';
+      
+        // Redraw the table
+        footable.appendRow(row);
+        footable.redraw();
+
+        // Update the vinyl count
+        vinylcount = vinylcount+1;
+        $('#vinylcount').text(vinylcount);
+
+        // reset the form / overlay
+        Main.resetOverlay();
       }
       else{
-        row += '<td class="video">-</td>';
+        alert("This vinyl is already in your collection!");
+        // reset the form / overlay
+        Main.resetOverlay();
       }
-      // Tracklist
-      var tracklist = latestVinyl[0].Tracklist.split(";");
-      row += '<td class="tracklist">'+tracklist[0]+'<br/>'
-      for(var i=1; i<tracklist.length; i++){
-        row += tracklist[i]+'<br/>'
-      }
-      row += '</td>';
-
-      row += '<td class="genre">'+latestVinyl[0].Genre+'</td>';
-      row += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
-      row += '</tr>';
     }
-
-    // reset the form / overlay
-    Main.resetOverlay();
-
-    // Redraw the table
-    footable.appendRow(row);
-    footable.redraw();
-
-    // Update the vinyl count
-    vinylcount = vinylcount+1;
-    $('#vinylcount').text(vinylcount);
   }
 
   // Edit vinyl callback after ajax success
@@ -99,7 +106,7 @@ $(document).ready(function(){
     Main.resetOverlay();
   }
 
-  // === ADD VINYL OVERLAY =========================================================
+  // === Add Vinyl Overlay =========================================================
 
   // open overlay with add vinyl form
   $('#loggedInWrapper').on('click', '.addvinyl', function(){
@@ -113,7 +120,7 @@ $(document).ready(function(){
     });
   });
 
-  // === EDIT VINYL OVERLAY =========================================================
+  // === Edit Vinyl Overlay =========================================================
 
   // open overlay with add vinyl form
   $('#loggedInWrapper').on('click', '.edit', function(){
@@ -136,7 +143,7 @@ $(document).ready(function(){
     });
   });
 
-  // === CLOSE OVERLAY ==============================================================
+  // === Close Overlay ==============================================================
 
   // close overlay
   $('#overlay').on('click', '.close', function(){
@@ -177,4 +184,16 @@ $(document).ready(function(){
     }
   });
   
+  // === Display Profile ===============================================================
+
+  $('#loggedInWrapper').on('click', '.stats', function(){
+    $('#overlay').fadeIn(200, function(){
+      $('.overlaycontent').load('../views/userprofile.html', function(){ // load user profile
+
+        $('.user-pic').html('<img src="https://graph.facebook.com/'+FBDATA.username+'/picture?width=120&height=120" alt="'+FBDATA.name+'" width="100px" height="100px"/>');
+        $('.user-name').text(FBDATA.name);
+      });
+    });
+  });
+
 });

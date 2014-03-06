@@ -175,40 +175,4 @@ body {
   text-transform: uppercase;
 }
 
-/* line 3, ../sass/welcome.scss */
-#header-bg {
-  background: url("../img/header-image2.jpg") no-repeat;
-  background-position: 0 -100px;
-  background-size: cover;
-  background-color: black;
-  background-opacity: .8;
-  height: 400px;
-  width: 100%;
-  position: relative;
-}
-/* line 13, ../sass/welcome.scss */
-#header-bg .header-content {
-  margin: 0 auto;
-  text-align: center;
-  padding: 50px;
-  top: 50%;
-  position: absolute;
-  height: 250px;
-  width: calc(100% - 100px);
-  margin-top: -150px;
-}
-/* line 23, ../sass/welcome.scss */
-#header-bg .header-content img {
-  width: 120px;
-  height: 120px;
-  display: block;
-  margin: 0 auto;
-}
-/* line 30, ../sass/welcome.scss */
-#header-bg .header-content .title-text {
-  margin: 0;
-  color: white;
-  margin-top: 20px;
-  font-weight: 200;
-  font-size: 56px;
-}
+/* === User Profile ================== */

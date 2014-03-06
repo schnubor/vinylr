@@ -146,11 +146,16 @@ body{
             float: right;
             margin-top: 1px;
             font-weight: 300;
+            line-height: 1;
             @include transition(all,.4s);
             @include font(Lato);
 
             &:hover{
                 background-color: $dark-green;
+            }
+
+            .button-icon{
+                margin-right: 10px;
             }
         }
 
