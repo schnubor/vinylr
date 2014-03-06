@@ -205,32 +205,33 @@ header #currentuser {
   float: right;
   height: 60px;
   line-height: 60px;
+  font-weight: 300;
   color: white;
 }
-/* line 47, ../sass/header_footer.scss */
+/* line 48, ../sass/header_footer.scss */
 header #currentuser img {
   width: 40px;
   height: 40px;
   border-radius: 5px;
   vertical-align: middle;
 }
-/* line 54, ../sass/header_footer.scss */
+/* line 55, ../sass/header_footer.scss */
 header #currentuser #username {
   margin-left: 10px;
   margin-right: 20px;
 }
-/* line 59, ../sass/header_footer.scss */
+/* line 60, ../sass/header_footer.scss */
 header #currentuser #logout {
   padding-left: 20px;
   border-left: 1px solid grey;
   cursor: pointer;
 }
-/* line 64, ../sass/header_footer.scss */
+/* line 65, ../sass/header_footer.scss */
 header #currentuser #logout:hover {
   color: #45b29d;
 }
 
-/* line 71, ../sass/header_footer.scss */
+/* line 72, ../sass/header_footer.scss */
 #loading {
   color: white;
   float: right;
@@ -238,7 +239,7 @@ header #currentuser #logout:hover {
   line-height: 60px;
 }
 
-/* line 78, ../sass/header_footer.scss */
+/* line 79, ../sass/header_footer.scss */
 #fb-button {
   display: none;
   float: right;
@@ -246,7 +247,7 @@ header #currentuser #logout:hover {
   line-height: 60px;
 }
 
-/* line 85, ../sass/header_footer.scss */
+/* line 86, ../sass/header_footer.scss */
 #fb-auth {
   padding: 0 20px 0 10px;
   background-color: #3b5998;
@@ -257,14 +258,14 @@ header #currentuser #logout:hover {
   border: 0;
   height: 40px;
 }
-/* line 95, ../sass/header_footer.scss */
+/* line 96, ../sass/header_footer.scss */
 #fb-auth span {
   height: 40px;
   line-height: 40px;
 }
 
 /* === FOOTER ===================*/
-/* line 103, ../sass/header_footer.scss */
+/* line 104, ../sass/header_footer.scss */
 footer {
   font-size: 12px;
   color: #808080;
@@ -272,13 +273,13 @@ footer {
   padding: 10px 0 20px 0;
   font-weight: lighter;
 }
-/* line 110, ../sass/header_footer.scss */
+/* line 111, ../sass/header_footer.scss */
 footer a {
   text-decoration: none;
   font-weight: normal;
   color: #808080;
 }
-/* line 115, ../sass/header_footer.scss */
+/* line 116, ../sass/header_footer.scss */
 footer a:hover {
   text-decoration: underline;
 }

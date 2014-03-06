@@ -81,6 +81,13 @@
                 font-size: 26px;
             }
 
+            &.active{
+                a{
+                    color: $orange;
+                    font-weight: bold;
+                }
+            }
+
             a{
                 text-decoration: none;  
                 color: $grey;
