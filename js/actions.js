@@ -312,6 +312,7 @@ var Main = (function()
       }
       else{
         $('#editvinylform').remove();
+        $('#profileform').remove();
       }
     });
   }
