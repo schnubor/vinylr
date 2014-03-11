@@ -191,29 +191,48 @@ $(document).ready(function(){
       $('.overlaycontent').load('../views/userprofile.html', function(){ // load user profile
 
         var price = 0;
-        var genres = {
-          labels : ["January","February","March","April","May","June","July"],
-          datasets : [
-            {
-              fillColor : "rgba(220,220,220,0.5)",
-              strokeColor : "rgba(220,220,220,1)",
-              data : [65,59,90,81,56,55,40]
-            }
-          ]
-        }
-
-        //Get context with jQuery - using jQuery's .get() method.
-        var ctx = $("#GenreChart").get(0).getContext("2d");
-        new Chart(ctx).Bar(genres);
+        var vinylGenres = [];
+        var uniqueGenres = [];
+        var uniqueGenresString = "";
+        var uniqueGenresAppearence = "";
 
         // Add up prices
         for(var i=0; i<VINYLS.length; i++){
+
+          var singleVinylGenre = VINYLS[i].Genre.split(", ");
+          vinylGenres[i] = singleVinylGenre[0];
+
           if(VINYLS[i].Price != "not found"){
-            console.log(VINYLS[i].Price);
             price = price + parseFloat(VINYLS[i].Price);
           }
         }
+
+        // round up price sum
         price = Math.round(price).toFixed(2);
+
+        // remove duplicates from vinylGenres array and count occurance
+        var genres = Main.crawlArray(vinylGenres); // genres[0] = unique genres; genres[1] = genre appearences
+        uniqueGenres = genres[0];
+        uniqueGenresAppearence = genres[1].toString();
+
+        // generate string of elements in uniqueGenres
+        for(var i=0; i<uniqueGenres.length; i++){
+          uniqueGenresString += '"'+uniqueGenres[i]+'",'
+        }
+        uniqueGenresString = uniqueGenresString.substring(0, uniqueGenresString.length - 1); // cut off last comma
+
+        // build data for chart
+        var genres_obj = '{ labels : [' + uniqueGenresString + '],' +
+                        'datasets : [' +
+                        '{ fillColor : "rgba(220,220,220,0.5)", strokeColor : "rgba(220,220,220,1)", data : [' + uniqueGenresAppearence + '] }' +
+                        ']}';
+
+        // create a JSON object from string
+        var genres = eval("(" + genres_obj + ")");
+
+        // display the JSON object
+        var ctx = $("#GenreChart").get(0).getContext("2d");
+        new Chart(ctx).Bar(genres);
 
         // Display Data
         $('.user-pic').html('<img src="https://graph.facebook.com/'+FBDATA.username+'/picture?width=120&height=120" alt="'+FBDATA.name+'" width="100px" height="100px"/>');
