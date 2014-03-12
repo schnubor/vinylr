@@ -3,9 +3,9 @@
 	require('db_connect.php');
 
 	// 1. Write Vinyl to DB
-	$tracklist = mysql_real_escape_string($_POST['tracklist']);
-	$artist = mysql_real_escape_string($_POST['artist_corrected']);
-	$album = mysql_real_escape_string($_POST['album_corrected']);
+	$tracklist = mysqli_real_escape_string($con, $_POST['tracklist']);
+	$artist = mysqli_real_escape_string($con, $_POST['artist_corrected']);
+	$album = mysqli_real_escape_string($con, $_POST['album_corrected']);
 	$fbid = $_POST['fbid'];
 
 	$exists = mysqli_query($con, "SELECT * FROM `".$fbid."` WHERE Artist='".$artist."' AND Album='".$album."'") or die(mysqli_error($con));
