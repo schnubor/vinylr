@@ -7,7 +7,7 @@ $(document).ready(function(){
   var addOptions = { 
     success: displayAddedVinyl,  // post-submit callback 
     resetForm: true        // reset the form after successful submit
-    //target: '#response',   // target element(s) to be updated with server response 
+    //target: '#debug-response'   // target element(s) to be updated with server response 
     //clearForm: true,        // clear all form fields after successful submit
     // other available options: 
     //url:       url         // override for form's 'action' attribute 
@@ -35,36 +35,60 @@ $(document).ready(function(){
 
     // Display added vinyl
     if(response.length){
-      latestVinyl = $.parseJSON(response);
-      var row = '<tr class="vinyl">';
-      row += '<td><div class="vinyl-artwork"><img src="'+latestVinyl[0].Artwork+'" alt="'+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'"></div></td>'
-      row += '<td class="vinyl-id">'+latestVinyl[0].VinylID+'</td>';
-      row += '<td class="vinyl-artist">'+latestVinyl[0].Artist+'</td>';
-      row += '<td class="vinyl-name">'+latestVinyl[0].Album+'</td>';
-      row += '<td class="label">'+latestVinyl[0].Label+'</td>';
-      row += '<td class="format">'+latestVinyl[0].Format+' '+latestVinyl[0].Type+'</td>';
-      row += '<td class="count">'+latestVinyl[0].Count+'</td>'
-      row += '<td class="color"><div class="circle" style="background-color:'+latestVinyl[0].Color+';">'+latestVinyl[0].Color+'</div></td>'
-      row += '<td class="date">'+latestVinyl[0].Releasedate+'</td>';
-      row += '<td class="itunes"><a href="'+latestVinyl[0].iTunes+'" title="buy digital version of '+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'">iTunes</a></td>';
-      row += '<td class="price">'+latestVinyl[0].Price+'</td>';
-      row += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+latestVinyl[0].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
-      row += '<td class="artistpic"><img src="'+latestVinyl[0].Artistpic+'" alt="'+latestVinyl[0].Artist+'"></td>';
-      row += '<td class="genre">'+latestVinyl[0].Genre+'</td>';
-      row += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
-      row += '</tr>';
+      if(response != "already exists!"){
+        latestVinyl = $.parseJSON(response);
+        var row = '<tr class="vinyl">';
+        row += '<td><div class="vinyl-artwork"><img src="'+latestVinyl[0].Artwork+'" alt="'+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'"></div></td>'
+        row += '<td class="vinyl-id">'+latestVinyl[0].VinylID+'</td>';
+        row += '<td class="vinyl-artist">'+latestVinyl[0].Artist+'</td>';
+        row += '<td class="vinyl-name">'+latestVinyl[0].Album+'</td>';
+        row += '<td class="label">'+latestVinyl[0].Label+'</td>';
+        row += '<td class="format">'+latestVinyl[0].Format+' '+latestVinyl[0].Type+'</td>';
+        row += '<td class="count">'+latestVinyl[0].Count+'</td>'
+        row += '<td class="color"><div class="circle" style="background-color:'+latestVinyl[0].Color+';">'+latestVinyl[0].Color+'</div></td>'
+        row += '<td class="date">'+latestVinyl[0].Releasedate+'</td>';
+        row += '<td class="catalog">'+latestVinyl[0].Catalog+'</td>';
+        row += '<td class="itunes"><a href="'+latestVinyl[0].iTunes+'" title="buy digital version of '+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'">iTunes</a></td>';
+        row += '<td class="price">'+latestVinyl[0].Price+'</td>';
+        row += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+latestVinyl[0].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
+        row += '<td class="artistpic"><img src="'+latestVinyl[0].Artistpic+'" alt="'+latestVinyl[0].Artist+'"></td>';
+        // Video
+        if(latestVinyl[0].Video != '-'){
+          //row += '<td class="video">'+latestVinyl[0].Video.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, '<iframe width="300" height="170" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen style="vertical-align: middle;"></iframe>')+'</td>';
+          row += '<td class="video"><a href="'+latestVinyl[0].Video+'" target="_blank">'+latestVinyl[0].Video+'</a></td>';
+        }
+        else{
+          row += '<td class="video">-</td>';
+        }
+        // Tracklist
+        var tracklist = latestVinyl[0].Tracklist.split(";");
+        row += '<td class="tracklist">'+tracklist[0]+'<br/>'
+        for(var i=1; i<tracklist.length; i++){
+          row += tracklist[i]+'<br/>'
+        }
+        row += '</td>';
+
+        row += '<td class="genre">'+latestVinyl[0].Genre+'</td>';
+        row += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
+        row += '</tr>';
+      
+        // Redraw the table
+        footable.appendRow(row);
+        footable.redraw();
+
+        // Update the vinyl count
+        vinylcount = vinylcount+1;
+        $('#vinylcount').text(vinylcount);
+
+        // reset the form / overlay
+        Main.resetOverlay();
+      }
+      else{
+        alert("This vinyl is already in your collection!");
+        // reset the form / overlay
+        Main.resetOverlay();
+      }
     }
-
-    // reset the form / overlay
-    Main.resetOverlay();
-
-    // Redraw the table
-    footable.appendRow(row);
-    footable.redraw();
-
-    // Update the vinyl count
-    vinylcount = vinylcount+1;
-    $('#vinylcount').text(vinylcount);
   }
 
   // Edit vinyl callback after ajax success
@@ -83,10 +107,10 @@ $(document).ready(function(){
     Main.resetOverlay();
   }
 
-  // === ADD VINYL OVERLAY =========================================================
+  // === Add Vinyl Overlay =========================================================
 
   // open overlay with add vinyl form
-  $('#loggedInWrapper').on('click', '#addvinyl', function(){
+  $('#loggedInWrapper').on('click', '.addvinyl', function(){
     $('#overlay').fadeIn(200, function(){
       $('.overlayform').load('../views/addvinyl.html', function(){ // load add vinyl form
         Main.init(); // init select boxes and colorpicker
@@ -97,7 +121,7 @@ $(document).ready(function(){
     });
   });
 
-  // === EDIT VINYL OVERLAY =========================================================
+  // === Edit Vinyl Overlay =========================================================
 
   // open overlay with add vinyl form
   $('#loggedInWrapper').on('click', '.edit', function(){
@@ -120,14 +144,14 @@ $(document).ready(function(){
     });
   });
 
-  // === CLOSE OVERLAY =========================================================
+  // === Close Overlay ==============================================================
 
   // close overlay
   $('#overlay').on('click', '.close', function(){
     Main.resetOverlay();
   });
 
-  // === DELETE VINYL ===============================================================
+  // === Delete Vinyl ===============================================================
 
   $('#loggedInWrapper').on('click', '.delete', function(){
     // get Vinly ID from DOM
@@ -161,4 +185,103 @@ $(document).ready(function(){
     }
   });
   
+  // === Display Profile ===============================================================
+
+  $('#loggedInWrapper').on('click', '.stats', function(){
+    $('#overlay').fadeIn(200, function(){
+      $('.overlaycontent').load('../views/userprofile.html', function(){ // load user profile
+
+        var price = 0;
+        var vinylGenres = [];
+        var uniqueGenres = [];
+        var uniqueGenresString = "";
+        var uniqueGenresAppearence = "";
+        var labels = [];
+        var topLabel = "Night Slugs";
+        var artists = [];
+        var topArtist = "Daft Punk";
+
+        var barOptions = {
+          scaleLineColor : "rgba(255,255,255,.1)",
+          scaleGridLineColor : "rgba(255,255,255,.1)",
+          //Boolean - If we want to override with a hard coded scale
+          scaleOverride : false,
+          
+          //** Required if scaleOverride is true **
+          //Number - The number of steps in a hard coded scale
+          scaleSteps : 1,
+          //Number - The value jump in the hard coded scale
+          scaleStepWidth : 1,
+          //Number - The scale starting value
+          scaleStartValue : 0,
+        }
+
+        // Add up prices
+        for(var i=0; i<VINYLS.length; i++){
+
+          // get labels
+          labels[i] = VINYLS[i].Label;
+
+          // get artists
+          artists[i] = VINYLS[i].Artist;
+
+          // get genres
+          var singleVinylGenre = VINYLS[i].Genre.split(", ");
+          vinylGenres[i] = singleVinylGenre[0];
+
+          // get prices
+          if(VINYLS[i].Price != "not found"){
+            price = price + parseFloat(VINYLS[i].Price);
+          }
+        }
+
+        // round up price sum
+        price = Math.round(price).toFixed(2);
+
+        // remove duplicates from artists[] and labels[] and count appearances
+        var crawledArtist = Main.crawlArray(artists);
+        topArtist = crawledArtist[2];
+
+        // remove duplicates from artists[] and labels[] and count appearances
+        var crawledLabel = Main.crawlArray(labels);
+        topLabel = crawledLabel[2];
+
+        // remove duplicates from vinylGenres array and count appeareances
+        var genres = Main.crawlArray(vinylGenres); // genres[0] = unique genres; genres[1] = genre appearences
+        uniqueGenres = genres[0];
+        uniqueGenresAppearence = genres[1].toString();
+
+        // set maximum value of chart
+        barOptions.scaleSteps = Math.max.apply(null, genres[1]) + 3;
+
+        // generate string of elements in uniqueGenres
+        for(var i=0; i<uniqueGenres.length; i++){
+          uniqueGenresString += '"'+uniqueGenres[i]+'",'
+        }
+        uniqueGenresString = uniqueGenresString.substring(0, uniqueGenresString.length - 1); // cut off last comma
+
+        // build data for chart
+        var genres_obj = '{ labels : [' + uniqueGenresString + '],' +
+                        'datasets : [' +
+                        '{ fillColor : "#E27A3F", strokeColor : "rgba(220,220,220,1)", data : [' + uniqueGenresAppearence + '] }' +
+                        ']}';
+
+        // create a JSON object from string
+        var genres = eval("(" + genres_obj + ")");
+
+        // display the JSON object
+        var ctx = $("#GenreChart").get(0).getContext("2d");
+        new Chart(ctx).Bar(genres, barOptions);
+
+        // Display Data
+        $('.user-pic').html('<img src="https://graph.facebook.com/'+FBDATA.username+'/picture?width=120&height=120" alt="'+FBDATA.name+'" width="100px" height="100px"/>');
+        $('.user-name').html(FBDATA.name+'<span class="user-location">'+FBDATA.location.name+'</span>');
+        $('.vinyl-count').html('<p>vinyls:</p><span>'+VINYLS.length+'</span>');
+        $('.price-value').html('<p>worth:</p><span>'+price+'$</span>');
+        $('.top-label').html('<p>Top label:</p><span>'+topLabel+'</span>');
+        $('.top-artist').html('<p>Top artist:</p><span>'+topArtist+'</span>');
+      });
+    });
+  });
+
 });

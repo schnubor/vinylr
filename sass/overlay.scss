@@ -61,7 +61,14 @@
             }
 
             // Search Button
-        }// end of form
+        } // end of form
+
+        // searching icon
+        #searching{
+            font-size: 40px;
+            margin-top: 60px;
+            color: white;
+        }
 
         // Preview
         #preview{
@@ -89,5 +96,12 @@
             }
 
         }
+    }
+
+    .overlaycontent{
+        width: 800px;
+        height: 100%;
+        margin: 100px auto;
+        color: white;
     }
 }

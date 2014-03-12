@@ -175,124 +175,40 @@ body {
   text-transform: uppercase;
 }
 
-/* === HEADER ======================== */
-/* line 5, ../sass/header_footer.scss */
-header {
-  background-color: #202020;
-  text-align: left;
-  height: 60px;
-  padding: 10px 20px;
+/* line 3, ../sass/welcome.scss */
+#header-bg {
+  background: url("../img/header-image2.jpg") no-repeat;
+  background-position: 0 -100px;
+  background-size: cover;
+  background-color: black;
+  background-opacity: .8;
+  height: 400px;
+  width: 100%;
+  position: relative;
 }
-/* line 11, ../sass/header_footer.scss */
-header h1 {
-  font-family: 'Playball', cursive;
-  font-size: 2em;
-  color: white;
-  text-align: left;
-  display: inline-block;
-  height: 60px;
-  line-height: 60px;
-  text-shadow: 0 0 10px #808080;
+/* line 13, ../sass/welcome.scss */
+#header-bg .header-content {
+  margin: 0 auto;
+  text-align: center;
+  padding: 50px;
+  top: 50%;
+  position: absolute;
+  height: 250px;
+  width: calc(100% - 100px);
+  margin-top: -150px;
+}
+/* line 23, ../sass/welcome.scss */
+#header-bg .header-content img {
+  width: 120px;
+  height: 120px;
+  display: block;
+  margin: 0 auto;
+}
+/* line 30, ../sass/welcome.scss */
+#header-bg .header-content .title-text {
   margin: 0;
-  vertical-align: top;
-  letter-spacing: -1px;
-}
-/* line 25, ../sass/header_footer.scss */
-header h3 {
-  color: #aaa;
-  font-size: 16px;
-  font-weight: 300;
-  text-align: center;
-  display: inline-block;
-  letter-spacing: 1px;
-  padding-left: 10px;
-  line-height: 70px;
-  height: 60px;
-  margin: 0;
-}
-/* line 38, ../sass/header_footer.scss */
-header #currentuser {
-  text-align: center;
-  height: 320px;
-  display: inline-block;
-  float: right;
-  height: 60px;
-  line-height: 60px;
-  font-weight: 300;
   color: white;
-}
-/* line 48, ../sass/header_footer.scss */
-header #currentuser img {
-  width: 40px;
-  height: 40px;
-  border-radius: 5px;
-  vertical-align: middle;
-}
-/* line 55, ../sass/header_footer.scss */
-header #currentuser #username {
-  margin-left: 10px;
-  margin-right: 20px;
-}
-/* line 60, ../sass/header_footer.scss */
-header #currentuser #logout {
-  padding-left: 20px;
-  border-left: 1px solid grey;
-  cursor: pointer;
-}
-/* line 65, ../sass/header_footer.scss */
-header #currentuser #logout:hover {
-  color: #45b29d;
-}
-
-/* line 72, ../sass/header_footer.scss */
-#loading {
-  color: white;
-  float: right;
-  height: 60px;
-  line-height: 60px;
-}
-
-/* line 79, ../sass/header_footer.scss */
-#fb-button {
-  display: none;
-  float: right;
-  height: 60px;
-  line-height: 60px;
-}
-
-/* line 86, ../sass/header_footer.scss */
-#fb-auth {
-  padding: 0 20px 0 10px;
-  background-color: #3b5998;
-  border-radius: 5px;
-  color: white;
-  font-family: 'Lato', Helvetica, sans-serif;
-  font-weight: light;
-  border: 0;
-  height: 40px;
-}
-/* line 96, ../sass/header_footer.scss */
-#fb-auth span {
-  height: 40px;
-  line-height: 40px;
-}
-
-/* === FOOTER ===================*/
-/* line 104, ../sass/header_footer.scss */
-footer {
-  font-size: 12px;
-  color: #808080;
-  text-align: center;
-  padding: 10px 0 20px 0;
-  font-weight: lighter;
-}
-/* line 111, ../sass/header_footer.scss */
-footer a {
-  text-decoration: none;
-  font-weight: normal;
-  color: #808080;
-}
-/* line 116, ../sass/header_footer.scss */
-footer a:hover {
-  text-decoration: underline;
+  margin-top: 20px;
+  font-weight: 200;
+  font-size: 56px;
 }

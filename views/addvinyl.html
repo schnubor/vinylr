@@ -20,9 +20,12 @@
     <input type='text' name="color" id="colorpicker"/>
     <br/>
     <!-- hidden inputs -->
+    <input type="hidden" name="artist_corrected">
+    <input type="hidden" name="album_corrected">
     <input type="hidden" name="label">
     <input type="hidden" name="genre">
     <input type="hidden" name="artistpic">
+    <input type="hidden" name="video">
     <input type="hidden" name="duration">
     <input type="hidden" name="sample">
     <input type="hidden" name="itunes">
@@ -30,9 +33,11 @@
     <input type="hidden" name="artwork">
     <input type="hidden" name="price">
     <input type="hidden" name="release">
-    <input type="hidden" name="tracklist" value="not yet implemented">
+    <input type="hidden" name="catalog">
+    <input type="hidden" name="tracklist">
     <!-- search and submit -->
     <button id="searchbutton" type="button" class="button" onclick="Main.fetchData();">search</button>
+    <div id="searching" class="fa fa-spinner fa-spin" style="display: none;"></div>
     
     <div id="preview">
         <div class="general-info">
@@ -46,3 +51,4 @@
 
     <input id="submitbutton" class="button" type="submit" value="Add Vinyl" style="display: none">
 </form>
+<div id="debug-response"></div>

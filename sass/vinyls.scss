@@ -4,8 +4,6 @@
 
 .footable{
 
-    text-transform: capitalize;
-
     // Controls
     .edit, .delete{
         cursor: pointer;
@@ -33,6 +31,10 @@
     .artwork-column{
         width: 60px;
     }
+
+    .vinyl-artist{
+        text-transform: capitalize;
+    }
     
     // Audio Sample
     audio{
@@ -45,7 +47,8 @@
         display: inline-block;
         width:32px;
         height:32px;
-        border-radius:16px;
+        border: 1px solid #cacaca;
+        @include radius(17px);
         font-size:18px;
         color: $white;
         line-height:32px;
@@ -56,10 +59,43 @@
 
     // Genres
     .genre{
-
-
         &.electronic{
 
+        }
+    }
+}
+
+.pagination{
+    
+    text-align: center;
+
+    ul{
+        list-style-type: none;
+
+        li{
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 18px;
+
+            &.footable-page-arrow{
+                font-size: 26px;
+            }
+
+            &.active{
+                a{
+                    color: $orange;
+                    font-weight: bold;
+                }
+            }
+
+            a{
+                text-decoration: none;  
+                color: $grey;
+
+                &:hover{
+                    color: $green;
+                }
+            }
         }
     }
 }
