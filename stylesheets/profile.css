@@ -214,8 +214,12 @@ body {
 .general-info .vinyl-count span, .general-info .price-value span, .general-info .top-label span, .general-info .top-artist span {
   font-size: 24px;
 }
+/* line 42, ../sass/profile.scss */
+.general-info .top-artist {
+  text-transform: capitalize;
+}
 
-/* line 43, ../sass/profile.scss */
+/* line 47, ../sass/profile.scss */
 .detailed-info {
   width: 640px;
   display: inline-block;

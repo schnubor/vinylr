@@ -14,6 +14,7 @@
 	`Label` VARCHAR(255),
 	`Sample` VARCHAR(255),
 	`Releasedate` VARCHAR(255),
+	`Catalog` VARCHAR(255),
 	`Price` VARCHAR(255),
 	`Genre` VARCHAR(255),
 	`Duration` VARCHAR(255),

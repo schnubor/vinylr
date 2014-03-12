@@ -99,6 +99,7 @@ var Main = (function()
       content += '<td class="count">'+vinyls[index].Count+'</td>'
       content += '<td class="color"><div class="circle" style="background-color:'+vinyls[index].Color+';">'+vinyls[index].Color+'</div></td>'
       content += '<td class="date">'+vinyls[index].Releasedate+'</td>';
+      content += '<td class="date">'+vinyls[index].Catalog+'</td>';
       content += '<td class="itunes"><a href="'+vinyls[index].iTunes+'" title="buy digital version of '+vinyls[index].Artist+' - '+vinyls[index].Album+'">iTunes</a></td>';
       content += '<td class="price">'+vinyls[index].Price+'</td>';
       content += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+vinyls[index].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
@@ -180,6 +181,7 @@ var Main = (function()
             console.log(data);
 
             vinyl.label = data.labels[0].name;
+            vinyl.catalog =  data.labels[0].catno;
             vinyl.genre = data.genres.join(', ');
             vinyl.date = data.released;
             vinyl.artist = data.artists[0].name;
@@ -272,6 +274,7 @@ var Main = (function()
               $('input[name=itunes]').val(vinyl.itunesUrl);
               $('input[name=deezer]').val(vinyl.deezerlink);
               $('input[name=release]').val(vinyl.date);
+              $('input[name=catalog]').val(vinyl.catalog);
               $('input[name=price]').val(vinyl.price);
               $('input[name=duration]').val(vinyl.duration);
               $('input[name=color]').val(pickercolor);
@@ -317,10 +320,32 @@ var Main = (function()
     });
   }
 
-  // crawl Genre array and return array with unique elements and another array with their occurances
+  // crawl array and return array with unique elements ([0]) and another array with their occurances ([1])
   function _crawlArray(arr) {
+
+    if(arr.length == 0)
+      return null;
+
     var a = [], b = [], prev;
+    var modeMap = {};
+    var maxEl = arr[0], maxCount = 1;
     
+    // find element that occured most often
+    for(var i = 0; i < arr.length; i++)
+    {
+      var el = arr[i];
+      if(modeMap[el] == null)
+        modeMap[el] = 1;
+      else
+        modeMap[el]++;  
+      if(modeMap[el] > maxCount)
+      {
+        maxEl = el;
+        maxCount = modeMap[el];
+      }
+    }
+
+    // remove duplicates and count occurances
     arr.sort();
     for ( var i = 0; i < arr.length; i++ ) {
         if ( arr[i] !== prev ) {
@@ -332,8 +357,9 @@ var Main = (function()
         prev = arr[i];
     }
     
-    return [a, b];
+    return [a, b, maxEl];
   }
+
 
 	return{
     init: _init,

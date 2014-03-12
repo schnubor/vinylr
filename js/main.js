@@ -47,6 +47,7 @@ $(document).ready(function(){
         row += '<td class="count">'+latestVinyl[0].Count+'</td>'
         row += '<td class="color"><div class="circle" style="background-color:'+latestVinyl[0].Color+';">'+latestVinyl[0].Color+'</div></td>'
         row += '<td class="date">'+latestVinyl[0].Releasedate+'</td>';
+        row += '<td class="catalog">'+latestVinyl[0].Catalog+'</td>';
         row += '<td class="itunes"><a href="'+latestVinyl[0].iTunes+'" title="buy digital version of '+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'">iTunes</a></td>';
         row += '<td class="price">'+latestVinyl[0].Price+'</td>';
         row += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+latestVinyl[0].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
@@ -238,7 +239,12 @@ $(document).ready(function(){
         price = Math.round(price).toFixed(2);
 
         // remove duplicates from artists[] and labels[] and count appearances
-        // ...
+        var crawledArtist = Main.crawlArray(artists);
+        topArtist = crawledArtist[2];
+
+        // remove duplicates from artists[] and labels[] and count appearances
+        var crawledLabel = Main.crawlArray(labels);
+        topLabel = crawledLabel[2];
 
         // remove duplicates from vinylGenres array and count appeareances
         var genres = Main.crawlArray(vinylGenres); // genres[0] = unique genres; genres[1] = genre appearences
