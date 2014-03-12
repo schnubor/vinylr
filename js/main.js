@@ -194,27 +194,14 @@ $(document).ready(function(){
         var price = 0;
         var vinylGenres = [];
         var uniqueGenres = [];
-        var uniqueGenresString = "";
-        var uniqueGenresAppearence = "";
         var labels = [];
         var topLabel = "Night Slugs";
         var artists = [];
         var topArtist = "Daft Punk";
 
-        var barOptions = {
-          scaleLineColor : "rgba(255,255,255,.1)",
-          scaleGridLineColor : "rgba(255,255,255,.1)",
-          //Boolean - If we want to override with a hard coded scale
-          scaleOverride : false,
-          
-          //** Required if scaleOverride is true **
-          //Number - The number of steps in a hard coded scale
-          scaleSteps : 1,
-          //Number - The value jump in the hard coded scale
-          scaleStepWidth : 1,
-          //Number - The scale starting value
-          scaleStartValue : 0,
-        }
+        var genreSource = [
+          //{ genre: 'Africa', value: 20.2 },
+        ];
 
         // Add up prices
         for(var i=0; i<VINYLS.length; i++){
@@ -249,29 +236,37 @@ $(document).ready(function(){
         // remove duplicates from vinylGenres array and count appeareances
         var genres = Main.crawlArray(vinylGenres); // genres[0] = unique genres; genres[1] = genre appearences
         uniqueGenres = genres[0];
-        uniqueGenresAppearence = genres[1].toString();
 
-        // set maximum value of chart
-        barOptions.scaleSteps = Math.max.apply(null, genres[1]) + 3;
-
-        // generate string of elements in uniqueGenres
-        for(var i=0; i<uniqueGenres.length; i++){
-          uniqueGenresString += '"'+uniqueGenres[i]+'",'
+        // generate pie chart data
+        for(var i=0; i<genres[0].length; i++){
+          var tmpObj = '{ "genre": "' + genres[0][i] + '", "value": ' + genres[1][i] + ' }';
+          console.log(tmpObj);
+          var obj = eval('(' + tmpObj + ')');
+          genreSource.push(obj);
         }
-        uniqueGenresString = uniqueGenresString.substring(0, uniqueGenresString.length - 1); // cut off last comma
 
-        // build data for chart
-        var genres_obj = '{ labels : [' + uniqueGenresString + '],' +
-                        'datasets : [' +
-                        '{ fillColor : "#E27A3F", strokeColor : "rgba(220,220,220,1)", data : [' + uniqueGenresAppearence + '] }' +
-                        ']}';
+        // Render Pie Chart
+        $("#genrePieChart").dxPieChart({
+          dataSource: genreSource,
+          series: {
+              argumentField: 'genre',
+              valueField: 'value',
+              border: {
+                visible: true,
+                color: '#fafafa',
+                width: 1
+              },
+              label: { 
+                visible: true,
+                connector: { visible: true },
+                customizeText: function(arg) {
+                  return arg.valueText + " ( " + arg.percentText + ")";
+                }
+              }
+          },
 
-        // create a JSON object from string
-        var genres = eval("(" + genres_obj + ")");
-
-        // display the JSON object
-        var ctx = $("#GenreChart").get(0).getContext("2d");
-        new Chart(ctx).Bar(genres, barOptions);
+          tooltip: { enabled: true }
+        });
 
         // Display Data
         $('.user-pic').html('<img src="https://graph.facebook.com/'+FBDATA.username+'/picture?width=120&height=120" alt="'+FBDATA.name+'" width="100px" height="100px"/>');
