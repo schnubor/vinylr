@@ -205,13 +205,13 @@ body {
   border: 1px solid #505050;
 }
 /* line 32, ../sass/profile.scss */
-.general-info .vinyl-count p, .general-info .price-value p {
+.general-info .vinyl-count p, .general-info .price-value p, .general-info .top-label p, .general-info .top-artist p {
   margin: 10px 0 0 0;
   color: #cacaca;
   font-weight: 300;
 }
 /* line 37, ../sass/profile.scss */
-.general-info .vinyl-count span, .general-info .price-value span {
+.general-info .vinyl-count span, .general-info .price-value span, .general-info .top-label span, .general-info .top-artist span {
   font-size: 24px;
 }
 

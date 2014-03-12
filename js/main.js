@@ -195,13 +195,40 @@ $(document).ready(function(){
         var uniqueGenres = [];
         var uniqueGenresString = "";
         var uniqueGenresAppearence = "";
+        var labels = [];
+        var topLabel = "Night Slugs";
+        var artists = [];
+        var topArtist = "Daft Punk";
+
+        var barOptions = {
+          scaleLineColor : "rgba(255,255,255,.1)",
+          scaleGridLineColor : "rgba(255,255,255,.1)",
+          //Boolean - If we want to override with a hard coded scale
+          scaleOverride : false,
+          
+          //** Required if scaleOverride is true **
+          //Number - The number of steps in a hard coded scale
+          scaleSteps : 1,
+          //Number - The value jump in the hard coded scale
+          scaleStepWidth : 1,
+          //Number - The scale starting value
+          scaleStartValue : 0,
+        }
 
         // Add up prices
         for(var i=0; i<VINYLS.length; i++){
 
+          // get labels
+          labels[i] = VINYLS[i].Label;
+
+          // get artists
+          artists[i] = VINYLS[i].Artist;
+
+          // get genres
           var singleVinylGenre = VINYLS[i].Genre.split(", ");
           vinylGenres[i] = singleVinylGenre[0];
 
+          // get prices
           if(VINYLS[i].Price != "not found"){
             price = price + parseFloat(VINYLS[i].Price);
           }
@@ -210,10 +237,16 @@ $(document).ready(function(){
         // round up price sum
         price = Math.round(price).toFixed(2);
 
-        // remove duplicates from vinylGenres array and count occurance
+        // remove duplicates from artists[] and labels[] and count appearances
+        // ...
+
+        // remove duplicates from vinylGenres array and count appeareances
         var genres = Main.crawlArray(vinylGenres); // genres[0] = unique genres; genres[1] = genre appearences
         uniqueGenres = genres[0];
         uniqueGenresAppearence = genres[1].toString();
+
+        // set maximum value of chart
+        barOptions.scaleSteps = Math.max.apply(null, genres[1]) + 3;
 
         // generate string of elements in uniqueGenres
         for(var i=0; i<uniqueGenres.length; i++){
@@ -224,7 +257,7 @@ $(document).ready(function(){
         // build data for chart
         var genres_obj = '{ labels : [' + uniqueGenresString + '],' +
                         'datasets : [' +
-                        '{ fillColor : "rgba(220,220,220,0.5)", strokeColor : "rgba(220,220,220,1)", data : [' + uniqueGenresAppearence + '] }' +
+                        '{ fillColor : "#E27A3F", strokeColor : "rgba(220,220,220,1)", data : [' + uniqueGenresAppearence + '] }' +
                         ']}';
 
         // create a JSON object from string
@@ -232,13 +265,15 @@ $(document).ready(function(){
 
         // display the JSON object
         var ctx = $("#GenreChart").get(0).getContext("2d");
-        new Chart(ctx).Bar(genres);
+        new Chart(ctx).Bar(genres, barOptions);
 
         // Display Data
         $('.user-pic').html('<img src="https://graph.facebook.com/'+FBDATA.username+'/picture?width=120&height=120" alt="'+FBDATA.name+'" width="100px" height="100px"/>');
         $('.user-name').html(FBDATA.name+'<span class="user-location">'+FBDATA.location.name+'</span>');
         $('.vinyl-count').html('<p>vinyls:</p><span>'+VINYLS.length+'</span>');
         $('.price-value').html('<p>worth:</p><span>'+price+'$</span>');
+        $('.top-label').html('<p>Top label:</p><span>'+topLabel+'</span>');
+        $('.top-artist').html('<p>Top artist:</p><span>'+topArtist+'</span>');
       });
     });
   });
