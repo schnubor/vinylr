@@ -37,6 +37,11 @@ $(document).ready(function(){
     if(response.length){
       if(response != "already exists!"){
         latestVinyl = $.parseJSON(response);
+
+        // push latest vinyl to existing VINYLS obj
+        VINYLS.push(latestVinyl[0]);
+
+        // Create new table row
         var row = '<tr class="vinyl">';
         row += '<td><div class="vinyl-artwork"><img src="'+latestVinyl[0].Artwork+'" alt="'+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'"></div></td>'
         row += '<td class="vinyl-id">'+latestVinyl[0].VinylID+'</td>';

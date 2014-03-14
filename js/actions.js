@@ -158,6 +158,7 @@ var Main = (function()
 
     var vinyl = {};
     var releaseID;
+    var proxyURL = './php/vendor/ba-simple-proxy.php?url=http://www.discogs.com/release/';
 
     $.when(
       // 1st get Release ID from Discogs
@@ -252,7 +253,7 @@ var Main = (function()
                   if(data.results.length != 0){
                     //vinyl.artworkUrl = data.results[0].artworkUrl100;
                     vinyl.sampleUrl = data.results[0].previewUrl;
-                    vinyl.price = data.results[0].collectionPrice;
+                    //vinyl.price = data.results[0].collectionPrice;
                     vinyl.itunesUrl = data.results[0].collectionViewUrl;
                   }
                   else{ // no data found on iTunes
@@ -263,30 +264,44 @@ var Main = (function()
                   }
                 })
             ).done(function(){
-              console.log(vinyl);
-              
-              // fill input values
-              $('input[name=genre]').val(vinyl.genre);
-              $('input[name=label]').val(vinyl.label);
-              $('input[name=artistpic]').val(vinyl.artistPic);
-              $('input[name=artwork]').val(vinyl.artworkUrl);
-              $('input[name=sample]').val(vinyl.sampleUrl);
-              $('input[name=itunes]').val(vinyl.itunesUrl);
-              $('input[name=deezer]').val(vinyl.deezerlink);
-              $('input[name=release]').val(vinyl.date);
-              $('input[name=catalog]').val(vinyl.catalog);
-              $('input[name=price]').val(vinyl.price);
-              $('input[name=duration]').val(vinyl.duration);
-              $('input[name=color]').val(pickercolor);
-              $('input[name=video]').val(vinyl.video);
-              //$('input[name=artist_corrected]').val(vinyl.artist);
-              $('input[name=artist_corrected]').val(artist);
-              $('input[name=album_corrected]').val(vinyl.title);
-              $('input[name=tracklist]').val(vinyl.tracklist);
+              $.when(
+                // 6th get price
+                $.ajax({
+                  type: "GET",
+                  url: proxyURL+releaseID,
+                  data: {},
+                  success: function(data){
+                    var tempDiv = $('<div></div>').hide().html(data.contents);
+                    var priceString = $(tempDiv).find('.price').text();
+                    vinyl.price = priceString.substring(1);
+                    $(tempDiv).remove();
+                  }
+                })
+              ).done(function(){
+                console.log(vinyl);
+                
+                // fill input values
+                $('input[name=genre]').val(vinyl.genre);
+                $('input[name=label]').val(vinyl.label);
+                $('input[name=artistpic]').val(vinyl.artistPic);
+                $('input[name=artwork]').val(vinyl.artworkUrl);
+                $('input[name=sample]').val(vinyl.sampleUrl);
+                $('input[name=itunes]').val(vinyl.itunesUrl);
+                $('input[name=deezer]').val(vinyl.deezerlink);
+                $('input[name=release]').val(vinyl.date);
+                $('input[name=catalog]').val(vinyl.catalog);
+                $('input[name=price]').val(vinyl.price);
+                $('input[name=duration]').val(vinyl.duration);
+                $('input[name=color]').val(pickercolor);
+                $('input[name=video]').val(vinyl.video);
+                //$('input[name=artist_corrected]').val(vinyl.artist);
+                $('input[name=artist_corrected]').val(artist);
+                $('input[name=album_corrected]').val(vinyl.title);
+                $('input[name=tracklist]').val(vinyl.tracklist);
 
-              // Preview the vinyl
-              _showPreview(vinyl);
-   
+                // Preview the vinyl
+                _showPreview(vinyl);
+              });
             });
           });
         });
