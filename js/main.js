@@ -167,6 +167,14 @@ $(document).ready(function(){
     var r=confirm("Do you really want to delete this vinyl?");
     if (r==true)
     {
+      // Remove from VINYLS obj
+      for(var i=0; i<VINYLS.length; i++){
+        if(VINYLS[i].VinylID == id){
+          VINYLS.splice(i,1);
+        }
+      }
+
+      // Remove from DB
       $.ajax({
         type: 'POST',
         url: './php/deletevinyl.php',
@@ -226,9 +234,6 @@ $(document).ready(function(){
             price = price + parseFloat(VINYLS[i].Price);
           }
         }
-
-        // round up price sum
-        price = Math.round(price).toFixed(2);
 
         // remove duplicates from artists[] and labels[] and count appearances
         var crawledArtist = Main.crawlArray(artists);
