@@ -208,15 +208,15 @@ $(document).ready(function(){
         var vinylGenres = [];
         var uniqueGenres = [];
         var labels = [];
-        var topLabel = "Night Slugs";
+        var topLabel = "";
         var artists = [];
-        var topArtist = "Daft Punk";
+        var topArtist = "";
 
         var genreSource = [
           //{ genre: 'Africa', value: 20.2 },
         ];
 
-        // Add up prices
+        // Add up prices and fill artist/label array
         for(var i=0; i<VINYLS.length; i++){
 
           // get labels
@@ -230,10 +230,15 @@ $(document).ready(function(){
           vinylGenres[i] = singleVinylGenre[0];
 
           // get prices
-          if(VINYLS[i].Price != "not found"){
-            price = price + parseFloat(VINYLS[i].Price);
-          }
+          var vinylPrice = parseFloat(VINYLS[i].Price);
+          //console.log(vinylPrice.toFixed(2));
+          price = price + +vinylPrice.toFixed(2);
+          price = +price.toFixed(2);
+          console.log(price);
         }
+
+        // round price to 2 digits after comma
+        price = +price.toFixed(2);
 
         // remove duplicates from artists[] and labels[] and count appearances
         var crawledArtist = Main.crawlArray(artists);
