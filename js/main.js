@@ -231,10 +231,8 @@ $(document).ready(function(){
 
           // get prices
           var vinylPrice = parseFloat(VINYLS[i].Price);
-          //console.log(vinylPrice.toFixed(2));
           price = price + +vinylPrice.toFixed(2);
           price = +price.toFixed(2);
-          console.log(price);
         }
 
         // round price to 2 digits after comma

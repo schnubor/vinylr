@@ -39,7 +39,13 @@
     <input type="hidden" name="tracklist">
     <!-- search and submit -->
     <button id="searchbutton" type="button" class="button" onclick="Main.fetchData();">search</button>
-    <div id="searching" class="fa fa-spinner fa-spin" style="display: none;"></div>
+    <div id="searching" style="display: none;">
+        <div class="loading"><i class="fa fa-spin fa-spinner"></i></div>
+        <div class="progress">
+            <div class="progressbar"></div>
+        </div>
+        <div class="loading-text"></div>
+    </div>
     
     <div id="preview">
         <div class="general-info">

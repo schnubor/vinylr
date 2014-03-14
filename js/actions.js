@@ -148,6 +148,8 @@ var Main = (function()
 
     $('#searchbutton').hide();
     $('#searching').show();
+    $('#searching .loading-text').text("Loading ...");
+    $('#searching .progressbar').css('width','0%');
 
     var pickercolor = $("#colorpicker").spectrum("get").toHexString();
     $('input[name=color]').val(pickercolor);
@@ -175,6 +177,9 @@ var Main = (function()
           }
         })
     ).done(function(){
+      $('#searching .loading-text').text("Viny found ...");
+      $('#searching .progressbar').css('width','20%');
+
       $.when(
         // 2nd get Discogs Release infos
         $.getJSON('http://api.discogs.com/releases/'+releaseID, 
@@ -215,6 +220,8 @@ var Main = (function()
             console.log(data.labels[0].name);
           })
       ).done(function(){
+        $('#searching .loading-text').text("Fetching Deezer Data ...");
+        $('#searching .progressbar').css('width','40%');
         $.when(
           // 3rd get Album ID from Deezer
           $.getJSON('http://api.deezer.com/search/album?q='+artist+' '+vinyl.title+'&output=jsonp&callback=?', 
@@ -244,6 +251,8 @@ var Main = (function()
                 } 
               })
           ).done(function(){
+            $('#searching .loading-text').text("Fetching iTunes Data ...");
+            $('#searching .progressbar').css('width','70%');
             $.when(
               // 5th get artwork, audio sample from iTunes
               $.getJSON('http://itunes.apple.com/search?term='+artist+' '+vinyl.title+'&limit=1&callback=?', 
@@ -264,6 +273,8 @@ var Main = (function()
                   }
                 })
             ).done(function(){
+              $('#searching .loading-text').text("Fetching Discogs Data ...");
+              $('#searching .progressbar').css('width','90%');
               $.when(
                 // 6th get price
                 $.ajax({
@@ -278,7 +289,8 @@ var Main = (function()
                   }
                 })
               ).done(function(){
-                console.log(vinyl);
+                $('#searching .loading-text').text("Done!");
+                $('#searching .progressbar').css('width','100%');
                 
                 // fill input values
                 $('input[name=genre]').val(vinyl.genre);
