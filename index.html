@@ -49,19 +49,6 @@
             });
         </script>
 
-        <!-- Start of Woopra Code -->
-        <script>
-            (function(){
-            var t,i,e,n=window,o=document,a=arguments,s="script",r=["config","track","identify","visit","push","call"],c=function(){var t,i=this;for(i._e=[],t=0;r.length>t;t++)(function(t){i[t]=function(){return i._e.push([t].concat(Array.prototype.slice.call(arguments,0))),i}})(r[t])};for(n._w=n._w||{},t=0;a.length>t;t++)n._w[a[t]]=n[a[t]]=n[a[t]]||new c;i=o.createElement(s),i.async=1,i.src="//static.woopra.com/js/w.js",e=o.getElementsByTagName(s)[0],e.parentNode.insertBefore(i,e)
-            })("woopra");
-
-            woopra.config({
-                domain: 'vinyl.chko.org',
-                idle_timeout: 1800000
-            });
-            woopra.track();
-        </script>
-        <!-- End of Woopra Code -->
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -70,7 +57,7 @@
 
         <!-- Add your site or application content here -->
         <header>
-            <h1>Vinylr</h1>
+            <a href="/"><h1>Vinylr</h1></a>
             <div id="loading" class="fa fa-spinner fa-spin"></div>
             <div id="fb-button">
                 <button class="fb-button" id="fb-auth" onclick="FB.login()"><span class="fa fa-facebook fa-fw"></span><span>Login with facebook</span></button>
@@ -81,10 +68,46 @@
         <div id="loggedOutWrapper" class="container centeredtext">
             <div id="header-bg">
                 <div class="header-content">
-                    <img src="img/logo.svg" alt="vinylr logo" class="logo-big">
-                    <h2 class="title-text">Your Personal Vinyl Collection</h2>
+                    <img src="img/logo.png" alt="vinylr logo" class="logo-big">
+                    <h2 class="title-text">Manage your personal Vinyl collection.</h2>
+                    <button class="fb-button" id="fb-auth" onclick="FB.login()"><span class="fa fa-facebook fa-fw"></span><span>Login with facebook</span></button>
                 </div>
-            </div>     
+            </div>
+
+            <section>
+                <h3>Collection</h3>
+                <h4>Build it. Manage it. Love it.</h4>
+                <p class="description">Adding all your vinyls to your collection is easy - all you need is the artist and release name and you're good to go. Vinylr will do the rest.<br/>
+                After building it, manage your collection with filtering, sorting and editing tools.</p>
+                <img class="teaser-image gallery-image" src="img/mainpage.png" alt="mainpage">
+                <ul class="gallery">
+                    <li><a href="img/mainpage.png" class="current">Collection</a></li>
+                    <li><a href="img/detailpage.png">Details</a></li>
+                    <li><a href="img/addvinyl.png">Adding</a></li>
+                    <li><a href="img/livesearch.png">Filter</a></li>
+                </ul>
+            </section> 
+
+            <section class="odd">
+                <h3>Profile</h3>
+                <h4>Your collection defines you.</h4>
+                <p class="description">Find out more about your collection and yourself. Vinylr will create your personal collectors-profile and might reveal information that even you didn't know.</p>
+                <img class="teaser-image" src="img/profile.png" alt="profile">
+            </section>
+
+            <section>
+                <h3>Mobile</h3>
+                <h4>Your collection in a pocket.</h4>
+                <p class="description">Vinylr is fully responsive and will look great on your tablet or smartphone. So feel free to add some vinyls on the go!</p>
+                <img class="teaser-image" src="img/mobile.png" alt="mobile">
+            </section>   
+
+            <section class="odd">
+                <h3>Contact</h3>
+                <h4>Get in touch.</h4>
+                <p class="description">Feedback, critics and loveletters are always welcome. Feel free to get in touch with me.</p>
+                <a class="mail" href="mailto:info@chko.org"><span>Send me an Email</span></a>
+            </section>    
         </div>
 
         <!-- User logged in -->
@@ -137,7 +160,7 @@
             <div class="overlaycontent"></div>
         </div>
 
-        <footer>© 2014 Vinylr. Much love to <a href="http://www.discogs.com" target="_blank">Discogs</a>, <a href="https://www.apple.com/itunes/" target="_blank">iTunes</a> and <a href="http://www.deezer.com" targe="_blank">Deezer</a>. <a href="/impressum">Impressum</a>.</footer>
+        <footer>© 2014 Vinylr. Much love to <a href="http://www.discogs.com" target="_blank">Discogs</a>, <a href="https://www.apple.com/itunes/" target="_blank">iTunes</a> and <a href="http://www.deezer.com" targe="_blank">Deezer</a>. <a href="/impressum.html">Impressum</a>.</footer>
 
     </body>
 </html>

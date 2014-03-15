@@ -73,12 +73,13 @@ body {
 #loggedInWrapper {
   display: none;
   padding: 10px;
+  min-height: calc(100% - 197px);
 }
-/* line 110, ../sass/global.scss */
+/* line 111, ../sass/global.scss */
 #loggedInWrapper #controls {
   margin-bottom: 10px;
 }
-/* line 113, ../sass/global.scss */
+/* line 114, ../sass/global.scss */
 #loggedInWrapper #controls #filter {
   border-radius: 5px;
   height: 40px;
@@ -89,7 +90,7 @@ body {
   font-family: 'Lato';
   line-height: 42px;
 }
-/* line 124, ../sass/global.scss */
+/* line 125, ../sass/global.scss */
 #loggedInWrapper #controls #vinylcount {
   height: 40px;
   -moz-border-radius: 5px;
@@ -106,7 +107,7 @@ body {
   font-size: 24px;
   margin-right: 10px;
 }
-/* line 139, ../sass/global.scss */
+/* line 140, ../sass/global.scss */
 #loggedInWrapper #controls .addvinyl, #loggedInWrapper #controls .stats {
   background-color: #45b29d;
   border: 1px solid #45b29d;
@@ -124,53 +125,53 @@ body {
   -webkit-transition: 0.4s all;
   font-family: Lato, Helvetica, sans-serif;
 }
-/* line 153, ../sass/global.scss */
+/* line 154, ../sass/global.scss */
 #loggedInWrapper #controls .addvinyl:hover, #loggedInWrapper #controls .stats:hover {
   background-color: #368a7a;
 }
-/* line 157, ../sass/global.scss */
+/* line 158, ../sass/global.scss */
 #loggedInWrapper #controls .addvinyl .button-icon, #loggedInWrapper #controls .stats .button-icon {
   margin-right: 10px;
 }
-/* line 162, ../sass/global.scss */
+/* line 163, ../sass/global.scss */
 #loggedInWrapper #controls .stats {
   background-color: #e27a3f;
   border: 1px solid #e27a3f;
   margin-left: 10px;
 }
-/* line 167, ../sass/global.scss */
+/* line 168, ../sass/global.scss */
 #loggedInWrapper #controls .stats:hover {
   background-color: #bf6736;
 }
 
-/* line 174, ../sass/global.scss */
+/* line 175, ../sass/global.scss */
 #vinylCount {
   text-align: center;
   width: 100%;
 }
-/* line 178, ../sass/global.scss */
+/* line 179, ../sass/global.scss */
 #vinylCount p {
   font-weight: bold;
   font-size: 5em;
 }
-/* line 183, ../sass/global.scss */
+/* line 184, ../sass/global.scss */
 #vinylCount span {
   font-size: 1em;
 }
 
-/* line 188, ../sass/global.scss */
+/* line 189, ../sass/global.scss */
 #addvinyl {
   cursor: pointer;
   text-align: center;
 }
-/* line 192, ../sass/global.scss */
+/* line 193, ../sass/global.scss */
 #addvinyl p {
   font-size: 8em;
   font-weight: bold;
   margin-top: 116px;
   color: #e27a3f;
 }
-/* line 199, ../sass/global.scss */
+/* line 200, ../sass/global.scss */
 #addvinyl span {
   text-transform: uppercase;
 }
@@ -178,7 +179,6 @@ body {
 /* line 3, ../sass/welcome.scss */
 #header-bg {
   background: url("../img/header-image2.jpg") no-repeat;
-  background-position: 0 -100px;
   background-size: cover;
   background-color: black;
   background-opacity: .8;
@@ -186,29 +186,116 @@ body {
   width: 100%;
   position: relative;
 }
-/* line 13, ../sass/welcome.scss */
+/* line 12, ../sass/welcome.scss */
 #header-bg .header-content {
   margin: 0 auto;
   text-align: center;
   padding: 50px;
   top: 50%;
   position: absolute;
-  height: 250px;
+  height: 300px;
   width: calc(100% - 100px);
-  margin-top: -150px;
+  margin-top: -200px;
 }
-/* line 23, ../sass/welcome.scss */
+/* line 22, ../sass/welcome.scss */
 #header-bg .header-content img {
   width: 120px;
   height: 120px;
   display: block;
   margin: 0 auto;
 }
-/* line 30, ../sass/welcome.scss */
+/* line 29, ../sass/welcome.scss */
 #header-bg .header-content .title-text {
-  margin: 0;
   color: white;
-  margin-top: 20px;
+  margin: 30px 0;
   font-weight: 200;
-  font-size: 56px;
+  font-size: 32px;
+  text-shadow: 0 0 6px black;
+}
+
+/* line 40, ../sass/welcome.scss */
+section.odd {
+  background-color: #FAFAFA;
+}
+/* line 44, ../sass/welcome.scss */
+section .teaser-image {
+  width: 1140px;
+}
+/* line 48, ../sass/welcome.scss */
+section .gallery {
+  list-style-type: none;
+  margin-bottom: 40px;
+  padding: 0;
+}
+/* line 53, ../sass/welcome.scss */
+section .gallery li {
+  display: inline-block;
+}
+/* line 56, ../sass/welcome.scss */
+section .gallery li a {
+  color: #777;
+  text-decoration: none;
+  margin: 0 20px;
+}
+/* line 57, ../sass/welcome.scss */
+section .gallery li a.current {
+  color: #45b29d;
+}
+/* line 64, ../sass/welcome.scss */
+section .gallery li a:hover {
+  color: #45b29d;
+}
+/* line 71, ../sass/welcome.scss */
+section h3 {
+  color: #AFAFAF;
+  font-size: 14px;
+  letter-spacing: 2px;
+  padding-top: 30px;
+}
+/* line 78, ../sass/welcome.scss */
+section h4 {
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+/* line 84, ../sass/welcome.scss */
+section .description {
+  margin: 0;
+  padding: 0;
+  font-weight: 300;
+  line-height: 30px;
+}
+/* line 91, ../sass/welcome.scss */
+section .mail {
+  border: 2px solid #202020;
+  color: #202020;
+  font-family: Lato, Helvetica, sans-serif;
+  letter-spacing: 2px;
+  height: 40px;
+  background-color: transparent;
+  margin-bottom: 30px;
+  padding: 2px 10px 3px;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 40px;
+}
+/* line 104, ../sass/welcome.scss */
+section .mail:hover {
+  color: #45b29d;
+  border-color: #45b29d;
+}
+
+/* line 113, ../sass/welcome.scss */
+#impressum {
+  min-height: calc(100% - 277px);
+}
+/* line 116, ../sass/welcome.scss */
+#impressum a {
+  color: #202020;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 121, ../sass/welcome.scss */
+#impressum a:hover {
+  color: #45b29d;
 }

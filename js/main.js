@@ -1,3 +1,18 @@
+
+
+$(function(){
+  $('.gallery a').click(function(e){
+    e.preventDefault();
+
+    var src = $(this).attr('href');
+
+    $('.gallery').find('.current').removeClass();
+    $(this).addClass('current');
+
+    $('.gallery-image').attr('src',src);
+  })
+});
+
 /* === Global Actions =========== */
 
 $(document).ready(function(){

@@ -106,6 +106,7 @@ body{
 #loggedInWrapper{
     display: none;
     padding: 10px;
+    min-height: calc(100% - 197px);
 
     #controls{
         margin-bottom: 10px;

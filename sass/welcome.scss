@@ -2,7 +2,6 @@
 
 #header-bg{
 	background: url('../img/header-image2.jpg') no-repeat;
-	background-position: 0 -100px;
 	background-size: cover;
 	background-color: black;
 	background-opacity: .8;
@@ -16,9 +15,9 @@
 		padding: 50px;
 		top: 50%;
 		position: absolute;
-		height: 250px;
+		height: 300px;
 		width: calc(100% - 100px);
-		margin-top: -150px;
+		margin-top: -200px;
 
 		img{
 			width: 120px;
@@ -28,13 +27,99 @@
 		}
 
 		.title-text{
-			margin: 0;
 			color: white;
-			margin-top: 20px;
+			margin: 30px 0;
 			font-weight: 200;
-			font-size: 56px;
+			font-size: 32px;
+			text-shadow: 0 0 6px rgba(0,0,0,1);
+		}
+	}
+}
+
+section{
+	&.odd{
+		background-color: #FAFAFA;
+	}
+
+	.teaser-image{
+		width: 1140px;
+	}
+
+	.gallery{
+		list-style-type: none;
+		margin-bottom: 40px;
+		padding: 0;
+
+		li{
+			display: inline-block;
+
+			a{
+				&.current{
+					color: $green;
+				}
+
+				color: #777;
+				text-decoration: none;
+				margin: 0 20px;
+				&:hover{
+					color: $green;
+				}
+			}
 		}
 	}
 
-	
+	h3{
+		color: #AFAFAF;
+		font-size: 14px;
+		letter-spacing: 2px;
+		padding-top: 30px;
+	}
+
+	h4{
+		font-size: 24px;
+		font-weight: 300;
+		margin-bottom: 0;
+	}
+
+	.description{
+		margin: 0;
+		padding: 0;
+		font-weight: 300;
+		line-height: 30px;
+	}
+
+	.mail{
+		border: 2px solid $grey;
+		color: $grey;
+		@include font(Lato);
+		letter-spacing: 2px;
+		height: 40px;
+		background-color: transparent;
+		margin-bottom: 30px;
+		padding: 2px 10px 3px;
+		text-decoration: none;
+		display: inline-block;
+		line-height: 40px;
+
+		&:hover{
+			color: $green;
+			border-color: $green;
+		}
+	}
+}
+
+// === IMPRESSUM ===============================
+
+#impressum{
+	min-height: calc(100% - 277px);
+
+	a{
+		color: #202020;
+		text-decoration: none;
+		font-weight: bold;
+
+		&:hover{
+			color: $green;
+		}
+	}
 }
