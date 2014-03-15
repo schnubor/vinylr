@@ -1,0 +1,337 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"backgr",
+				"background-color"
+			],
+			[
+				"proxy",
+				"proxyURL"
+			],
+			[
+				"rele",
+				"releaseID"
+			],
+			[
+				"pric",
+				"priceString"
+			],
+			[
+				"latest",
+				"latestVinyl"
+			],
+			[
+				"top",
+				"top-artist"
+			],
+			[
+				"craw",
+				"crawledArtist"
+			],
+			[
+				"mysql_re",
+				"mysql_real_escape_string"
+			],
+			[
+				"text-",
+				"text-decoration"
+			],
+			[
+				"list-",
+				"list-style-type"
+			],
+			[
+				"artWor",
+				"artworkUrl"
+			],
+			[
+				"reset",
+				"resetAddForm"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"iTunes",
+				"itunesUrl"
+			],
+			[
+				"wid",
+				"width"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 476.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/christiankorndoerfer/Projekte/Websites/Esotalk/addons/plugins/Soundcloud/resources/soundcloud.js",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/sass/global.scss",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/views/userprofile.html",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/php/addvinyl.php",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/js/actions.js",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/.sass-cache/350bc88095f38e95a71dbc853e7ba533db853fc8/profile.scssc",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/stylesheets/profile.css",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/sass/profile.scss",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/views/editvinyl.html",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/views/addvinyl.html",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/php/editvinyl.php",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/sass/vinyls.scss",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/sass/print.scss",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/js/plugins.js",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/php/discogs_oauth.php",
+		"/Users/christiankorndoerfer/Downloads/oauth-php/example/client/twolegged.php",
+		"/Users/christiankorndoerfer/Downloads/oauth-php/example/client/googledocs.php",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/stylesheets/overlay.css",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/sass/overlay.scss",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/sass/header_footer.scss",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/js/facebook.js",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/stylesheets/footable.metro.css",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/stylesheets/normalize.css",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/doc/misc.md",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/php/getuservinyls.php"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"GOOGLE",
+			"vinyls[index]",
+			"content",
+			"updateform"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"DISCOGS"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "vinylr.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"main",
+				"js/main.js"
+			],
+			[
+				"overla",
+				"sass/overlay.scss"
+			],
+			[
+				"actio",
+				"js/actions.js"
+			],
+			[
+				"globa",
+				"sass/global.scss"
+			],
+			[
+				"over",
+				"sass/overlay.scss"
+			],
+			[
+				"add",
+				"views/addvinyl.html"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
+				"actions",
+				"js/actions.js"
+			],
+			[
+				"ba",
+				"php/vendor/ba-simple-proxy.php"
+			],
+			[
+				"profil",
+				"sass/profile.scss"
+			],
+			[
+				"profi",
+				"views/userprofile.html"
+			],
+			[
+				"editvin",
+				"views/editvinyl.html"
+			],
+			[
+				"edit",
+				"php/editvinyl.php"
+			],
+			[
+				"view",
+				"views/addvinyl.html"
+			],
+			[
+				"ac",
+				"js/actions.js"
+			],
+			[
+				"viny",
+				"sass/vinyls.scss"
+			],
+			[
+				"action",
+				"js/actions.js"
+			],
+			[
+				"ove",
+				"sass/overlay.scss"
+			],
+			[
+				"vinyl",
+				"sass/vinyls.scss"
+			],
+			[
+				"glob",
+				"sass/global.scss"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
