@@ -246,6 +246,10 @@ $(document).ready(function(){
 
           // get prices
           var vinylPrice = parseFloat(VINYLS[i].Price);
+          if(isNaN(vinylPrice)){ // if price is empty or NaN, assume 0
+            vinylPrice = 0
+          }
+
           price = price + +vinylPrice.toFixed(2);
           price = +price.toFixed(2);
         }
@@ -303,6 +307,18 @@ $(document).ready(function(){
         $('.price-value').html('<p>worth:</p><span>'+price+'$</span>');
         $('.top-label').html('<p>Top label:</p><span>'+topLabel+'</span>');
         $('.top-artist').html('<p>Top artist:</p><span>'+topArtist+'</span>');
+      });
+    });
+  });
+
+  // === Import Data ==================================
+
+  $('#loggedInWrapper').on('click', '.import', function(){
+    $('#overlay').fadeIn(200, function(){
+      $('.overlaycontent').load('../views/import.html', function(){ // load user profile
+        if(Importer.isAPIAvailable()) {
+          $('#files').bind('change', Importer.handleFileSelect);
+        }
       });
     });
   });
