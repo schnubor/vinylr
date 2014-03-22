@@ -1,5 +1,3 @@
-
-
 $(function(){
   $('.gallery a').click(function(e){
     e.preventDefault();
@@ -317,7 +315,7 @@ $(document).ready(function(){
     $('#overlay').fadeIn(200, function(){
       $('.overlaycontent').load('../views/import.html', function(){ // load user profile
         if(Importer.isAPIAvailable()) {
-          $('#files').bind('change', Importer.handleFileSelect);
+          $('#files').bind('change', Importer.handleFileSelect); // as soon as a file gets selected, run this
         }
       });
     });

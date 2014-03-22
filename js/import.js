@@ -1,3 +1,5 @@
+var importData = {};
+
 var Importer = (function()
 {
 	function _isAPIAvailable() {
@@ -34,11 +36,15 @@ var Importer = (function()
         output += ' - FileSize: ' + file.size + ' bytes<br />\n';
         output += ' - LastModified: ' + (file.lastModifiedDate ? file.lastModifiedDate.toLocaleDateString() : 'n/a') + '<br />\n';
 
-    // read the file contents
-    _csvToObject(file);
-
-    // post the results
-    $('#filedetails').append(output);
+    if(file.type === "text/csv"){
+    	// read the file contents
+    	_csvToObject(file);
+    	// post the results
+    	$('#filedetails').append(output);
+    }
+    else{
+    	alert("Please select a CSV File!");
+    }
   }
 
   function _csvToObject(file) {
@@ -48,6 +54,7 @@ var Importer = (function()
       var csv = event.target.result;
       var data = $.csv.toObjects(csv);
       console.log(data);
+      $('#filedetails').append('<span>Found '+data.length+' Vinyls</span>');
     };
     reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
   }
