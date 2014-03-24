@@ -4,11 +4,19 @@
 		"selected_items":
 		[
 			[
-				"mar",
-				"margin-top"
+				"tr",
+				"transparent"
+			],
+			[
+				"backgrou",
+				"background-color"
 			],
 			[
 				"margin",
+				"margin-top"
+			],
+			[
+				"mar",
 				"margin-top"
 			],
 			[
@@ -75,6 +83,55 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 9088,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/main.js",
+			"settings":
+			{
+				"buffer_size": 11738,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "impressum.html",
+			"settings":
+			{
+				"buffer_size": 4765,
+				"line_ending": "Unix",
+				"name": "impressum.html"
+			}
+		},
+		{
+			"file": "sass/global.scss",
+			"settings":
+			{
+				"buffer_size": 3900,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sass/welcome.scss",
+			"settings":
+			{
+				"buffer_size": 1759,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sass/header_footer.scss",
+			"settings":
+			{
+				"buffer_size": 2286,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -108,6 +165,8 @@
 	},
 	"file_history":
 	[
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/sass/header_footer.scss",
+		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/humans.txt",
 		"/Users/christiankorndoerfer/Projekte/Websites/Esotalk/addons/plugins/Soundcloud/resources/soundcloud.js",
 		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/sass/global.scss",
 		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/views/userprofile.html",
@@ -127,7 +186,6 @@
 		"/Users/christiankorndoerfer/Downloads/oauth-php/example/client/googledocs.php",
 		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/stylesheets/overlay.css",
 		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/sass/overlay.scss",
-		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/sass/header_footer.scss",
 		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/js/facebook.js",
 		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/stylesheets/footable.metro.css",
 		"/Users/christiankorndoerfer/Projekte/Websites/vinylr/stylesheets/normalize.css",
@@ -172,8 +230,191 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9088,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3315,
+								3315
+							]
+						],
+						"settings":
+						{
+							"is_xml": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 736.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11738,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								214,
+								214
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "impressum.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4765,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1283,
+								1283
+							]
+						],
+						"settings":
+						{
+							"auto_name": "impressum.html",
+							"is_xml": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 147.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "sass/global.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3900,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								911,
+								918
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "sass/welcome.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1759,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1646,
+								1646
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 861.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "sass/header_footer.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2286,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1793,
+								1793
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 634.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -228,6 +469,18 @@
 				"js/main.js"
 			],
 			[
+				"header",
+				"sass/header_footer.scss"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
+				"glo",
+				"sass/global.scss"
+			],
+			[
 				"overla",
 				"sass/overlay.scss"
 			],
@@ -246,10 +499,6 @@
 			[
 				"add",
 				"views/addvinyl.html"
-			],
-			[
-				"index",
-				"index.html"
 			],
 			[
 				"actions",
