@@ -142,10 +142,7 @@ var Main = (function()
     // TODO: stop all others audio players..
   }
 
-  // fetch vinyl Data before submitting form
-  function _fetchData(){
-    console.log("calling _fetchData");
-
+  function _searchVinyl(){
     $('#searchbutton').hide();
     $('#searching').show();
     $('#searching .loading-text').text("Loading ...");
@@ -157,6 +154,39 @@ var Main = (function()
 
     var artist = $('input[name=artist]').val();
     var album = $('input[name=title]').val();
+
+    // start search
+    _fetchData(artist,album, function(vinyl){
+      $('#searching .loading-text').text("Done!");
+      $('#searching .progressbar').css('width','100%');
+      
+      // fill input values
+      $('input[name=genre]').val(vinyl.genre);
+      $('input[name=label]').val(vinyl.label);
+      $('input[name=artistpic]').val(vinyl.artistPic);
+      $('input[name=artwork]').val(vinyl.artworkUrl);
+      $('input[name=sample]').val(vinyl.sampleUrl);
+      $('input[name=itunes]').val(vinyl.itunesUrl);
+      $('input[name=deezer]').val(vinyl.deezerlink);
+      $('input[name=release]').val(vinyl.date);
+      $('input[name=catalog]').val(vinyl.catalog);
+      $('input[name=price]').val(vinyl.price);
+      $('input[name=duration]').val(vinyl.duration);
+      $('input[name=color]').val(pickercolor);
+      $('input[name=video]').val(vinyl.video);
+      //$('input[name=artist_corrected]').val(vinyl.artist);
+      $('input[name=artist_corrected]').val(artist);
+      $('input[name=album_corrected]').val(vinyl.title);
+      $('input[name=tracklist]').val(vinyl.tracklist);
+
+      // Preview the vinyl
+      _showPreview(vinyl);
+    });
+  }
+
+  // fetch vinyl Data before submitting form
+  function _fetchData(artist, album, callback){
+    console.log("calling _fetchData");
 
     var vinyl = {};
     var releaseID;
@@ -289,30 +319,7 @@ var Main = (function()
                   }
                 })
               ).done(function(){
-                $('#searching .loading-text').text("Done!");
-                $('#searching .progressbar').css('width','100%');
-                
-                // fill input values
-                $('input[name=genre]').val(vinyl.genre);
-                $('input[name=label]').val(vinyl.label);
-                $('input[name=artistpic]').val(vinyl.artistPic);
-                $('input[name=artwork]').val(vinyl.artworkUrl);
-                $('input[name=sample]').val(vinyl.sampleUrl);
-                $('input[name=itunes]').val(vinyl.itunesUrl);
-                $('input[name=deezer]').val(vinyl.deezerlink);
-                $('input[name=release]').val(vinyl.date);
-                $('input[name=catalog]').val(vinyl.catalog);
-                $('input[name=price]').val(vinyl.price);
-                $('input[name=duration]').val(vinyl.duration);
-                $('input[name=color]').val(pickercolor);
-                $('input[name=video]').val(vinyl.video);
-                //$('input[name=artist_corrected]').val(vinyl.artist);
-                $('input[name=artist_corrected]').val(artist);
-                $('input[name=album_corrected]').val(vinyl.title);
-                $('input[name=tracklist]').val(vinyl.tracklist);
-
-                // Preview the vinyl
-                _showPreview(vinyl);
+                callback(vinyl)
               });
             });
           });
@@ -400,7 +407,8 @@ var Main = (function()
     fetchData: _fetchData,
     showPreview: _showPreview,
     resetOverlay: _resetOverlay,
-    crawlArray: _crawlArray
+    crawlArray: _crawlArray,
+    searchVinyl: _searchVinyl
 	}
 
 })();
