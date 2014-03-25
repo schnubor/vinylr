@@ -214,7 +214,7 @@ var Main = (function()
         // 2nd get Discogs Release infos
         $.getJSON('http://api.discogs.com/releases/'+releaseID, 
           function(data){
-            console.log(data);
+            //console.log(data);
 
             vinyl.label = data.labels[0].name;
             vinyl.catalog =  data.labels[0].catno;
@@ -223,7 +223,7 @@ var Main = (function()
             vinyl.artist = data.artists[0].name;
             vinyl.title = data.title;
             vinyl.artworkUrl = data.images[0].uri150.replace("http://api.discogs.com","http://s.pixogs.com");
-            console.log(vinyl.artworkUrl);
+
             // check if tracklist is found
             if(typeof data.videos != 'undefined'){
               vinyl.tracklist = data.tracklist[0].position+". ";
@@ -247,7 +247,7 @@ var Main = (function()
               vinyl.video = '-';
             }
 
-            console.log(data.labels[0].name);
+            //console.log(data.labels[0].name);
           })
       ).done(function(){
         $('#searching .loading-text').text("Fetching Deezer Data ...");
@@ -287,8 +287,8 @@ var Main = (function()
               // 5th get artwork, audio sample from iTunes
               $.getJSON('http://itunes.apple.com/search?term='+artist+' '+vinyl.title+'&limit=1&callback=?', 
                 function(data) {
-                  console.log("iTunes data:");
-                  console.log(data);
+                  //console.log("iTunes data:");
+                  //console.log(data);
                   if(data.results.length != 0){
                     //vinyl.artworkUrl = data.results[0].artworkUrl100;
                     vinyl.sampleUrl = data.results[0].previewUrl;

@@ -55,6 +55,12 @@ var Importer = (function()
       var data = $.csv.toObjects(csv);
       console.log(data);
       $('#filedetails').append('<span>Found '+data.length+' Vinyls</span>');
+
+      for(var i=0; i < data.length; i++){
+        Main.fetchData(data[i].artist, data[i].title, function(vinyl){
+          console.log(vinyl);
+        });
+      }
     };
     reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
   }
