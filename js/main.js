@@ -139,6 +139,11 @@ $(document).ready(function(){
     });
   });
 
+  $(document).on('click', '#searchbutton', function(){
+    console.log('lol');
+    Main.searchVinyl();
+  });
+
   // === Edit Vinyl Overlay =========================================================
 
   // open overlay with add vinyl form
@@ -319,6 +324,10 @@ $(document).ready(function(){
         }
       });
     });
+  });
+
+  $(document).on('click','#startimport', function(){
+    Importer.importVinyls(importData);
   });
 
 });

@@ -40,35 +40,87 @@ var Importer = (function()
     	// read the file contents
     	_csvToObject(file);
     	// post the results
-    	$('#filedetails').append(output);
+    	// $('#filedetails').append(output);
     }
     else{
     	alert("Please select a CSV File!");
     }
   }
 
+  // fetch vinyl data and add to database
   function _csvToObject(file) {
     var reader = new FileReader();
     reader.readAsText(file);
     reader.onload = function(event){
       var csv = event.target.result;
-      var data = $.csv.toObjects(csv);
-      console.log(data);
-      $('#filedetails').append('<span>Found '+data.length+' Vinyls</span>');
-
-      for(var i=0; i < data.length; i++){
-        Main.fetchData(data[i].artist, data[i].title, function(vinyl){
-          console.log(vinyl);
-        });
-      }
+      importData = $.csv.toObjects(csv);
+      $('#filedetails').append('<span>Found '+importData.length+' Vinyls</span>').after('<button class="button" id="startimport">Import Vinyls now</button>');
     };
     reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
+  }
+
+  // fetch vinyl data from imported vinyls
+  function _importVinyls(data){
+    $('#filedetails, #inputs').remove();
+    $('#startimport').remove();
+    $('.description').after('<div class="importprogress"><div class="fa fa-refresh fa-spin"></div><p class="status"><span class="counter"></span><br><br><span class="vinylname"></span><br><span class="dbstatus"></span></p><div class="progress"><div class="progressbar"></div></div></div>');
+
+    var count = 0;
+    var width = 0;
+    $('.status .counter').text('...');
+    $('.status .vinylname').text('initiating');
+
+    for(var i=0; i < data.length; i++){
+      
+      var artist = data[i].artist;
+      var title = data[i].title;
+
+      // fetch Data
+      Main.fetchData(artist, title, function(vinyl){
+        console.log(vinyl);
+
+        // update status
+        count = count + 1;
+        width = count*(100/data.length);
+        $('.status .counter').text(count+'/'+data.length);
+        $('.status .vinylname').text(vinyl.artist+' - '+vinyl.title);
+        $('.importprogress .progressbar').css('width', width+'%');
+
+        // Add to DB
+        $.ajax({
+          type: 'POST',
+          url: './php/importvinyl.php',
+          data: {
+            facebookid: FBDATA.id,
+            vinyldata: JSON.stringify(vinyl)
+          },
+          success: function (response) {
+            console.log(response);
+            if(response != "already exists!"){
+              $('.status .dbstatus').text("added!");
+            }
+            else{
+              $('.status .dbstatus').text("already exists!");
+            }
+          },
+          error: function () {
+            console.warn('could not import vinyl - ajax error');
+            $('.status .dbstatus').text("ajax DB error!");
+          }
+        });
+      },
+      function(artist, album){  // vinyl not found
+        console.log("couldn't find vinyl: "+artist+" - "+album);
+        $('.status .dbstatus').text("not found!");
+      });
+    }
   }
 
   return{
     isAPIAvailable: _isAPIAvailable,
     handleFileSelect: _handleFileSelect,
-    csvToObject: _csvToObject
+    csvToObject: _csvToObject,
+    importVinyls: _importVinyls
 	}
 
 })()

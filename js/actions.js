@@ -181,11 +181,16 @@ var Main = (function()
 
       // Preview the vinyl
       _showPreview(vinyl);
+    },
+    function(artist, album){
+      alert("Sorry, couldn't find this vinyl ("+artist+" - "+album+"). Please try again.");
+      $('#searchbutton').show();
+      $('#searching').hide();
     });
   }
 
   // fetch vinyl Data before submitting form
-  function _fetchData(artist, album, callback){
+  function _fetchData(artist, album, callback, error){
     console.log("calling _fetchData");
 
     var vinyl = {};
@@ -197,10 +202,7 @@ var Main = (function()
       $.getJSON('http://api.discogs.com/database/search?type=release&q=title:'+album+'%20AND%20artist:'+artist+'%20AND%20format:%22vinyl%22&callback=?', 
         function(data){
           if(typeof data.data.results[0] === 'undefined'){  // nothing was found
-            alert("Sorry, couldn't find this vinyl. Please try again.");
-            $('#searchbutton').show();
-            $('#searching').hide();
-            return;
+            error(artist, album);
           }
           else{ 
             releaseID = data.data.results[0].id;
@@ -220,7 +222,8 @@ var Main = (function()
             vinyl.catalog =  data.labels[0].catno;
             vinyl.genre = data.genres.join(', ');
             vinyl.date = data.released;
-            vinyl.artist = data.artists[0].name;
+            vinyl.artist = artist;
+            //vinyl.artist = data.artists[0].name;
             vinyl.title = data.title;
             vinyl.artworkUrl = data.images[0].uri150.replace("http://api.discogs.com","http://s.pixogs.com");
 
