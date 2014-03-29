@@ -39,7 +39,7 @@ var Importer = (function()
     if(file.type === "text/csv"){
     	// read the file contents
     	_csvToObject(file);
-    	// post the results
+    	// show file details
     	// $('#filedetails').append(output);
     }
     else{
@@ -54,6 +54,7 @@ var Importer = (function()
     reader.onload = function(event){
       var csv = event.target.result;
       importData = $.csv.toObjects(csv);
+      $('.overlayform').remove();
       $('#filedetails').append('<span>Found '+importData.length+' Vinyls</span>').after('<button class="button" id="startimport">Import Vinyls now</button>');
     };
     reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
@@ -61,15 +62,18 @@ var Importer = (function()
 
   // fetch vinyl data from imported vinyls
   function _importVinyls(data){
-    $('#filedetails, #inputs').remove();
-    $('#startimport').remove();
-    $('.description').after('<div class="importprogress"><div class="fa fa-refresh fa-spin"></div><p class="status"><span class="counter"></span><br><br><span class="vinylname"></span><br><span class="dbstatus"></span></p><div class="progress"><div class="progressbar"></div></div></div>');
+    $('#filedetails, #inputs, .description, .overlayform, #startimport').remove();
+    $('#importform').append('<div class="importprogress"><div class="fa fa-refresh fa-spin"></div><p class="status"><span class="counter"></span><br><br><span class="vinylname"></span><br><span class="dbstatus"></span></p><div class="progress"><div class="progressbar"></div></div></div>');
 
     var count = 0;
+    var added = 0;
+    var exists = 0; 
+    var failed = 0;
     var width = 0;
     $('.status .counter').text('...');
     $('.status .vinylname').text('initiating');
 
+    // Loop through CSV data
     for(var i=0; i < data.length; i++){
       
       var artist = data[i].artist;
@@ -86,6 +90,13 @@ var Importer = (function()
         $('.status .vinylname').text(vinyl.artist+' - '+vinyl.title);
         $('.importprogress .progressbar').css('width', width+'%');
 
+        // Check if import is done.
+        if(count == data.length){
+          console.log("import done.");
+          $('.importprogress').remove();
+          $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
+        }
+
         // Add to DB
         $.ajax({
           type: 'POST',
@@ -97,10 +108,15 @@ var Importer = (function()
           success: function (response) {
             console.log(response);
             if(response != "already exists!"){
+              // update status text
               $('.status .dbstatus').text("added!");
+              // add vinyl to table
+              Main.addVinylToTable(response);
+              added = added + 1;
             }
             else{
               $('.status .dbstatus').text("already exists!");
+              exists = exists + 1;
             }
           },
           error: function () {
@@ -112,6 +128,7 @@ var Importer = (function()
       function(artist, album){  // vinyl not found
         console.log("couldn't find vinyl: "+artist+" - "+album);
         $('.status .dbstatus').text("not found!");
+        failed = failed + 1;
       });
     }
   }

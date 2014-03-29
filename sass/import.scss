@@ -69,4 +69,43 @@
     }
   }
 
+  #importreport{
+    margin-top: 20px;
+    color: #777;
+    text-align: center;
+
+    .success-title{
+      color: white;
+      text-transform: uppercase;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .report{
+      font-weight: 300;
+
+      span{
+        font-weight: 400;
+      }
+
+      .success{
+        color: $positiv;
+      }
+
+      .exists{
+        color: $neutral;
+      }
+
+      .not-found{
+        color: $negativ;
+      }
+    }
+
+    .done{
+      margin: 20px auto;
+      width: 150px;
+      display: block;
+    }
+  }
+
 }
