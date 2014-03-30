@@ -80,7 +80,7 @@ var Importer = (function()
       var title = data[i].title;
 
       // fetch Data
-      Main.fetchData(artist, title, function(vinyl){
+      Main.fetchData(artist, title, function(vinyl){ // vinyl found
         console.log(vinyl);
 
         // update status
@@ -127,8 +127,23 @@ var Importer = (function()
       },
       function(artist, album){  // vinyl not found
         console.log("couldn't find vinyl: "+artist+" - "+album);
+
+        // update status
+        count = count + 1;
+        width = count*(100/data.length);
+        $('.status .counter').text(count+'/'+data.length);
+        $('.status .vinylname').text(vinyl.artist+' - '+vinyl.title);
+        $('.importprogress .progressbar').css('width', width+'%');
+
         $('.status .dbstatus').text("not found!");
         failed = failed + 1;
+
+        // Check if import is done.
+        if(count == data.length){
+          console.log("import done.");
+          $('.importprogress').remove();
+          $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
+        }
       });
     }
   }
