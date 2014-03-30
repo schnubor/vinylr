@@ -90,13 +90,6 @@ var Importer = (function()
         $('.status .vinylname').text(vinyl.artist+' - '+vinyl.title);
         $('.importprogress .progressbar').css('width', width+'%');
 
-        // Check if import is done.
-        if(count == data.length){
-          console.log("import done.");
-          $('.importprogress').remove();
-          $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
-        }
-
         // Add to DB
         $.ajax({
           type: 'POST',
@@ -118,10 +111,25 @@ var Importer = (function()
               $('.status .dbstatus').text("already exists!");
               exists = exists + 1;
             }
+
+            // Check if import is done.
+            if(count == data.length){
+              console.log("import done.");
+              $('.importprogress').remove();
+              $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
+            }
           },
           error: function () {
             console.warn('could not import vinyl - ajax error');
             $('.status .dbstatus').text("ajax DB error!");
+            failed = failed + 1;
+
+            // Check if import is done.
+            if(count == data.length){
+              console.log("import done.");
+              $('.importprogress').remove();
+              $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
+            }
           }
         });
       },
