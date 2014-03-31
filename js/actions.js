@@ -225,7 +225,7 @@ var Main = (function()
       $('input[name=sample]').val(vinyl.sampleUrl);
       $('input[name=itunes]').val(vinyl.itunesUrl);
       $('input[name=deezer]').val(vinyl.deezerlink);
-      $('input[name=release]').val(vinyl.date);
+      $('input[name=release]').val(vinyl.release);
       $('input[name=catalog]').val(vinyl.catalog);
       $('input[name=price]').val(vinyl.price);
       $('input[name=duration]').val(vinyl.duration);
@@ -260,14 +260,20 @@ var Main = (function()
         function(data){
           if(typeof data.data.results[0] === 'undefined'){  // nothing was found
             error(artist, album);
+            return false;
           }
           else{ 
             releaseID = data.data.results[0].id;
           }
         })
     ).done(function(){
-      $('#searching .loading-text').text("Viny found ...");
+      $('#searching .loading-text').text("Vinyl found ...");
       $('#searching .progressbar').css('width','20%');
+
+      // releaseID may still be undefined
+      if(typeof releaseID === 'undefined'){
+        return false;
+      }
 
       $.when(
         // 2nd get Discogs Release infos
@@ -278,11 +284,19 @@ var Main = (function()
             vinyl.label = data.labels[0].name;
             vinyl.catalog =  data.labels[0].catno;
             vinyl.genre = data.genres.join(', ');
-            vinyl.date = data.released;
+            vinyl.release = data.released;
             vinyl.artist = artist;
             //vinyl.artist = data.artists[0].name;
             vinyl.title = data.title;
-            vinyl.artworkUrl = data.images[0].uri150.replace("http://api.discogs.com","http://s.pixogs.com");
+            if(typeof data.images != 'undefined'){
+              vinyl.artworkUrl = data.images[0].uri150.replace("http://api.discogs.com","http://s.pixogs.com");
+            }
+            else{
+              vinyl.artworkUrl = 'img/vinyl_PH.svg';
+            }
+            vinyl.duration = '-'; // TODO
+            vinyl.deezerlink = '-'; // TODO
+            vinyl.artistPic = 'img/artist_PH.svg'; // TODO
 
             // check if tracklist is found
             if(typeof data.videos != 'undefined'){
@@ -310,78 +324,45 @@ var Main = (function()
             //console.log(data.labels[0].name);
           })
       ).done(function(){
-        $('#searching .loading-text').text("Fetching Deezer Data ...");
-        $('#searching .progressbar').css('width','40%');
+        $('#searching .loading-text').text("Fetching iTunes Data ...");
+        $('#searching .progressbar').css('width','70%');
         $.when(
-          // 3rd get Album ID from Deezer
-          $.getJSON('http://api.deezer.com/search/album?q='+artist+' '+vinyl.title+'&output=jsonp&callback=?', 
-            function(result1){
-              //console.log(result1);
-              if(typeof result1.data[0] === 'undefined'){  // nothing was found
-                albumID = 'undefined';
+          // 5th get artwork, audio sample from iTunes
+          $.getJSON('http://itunes.apple.com/search?term='+artist+' '+vinyl.title+'&limit=1&callback=?', 
+            function(data) {
+              //console.log("iTunes data:");
+              //console.log(data);
+              if(data.results.length != 0){
+                //vinyl.artworkUrl = data.results[0].artworkUrl100;
+                vinyl.sampleUrl = data.results[0].previewUrl;
+                //vinyl.price = data.results[0].collectionPrice;
+                vinyl.itunesUrl = data.results[0].collectionViewUrl;
               }
-              else{ 
-                albumID = result1.data[0].id;
+              else{ // no data found on iTunes
+                //vinyl.artworkUrl = "/img/vinyl_PH.svg";
+                vinyl.sampleUrl = "no sample available";
+                vinyl.price = "not found";
+                vinyl.itunesUrl = "not found";
               }
             })
         ).done(function(){
+          $('#searching .loading-text').text("Fetching Discogs Data ...");
+          $('#searching .progressbar').css('width','90%');
           $.when(
-            // 4th get Duration, Deezer link and Artistpic from Deezer
-            $.getJSON('http://api.deezer.com/album/'+albumID+'&output=jsonp&callback=?', 
-              function(data){
-                if(albumID !== 'undefined'){
-                  vinyl.duration = data.duration;
-                  vinyl.deezerlink = data.link;
-                  vinyl.artistPic = data.artist.picture;
-                }
-                else{
-                  vinyl.duration = '-';
-                  vinyl.deezerlink = '-';
-                  vinyl.artistPic = 'img/artist_PH.svg';
-                } 
-              })
+            // 6th get price
+            $.ajax({
+              type: "GET",
+              url: proxyURL+releaseID,
+              data: {},
+              success: function(data){
+                var tempDiv = $('<div></div>').hide().html(data.contents);
+                var priceString = $(tempDiv).find('.price').text();
+                vinyl.price = priceString.substring(1);
+                $(tempDiv).remove();
+              }
+            })
           ).done(function(){
-            $('#searching .loading-text').text("Fetching iTunes Data ...");
-            $('#searching .progressbar').css('width','70%');
-            $.when(
-              // 5th get artwork, audio sample from iTunes
-              $.getJSON('http://itunes.apple.com/search?term='+artist+' '+vinyl.title+'&limit=1&callback=?', 
-                function(data) {
-                  //console.log("iTunes data:");
-                  //console.log(data);
-                  if(data.results.length != 0){
-                    //vinyl.artworkUrl = data.results[0].artworkUrl100;
-                    vinyl.sampleUrl = data.results[0].previewUrl;
-                    //vinyl.price = data.results[0].collectionPrice;
-                    vinyl.itunesUrl = data.results[0].collectionViewUrl;
-                  }
-                  else{ // no data found on iTunes
-                    //vinyl.artworkUrl = "/img/vinyl_PH.svg";
-                    vinyl.sampleUrl = "no sample available";
-                    vinyl.price = "not found";
-                    vinyl.itunesUrl = "not found";
-                  }
-                })
-            ).done(function(){
-              $('#searching .loading-text').text("Fetching Discogs Data ...");
-              $('#searching .progressbar').css('width','90%');
-              $.when(
-                // 6th get price
-                $.ajax({
-                  type: "GET",
-                  url: proxyURL+releaseID,
-                  data: {},
-                  success: function(data){
-                    var tempDiv = $('<div></div>').hide().html(data.contents);
-                    var priceString = $(tempDiv).find('.price').text();
-                    vinyl.price = priceString.substring(1);
-                    $(tempDiv).remove();
-                  }
-                })
-              ).done(function(){
-                callback(vinyl)
-              });
-            });
+            callback(vinyl)
           });
         });
       });

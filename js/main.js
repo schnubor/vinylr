@@ -92,7 +92,6 @@ $(document).ready(function(){
   });
 
   $(document).on('click', '#searchbutton', function(){
-    console.log('lol');
     Main.searchVinyl();
   });
 

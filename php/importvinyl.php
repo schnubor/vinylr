@@ -7,22 +7,22 @@
 
   $artist = mysqli_real_escape_string($con, $vinyl->artist);
   $album = mysqli_real_escape_string($con, $vinyl->title);
-  $label = $vinyl->label;
-  $sample = $vinyl->sampleUrl;
-  $artistpic = $vinyl->artistPic;
-  $artwork = $vinyl->artworkUrl;
-  $catalog = $vinyl->catalog;
-  $date = $vinyl->date;
-  $price = $vinyl->price;
-  $genre = $vinyl->genre;
-  $video = $vinyl->video;
-  $duration = $vinyl->duration;
+  $label = mysqli_real_escape_string($con, $vinyl->label);
+  $sample = mysqli_real_escape_string($con, $vinyl->sampleUrl);
+  $artistpic = mysqli_real_escape_string($con, $vinyl->artistPic);
+  $artwork = mysqli_real_escape_string($con, $vinyl->artworkUrl);
+  $catalog = mysqli_real_escape_string($con, $vinyl->catalog);
+  $release = mysqli_real_escape_string($con, $vinyl->release);
+  $price = mysqli_real_escape_string($con, $vinyl->price);
+  $genre = mysqli_real_escape_string($con, $vinyl->genre);
+  $video = mysqli_real_escape_string($con, $vinyl->video);
+  $duration = mysqli_real_escape_string($con, $vinyl->duration);
   $count = 1; // TODO: needs to change (get from discogs)
   $type = "Album"; // TODO: needs to change (get from discogs)
   $size = "12in"; // TODO: needs to change (get from discogs)
   $color = "#000000";
   $tracklist = mysqli_real_escape_string($con, $vinyl->tracklist);
-  $itunes = $vinyl->itunesUrl;
+  $itunes = mysqli_real_escape_string($con, $vinyl->itunesUrl);
 
   // 1. Write Vinyl to DB
   
@@ -31,7 +31,7 @@
   if(mysqli_num_rows($exists) == 0){
     $sql = "INSERT INTO `".$fbid."` (Artist, Album, Label, Sample, Releasedate, Catalog, Price, Genre, Duration, Tracklist, Count, Format, Type, Color, Artwork, Artistpic, Video, iTunes)
     VALUES
-    ('$artist','$album','$label','$sample','$date','$catalog','$price','$genre','$duration','$tracklist','$count','$size','$type','$color','$artwork','$artistpic','$video','$itunes')";
+    ('$artist','$album','$label','$sample','$release','$catalog','$price','$genre','$duration','$tracklist','$count','$size','$type','$color','$artwork','$artistpic','$video','$itunes')";
 
     if (!mysqli_query($con,$sql))
     {

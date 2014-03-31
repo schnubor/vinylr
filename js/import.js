@@ -140,7 +140,7 @@ var Importer = (function()
         count = count + 1;
         width = count*(100/data.length);
         $('.status .counter').text(count+'/'+data.length);
-        $('.status .vinylname').text(vinyl.artist+' - '+vinyl.title);
+        $('.status .vinylname').text(artist+' - '+title);
         $('.importprogress .progressbar').css('width', width+'%');
 
         $('.status .dbstatus').text("not found!");
