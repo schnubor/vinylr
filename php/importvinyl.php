@@ -12,7 +12,7 @@
   $artistpic = mysqli_real_escape_string($con, $vinyl->artistPic);
   $artwork = mysqli_real_escape_string($con, $vinyl->artworkUrl);
   $catalog = mysqli_real_escape_string($con, $vinyl->catalog);
-  $release = mysqli_real_escape_string($con, $vinyl->release);
+  $release = isset($vinyl->release) ? mysqli_real_escape_string($con, $vinyl->release) : '-';
   $price = mysqli_real_escape_string($con, $vinyl->price);
   $genre = mysqli_real_escape_string($con, $vinyl->genre);
   $video = mysqli_real_escape_string($con, $vinyl->video);

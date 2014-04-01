@@ -114,9 +114,16 @@ var Importer = (function()
 
             // Check if import is done.
             if(count == data.length){
-              console.log("import done.");
+              console.log("import done. ajax success");
               $('.importprogress').remove();
-              $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
+              if($('#importreport').length){
+                $('#importreport').remove();
+                $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
+              }
+              else{
+                $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
+              }
+              
             }
           },
           error: function () {
@@ -126,9 +133,15 @@ var Importer = (function()
 
             // Check if import is done.
             if(count == data.length){
-              console.log("import done.");
+              console.log("import done. ajax error");
               $('.importprogress').remove();
-              $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
+              if($('#importreport').length){
+                $('#importreport').remove();
+                $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
+              }
+              else{
+                $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
+              }
             }
           }
         });
@@ -148,9 +161,15 @@ var Importer = (function()
 
         // Check if import is done.
         if(count == data.length){
-          console.log("import done.");
+          console.log("import done. fail");
           $('.importprogress').remove();
-          $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
+          if($('#importreport').length){
+            $('#importreport').remove();
+            $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
+          }
+          else{
+            $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
+          }
         }
       });
     }
