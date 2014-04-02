@@ -82,7 +82,7 @@ $(document).ready(function(){
   // open overlay with add vinyl form
   $('#loggedInWrapper').on('click', '.addvinyl', function(){
     $('#overlay').fadeIn(200, function(){
-      $('.overlayform').load('../views/addvinyl.html', function(){ // load add vinyl form
+      $('.overlayform').show().load('../views/addvinyl.html', function(){ // load add vinyl form
         Main.init(); // init select boxes and colorpicker
         Main.updateForms(FBDATA.id); // IMPORTANT: add FB id to form
         // assign ajaxForm to add vinyl form

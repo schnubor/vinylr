@@ -54,15 +54,15 @@ var Importer = (function()
     reader.onload = function(event){
       var csv = event.target.result;
       importData = $.csv.toObjects(csv);
-      $('.overlayform').remove();
-      $('#filedetails').append('<span>Found '+importData.length+' Vinyls</span>').after('<button class="button" id="startimport">Import Vinyls now</button>');
+      $('.overlayform').hide();
+      $('#filedetails').html('<span>Found '+importData.length+' Vinyls</span><button class="button" id="startimport">Import Vinyls now</button>');
     };
     reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
   }
 
   // fetch vinyl data from imported vinyls
   function _importVinyls(data){
-    $('#filedetails, #inputs, .description, .overlayform, #startimport').remove();
+    $('#filedetails, #inputs, .description, #startimport').remove();
     $('#importform').append('<div class="importprogress"><div class="fa fa-refresh fa-spin"></div><p class="status"><span class="counter"></span><br><br><span class="vinylname"></span><br><span class="dbstatus"></span></p><div class="progress"><div class="progressbar"></div></div></div>');
 
     var count = 0;
@@ -171,6 +171,11 @@ var Importer = (function()
             $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
           }
         }
+
+        // wait 1s for discogs
+        setTimeout(function(){
+          return;
+        },2000);
       });
     }
   }

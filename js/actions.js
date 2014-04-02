@@ -128,12 +128,15 @@ var Main = (function()
       index += 1;
     });
 
+    console.log('done.');
+
     // redraw the whole table
     $('.footable').trigger('footable_initialize');
 
     // update vinyl count
     vinylcount = vinyls.length;
     $('#vinylcount').text(vinylcount);
+
   }
 
   // pause all other audio players when another audio is playing
@@ -258,12 +261,18 @@ var Main = (function()
       // 1st get Release ID from Discogs
       $.getJSON('http://api.discogs.com/database/search?type=release&q=title:'+album+'%20AND%20artist:'+artist+'%20AND%20format:%22vinyl%22&callback=?', 
         function(data){
-          if(typeof data.data.results[0] === 'undefined'){  // nothing was found
+          if(typeof data.data === 'undefined'){
             error(artist, album);
             return false;
           }
-          else{ 
-            releaseID = data.data.results[0].id;
+          else{
+            if(typeof data.data.results[0] === 'undefined'){  // nothing was found
+              error(artist, album);
+              return false;
+            }
+            else{ 
+              releaseID = data.data.results[0].id;
+            }
           }
         })
     ).done(function(){

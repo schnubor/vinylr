@@ -5,24 +5,24 @@
   $fbid = $_POST['facebookid'];
   $vinyl = json_decode($_POST['vinyldata']);
 
-  $artist = mysqli_real_escape_string($con, $vinyl->artist);
-  $album = mysqli_real_escape_string($con, $vinyl->title);
-  $label = mysqli_real_escape_string($con, $vinyl->label);
-  $sample = mysqli_real_escape_string($con, $vinyl->sampleUrl);
-  $artistpic = mysqli_real_escape_string($con, $vinyl->artistPic);
-  $artwork = mysqli_real_escape_string($con, $vinyl->artworkUrl);
-  $catalog = mysqli_real_escape_string($con, $vinyl->catalog);
+  $artist = isset($vinyl->artist) ? mysqli_real_escape_string($con, $vinyl->artist) : '-';
+  $album = isset($vinyl->title) ? mysqli_real_escape_string($con, $vinyl->title) : '-';
+  $label = isset($vinyl->label) ? mysqli_real_escape_string($con, $vinyl->label) : '-';
+  $sample = isset($vinyl->sampleUrl) ? mysqli_real_escape_string($con, $vinyl->sampleUrl) : '-';
+  $artistpic = isset($vinyl->artistPic) ? mysqli_real_escape_string($con, $vinyl->artistPic) : '-';
+  $artwork = isset($vinyl->artworkUrl) ? mysqli_real_escape_string($con, $vinyl->artworkUrl) : '-';
+  $catalog = isset($vinyl->catalog) ? mysqli_real_escape_string($con, $vinyl->catalog) : '-';
   $release = isset($vinyl->release) ? mysqli_real_escape_string($con, $vinyl->release) : '-';
-  $price = mysqli_real_escape_string($con, $vinyl->price);
-  $genre = mysqli_real_escape_string($con, $vinyl->genre);
-  $video = mysqli_real_escape_string($con, $vinyl->video);
-  $duration = mysqli_real_escape_string($con, $vinyl->duration);
+  $price = isset($vinyl->price) ? mysqli_real_escape_string($con, $vinyl->price) : '-';
+  $genre = isset($vinyl->genre) ? mysqli_real_escape_string($con, $vinyl->genre) : '-';
+  $video = isset($vinyl->video) ? mysqli_real_escape_string($con, $vinyl->video) : '-';
+  $duration = isset($vinyl->duration) ? mysqli_real_escape_string($con, $vinyl->duration) : '-';
   $count = 1; // TODO: needs to change (get from discogs)
   $type = "Album"; // TODO: needs to change (get from discogs)
   $size = "12in"; // TODO: needs to change (get from discogs)
   $color = "#000000";
-  $tracklist = mysqli_real_escape_string($con, $vinyl->tracklist);
-  $itunes = mysqli_real_escape_string($con, $vinyl->itunesUrl);
+  $tracklist = isset($vinyl->tracklist) ? mysqli_real_escape_string($con, $vinyl->tracklist) : '-';
+  $itunes = isset($vinyl->itunes) ? mysqli_real_escape_string($con, $vinyl->itunesUrl) : '-';
 
   // 1. Write Vinyl to DB
   
