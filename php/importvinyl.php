@@ -3,7 +3,7 @@
   require('db_connect.php');
 
   $fbid = $_POST['facebookid'];
-  $vinyl = json_decode($_POST['vinyldata']);
+  $vinyl = json_decode(stripslashes($_POST['vinyldata'])); // IMPORTANT: stripslashes on when "magic_quotes_gpc" is "Off" in php.ini
 
   $artist = isset($vinyl->artist) ? mysqli_real_escape_string($con, $vinyl->artist) : '-';
   $album = isset($vinyl->title) ? mysqli_real_escape_string($con, $vinyl->title) : '-';
