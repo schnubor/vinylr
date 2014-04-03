@@ -3,6 +3,9 @@
 #importform{
   
   .description{
+
+    border-bottom: 1px solid #505050;
+
     p{
       font-weight: 300;
 
@@ -14,7 +17,17 @@
           color: $orange;
         }
       }
+
+      span{
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 24px;
+      }
     }
+  }
+
+  #inputs{
+    margin-top: 20px;
   }
 
   #filedetails{
