@@ -109,7 +109,7 @@ footer{
     font-weight: lighter;
     background-color: $green;
     letter-spacing: 1px;
-    width: 100%;
+    width: calc(100%-80px);
 
     a{
         text-decoration: none;

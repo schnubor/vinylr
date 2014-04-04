@@ -293,4 +293,32 @@ $(document).ready(function(){
     Importer.importVinyls(importData);
   });
 
+  // === Pagination ===================================
+
+  $('#loggedInWrapper').on('click','.next-page', function(){
+    var start = pageSize * currentPage;
+    var end = start + pageSize;
+
+    if(end > sortedVinyls.length){
+      end = sortedVinyls.length;
+    }
+
+    // get next vinyls and show them
+    var content = Main.createVinylRows(start,end,sortedVinyls);
+    $('#tablecontent').html('').append(content);
+    $('.footable').trigger('footable_redraw');
+
+    // update page counter
+    currentPage += 1;
+    $('.current-page').html('<span>Page </span> '+currentPage+' / '+Math.ceil(pages));
+
+    // hide/show page controls
+    $('.prev-page').css('display','inline-block');
+    if(currentPage == pages){
+      $('.next-page').hide();
+    }
+
+
+  })
+
 });
