@@ -1,3 +1,5 @@
+/* === Landing Page Stuff ============ */
+
 $(function(){
   $('.gallery a').click(function(e){
     e.preventDefault();
@@ -76,6 +78,16 @@ $(document).ready(function(){
 
     Main.resetOverlay();
   }
+
+  // === Footable Events ===========================================================
+
+  $('.footable').bind('footable_redrawn', function(){
+    console.log('footable redrawn!');
+  });
+
+  $('.footable').bind('footable_initialized', function(){
+    console.log('footable initialized!');
+  });
 
   // === Add Vinyl Overlay =========================================================
 
