@@ -15,7 +15,7 @@ function displayControls() {
 
 function displayFacebookData(username,name){
     if(username && name){
-        $('#fb-button').fadeOut(function(){
+        $('#sign-in-button, #register-button').fadeOut(function(){
 
             if(!$('#currentuser').length > 0){ // if not already logged in
               $('header').append('<div id="currentuser"><img id="profilepic" src="https://graph.facebook.com/'+username+'/picture?width=120&height=120" alt="'+name+'"/><span id="username">'+name+'</span><span id="logout" onclick="FB.logout();"><span class="fa fa-sign-out fa-fw"></span>Logout</span></div>');

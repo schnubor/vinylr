@@ -76,6 +76,45 @@ header{
     line-height: 60px;
 }
 
+#sign-in-button, #register-button{
+    float: right;
+    height: 60px;
+    line-height: 60px;
+
+    button{
+        height: 40px;
+        line-height: 40px;
+        border: none;
+        border-radius: 4px;
+        padding: 0 10px;
+        margin-left: 10px;
+        color: white;
+        @include font('Lato');
+        font-weight: 300;
+
+        i{
+            margin-right: 5px;
+        }
+
+        &.grey{
+            background-color: $light-grey;
+
+            &:hover{
+                background-color: #A0A0A0;
+            }
+        }
+
+        &.orange{
+            background-color: $orange;
+            
+            &:hover{
+                background-color: $dark-orange;
+            }
+        }
+    }
+}
+
+
 #fb-button{
 	display: none;
     float: right;

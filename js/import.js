@@ -83,13 +83,6 @@ var Importer = (function()
       Main.fetchData(artist, title, function(vinyl){ // vinyl found
         console.log(vinyl);
 
-        // update status
-        count = count + 1;
-        width = count*(100/data.length);
-        $('.status .counter').text(count+'/'+data.length);
-        $('.status .vinylname').text(vinyl.artist+' - '+vinyl.title);
-        $('.importprogress .progressbar').css('width', width+'%');
-
         // Add to DB
         $.ajax({
           type: 'POST',
@@ -112,6 +105,13 @@ var Importer = (function()
               exists = exists + 1;
             }
 
+            // update status
+            count = count + 1;
+            width = count*(100/data.length);
+            $('.status .counter').text(count+'/'+data.length);
+            $('.status .vinylname').text(vinyl.artist+' - '+vinyl.title);
+            $('.importprogress .progressbar').css('width', width+'%');
+
             // Check if import is done.
             if(count == data.length){
               console.log("import done. ajax success");
@@ -123,7 +123,6 @@ var Importer = (function()
               else{
                 $('#importform').append('<div id="importreport"><div class="success-title">success!</div><div class="report"><span class="success">'+added+'</span> imported, <span class="exists">'+exists+'</span> already exists, <span class="not-found">'+failed+'</span> not found<button class="button done">Done!</button></div>');
               }
-              
             }
           },
           error: function () {
