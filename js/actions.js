@@ -132,6 +132,11 @@ var Main = (function()
       pages = Math.ceil(paginationVinyls.length / pageSize);
       currentPage = 1;
 
+      // restore buttons
+      $('#pagination').find('.prev-page').removeClass('active');
+      $('#pagination').find('.next-page').addClass('active');
+
+      // check if pagination container is present
       if(!$('#pagination').length){
         $('footer').before('<div id="pagination"><div class="prev-page"><i class="fa fa-angle-left"></i></div><div class="current-page"><span>Page </span> '+currentPage+' / '+pages+'</div><div class="next-page active"><i class="fa fa-angle-right"></i></div></div>')
       }
@@ -139,7 +144,7 @@ var Main = (function()
         $('#pagination').find('.current-page').html('<span>Page </span> '+currentPage+' / '+pages);
       }
     }
-    else{
+    else{ // no pagination needed
       if($('#pagination').length){
         $('#pagination').remove();
       }

@@ -92,7 +92,7 @@ $(document).ready(function(){
   // === Add Vinyl Overlay =========================================================
 
   // open overlay with add vinyl form
-  $('#loggedInWrapper').on('click', '.addvinyl', function(){
+  $('header').on('click', '.addvinyl', function(){
     $('#overlay').fadeIn(200, function(){
       $('.overlayform').show().load('../views/addvinyl.html', function(){ // load add vinyl form
         Main.init(); // init select boxes and colorpicker
@@ -181,7 +181,7 @@ $(document).ready(function(){
   
   // === Display Profile ===============================================================
 
-  $('#loggedInWrapper').on('click', '.stats', function(){
+  $('header').on('click', '.stats', function(){
     $('#overlay').fadeIn(200, function(){
       $('.overlaycontent').load('../views/userprofile.html', function(){ // load user profile
 
@@ -279,7 +279,7 @@ $(document).ready(function(){
 
   // === Import Data ==================================
 
-  $('#loggedInWrapper').on('click', '.import', function(){
+  $('header').on('click', '.import', function(){
     $('#overlay').fadeIn(200, function(){
       $('.overlaycontent').load('../views/import.html', function(){ // load user profile
         if(Importer.isAPIAvailable()) {
@@ -291,6 +291,12 @@ $(document).ready(function(){
 
   $(document).on('click','#startimport', function(){
     Importer.importVinyls(importData);
+  });
+
+  // === Show Dropdown Menu ==================================
+
+  $('header').on('click','#currentuser', function(){
+    $('#dropdown-menu').toggle();
   });
 
   // === Pagination Position =================================
@@ -323,7 +329,7 @@ $(document).ready(function(){
             bottom: 0
         });            
     }
-});
+  });
 
   // === Pagination - NEXT ===================================
 

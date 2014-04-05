@@ -58,11 +58,21 @@
 
         <!-- Add your site or application content here -->
         <header>
-            <a href="/"><h1>Vinylr</h1></a>
-            <div id="fb-button">
-                <button class="fb-button" id="fb-auth" onclick="FB.login()"><span class="fa fa-facebook fa-fw"></span><span>Login with facebook</span></button>
-            </div>
+            <h1><a href="/">Vinylr</a></h1>
             <div id="loading" class="fa fa-refresh fa-spin"></div>
+            <div id="search">
+                <i class="fa fa-search"></i>
+                <input id="filter" type="search" placeholder="Search">
+            </div>
+            <div id="controls">
+                <div class="control-button import"><i class="fa fa-download button-icon"></i></div>
+                <div class="control-button stats"><i class="fa fa-bar-chart-o button-icon"></i></div>
+                <div class="control-button addvinyl"><i class="fa fa-plus button-icon"></i></div>
+                <div id="vinylcount">0</div>
+            </div>
+            <ul id="dropdown-menu">
+              <li onclick="FB.logout()"><i class="fa fa-power-off"></i>Logout</li>
+            </ul>
         </header>
 
         <!-- Landingpage Logged Out -->
@@ -113,46 +123,35 @@
 
         <!-- User logged in -->
         <div id="loggedInWrapper">
-
-            <div id="content">
-                <div id="controls">
-                    <input id="filter" type="search" placeholder="Search">
-                    <button class="control-button import"><span class="fa fa-download button-icon"></span>Import</button>
-                    <button class="control-button stats"><span class="fa fa-bar-chart-o button-icon"></span> Your Stats</button>
-                    <button class="control-button addvinyl"><span class="fa fa-plus button-icon"></span>Add Vinyl</button>
-                    <div id="vinylcount">0</div>
-                    <div style="clear:both;"></div>
-                </div>
-
-                <table class="footable">
-                    <thead>
-                        <tr>
-                          <th data-sort-ignore="true" data-hide="phone" class="artwork-column">Artwork</th>
-                          <th data-sort-ignore="true" data-hide="all">ID</th>
-                          <th data-toggle="true" data-sort-ignore="true" data-sort-initial="true">Artist</th>
-                          <th data-sort-ignore="true">Name</th>
-                          <th data-hide="phone" data-sort-ignore="true">Label</th>
-                          <th data-hide="all" data-sort-ignore="true">Type</th>
-                          <th data-hide="all" data-sort-ignore="true">Count</th>
-                          <th data-hide="phone,tablet" data-sort-ignore="true">Color</th>
-                          <th data-hide="all" data-sort-ignore="true">Release Date</th>
-                          <th data-hide="all" data-sort-ignore="true">Catalog Number</th>
-                          <th data-hide="all" data-sort-ignore="true">Buy</th>
-                          <th data-hide="phone,tablet" data-sort-ignore="true" data-type="numeric">Price</th>
-                          <th data-hide="all" data-sort-ignore="true">Sample</th>
-                          <th data-hide="all" data-sort-ignore="true">Artist Picture</th>
-                          <th data-hide="all" data-sort-ignore="true">Videos</th>
-                          <th data-hide="all" data-sort-ignore="true">Tracklist</th>
-                          <th data-hide="all" data-sort-ignore="true">Genre</th>
-                          <th data-sort-ignore="true">Tools</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tablecontent">
-                        
-                    </tbody>
-                </table>
-            </div><!-- end of content -->
-
+          <div id="content">
+            <table class="footable">
+              <thead>
+                <tr>
+                  <th data-sort-ignore="true" data-hide="phone" class="artwork-column">Artwork</th>
+                  <th data-sort-ignore="true" data-hide="all">ID</th>
+                  <th data-toggle="true" data-sort-ignore="true" data-sort-initial="true">Artist</th>
+                  <th data-sort-ignore="true">Name</th>
+                  <th data-hide="phone" data-sort-ignore="true">Label</th>
+                  <th data-hide="all" data-sort-ignore="true">Type</th>
+                  <th data-hide="all" data-sort-ignore="true">Count</th>
+                  <th data-hide="phone,tablet" data-sort-ignore="true">Color</th>
+                  <th data-hide="all" data-sort-ignore="true">Release Date</th>
+                  <th data-hide="all" data-sort-ignore="true">Catalog Number</th>
+                  <th data-hide="all" data-sort-ignore="true">Buy</th>
+                  <th data-hide="phone,tablet" data-sort-ignore="true" data-type="numeric">Price</th>
+                  <th data-hide="all" data-sort-ignore="true">Sample</th>
+                  <th data-hide="all" data-sort-ignore="true">Artist Picture</th>
+                  <th data-hide="all" data-sort-ignore="true">Videos</th>
+                  <th data-hide="all" data-sort-ignore="true">Tracklist</th>
+                  <th data-hide="all" data-sort-ignore="true">Genre</th>
+                  <th data-sort-ignore="true">Tools</th>
+                </tr>
+              </thead>
+              <tbody id="tablecontent">
+                  
+              </tbody>
+            </table>
+          </div><!-- end of content -->
         </div>
 
         <div id="overlay">
