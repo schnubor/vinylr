@@ -293,18 +293,51 @@ $(document).ready(function(){
     Importer.importVinyls(importData);
   });
 
-  // === Pagination ===================================
+  // === Pagination Position =================================
 
-  $('#loggedInWrapper').on('click','.next-page', function(){
+  $(window).scroll(function(event) {
+    
+    // height of the document (total height)
+    var d = $(document).height();
+    
+    // height of the window (visible page)
+    var w = $(window).height();
+    
+    // scroll level
+    var s = $(this).scrollTop();
+    
+    // bottom bound - or the width of your 'big footer'
+    var bottomBound = 97;
+    
+    // are we beneath the bottom bound?
+    if(d - (w + s) < bottomBound) {
+        // if yes, start scrolling our own way, which is the
+        // bottom bound minus where we are in the page
+        $('#pagination').css({
+            bottom: bottomBound - (d - (w + s))
+        });
+    } else {
+        // if we're beneath the bottom bound, then anchor ourselves
+        // to the bottom of the page in traditional footer style
+        $('#pagination').css({
+            bottom: 0
+        });            
+    }
+});
+
+  // === Pagination - NEXT ===================================
+
+  $(document).on('click','.next-page.active', function(){
     var start = pageSize * currentPage;
     var end = start + pageSize;
 
-    if(end > sortedVinyls.length){
-      end = sortedVinyls.length;
+    // last page
+    if(end > paginationVinyls.length){
+      end = paginationVinyls.length;
     }
 
     // get next vinyls and show them
-    var content = Main.createVinylRows(start,end,sortedVinyls);
+    var content = Main.createVinylRows(start,end,paginationVinyls);
     $('#tablecontent').html('').append(content);
     $('.footable').trigger('footable_redraw');
 
@@ -313,12 +346,70 @@ $(document).ready(function(){
     $('.current-page').html('<span>Page </span> '+currentPage+' / '+Math.ceil(pages));
 
     // hide/show page controls
-    $('.prev-page').css('display','inline-block');
+    $('.prev-page').addClass('active');
     if(currentPage == pages){
-      $('.next-page').hide();
+      $('.next-page').removeClass('active');
     }
+  });
 
+  // === Pagination - PREV ===================================
 
-  })
+  $(document).on('click','.prev-page.active', function(){
+    var start = pageSize * (currentPage - 2);
+    var end = start + pageSize;
+
+    // get prev vinyls and show them
+    var content = Main.createVinylRows(start,end,paginationVinyls);
+    $('#tablecontent').html('').append(content);
+    $('.footable').trigger('footable_redraw');
+
+    // update page counter
+    currentPage -= 1;
+    $('.current-page').html('<span>Page </span> '+currentPage+' / '+Math.ceil(pages));
+
+    // hide/show page controls
+    $('.next-page').addClass('active');
+    if(currentPage == 1){
+      $('.prev-page').removeClass('active');
+    }
+  });
+
+  // === Filter / Search =====================================
+
+  var typeTimer;
+
+  $('#filter').bind('input', function () {
+
+    var key = $('#filter').val().toLowerCase();
+    var found = [];
+
+    clearTimeout(typeTimer);
+
+    typeTimer = setTimeout(function(){
+      $.each(sortedVinyls, function(i){
+        var entry = sortedVinyls[i];
+
+        if(entry.Artist.toLowerCase().indexOf(key) != -1 || entry.Album.toLowerCase().indexOf(key) != -1 || entry.Label.toLowerCase().indexOf(key) != -1 || entry.Catalog.toLowerCase().indexOf(key) != -1 || entry.Genre.toLowerCase().indexOf(key) != -1 || entry.Releasedate.toLowerCase().indexOf(key) != -1){
+          found.push(entry);
+        }
+
+      })
+
+      // Update Pagination
+      Main.updatePagination(found);
+
+      //console.log(found);
+      if(found.length > pageSize){
+        var content = Main.createVinylRows(0,pageSize,paginationVinyls);
+      }
+      else{
+        var content = Main.createVinylRows(0,found.length,paginationVinyls);
+      }
+      $('#tablecontent').html('').append(content);
+      $('.footable').trigger('footable_redraw');
+      
+    }, 500);
+
+  });
 
 });

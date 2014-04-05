@@ -72,7 +72,7 @@ body {
 /* line 112, ../sass/global.scss */
 #loggedInWrapper {
   display: none;
-  padding: 10px;
+  padding: 10px 10px 60px 10px;
   min-height: calc(100% - 197px);
 }
 /* line 117, ../sass/global.scss */
@@ -193,13 +193,14 @@ body {
 /* line 6, ../sass/overlay.scss */
 #overlay {
   position: fixed;
+  z-index: 2;
   height: 100%;
   width: 100%;
   top: 0;
   background-color: rgba(0, 0, 0, 0.9);
   display: none;
 }
-/* line 14, ../sass/overlay.scss */
+/* line 15, ../sass/overlay.scss */
 #overlay .close {
   position: absolute;
   top: 0;
@@ -212,7 +213,7 @@ body {
   color: white;
   font-size: 2em;
 }
-/* line 27, ../sass/overlay.scss */
+/* line 28, ../sass/overlay.scss */
 #overlay .overlayform {
   width: 300px;
   height: 400px;
@@ -224,12 +225,12 @@ body {
   z-index: 100;
   text-align: center;
 }
-/* line 38, ../sass/overlay.scss */
+/* line 39, ../sass/overlay.scss */
 #overlay .overlayform form {
   width: 100%;
   font-size: 12px;
 }
-/* line 42, ../sass/overlay.scss */
+/* line 43, ../sass/overlay.scss */
 #overlay .overlayform form input[type="text"] {
   margin-bottom: 10px;
   border: none;
@@ -239,30 +240,30 @@ body {
   padding: 10px;
   width: calc(100% - 20px);
 }
-/* line 50, ../sass/overlay.scss */
+/* line 51, ../sass/overlay.scss */
 #overlay .overlayform form input[type="radio"] {
   margin: 0 5px 0 0;
 }
-/* line 54, ../sass/overlay.scss */
+/* line 55, ../sass/overlay.scss */
 #overlay .overlayform form span {
   margin-right: 20px;
 }
-/* line 59, ../sass/overlay.scss */
+/* line 60, ../sass/overlay.scss */
 #overlay .overlayform form input[type="submit"] {
   text-transform: uppercase;
 }
-/* line 67, ../sass/overlay.scss */
+/* line 68, ../sass/overlay.scss */
 #overlay .overlayform form #searching .loading {
   font-size: 18px;
   color: white;
   margin-top: 30px;
 }
-/* line 72, ../sass/overlay.scss */
+/* line 73, ../sass/overlay.scss */
 #overlay .overlayform form #searching .loading i {
   font-size: 40px;
   color: white;
 }
-/* line 78, ../sass/overlay.scss */
+/* line 79, ../sass/overlay.scss */
 #overlay .overlayform form #searching .progress {
   width: auto;
   padding: 5px;
@@ -270,7 +271,7 @@ body {
   border: 1px solid #777;
   margin-top: 20px;
 }
-/* line 85, ../sass/overlay.scss */
+/* line 86, ../sass/overlay.scss */
 #overlay .overlayform form #searching .progress .progressbar {
   background-color: #45b29d;
   height: 100%;
@@ -278,18 +279,18 @@ body {
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
 }
-/* line 93, ../sass/overlay.scss */
+/* line 94, ../sass/overlay.scss */
 #overlay .overlayform form #searching .loading-text {
   color: #777;
   font-weight: 400;
   margin-top: 10px;
 }
-/* line 104, ../sass/overlay.scss */
+/* line 105, ../sass/overlay.scss */
 #overlay .overlayform #preview {
   display: none;
   margin-top: 20px;
 }
-/* line 109, ../sass/overlay.scss */
+/* line 110, ../sass/overlay.scss */
 #overlay .overlayform #preview .general-info .artwork {
   width: 100px;
   height: 100px;
@@ -297,24 +298,24 @@ body {
   border: 1px solid #777;
   margin: 0 auto;
 }
-/* line 117, ../sass/overlay.scss */
+/* line 118, ../sass/overlay.scss */
 #overlay .overlayform #preview .general-info .label-release-genre {
   margin-top: 10px;
   color: #777;
   font-weight: 300;
 }
-/* line 124, ../sass/overlay.scss */
+/* line 125, ../sass/overlay.scss */
 #overlay .overlayform #preview .additional-info {
   margin-top: 10px;
 }
-/* line 131, ../sass/overlay.scss */
+/* line 132, ../sass/overlay.scss */
 #overlay .overlaycontent {
   width: 800px;
   height: 100%;
   margin: 100px auto;
   color: white;
 }
-/* line 137, ../sass/overlay.scss */
+/* line 138, ../sass/overlay.scss */
 #overlay .overlaycontent .headline {
   font-size: 18px;
   border-bottom: 1px solid #505050;

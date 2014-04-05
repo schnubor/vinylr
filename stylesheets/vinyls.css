@@ -72,7 +72,7 @@ body {
 /* line 112, ../sass/global.scss */
 #loggedInWrapper {
   display: none;
-  padding: 10px;
+  padding: 10px 10px 60px 10px;
   min-height: calc(100% - 197px);
 }
 /* line 117, ../sass/global.scss */
@@ -241,40 +241,57 @@ body {
   text-indent: -9999px;
 }
 
-/* line 68, ../sass/vinyls.scss */
+/* === PAGINATION ============== */
+/* line 70, ../sass/vinyls.scss */
 #pagination {
-  width: 300px;
-  margin: 20px auto 10px;
-  color: #202020;
+  text-align: center;
+  color: #FFFFFF;
+  vertical-align: middle;
+  background-color: #202020;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
-/* line 73, ../sass/vinyls.scss */
+/* line 79, ../sass/vinyls.scss */
 #pagination div {
   display: inline-block;
   text-align: center;
   height: 50px;
   line-height: 50px;
 }
-/* line 80, ../sass/vinyls.scss */
+/* line 86, ../sass/vinyls.scss */
 #pagination .next-page, #pagination .prev-page {
   width: 50px;
-  font-size: 32px;
+  font-size: 42px;
+  cursor: default;
+  border-left: 1px solid #505050;
+  border-right: 1px solid #505050;
+}
+/* line 93, ../sass/vinyls.scss */
+#pagination .next-page i, #pagination .prev-page i {
+  vertical-align: top;
+  line-height: 50px;
+  opacity: .5;
+}
+/* line 99, ../sass/vinyls.scss */
+#pagination .next-page.active, #pagination .prev-page.active {
   cursor: pointer;
 }
-/* line 85, ../sass/vinyls.scss */
-#pagination .next-page:hover, #pagination .prev-page:hover {
+/* line 101, ../sass/vinyls.scss */
+#pagination .next-page.active i, #pagination .prev-page.active i {
+  opacity: 1;
+}
+/* line 105, ../sass/vinyls.scss */
+#pagination .next-page.active:hover, #pagination .prev-page.active:hover {
   color: #e27a3f;
 }
-/* line 90, ../sass/vinyls.scss */
-#pagination .prev-page {
-  display: none;
-}
-/* line 94, ../sass/vinyls.scss */
+/* line 112, ../sass/vinyls.scss */
 #pagination .current-page {
   width: 200px;
   font-size: 24px;
   vertical-align: top;
 }
-/* line 99, ../sass/vinyls.scss */
+/* line 117, ../sass/vinyls.scss */
 #pagination .current-page span {
   color: #a0a0a0;
   text-transform: uppercase;

@@ -2,6 +2,7 @@
 
 var VINYLS = null;
 var sortedVinyls = null;
+var paginationVinyls = null;
 var latestVinyl = null;
 var vinylcount = 0;
 var pageSize = 15;
@@ -104,7 +105,12 @@ var Main = (function()
     sortedVinyls = vinyls;
 
     // Display 15 initial Vinyls
-    var content = _createVinylRows(0,15,vinyls);
+    if(vinyls.length > pageSize){
+      var content = _createVinylRows(0,pageSize,vinyls);
+    }
+    else{ // if less than pageSize
+      var content = _createVinylRows(0,vinyls.length,vinyls);
+    }
 
     $('#tablecontent').append(content);
 
@@ -115,13 +121,29 @@ var Main = (function()
     vinylcount = vinyls.length;
     $('#vinylcount').text(vinylcount);
 
-    // show pagination arrows
-    if(vinyls.length > pageSize){ // Do you actually need pages?
-      pages = Math.ceil(vinyls.length / pageSize);
-      currentPage = 1;
-      $('.footable').after('<div id="pagination"><div class="prev-page"><i class="fa fa-chevron-left"></i></div><div class="current-page"><span>Page </span> '+currentPage+' / '+pages+'</div><div class="next-page"><i class="fa fa-chevron-right"></i></div></div>')
-    }
+    _updatePagination(sortedVinyls);
+  }
 
+  function _updatePagination(vinyldata){
+
+    paginationVinyls = vinyldata;
+    // show pagination arrows
+    if(paginationVinyls.length > pageSize){ // Do you actually need pages?
+      pages = Math.ceil(paginationVinyls.length / pageSize);
+      currentPage = 1;
+
+      if(!$('#pagination').length){
+        $('footer').before('<div id="pagination"><div class="prev-page"><i class="fa fa-angle-left"></i></div><div class="current-page"><span>Page </span> '+currentPage+' / '+pages+'</div><div class="next-page active"><i class="fa fa-angle-right"></i></div></div>')
+      }
+      else{
+        $('#pagination').find('.current-page').html('<span>Page </span> '+currentPage+' / '+pages);
+      }
+    }
+    else{
+      if($('#pagination').length){
+        $('#pagination').remove();
+      }
+    }
   }
 
   // get vinyls from VINYL obj and return as table rows
@@ -185,46 +207,6 @@ var Main = (function()
 
     // push latest vinyl to existing VINYLS obj
     VINYLS.push(latestVinyl[0]);
-
-    // Create new table row
-    var row = '<tr class="vinyl">';
-    row += '<td><div class="vinyl-artwork"><img src="'+latestVinyl[0].Artwork+'" alt="'+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'"></div></td>'
-    row += '<td class="vinyl-id">'+latestVinyl[0].VinylID+'</td>';
-    row += '<td class="vinyl-artist">'+latestVinyl[0].Artist+'</td>';
-    row += '<td class="vinyl-name">'+latestVinyl[0].Album+'</td>';
-    row += '<td class="label">'+latestVinyl[0].Label+'</td>';
-    row += '<td class="format">'+latestVinyl[0].Format+' '+latestVinyl[0].Type+'</td>';
-    row += '<td class="count">'+latestVinyl[0].Count+'</td>'
-    row += '<td class="color"><div class="circle" style="background-color:'+latestVinyl[0].Color+';">'+latestVinyl[0].Color+'</div></td>'
-    row += '<td class="date">'+latestVinyl[0].Releasedate+'</td>';
-    row += '<td class="catalog">'+latestVinyl[0].Catalog+'</td>';
-    row += '<td class="itunes"><a href="'+latestVinyl[0].iTunes+'" title="buy digital version of '+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'">iTunes</a></td>';
-    row += '<td class="price">'+latestVinyl[0].Price+'</td>';
-    row += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+latestVinyl[0].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
-    row += '<td class="artistpic"><img src="'+latestVinyl[0].Artistpic+'" alt="'+latestVinyl[0].Artist+'"></td>';
-    // Video
-    if(latestVinyl[0].Video != '-'){
-      //row += '<td class="video">'+latestVinyl[0].Video.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, '<iframe width="300" height="170" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen style="vertical-align: middle;"></iframe>')+'</td>';
-      row += '<td class="video"><a href="'+latestVinyl[0].Video+'" target="_blank">'+latestVinyl[0].Video+'</a></td>';
-    }
-    else{
-      row += '<td class="video">-</td>';
-    }
-    // Tracklist
-    var tracklist = latestVinyl[0].Tracklist.split(";");
-    row += '<td class="tracklist">'+tracklist[0]+'<br/>'
-    for(var i=1; i<tracklist.length; i++){
-      row += tracklist[i]+'<br/>'
-    }
-    row += '</td>';
-
-    row += '<td class="genre">'+latestVinyl[0].Genre+'</td>';
-    row += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
-    row += '</tr>';
-  
-    // Redraw the table
-    footable.appendRow(row);
-    footable.redraw();
 
     // Update Vinylcount
     vinylcount = vinylcount + 1;
@@ -483,6 +465,7 @@ var Main = (function()
     updateForms: _updateForms,
 		getExistingData: _getExistingData,
     displayVinylData: _displayVinylData,
+    updatePagination: _updatePagination,
     createVinylRows: _createVinylRows,
     audioHandler: _audioHandler,
     fetchData: _fetchData,
