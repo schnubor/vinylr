@@ -1,0 +1,123 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700|Playball);
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Mixins & Variables */
+/* General stuff */
+/* line 57, ../sass/global.scss */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/* line 61, ../sass/global.scss */
+html {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 66, ../sass/global.scss */
+body {
+  background-color: #ddd;
+  font-family: 'Lato', Helvetica, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 73, ../sass/global.scss */
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+/* line 77, ../sass/global.scss */
+.container p {
+  padding: 20px 0;
+}
+/* line 80, ../sass/global.scss */
+.container p em {
+  font-size: 2em;
+}
+
+/* line 86, ../sass/global.scss */
+.centeredtext {
+  text-align: center;
+}
+
+/* line 90, ../sass/global.scss */
+.button {
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  border: 0;
+  background-color: #45b29d;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: 'Lato';
+  letter-spacing: 1px;
+  font-weight: 300;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+}
+/* line 105, ../sass/global.scss */
+.button:hover {
+  background-color: #e27a3f;
+}
+
+/* === LOGGED IN CONTENT ================== */
+/* line 112, ../sass/global.scss */
+#loggedInWrapper {
+  display: none;
+  padding: 10px 10px 60px 10px;
+  min-height: calc(100% - 197px);
+}
+
+/* === User Profile ================== */
+/* line 7, ../sass/profile.scss */
+#profileform .user-location {
+  font-size: 14px;
+  color: #cacaca;
+  font-weight: 300;
+  padding-left: 10px;
+}
+/* line 15, ../sass/profile.scss */
+#profileform .general-info {
+  width: 150px;
+  display: inline-block;
+}
+/* line 19, ../sass/profile.scss */
+#profileform .general-info .user-pic {
+  padding: 10px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #505050;
+}
+/* line 27, ../sass/profile.scss */
+#profileform .general-info .vinyl-count p, #profileform .general-info .price-value p, #profileform .general-info .top-label p, #profileform .general-info .top-artist p {
+  margin: 10px 0 0 0;
+  color: #cacaca;
+  font-weight: 300;
+}
+/* line 32, ../sass/profile.scss */
+#profileform .general-info .vinyl-count span, #profileform .general-info .price-value span, #profileform .general-info .top-label span, #profileform .general-info .top-artist span {
+  font-size: 24px;
+}
+/* line 37, ../sass/profile.scss */
+#profileform .general-info .top-artist {
+  text-transform: capitalize;
+}
+/* line 42, ../sass/profile.scss */
+#profileform .detailed-info {
+  width: 640px;
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 47, ../sass/profile.scss */
+#profileform .detailed-info #genrePieChart {
+  width: 100%;
+  height: 380px;
+}
