@@ -1,8 +1,8 @@
 // === Globals ======================
 
-var VINYLS = null;
-var sortedVinyls = null;
-var paginationVinyls = null;
+var VINYLS = [];
+var sortedVinyls = [];
+var paginationVinyls = [];
 var latestVinyl = null;
 var vinylcount = 0;
 var pageSize = 15;
@@ -206,7 +206,15 @@ var Main = (function()
     var footable = $('.footable').data('footable');
 
     // push latest vinyl to existing VINYLS obj
-    VINYLS.push(latestVinyl[0]);
+    VINYLS.push(latestVinyl[0]); // seems enough, no idea why...
+    sortedVinyls.sort(function(a,b){
+      if(a.Artist.toUpperCase() < b.Artist.toUpperCase()) return -1;
+      if(a.Artist.toUpperCase() > b.Artist.toUpperCase()) return 1;
+      return 0;
+    });
+
+    // Update Pagination
+    _updatePagination(sortedVinyls);
 
     // Update Vinylcount
     vinylcount = vinylcount + 1;
