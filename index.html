@@ -7,24 +7,27 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Vinylr</title>
-        <meta name="description" content="">
+        <meta name="description" content="Manage your personal Vinyl collection.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="stylesheets/normalize.css">
-        <link rel="stylesheet" href="stylesheets/global.css">
-        <link rel="stylesheet" href="stylesheets/overlay.css">
-        <link rel="stylesheet" href="stylesheets/header_footer.css">
-        <link rel="stylesheet" href="stylesheets/vinyls.css">
-        <link rel="stylesheet" href="stylesheets/welcome.css">
-        <link rel="stylesheet" href="stylesheets/profile.css">
-        <link rel="stylesheet" href="stylesheets/import.css">
-        <link rel="stylesheet" href="stylesheets/footable.core.css">
-        <link rel="stylesheet" href="stylesheets/footable.standalone.css">
-        <link rel="stylesheet" href="stylesheets/font-awesome-4.0.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="stylesheets/normalize.css" />
+        <link rel="stylesheet" href="stylesheets/global.css" />
+        <link rel="stylesheet" href="stylesheets/overlay.css" />
+        <link rel="stylesheet" href="stylesheets/header_footer.css" />
+        <link rel="stylesheet" href="stylesheets/vinyls.css" />
+        <link rel="stylesheet" href="stylesheets/sorting.css" />
+        <link rel="stylesheet" href="stylesheets/welcome.css" />
+        <link rel="stylesheet" href="stylesheets/profile.css" />
+        <link rel="stylesheet" href="stylesheets/import.css" />
+        <link rel="stylesheet" href="stylesheets/footable.core.css" />
+        <link rel="stylesheet" href="stylesheets/footable.standalone.css" />
+        <link rel="stylesheet" href="stylesheets/font-awesome-4.0.3/css/font-awesome.min.css" />
         <link rel="stylesheet" href="stylesheets/select-theme-default.css" />
+        <link rel="stylesheet" href="stylesheets/select-theme-dark.css" />
         <link rel="stylesheet" href="stylesheets/spectrum.css" />
+    
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -68,7 +71,7 @@
                 <div class="control-button import"><i class="fa fa-download button-icon"></i></div>
                 <div class="control-button stats"><i class="fa fa-bar-chart-o button-icon"></i></div>
                 <div class="control-button addvinyl"><i class="fa fa-plus button-icon"></i></div>
-                <div id="vinylcount">0</div>
+                <div class="control-button counter"><i class="fa fa-bullseye button-icon"></i><div id="vinylcount">0</div></div>
             </div>
             <ul id="dropdown-menu">
               <li onclick="FB.logout()"><i class="fa fa-power-off"></i>Logout</li>
@@ -124,6 +127,18 @@
         <!-- User logged in -->
         <div id="loggedInWrapper">
           <div id="content">
+            <div id="sorting">
+              <div class="sort-select">
+                <select name="sorting-filter" id="sorting-filter">
+                  <option value="artist">Sort by artist</option>
+                  <option value="title">Sort by title</option>
+                  <option value="price">Sort by price</option>
+                  <option value="color">Sort by color</option>
+                </select>
+              </div>
+              <div class="sort-status">Showing <span class="result-count">all</span> vinyls <span class="sorting-filter">sorted by artist</span></div>
+            </div>
+
             <table class="footable">
               <thead>
                 <tr>

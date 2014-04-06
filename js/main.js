@@ -18,7 +18,17 @@ $(function(){
 $(document).ready(function(){
   console.log('document ready!');
 
-  // Options for the "Add Vinyl" Ajax call
+  // === Footable Events ===========================================================
+
+  $('.footable').bind('footable_redrawn', function(){
+    console.log('footable redrawn!');
+  });
+
+  $('.footable').bind('footable_initialized', function(){
+    console.log('footable initialized!');
+  });
+
+  // === Options for the "Add Vinyl" Ajax call =====================================
   var addOptions = { 
     success: displayAddedVinyl,  // post-submit callback 
     resetForm: true        // reset the form after successful submit
@@ -78,16 +88,6 @@ $(document).ready(function(){
 
     Main.resetOverlay();
   }
-
-  // === Footable Events ===========================================================
-
-  $('.footable').bind('footable_redrawn', function(){
-    console.log('footable redrawn!');
-  });
-
-  $('.footable').bind('footable_initialized', function(){
-    console.log('footable initialized!');
-  });
 
   // === Add Vinyl Overlay =========================================================
 
@@ -398,7 +398,6 @@ $(document).ready(function(){
         if(entry.Artist.toLowerCase().indexOf(key) != -1 || entry.Album.toLowerCase().indexOf(key) != -1 || entry.Label.toLowerCase().indexOf(key) != -1 || entry.Catalog.toLowerCase().indexOf(key) != -1 || entry.Genre.toLowerCase().indexOf(key) != -1 || entry.Releasedate.toLowerCase().indexOf(key) != -1){
           found.push(entry);
         }
-
       })
 
       // Update Pagination
@@ -413,9 +412,25 @@ $(document).ready(function(){
       }
       $('#tablecontent').html('').append(content);
       $('.footable').trigger('footable_redraw');
+
+      // update display status
+      $('.sort-status').find('.result-count').text(found.length);
+      $('.sort-status').find('.sorting-filter').text('containing \''+key+'\'');
       
     }, 500);
 
+  });
+
+  // === Sort / Search Events ==================================================================
+
+  $('#sorting-filter').change(function(){
+    var key = $(this).val();
+
+    // reset search
+    $('#filter').val('');
+
+    // display vinyls
+    Main.displayVinylData(VINYLS,key);
   });
 
 });
