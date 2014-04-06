@@ -145,6 +145,25 @@ var Main = (function()
           });
         }
         break;
+      case 'label':
+        console.log("sort by label!");
+        sortingFilter = "sorted by label.";
+        // Sort by title
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(a.Label.toUpperCase() < b.Label.toUpperCase()) return -1;
+            if(a.Label.toUpperCase() > b.Label.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        else{ // desscending
+          vinyls.sort(function(a,b){
+            if(a.Label.toUpperCase() > b.Label.toUpperCase()) return -1;
+            if(a.Label.toUpperCase() < b.Label.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        break;
       case 'price':
         console.log("sort by price!");
         sortingFilter = "sorted by price.";
