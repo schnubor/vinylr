@@ -96,9 +96,14 @@ var Main = (function()
 
     var sortingFilter = '';
 
+    // if footable is invisible, show it
     if(!$('.footable').is(':visible')){
       $('.footable').show();
     }
+
+    // get sorting order
+    var ascending = true;
+    $('.sort-toggle').hasClass('asc') ? ascending=true : ascending=false;
 
     switch(sortKey)
     {
@@ -106,41 +111,77 @@ var Main = (function()
         console.log("sort by artist!");
         sortingFilter = "sorted by artist.";
         // Sort by artist
-        vinyls.sort(function(a,b){
-          if(a.Artist.toUpperCase() < b.Artist.toUpperCase()) return -1;
-          if(a.Artist.toUpperCase() > b.Artist.toUpperCase()) return 1;
-          return 0;
-        });
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(a.Artist.toUpperCase() < b.Artist.toUpperCase()) return -1;
+            if(a.Artist.toUpperCase() > b.Artist.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        else{ // desscending
+          vinyls.sort(function(a,b){
+            if(a.Artist.toUpperCase() > b.Artist.toUpperCase()) return -1;
+            if(a.Artist.toUpperCase() < b.Artist.toUpperCase()) return 1;
+            return 0;
+          });
+        }
         break;
       case 'title':
         console.log("sort by title!");
         sortingFilter = "sorted by title.";
         // Sort by title
-        vinyls.sort(function(a,b){
-          if(a.Album.toUpperCase() < b.Album.toUpperCase()) return -1;
-          if(a.Album.toUpperCase() > b.Album.toUpperCase()) return 1;
-          return 0;
-        });
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(a.Album.toUpperCase() < b.Album.toUpperCase()) return -1;
+            if(a.Album.toUpperCase() > b.Album.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        else{ // desscending
+          vinyls.sort(function(a,b){
+            if(a.Album.toUpperCase() > b.Album.toUpperCase()) return -1;
+            if(a.Album.toUpperCase() < b.Album.toUpperCase()) return 1;
+            return 0;
+          });
+        }
         break;
       case 'price':
         console.log("sort by price!");
         sortingFilter = "sorted by price.";
         // Sort by price
-        vinyls.sort(function(a,b){
-          if(parseFloat(a.Price) < parseFloat(b.Price)) return -1;
-          if(parseFloat(a.Price) > parseFloat(b.Price)) return 1;
-          return 0;
-        });
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(parseFloat(a.Price) < parseFloat(b.Price)) return -1;
+            if(parseFloat(a.Price) > parseFloat(b.Price)) return 1;
+            return 0;
+          });
+        }
+        else{
+          vinyls.sort(function(a,b){
+            if(parseFloat(a.Price) > parseFloat(b.Price)) return -1;
+            if(parseFloat(a.Price) < parseFloat(b.Price)) return 1;
+            return 0;
+          });
+        }
         break;
       case 'color':
         console.log("sort by color!");
         sortingFilter = "sorted by color.";
         // Sort by artist
-        vinyls.sort(function(a,b){
-          if(a.Color.toUpperCase() < b.Color.toUpperCase()) return -1;
-          if(a.Color.toUpperCase() > b.Color.toUpperCase()) return 1;
-          return 0;
-        });
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(a.Color.toUpperCase() < b.Color.toUpperCase()) return -1;
+            if(a.Color.toUpperCase() > b.Color.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        else{
+          vinyls.sort(function(a,b){
+            if(a.Color.toUpperCase() > b.Color.toUpperCase()) return -1;
+            if(a.Color.toUpperCase() < b.Color.toUpperCase()) return 1;
+            return 0;
+          });
+        }
         break;
       default:
         console.log("sort by artist!");

@@ -104,6 +104,18 @@ body {
   vertical-align: middle;
 }
 /* line 30, ../sass/sorting.scss */
+#sorting .sort-toggle {
+  display: inline-block;
+  color: #202020;
+  vertical-align: middle;
+  margin-right: 10px;
+  cursor: pointer;
+}
+/* line 37, ../sass/sorting.scss */
+#sorting .sort-toggle:hover {
+  color: #606060;
+}
+/* line 42, ../sass/sorting.scss */
 #sorting .sort-status {
   display: inline-block;
   vertical-align: middle;

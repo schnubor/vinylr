@@ -27,6 +27,18 @@
     vertical-align: middle;
   }
 
+  .sort-toggle{
+    display: inline-block;
+    color: $grey;
+    vertical-align: middle;
+    margin-right: 10px;
+    cursor: pointer;
+
+    &:hover{
+      color: #606060;
+    }
+  }
+
   .sort-status{
     display: inline-block;
     vertical-align: middle;

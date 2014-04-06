@@ -15,6 +15,10 @@ $(function(){
 
 /* === Global Actions =========== */
 
+$(document).click(function(){
+  $(window).trigger('scroll'); // fixes the fixed footer bug
+});
+
 $(document).ready(function(){
   console.log('document ready!');
 
@@ -421,8 +425,7 @@ $(document).ready(function(){
 
   });
 
-  // === Sort / Search Events ==================================================================
-
+  // === Sort / Search Events =================================
   $('#sorting-filter').change(function(){
     var key = $(this).val();
 
@@ -431,6 +434,23 @@ $(document).ready(function(){
 
     // display vinyls
     Main.displayVinylData(VINYLS,key);
+  });
+
+  // === Toggle Ascending/Descending ==========================
+
+  $(document).on('click','.sort-toggle', function(){
+    if($('.sort-toggle').hasClass('asc')){
+      $('.sort-toggle').html('<i class="fa fa-sort-amount-desc"></i>');
+      $('.sort-toggle').removeClass('asc').addClass('desc');
+    }
+    else{
+      $('.sort-toggle').html('<i class="fa fa-sort-amount-asc"></i>');
+      $('.sort-toggle').removeClass('desc').addClass('asc');
+    }
+
+    var key = $('#sorting-filter').val();
+
+    Main.displayVinylData(paginationVinyls,key);
   });
 
 });
