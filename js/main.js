@@ -15,10 +15,31 @@ $(function(){
 
 /* === Global Actions =========== */
 
+$(document).click(function(){
+  $(window).trigger('scroll'); // fixes the fixed footer bug
+});
+
 $(document).ready(function(){
   console.log('document ready!');
 
-  // Options for the "Add Vinyl" Ajax call
+  // === Footable Events ===========================================================
+
+  $('.footable').bind('footable_redrawn', function(){
+    console.log('footable redrawn!');
+  });
+
+  $('.footable').bind('footable_initialized', function(){
+    console.log('footable initialized!');
+  });
+
+  $('.footable').bind('footable_row_expanded', function(){
+    console.log('footable row expanded!');
+
+    // Tracking
+    mixpanel.track("Click: Expand Vinyl row");
+  });
+
+  // === Options for the "Add Vinyl" Ajax call =====================================
   var addOptions = { 
     success: displayAddedVinyl,  // post-submit callback 
     resetForm: true        // reset the form after successful submit
@@ -79,20 +100,13 @@ $(document).ready(function(){
     Main.resetOverlay();
   }
 
-  // === Footable Events ===========================================================
-
-  $('.footable').bind('footable_redrawn', function(){
-    console.log('footable redrawn!');
-  });
-
-  $('.footable').bind('footable_initialized', function(){
-    console.log('footable initialized!');
-  });
-
   // === Add Vinyl Overlay =========================================================
 
   // open overlay with add vinyl form
   $('header').on('click', '.addvinyl', function(){
+    // Tracking
+    mixpanel.track("Click: Add Vinyl");
+
     $('#overlay').fadeIn(200, function(){
       $('.overlayform').show().load('../views/addvinyl.html', function(){ // load add vinyl form
         Main.init(); // init select boxes and colorpicker
@@ -111,6 +125,8 @@ $(document).ready(function(){
 
   // open overlay with add vinyl form
   $('#loggedInWrapper').on('click', '.edit', function(){
+    // Tracking
+    mixpanel.track("Click: Edit Vinyl");
 
     var count = $(this).parent().parent().find('.count').text();
     var color = $(this).parent().parent().find('.circle').text();
@@ -140,6 +156,9 @@ $(document).ready(function(){
   // === Delete Vinyl ===============================================================
 
   $('#loggedInWrapper').on('click', '.delete', function(){
+    // Tracking
+    mixpanel.track("Click: Delete Vinyl");
+
     // get Vinly ID from DOM
     var id = $(this).parent().siblings('.vinyl-id').text();
     var row = $(this).parents('tr:first');
@@ -182,6 +201,9 @@ $(document).ready(function(){
   // === Display Profile ===============================================================
 
   $('header').on('click', '.stats', function(){
+    // Tracking
+    mixpanel.track("Click: Stats");
+
     $('#overlay').fadeIn(200, function(){
       $('.overlaycontent').load('../views/userprofile.html', function(){ // load user profile
 
@@ -280,6 +302,9 @@ $(document).ready(function(){
   // === Import Data ==================================
 
   $('header').on('click', '.import', function(){
+    // Tracking
+    mixpanel.track("Click: Import");
+
     $('#overlay').fadeIn(200, function(){
       $('.overlaycontent').load('../views/import.html', function(){ // load user profile
         if(Importer.isAPIAvailable()) {
@@ -334,6 +359,8 @@ $(document).ready(function(){
   // === Pagination - NEXT ===================================
 
   $(document).on('click','.next-page.active', function(){
+    // Tracking
+    mixpanel.track("Click: Next page");
     var start = pageSize * currentPage;
     var end = start + pageSize;
 
@@ -361,6 +388,9 @@ $(document).ready(function(){
   // === Pagination - PREV ===================================
 
   $(document).on('click','.prev-page.active', function(){
+    // Tracking
+    mixpanel.track("Click: Previous page");
+
     var start = pageSize * (currentPage - 2);
     var end = start + pageSize;
 
@@ -392,13 +422,15 @@ $(document).ready(function(){
     clearTimeout(typeTimer);
 
     typeTimer = setTimeout(function(){
+      // Tracking
+      mixpanel.track("Filter Vinyls");
+
       $.each(sortedVinyls, function(i){
         var entry = sortedVinyls[i];
 
         if(entry.Artist.toLowerCase().indexOf(key) != -1 || entry.Album.toLowerCase().indexOf(key) != -1 || entry.Label.toLowerCase().indexOf(key) != -1 || entry.Catalog.toLowerCase().indexOf(key) != -1 || entry.Genre.toLowerCase().indexOf(key) != -1 || entry.Releasedate.toLowerCase().indexOf(key) != -1){
           found.push(entry);
         }
-
       })
 
       // Update Pagination
@@ -413,9 +445,45 @@ $(document).ready(function(){
       }
       $('#tablecontent').html('').append(content);
       $('.footable').trigger('footable_redraw');
+
+      // update display status
+      $('.sort-status').find('.result-count').text(found.length);
+      $('.sort-status').find('.sorting-filter').text('containing \''+key+'\'');
       
     }, 500);
 
+  });
+
+  // === Sort / Search Events =================================
+  $('#sorting-filter').change(function(){
+  
+    var key = $(this).val();
+
+    // Tracking
+    mixpanel.track("Sort Vinyl by "+key);
+
+    // reset search
+    $('#filter').val('');
+
+    // display vinyls
+    Main.displayVinylData(VINYLS,key);
+  });
+
+  // === Toggle Ascending/Descending ==========================
+
+  $(document).on('click','.sort-toggle', function(){
+    if($('.sort-toggle').hasClass('asc')){
+      $('.sort-toggle').html('<i class="fa fa-sort-amount-desc"></i>');
+      $('.sort-toggle').removeClass('asc').addClass('desc');
+    }
+    else{
+      $('.sort-toggle').html('<i class="fa fa-sort-amount-asc"></i>');
+      $('.sort-toggle').removeClass('desc').addClass('asc');
+    }
+
+    var key = $('#sorting-filter').val();
+
+    Main.displayVinylData(paginationVinyls,key);
   });
 
 });

@@ -75,3 +75,52 @@ body {
   padding: 0px 0px 50px 0px;
   min-height: calc(100% - 197px);
 }
+
+/* === Sorting ============== */
+/* line 5, ../sass/sorting.scss */
+#sorting {
+  background-color: #E0E0E0;
+  height: 60px;
+  padding: 0 10px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #777;
+  line-height: 50px;
+}
+/* line 14, ../sass/sorting.scss */
+#sorting .result-count {
+  color: #202020;
+}
+/* line 18, ../sass/sorting.scss */
+#sorting .sorting-filter {
+  color: #df5a49;
+}
+/* line 22, ../sass/sorting.scss */
+#sorting .sort-select {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
+  vertical-align: middle;
+}
+/* line 30, ../sass/sorting.scss */
+#sorting .sort-toggle {
+  display: inline-block;
+  color: #202020;
+  vertical-align: middle;
+  margin-right: 10px;
+  cursor: pointer;
+}
+/* line 37, ../sass/sorting.scss */
+#sorting .sort-toggle:hover {
+  color: #606060;
+}
+/* line 42, ../sass/sorting.scss */
+#sorting .sort-status {
+  display: inline-block;
+  vertical-align: middle;
+  height: 60px;
+  line-height: 60px;
+  padding-left: 10px;
+  border-left: 1px solid #cacaca;
+}

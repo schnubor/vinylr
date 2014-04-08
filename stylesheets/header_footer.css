@@ -72,7 +72,7 @@ body {
 /* line 112, ../sass/global.scss */
 #loggedInWrapper {
   display: none;
-  padding: 10px 10px 60px 10px;
+  padding: 0px 0px 50px 0px;
   min-height: calc(100% - 197px);
 }
 
@@ -154,16 +154,17 @@ header #currentuser #logout {
 header #currentuser #logout:hover {
   color: #45b29d;
 }
-
-/* line 82, ../sass/header_footer.scss */
-#loading {
+/* line 81, ../sass/header_footer.scss */
+header #loading {
   color: white;
   float: right;
   height: 60px;
   line-height: 60px;
+  margin-top: -10px;
+  margin-left: 10px;
 }
 
-/* line 89, ../sass/header_footer.scss */
+/* line 93, ../sass/header_footer.scss */
 #fb-button {
   display: none;
   float: right;
@@ -171,7 +172,7 @@ header #currentuser #logout:hover {
   line-height: 60px;
 }
 
-/* line 96, ../sass/header_footer.scss */
+/* line 100, ../sass/header_footer.scss */
 #fb-auth {
   padding: 0 20px 0 10px;
   background-color: #3b5998;
@@ -182,13 +183,13 @@ header #currentuser #logout:hover {
   border: 0;
   height: 40px;
 }
-/* line 106, ../sass/header_footer.scss */
+/* line 110, ../sass/header_footer.scss */
 #fb-auth span {
   height: 40px;
   line-height: 40px;
 }
 
-/* line 112, ../sass/header_footer.scss */
+/* line 116, ../sass/header_footer.scss */
 #search {
   display: inline-block;
   vertical-align: top;
@@ -196,14 +197,14 @@ header #currentuser #logout:hover {
   margin-left: 20px;
   display: none;
 }
-/* line 119, ../sass/header_footer.scss */
+/* line 123, ../sass/header_footer.scss */
 #search i {
   position: absolute;
   color: #a0a0a0;
   top: 11px;
   left: 10px;
 }
-/* line 126, ../sass/header_footer.scss */
+/* line 130, ../sass/header_footer.scss */
 #search #filter {
   border-radius: 5px;
   height: 30px;
@@ -216,26 +217,25 @@ header #currentuser #logout:hover {
   margin-top: 3px;
 }
 
-/* line 139, ../sass/header_footer.scss */
+/* line 143, ../sass/header_footer.scss */
 #controls {
   margin-bottom: 10px;
   display: inline-block;
   float: right;
   display: none;
 }
-/* line 145, ../sass/header_footer.scss */
+/* line 149, ../sass/header_footer.scss */
 #controls #vinylcount {
   height: 40px;
   text-align: center;
   padding: 0 10px;
   color: white;
   float: right;
-  line-height: 40px;
+  line-height: 60px;
   font-weight: bold;
   font-size: 24px;
-  margin-right: 10px;
 }
-/* line 157, ../sass/header_footer.scss */
+/* line 160, ../sass/header_footer.scss */
 #controls .control-button {
   height: 60px;
   padding: 0 20px;
@@ -252,30 +252,30 @@ header #currentuser #logout:hover {
   border-left: 1px solid #404040;
   border-right: 1px solid black;
 }
-/* line 173, ../sass/header_footer.scss */
+/* line 176, ../sass/header_footer.scss */
 #controls .control-button.addvinyl:hover {
   background-color: #45b29d;
   border-left: 1px solid #45b29d;
   border-right: 1px solid #368a7a;
 }
-/* line 181, ../sass/header_footer.scss */
+/* line 184, ../sass/header_footer.scss */
 #controls .control-button.stats:hover {
   background-color: #e27a3f;
   border-left: 1px solid #e27a3f;
   border-right: 1px solid #bf6736;
 }
-/* line 189, ../sass/header_footer.scss */
+/* line 192, ../sass/header_footer.scss */
 #controls .control-button.import:hover {
   background-color: #4f768c;
   border-left: 1px solid #4f768c;
   border-right: 1px solid #334d5c;
 }
-/* line 196, ../sass/header_footer.scss */
+/* line 199, ../sass/header_footer.scss */
 #controls .control-button .button-icon {
   line-height: 60px;
 }
 
-/* line 203, ../sass/header_footer.scss */
+/* line 206, ../sass/header_footer.scss */
 #dropdown-menu {
   display: none;
   margin: 60px 0 0 0;
@@ -287,56 +287,56 @@ header #currentuser #logout:hover {
   color: white;
   font-weight: 300;
 }
-/* line 214, ../sass/header_footer.scss */
+/* line 217, ../sass/header_footer.scss */
 #dropdown-menu li {
   width: 105px;
   padding: 20px;
   background-color: #202020;
   cursor: pointer;
 }
-/* line 220, ../sass/header_footer.scss */
+/* line 223, ../sass/header_footer.scss */
 #dropdown-menu li i {
   margin-right: 10px;
 }
-/* line 224, ../sass/header_footer.scss */
+/* line 227, ../sass/header_footer.scss */
 #dropdown-menu li:hover {
   color: #e27a3f;
 }
 
-/* line 230, ../sass/header_footer.scss */
+/* line 233, ../sass/header_footer.scss */
 #vinylCount {
   text-align: center;
   width: 100%;
 }
-/* line 234, ../sass/header_footer.scss */
+/* line 237, ../sass/header_footer.scss */
 #vinylCount p {
   font-weight: bold;
   font-size: 5em;
 }
-/* line 239, ../sass/header_footer.scss */
+/* line 242, ../sass/header_footer.scss */
 #vinylCount span {
   font-size: 1em;
 }
 
-/* line 244, ../sass/header_footer.scss */
+/* line 247, ../sass/header_footer.scss */
 #addvinyl {
   cursor: pointer;
   text-align: center;
 }
-/* line 248, ../sass/header_footer.scss */
+/* line 251, ../sass/header_footer.scss */
 #addvinyl p {
   font-size: 8em;
   font-weight: bold;
   margin-top: 116px;
   color: #e27a3f;
 }
-/* line 255, ../sass/header_footer.scss */
+/* line 258, ../sass/header_footer.scss */
 #addvinyl span {
   text-transform: uppercase;
 }
 
 /* === FOOTER ===================*/
-/* line 262, ../sass/header_footer.scss */
+/* line 265, ../sass/header_footer.scss */
 footer {
   font-size: 14px;
   color: white;
@@ -347,13 +347,13 @@ footer {
   letter-spacing: 1px;
   width: calc(100%-80px);
 }
-/* line 272, ../sass/header_footer.scss */
+/* line 275, ../sass/header_footer.scss */
 footer a {
   text-decoration: none;
   font-weight: normal;
   color: white;
 }
-/* line 277, ../sass/header_footer.scss */
+/* line 280, ../sass/header_footer.scss */
 footer a:hover {
   text-decoration: underline;
 }

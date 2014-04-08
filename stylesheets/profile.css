@@ -72,7 +72,7 @@ body {
 /* line 112, ../sass/global.scss */
 #loggedInWrapper {
   display: none;
-  padding: 10px 10px 60px 10px;
+  padding: 0px 0px 50px 0px;
   min-height: calc(100% - 197px);
 }
 

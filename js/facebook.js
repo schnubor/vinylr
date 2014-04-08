@@ -34,6 +34,7 @@ function hideControls(){
     $('#loggedInWrapper').fadeOut(function(){
         $('#loggedOutWrapper').fadeIn();
         $('#currentuser').remove();
+        $('#pagination').remove();
         displayFacebookButton();
         $('#search').css('display','none');
         $('#controls').css('display','none');

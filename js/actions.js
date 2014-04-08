@@ -8,6 +8,7 @@ var vinylcount = 0;
 var pageSize = 15;
 var currentPage = 1;
 var pages = 0;
+var footable_initiliazed = false;
 
 // === Main actions =================
 
@@ -16,6 +17,7 @@ var Main = (function()
 
   function _init(){
     Select.init(); // style selectboxes
+
     $("#colorpicker").spectrum({
       color: "#000000",
       showInput: true,
@@ -25,6 +27,7 @@ var Main = (function()
 
   // this is where stuff happens
 	function _doAfterLogin(name, fbid){
+    _init();
 		_addUserToDb(name, fbid);
     _updateForms(fbid);
 		_getExistingData(fbid);
@@ -72,7 +75,7 @@ var Main = (function()
           //console.log(response);
           if(response.length){
             VINYLS = $.parseJSON(response);
-            _displayVinylData(VINYLS); // display the resceived data
+            _displayVinylData(VINYLS, 'artist'); // display the resceived data and sort by artist / price / title / color
           }
           else{ // no vinyls in DB yet
             console.log("no vinyls yet");
@@ -88,42 +91,163 @@ var Main = (function()
 	}
 
   // Build actual Vinyl List and display it
-  function _displayVinylData(vinyls){
+  function _displayVinylData(vinyls, sortKey){
     //console.log("call _displayVinylData");
 
+    var sortingFilter = '';
+
+    // if footable is invisible, show it
     if(!$('.footable').is(':visible')){
       $('.footable').show();
     }
 
-    vinyls.sort(function(a,b){
-      if(a.Artist.toUpperCase() < b.Artist.toUpperCase()) return -1;
-      if(a.Artist.toUpperCase() > b.Artist.toUpperCase()) return 1;
-      return 0;
-    });
+    // get sorting order
+    var ascending = true;
+    $('.sort-toggle').hasClass('asc') ? ascending=true : ascending=false;
+
+    switch(sortKey)
+    {
+      case 'artist':
+        console.log("sort by artist!");
+        sortingFilter = "sorted by artist.";
+        // Sort by artist
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(a.Artist.toUpperCase() < b.Artist.toUpperCase()) return -1;
+            if(a.Artist.toUpperCase() > b.Artist.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        else{ // desscending
+          vinyls.sort(function(a,b){
+            if(a.Artist.toUpperCase() > b.Artist.toUpperCase()) return -1;
+            if(a.Artist.toUpperCase() < b.Artist.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        break;
+      case 'title':
+        console.log("sort by title!");
+        sortingFilter = "sorted by title.";
+        // Sort by title
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(a.Album.toUpperCase() < b.Album.toUpperCase()) return -1;
+            if(a.Album.toUpperCase() > b.Album.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        else{ // desscending
+          vinyls.sort(function(a,b){
+            if(a.Album.toUpperCase() > b.Album.toUpperCase()) return -1;
+            if(a.Album.toUpperCase() < b.Album.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        break;
+      case 'label':
+        console.log("sort by label!");
+        sortingFilter = "sorted by label.";
+        // Sort by title
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(a.Label.toUpperCase() < b.Label.toUpperCase()) return -1;
+            if(a.Label.toUpperCase() > b.Label.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        else{ // desscending
+          vinyls.sort(function(a,b){
+            if(a.Label.toUpperCase() > b.Label.toUpperCase()) return -1;
+            if(a.Label.toUpperCase() < b.Label.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        break;
+      case 'price':
+        console.log("sort by price!");
+        sortingFilter = "sorted by price.";
+        // Sort by price
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(parseFloat(a.Price) < parseFloat(b.Price)) return -1;
+            if(parseFloat(a.Price) > parseFloat(b.Price)) return 1;
+            return 0;
+          });
+        }
+        else{
+          vinyls.sort(function(a,b){
+            if(parseFloat(a.Price) > parseFloat(b.Price)) return -1;
+            if(parseFloat(a.Price) < parseFloat(b.Price)) return 1;
+            return 0;
+          });
+        }
+        break;
+      case 'color':
+        console.log("sort by color!");
+        sortingFilter = "sorted by color.";
+        // Sort by artist
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(a.Color.toUpperCase() < b.Color.toUpperCase()) return -1;
+            if(a.Color.toUpperCase() > b.Color.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        else{
+          vinyls.sort(function(a,b){
+            if(a.Color.toUpperCase() > b.Color.toUpperCase()) return -1;
+            if(a.Color.toUpperCase() < b.Color.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        break;
+      default:
+        console.log("sort by artist!");
+        sortingFilter = "sorted by artist.";
+        // Sort by artist
+        vinyls.sort(function(a,b){
+          if(a.Artist.toUpperCase() < b.Artist.toUpperCase()) return -1;
+          if(a.Artist.toUpperCase() > b.Artist.toUpperCase()) return 1;
+          return 0;
+        });
+    }
 
     // default = sorted artists alphabetically descending
     sortedVinyls = vinyls;
 
     // Display 15 initial Vinyls
     if(vinyls.length > pageSize){
-      var content = _createVinylRows(0,pageSize,vinyls);
+      var content = _createVinylRows(0,pageSize,sortedVinyls);
     }
-    else{ // if less than pageSize
-      var content = _createVinylRows(0,vinyls.length,vinyls);
+    else{ // if less than pageSize display them all
+      var content = _createVinylRows(0,sortedVinyls.length,sortedVinyls);
     }
 
-    $('#tablecontent').append(content);
+    $('#tablecontent').html('').append(content);
 
     // redraw the whole table -> too much to handle in big data sets
-    $('.footable').trigger('footable_initialize');
+    if(footable_initiliazed){
+      $('.footable').trigger('footable_redraw');
+    }
+    else{
+      $('.footable').trigger('footable_initialize');
+      footable_initiliazed = true;
+    }
 
     // update vinyl count
-    vinylcount = vinyls.length;
+    vinylcount = sortedVinyls.length;
     $('#vinylcount').text(vinylcount);
 
+    // update display status
+    $('.sort-status').find('.result-count').text(sortedVinyls.length);
+    $('.sort-status').find('.sorting-filter').text(sortingFilter);
+
+    // update pagination
     _updatePagination(sortedVinyls);
   }
 
+  // show/hide pagination if needed and reset to default state page 1
   function _updatePagination(vinyldata){
 
     paginationVinyls = vinyldata;
