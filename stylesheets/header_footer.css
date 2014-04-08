@@ -86,7 +86,7 @@ header {
 }
 /* line 11, ../sass/header_footer.scss */
 header h1 {
-  font-family: 'Playball', cursive;
+  font-family: Lato, Helvetica, sans-serif;
   font-size: 2em;
   color: white;
   text-align: left;
