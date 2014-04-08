@@ -82,7 +82,7 @@ header {
   background-color: #202020;
   text-align: left;
   height: 40px;
-  padding: 10px 10px 10px 20px;
+  padding: 10px;
 }
 /* line 11, ../sass/header_footer.scss */
 header h1 {
