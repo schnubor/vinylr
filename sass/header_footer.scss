@@ -24,6 +24,13 @@ header{
             text-decoration: none;
             color: white;
         }
+
+        span{
+            font-size: 23px;
+            margin-left: 4px;
+            font-weight: 300;
+            color: $red;
+        }
     }
 
     h3{

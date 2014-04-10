@@ -54,7 +54,7 @@ window.fbAsyncInit = function() {
   FB.init({
     // Production
     //appId      : '289597984498582', // App ID
-    //channelUrl : '//vinylr.chko.org', // Channel File
+    //channelUrl : '//diskollect.com', // Channel File
 
     // Development
     appId      : '178518429016660', // Dev App ID
