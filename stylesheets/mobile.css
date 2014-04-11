@@ -1,0 +1,15 @@
+@media only screen and (min-width: 320px) and (max-width: 568px) {
+  /* line 6, ../sass/mobile.scss */
+  header #controls, header #search {
+    display: none !important;
+  }
+  /* line 12, ../sass/mobile.scss */
+  header #dropdown-menu li.mobile-add, header #dropdown-menu li.mobile-stats {
+    display: block;
+  }
+
+  /* line 20, ../sass/mobile.scss */
+  #sorting .sort-status {
+    display: none !important;
+  }
+}

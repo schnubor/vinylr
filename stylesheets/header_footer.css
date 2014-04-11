@@ -89,7 +89,7 @@ header h1 {
   font-family: Lato, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 2em;
+  font-size: 24px;
   color: white;
   text-align: left;
   display: inline-block;
@@ -108,7 +108,7 @@ header h1 a {
 header h1 span {
   font-size: 23px;
   margin-left: 4px;
-  font-weight: 300;
+  font-weight: 400;
   color: #df5a49;
 }
 /* line 36, ../sass/header_footer.scss */
@@ -161,7 +161,7 @@ header #currentuser #logout {
 }
 /* line 82, ../sass/header_footer.scss */
 header #currentuser #logout:hover {
-  color: #45b29d;
+  color: #df5a49;
 }
 /* line 88, ../sass/header_footer.scss */
 header #loading {
@@ -311,60 +311,64 @@ header #loading {
 }
 /* line 234, ../sass/header_footer.scss */
 #dropdown-menu li:hover {
-  color: #e27a3f;
+  color: #df5a49;
+}
+/* line 238, ../sass/header_footer.scss */
+#dropdown-menu li.mobile-add, #dropdown-menu li.mobile-stats {
+  display: none;
 }
 
-/* line 240, ../sass/header_footer.scss */
+/* line 244, ../sass/header_footer.scss */
 #vinylCount {
   text-align: center;
   width: 100%;
 }
-/* line 244, ../sass/header_footer.scss */
+/* line 248, ../sass/header_footer.scss */
 #vinylCount p {
   font-weight: bold;
   font-size: 5em;
 }
-/* line 249, ../sass/header_footer.scss */
+/* line 253, ../sass/header_footer.scss */
 #vinylCount span {
   font-size: 1em;
 }
 
-/* line 254, ../sass/header_footer.scss */
+/* line 258, ../sass/header_footer.scss */
 #addvinyl {
   cursor: pointer;
   text-align: center;
 }
-/* line 258, ../sass/header_footer.scss */
+/* line 262, ../sass/header_footer.scss */
 #addvinyl p {
   font-size: 8em;
   font-weight: bold;
   margin-top: 116px;
-  color: #e27a3f;
+  color: #df5a49;
 }
-/* line 265, ../sass/header_footer.scss */
+/* line 269, ../sass/header_footer.scss */
 #addvinyl span {
   text-transform: uppercase;
 }
 
 /* === FOOTER ===================*/
-/* line 272, ../sass/header_footer.scss */
+/* line 276, ../sass/header_footer.scss */
 footer {
   font-size: 14px;
   color: white;
   text-align: center;
   padding: 40px;
   font-weight: lighter;
-  background-color: #45b29d;
+  background-color: #df5a49;
   letter-spacing: 1px;
   width: calc(100%-80px);
 }
-/* line 282, ../sass/header_footer.scss */
+/* line 286, ../sass/header_footer.scss */
 footer a {
   text-decoration: none;
   font-weight: normal;
   color: white;
 }
-/* line 287, ../sass/header_footer.scss */
+/* line 291, ../sass/header_footer.scss */
 footer a:hover {
   text-decoration: underline;
 }

@@ -55,14 +55,14 @@ section{
 
 			a{
 				&.current{
-					color: $green;
+					color: $red;
 				}
 
 				color: #777;
 				text-decoration: none;
 				margin: 0 20px;
 				&:hover{
-					color: $green;
+					color: $red;
 				}
 			}
 		}
@@ -102,8 +102,8 @@ section{
 		line-height: 40px;
 
 		&:hover{
-			color: $green;
-			border-color: $green;
+			color: $red;
+			border-color: $red;
 		}
 	}
 }
@@ -119,7 +119,7 @@ section{
 		font-weight: bold;
 
 		&:hover{
-			color: $green;
+			color: $red;
 		}
 	}
 }

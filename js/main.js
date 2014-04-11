@@ -103,7 +103,7 @@ $(document).ready(function(){
   // === Add Vinyl Overlay =========================================================
 
   // open overlay with add vinyl form
-  $('header').on('click', '.addvinyl', function(){
+  $('header').on('click', '.addvinyl, .mobile-add', function(){
     // Tracking
     mixpanel.track("Click: Add Vinyl");
 
@@ -200,7 +200,7 @@ $(document).ready(function(){
   
   // === Display Profile ===============================================================
 
-  $('header').on('click', '.stats', function(){
+  $('header').on('click', '.stats, .mobile-stats', function(){
     // Tracking
     mixpanel.track("Click: Stats");
 

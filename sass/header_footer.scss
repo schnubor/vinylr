@@ -10,7 +10,7 @@ header{
 
     h1{
         @include font(Lato);
-        font-size: 2em;
+        font-size: 24px;
         color: white;
         text-align: left;
         display: inline-block;
@@ -28,7 +28,7 @@ header{
         span{
             font-size: 23px;
             margin-left: 4px;
-            font-weight: 300;
+            font-weight: 400;
             color: $red;
         }
     }
@@ -80,7 +80,7 @@ header{
             cursor: pointer;
 
             &:hover{
-                color: $green;
+                color: $red;
             };
         }
     }
@@ -232,7 +232,11 @@ header{
     }
 
     &:hover{
-      color: $orange;
+      color: $red;
+    }
+
+    &.mobile-add, &.mobile-stats{
+        display: none;
     }
   }
 }
@@ -259,7 +263,7 @@ header{
         font-size: 8em;
         font-weight: bold;
         margin-top: 116px;
-        color: $orange;
+        color: $red;
     }
 
     span{
@@ -275,7 +279,7 @@ footer{
     text-align: center;
     padding: 40px;
     font-weight: lighter;
-    background-color: $green;
+    background-color: $red;
     letter-spacing: 1px;
     width: calc(100%-80px);
 

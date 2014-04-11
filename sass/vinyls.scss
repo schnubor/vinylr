@@ -4,6 +4,16 @@
 
 .footable{
 
+  a{
+    color: $red;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
     // Controls
     .edit, .delete{
         cursor: pointer;
@@ -11,7 +21,7 @@
         font-size: 18px;
 
         &:hover{
-            color: $green;
+            color: $red;
         }
     }
     
@@ -103,7 +113,7 @@
         }
 
         &:hover{
-          color: $orange;
+          color: $red;
         }
       }
 

@@ -77,41 +77,51 @@ body {
 }
 
 /* === ALL THE VINYLS ============*/
-/* line 8, ../sass/vinyls.scss */
+/* line 7, ../sass/vinyls.scss */
+.footable a {
+  color: #df5a49;
+  font-weight: 600;
+  text-decoration: none;
+}
+/* line 12, ../sass/vinyls.scss */
+.footable a:hover {
+  text-decoration: underline;
+}
+/* line 18, ../sass/vinyls.scss */
 .footable .edit, .footable .delete {
   cursor: pointer;
   margin-right: 10px;
   font-size: 18px;
 }
-/* line 13, ../sass/vinyls.scss */
+/* line 23, ../sass/vinyls.scss */
 .footable .edit:hover, .footable .delete:hover {
-  color: #45b29d;
+  color: #df5a49;
 }
-/* line 19, ../sass/vinyls.scss */
+/* line 29, ../sass/vinyls.scss */
 .footable .vinyl-artwork {
   width: 60px;
   height: 60px;
   background: url("../img/vinyl_PH.svg") no-repeat;
   background-size: cover;
 }
-/* line 25, ../sass/vinyls.scss */
+/* line 35, ../sass/vinyls.scss */
 .footable .vinyl-artwork img {
   width: 60px;
   height: 60px;
 }
-/* line 31, ../sass/vinyls.scss */
+/* line 41, ../sass/vinyls.scss */
 .footable .artwork-column {
   width: 60px;
 }
-/* line 35, ../sass/vinyls.scss */
+/* line 45, ../sass/vinyls.scss */
 .footable .vinyl-artist {
   text-transform: capitalize;
 }
-/* line 40, ../sass/vinyls.scss */
+/* line 50, ../sass/vinyls.scss */
 .footable audio {
   vertical-align: middle;
 }
-/* line 46, ../sass/vinyls.scss */
+/* line 56, ../sass/vinyls.scss */
 .footable .circle {
   display: inline-block;
   width: 32px;
@@ -129,7 +139,7 @@ body {
 }
 
 /* === PAGINATION ============== */
-/* line 70, ../sass/vinyls.scss */
+/* line 80, ../sass/vinyls.scss */
 #pagination {
   text-align: center;
   color: #FFFFFF;
@@ -139,14 +149,14 @@ body {
   bottom: 0;
   width: 100%;
 }
-/* line 79, ../sass/vinyls.scss */
+/* line 89, ../sass/vinyls.scss */
 #pagination div {
   display: inline-block;
   text-align: center;
   height: 50px;
   line-height: 50px;
 }
-/* line 86, ../sass/vinyls.scss */
+/* line 96, ../sass/vinyls.scss */
 #pagination .next-page, #pagination .prev-page {
   width: 50px;
   font-size: 42px;
@@ -154,31 +164,31 @@ body {
   border-left: 1px solid #505050;
   border-right: 1px solid #505050;
 }
-/* line 93, ../sass/vinyls.scss */
+/* line 103, ../sass/vinyls.scss */
 #pagination .next-page i, #pagination .prev-page i {
   vertical-align: top;
   line-height: 50px;
   opacity: .5;
 }
-/* line 99, ../sass/vinyls.scss */
+/* line 109, ../sass/vinyls.scss */
 #pagination .next-page.active, #pagination .prev-page.active {
   cursor: pointer;
 }
-/* line 101, ../sass/vinyls.scss */
+/* line 111, ../sass/vinyls.scss */
 #pagination .next-page.active i, #pagination .prev-page.active i {
   opacity: 1;
 }
-/* line 105, ../sass/vinyls.scss */
+/* line 115, ../sass/vinyls.scss */
 #pagination .next-page.active:hover, #pagination .prev-page.active:hover {
-  color: #e27a3f;
+  color: #df5a49;
 }
-/* line 112, ../sass/vinyls.scss */
+/* line 122, ../sass/vinyls.scss */
 #pagination .current-page {
   width: 200px;
   font-size: 24px;
   vertical-align: top;
 }
-/* line 117, ../sass/vinyls.scss */
+/* line 127, ../sass/vinyls.scss */
 #pagination .current-page span {
   color: #a0a0a0;
   text-transform: uppercase;

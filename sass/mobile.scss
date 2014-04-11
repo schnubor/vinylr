@@ -1,0 +1,25 @@
+@media only screen 
+and (min-width : 320px) 
+and (max-width : 568px) { 
+
+  header{
+    #controls, #search,{
+      display: none !important;
+    }
+
+    #dropdown-menu{
+      li{
+        &.mobile-add, &.mobile-stats{
+            display: block;
+        }
+      }
+    }
+  }
+
+  #sorting{
+    .sort-status{
+      display: none !important;
+    }
+  }
+
+}

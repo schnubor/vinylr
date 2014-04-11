@@ -139,11 +139,11 @@ section .gallery li a {
 }
 /* line 57, ../sass/welcome.scss */
 section .gallery li a.current {
-  color: #45b29d;
+  color: #df5a49;
 }
 /* line 64, ../sass/welcome.scss */
 section .gallery li a:hover {
-  color: #45b29d;
+  color: #df5a49;
 }
 /* line 71, ../sass/welcome.scss */
 section h3 {
@@ -183,8 +183,8 @@ section .mail {
 }
 /* line 104, ../sass/welcome.scss */
 section .mail:hover {
-  color: #45b29d;
-  border-color: #45b29d;
+  color: #df5a49;
+  border-color: #df5a49;
 }
 
 /* line 113, ../sass/welcome.scss */
@@ -199,5 +199,5 @@ section .mail:hover {
 }
 /* line 121, ../sass/welcome.scss */
 #impressum a:hover {
-  color: #45b29d;
+  color: #df5a49;
 }
