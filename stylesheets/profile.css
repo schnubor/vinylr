@@ -1,123 +1,80 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700|Playball);
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* Mixins & Variables */
-/* General stuff */
-/* line 59, ../sass/global.scss */
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-  outline: none;
-}
+/*
+Syntax error: Invalid CSS after "": expected selector or at-rule, was "</* Welcome to ..."
+        on line 1 of /Users/christiankorndoerfer/Projekte/vinylr/sass/global.scss
+        from line 1 of /Users/christiankorndoerfer/Projekte/vinylr/sass/profile.scss
 
-/* line 63, ../sass/global.scss */
-html {
-  width: 100%;
-  height: 100%;
-}
+1: /Users/christiankorndoerfer/Projekte/vinylr/sass/profile.scss
 
-/* line 68, ../sass/global.scss */
-body {
-  background-color: #ddd;
-  font-family: 'Lato', Helvetica, sans-serif;
-  height: 100%;
-  width: 100%;
-}
-
-/* line 75, ../sass/global.scss */
-.container {
-  width: 100%;
-  margin: 0 auto;
-}
-/* line 79, ../sass/global.scss */
-.container p {
-  padding: 20px 0;
-}
-/* line 82, ../sass/global.scss */
-.container p em {
-  font-size: 2em;
-}
-
-/* line 88, ../sass/global.scss */
-.centeredtext {
-  text-align: center;
-}
-
-/* line 92, ../sass/global.scss */
-.button {
-  margin-top: 10px;
-  width: 100%;
-  height: 40px;
-  border-radius: 3px;
-  border: 0;
-  background-color: #45b29d;
-  color: white;
-  font-size: 14px;
-  text-transform: uppercase;
-  font-family: 'Lato';
-  letter-spacing: 1px;
-  font-weight: 300;
-  transition: all 0.4s;
-  -webkit-transition: all 0.4s;
-}
-/* line 107, ../sass/global.scss */
-.button:hover {
-  background-color: #e27a3f;
-}
-
-/* === LOGGED IN CONTENT ================== */
-/* line 114, ../sass/global.scss */
-#loggedInWrapper {
-  display: none;
-  padding: 0px 0px 50px 0px;
-  min-height: calc(100% - 197px);
-}
-
-/* === User Profile ================== */
-/* line 7, ../sass/profile.scss */
-#profileform .user-location {
-  font-size: 14px;
-  color: #cacaca;
-  font-weight: 300;
-  padding-left: 10px;
-}
-/* line 15, ../sass/profile.scss */
-#profileform .general-info {
-  width: 150px;
-  display: inline-block;
-}
-/* line 19, ../sass/profile.scss */
-#profileform .general-info .user-pic {
-  padding: 10px;
-  width: 100px;
-  height: 100px;
-  border: 1px solid #505050;
-}
-/* line 27, ../sass/profile.scss */
-#profileform .general-info .vinyl-count p, #profileform .general-info .price-value p, #profileform .general-info .top-label p, #profileform .general-info .top-artist p {
-  margin: 10px 0 0 0;
-  color: #cacaca;
-  font-weight: 300;
-}
-/* line 32, ../sass/profile.scss */
-#profileform .general-info .vinyl-count span, #profileform .general-info .price-value span, #profileform .general-info .top-label span, #profileform .general-info .top-artist span {
-  font-size: 24px;
-}
-/* line 37, ../sass/profile.scss */
-#profileform .general-info .top-artist {
-  text-transform: capitalize;
-}
-/* line 42, ../sass/profile.scss */
-#profileform .detailed-info {
-  width: 640px;
-  display: inline-block;
-  vertical-align: top;
-}
-/* line 47, ../sass/profile.scss */
-#profileform .detailed-info #genrePieChart {
-  width: 100%;
-  height: 380px;
-}
+Backtrace:
+/Users/christiankorndoerfer/Projekte/vinylr/sass/global.scss:1
+/Users/christiankorndoerfer/Projekte/vinylr/sass/profile.scss:1
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/scss/parser.rb:1147:in `expected'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/scss/parser.rb:1085:in `expected'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/scss/parser.rb:28:in `parse'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/engine.rb:342:in `_to_tree'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/engine.rb:274:in `to_tree'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:225:in `visit_import'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/root_node.rb:20:in `render'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/engine.rb:315:in `_render'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/engine.rb:262:in `render'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `block (2 levels) in compile'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `block in compile'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `block (2 levels) in run'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `block in run'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `call'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `run_callback'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/path.rb:55:in `callback_action'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/path.rb:35:in `update'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:39:in `block in modified'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `each'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `modified'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:18:in `refresh'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:30:in `block in temporary_multipath_handler'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:27:in `each'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:27:in `temporary_multipath_handler'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:17:in `block (2 levels) in run'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:16:in `each'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:16:in `block in run'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/rb-fsevent-0.9.4/lib/rb-fsevent/fsevent.rb:45:in `call'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/rb-fsevent-0.9.4/lib/rb-fsevent/fsevent.rb:45:in `run'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:20:in `run'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/monitor.rb:26:in `run'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm.rb:70:in `monitor'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:87:in `perform'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/bin/compass:30:in `block in <top (required)>'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/bin/compass:44:in `call'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/bin/compass:44:in `<top (required)>'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/bin/compass:23:in `load'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/bin/compass:23:in `<main>'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/bin/ruby_executable_hooks:15:in `eval'
+/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/bin/ruby_executable_hooks:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid CSS after \"\": expected selector or at-rule, was \"</* Welcome to ...\"\A         on line 1 of /Users/christiankorndoerfer/Projekte/vinylr/sass/global.scss\A         from line 1 of /Users/christiankorndoerfer/Projekte/vinylr/sass/profile.scss\A \A 1: /Users/christiankorndoerfer/Projekte/vinylr/sass/profile.scss"; }

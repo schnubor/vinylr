@@ -17,6 +17,7 @@ function displayControls() {
 }
 
 function displayFacebookData(username,name){
+
   if(username && name){
     if(!$('#currentuser').length > 0){ // if not already logged in
       $('#controls').before('<div id="currentuser"><img id="profilepic" src="https://graph.facebook.com/'+username+'/picture?width=120&height=120" alt="'+name+'"/><span class="fa fa-chevron-down menu"></span></div>');

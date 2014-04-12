@@ -3,87 +3,87 @@
 /* === HEADER ======================== */
 
 header{
-    background-color: $grey;
+  background-color: $grey;
+  text-align: left;
+  height: 40px;
+  padding: 10px;
+
+  h1{
+    @include font(Lato);
+    font-size: 24px;
+    color: white;
     text-align: left;
+    display: inline-block;
     height: 40px;
-    padding: 10px;
+    line-height: 40px;
+    margin: 0;
+    vertical-align: top;
+    letter-spacing: -1px;
 
-    h1{
-        @include font(Lato);
-        font-size: 24px;
-        color: white;
-        text-align: left;
-        display: inline-block;
-        height: 40px;
-        line-height: 40px;
-        margin: 0;
-        vertical-align: top;
-        letter-spacing: -1px;
-
-        a{
-            text-decoration: none;
-            color: white;
-        }
-
-        span{
-            font-size: 23px;
-            margin-left: 4px;
-            font-weight: 400;
-            color: $red;
-        }
+    a{
+      text-decoration: none;
+      color: white;
     }
 
-    h3{
-        color: #aaa;
-        font-size: 16px;
-        font-weight: 300;
-        text-align: center;
-        display: inline-block;
-        letter-spacing: 1px;
-        padding-left: 10px;
-        line-height: 50px;
-        height: 40px;
-        margin: 0;
+    span{
+      font-size: 23px;
+      margin-left: 4px;
+      font-weight: 400;
+      color: $red;
+    }
+  }
+
+  h3{
+    color: #aaa;
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+    display: inline-block;
+    letter-spacing: 1px;
+    padding-left: 10px;
+    line-height: 50px;
+    height: 40px;
+    margin: 0;
+  }
+
+  #currentuser{
+    text-align: center;
+    display: inline-block;
+    float: right;
+    height: 60px;
+    line-height: 60px;
+    margin-top: -10px;
+    padding-left: 10px;
+    font-weight: 300;
+    color: white;
+    margin-left: 0px;
+    border-left: 1px solid #404040;
+    cursor: pointer;
+
+    img{
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      vertical-align: top;
+      margin-right: 10px;
+      margin-top: 10px;
     }
 
-    #currentuser{
-        text-align: center;
-        display: inline-block;
-        float: right;
-        height: 60px;
-        line-height: 60px;
-        margin-top: -10px;
-        padding-left: 10px;
-        font-weight: 300;
-        color: white;
-        margin-left: 0px;
-        border-left: 1px solid #404040;
-        cursor: pointer;
-
-        img{
-            width: 40px;
-            height: 40px;
-            border-radius: 20px;
-            vertical-align: top;
-            margin-right: 10px;
-            margin-top: 10px;
-        }
-
-        #username{
-            margin-left: 10px;
-            margin-right: 20px;
-        }
-
-        #logout{
-            padding-left: 20px;
-            border-left: 1px solid grey;
-            cursor: pointer;
-
-            &:hover{
-                color: $red;
-            };
-        }
+    #username{
+      margin-left: 10px;
+      margin-right: 20px;
     }
+
+    #logout{
+      padding-left: 20px;
+      border-left: 1px solid grey;
+      cursor: pointer;
+
+      &:hover{
+          color: $red;
+      };
+    }
+  }
 
   #loading{
     color: white;
@@ -95,29 +95,66 @@ header{
   }
 }
 
+#sign-in-button, #register-button{
+  float: right;
+  height: 60px;
+  line-height: 60px;
+
+  button{
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    border-radius: 4px;
+    padding: 0 10px;
+    margin-left: 10px;
+    color: white;
+    @include font('Lato');
+    font-weight: 300;
+
+    i{
+      margin-right: 5px;
+    }
+
+    &.grey{
+      background-color: $light-grey;
+
+      &:hover{
+        background-color: #A0A0A0;
+      }
+    }
+
+    &.orange{
+      background-color: $orange;
+      
+      &:hover{
+        background-color: $dark-orange;
+      }
+    }
+  }
+}
 
 
 #fb-button{
 	display: none;
-    float: right;
-    height: 60px;
-    line-height: 60px;
+  float: right;
+  height: 60px;
+  line-height: 60px;
 }
 
 #fb-auth{
-    padding: 0 20px 0 10px;
-    background-color: $fb-blue;
-    border-radius: 5px;
-    color: white;
-    font-family: 'Lato', Helvetica, sans-serif;
-    font-weight: 300;
-    border: 0;
-    height: 40px;
+  padding: 0 20px 0 10px;
+  background-color: $fb-blue;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Lato', Helvetica, sans-serif;
+  font-weight: 300;
+  border: 0;
+  height: 40px;
 
-    span{
-        height: 40px;
-        line-height: 40px;
-    }
+  span{
+    height: 40px;
+    line-height: 40px;
+  }
 }
 
 #search{

@@ -1,4 +1,4 @@
-/* Welcome to Compass.
+</* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
@@ -8,26 +8,26 @@
 /* Mixins & Variables */
 
 @mixin scale($x,$y){
-    transform: scale($x,$y);
-    -ms-transform: scale($x,$y);
-    -webkit-transform: scale($x,$y);
+  transform: scale($x,$y);
+  -ms-transform: scale($x,$y);
+  -webkit-transform: scale($x,$y);
 }
 
 @mixin transition($duration, $attribute){
-    transition: $attribute $duration;
-    -webkit-transition: $attribute $duration;
+  transition: $attribute $duration;
+  -webkit-transition: $attribute $duration;
 }
 
 @mixin radius($value){
-    -moz-border-radius: $value;
-    -webkit-border-radius: $value;
-    border-radius: $value;
+  -moz-border-radius: $value;
+  -webkit-border-radius: $value;
+  border-radius: $value;
 }
 
 @mixin font($font){
-    font-family: $font, Helvetica, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: $font, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 // Colors
@@ -46,6 +46,7 @@ $yellow: #EFC94C;
 $orange: #E27A3F;
 $dark-orange: #BF6736;
 $red: #DF5A49;
+$light-grey: #C0C0C0;
 
 $positiv: rgb(100, 195, 112);
 $neutral: rgb(246, 206, 78);
@@ -57,64 +58,64 @@ input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
+  outline: none;
 }
 
 html{
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 body{
-    background-color: #ddd;
-    font-family: 'Lato', Helvetica, sans-serif;
-    height: 100%;
-    width: 100%;
+  background-color: #ddd;
+  font-family: 'Lato', Helvetica, sans-serif;
+  height: 100%;
+  width: 100%;
 }
 
 .container{
-    width: 100%;
-    margin: 0 auto;
+  width: 100%;
+  margin: 0 auto;
 
-    p{
-        padding: 20px 0;
+  p{
+    padding: 20px 0;
 
-        em{
-            font-size: 2em;
-        }
+    em{
+      font-size: 2em;
     }
+  }
 }
 
 .centeredtext{
-    text-align: center;
+  text-align: center;
 }
 
 .button{
-    margin-top: 10px;
-    width: 100%;
-    height: 40px;
-    border-radius: 3px;
-    border: 0;
-    background-color: $green;
-    color: white;
-    font-size: 14px;
-    text-transform: uppercase;
-    font-family: 'Lato';
-    letter-spacing: 1px;
-    font-weight: 300;
-    @include transition(.4s,all);
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  border: 0;
+  background-color: $green;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: 'Lato';
+  letter-spacing: 1px;
+  font-weight: 300;
+  @include transition(.4s,all);
 
-    &:hover{
-        background-color: $orange;
-    }
+  &:hover{
+    background-color: $orange;
+  }
 }
 
 /* === LOGGED IN CONTENT ================== */
 
 #loggedInWrapper{
-    display: none;
-    padding: 0px 0px 50px 0px;
-    min-height: calc(100% - 197px);
+  display: none;
+  padding: 0px 0px 50px 0px;
+  min-height: calc(100% - 197px);
 }
 
 
