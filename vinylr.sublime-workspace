@@ -87,7 +87,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 9088,
+				"buffer_size": 10753,
 				"line_ending": "Unix"
 			}
 		},
@@ -95,7 +95,7 @@
 			"file": "js/main.js",
 			"settings":
 			{
-				"buffer_size": 11738,
+				"buffer_size": 15442,
 				"line_ending": "Unix"
 			}
 		},
@@ -112,7 +112,7 @@
 			"file": "sass/global.scss",
 			"settings":
 			{
-				"buffer_size": 3900,
+				"buffer_size": 2226,
 				"line_ending": "Unix"
 			}
 		},
@@ -120,7 +120,7 @@
 			"file": "sass/welcome.scss",
 			"settings":
 			{
-				"buffer_size": 1759,
+				"buffer_size": 1749,
 				"line_ending": "Unix"
 			}
 		},
@@ -128,7 +128,7 @@
 			"file": "sass/header_footer.scss",
 			"settings":
 			{
-				"buffer_size": 2286,
+				"buffer_size": 5795,
 				"line_ending": "Unix"
 			}
 		}
@@ -239,22 +239,22 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9088,
+						"buffer_size": 10753,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3315,
-								3315
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"is_xml": false,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -270,15 +270,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11738,
+						"buffer_size": 15442,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								214,
-								214
+								0,
+								0
 							]
 						],
 						"settings":
@@ -332,15 +332,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3900,
+						"buffer_size": 2226,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								911,
-								918
+								0,
+								0
 							]
 						],
 						"settings":
@@ -362,15 +362,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1759,
+						"buffer_size": 1749,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1646,
-								1646
+								0,
+								0
 							]
 						],
 						"settings":
@@ -391,15 +391,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2286,
+						"buffer_size": 5795,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1793,
-								1793
+								0,
+								0
 							]
 						],
 						"settings":
