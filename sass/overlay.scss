@@ -4,142 +4,140 @@
 /* === OVERLAY ===================*/
 
 #overlay{
-    position: fixed;
-    z-index: 2;
-    height: 100%;
-    width: 100%;
+  position: fixed;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background-color: rgba(0,0,0,0.9);
+  display: none;
+
+  .close{
+    position: absolute;
     top: 0;
-    background-color: rgba(0,0,0,0.9);
-    display: none;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    margin: 20px 20px 0 0;
+    background-size: cover;
+    cursor: pointer;
+    color: white;
+    font-size: 2em;
+  }
 
-    .close{
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 30px;
-        height: 30px;
-        margin: 20px 20px 0 0;
-        background-size: cover;
-        cursor: pointer;
-        color: white;
-        font-size: 2em;
-    }
+  .overlayform{
+    width: 300px;
+    height: 400px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin: -200px 0 0 -150px;
+    color: white;
+    z-index: 100;
+    text-align: center;
 
-    .overlayform{
-        width: 300px;
-        height: 400px;
-        position:absolute;
-        left:50%;
-        top:50%;
-        margin: -200px 0 0 -150px;
-        color: white;
-        z-index: 100;
-        text-align: center;
+    form{
+      width: 100%;
+      font-size: 12px;
 
-        form{
-            width: 100%;
-            font-size: 12px;
+      input[type="text"]{
+          margin-bottom: 10px;
+          border: none;
+          @include radius(5px);
+          padding: 10px;
+          width: calc(100% - 20px);
+      }
 
-            input[type="text"]{
-                margin-bottom: 10px;
-                border: none;
-                @include radius(5px);
-                padding: 10px;
-                width: calc(100% - 20px);
-            }
+      input[type="radio"]{
+          margin: 0 5px 0 0;
+      }
 
-            input[type="radio"]{
-                margin: 0 5px 0 0;
-            }
+      span{
+          margin-right: 20px;
+      }
 
-            span{
-                margin-right: 20px;
-            }
+      // Add Vinyl Button
+      input[type="submit"]{
+          text-transform: uppercase;
+      }
 
-            // Add Vinyl Button
-            input[type="submit"]{
-                text-transform: uppercase;
-            }
+      // Search Button
 
-            // Search Button
+      // search
+      #searching{
+        .loading{
+          font-size: 18px;
+          color: white;
+          margin-top: 30px;
 
-            // search
-            #searching{
-                .loading{
-                    font-size: 18px;
-                    color: white;
-                    margin-top: 30px;
-
-                    i{
-                        font-size: 40px;
-                        color: white;
-                    }
-                }
-
-                .progress{
-                    width: auto;
-                    padding: 5px;
-                    height: 10px;
-                    border: 1px solid #777;
-                    margin-top: 20px;
-
-                    .progressbar{
-                        background-color: $green;
-                        height: 100%;
-                        width: 0%;
-                        @include transition(.4s, all);
-                    }
-                }
-
-                .loading-text{
-                    color: #777;
-                    font-weight: 400;
-                    margin-top: 10px;
-                }
-            }
-        } // end of form
-
-        
-
-        // Preview
-        #preview{
-            display: none;
-            margin-top: 20px;
-
-            .general-info{
-                .artwork{
-                    width: 100px;
-                    height: 100px;
-                    padding: 10px;
-                    border: 1px solid #777;
-                    margin: 0 auto;
-                }
-
-                .label-release-genre{
-                    margin-top: 10px;
-                    color: #777;
-                    font-weight: 300;
-                }
-            }
-            
-            .additional-info{
-                margin-top: 10px;
-            }
-
+          i{
+            font-size: 40px;
+            color: white;
+          }
         }
-    }
 
-    .overlaycontent{
-        width: 800px;
-        height: 100%;
-        margin: 100px auto;
-        color: white;
+        .progress{
+          width: auto;
+          padding: 5px;
+          height: 10px;
+          border: 1px solid #777;
+          margin-top: 20px;
 
-        .headline{
-            font-size: 18px;
-            border-bottom: 1px solid #505050;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            .progressbar{
+              background-color: $green;
+              height: 100%;
+              width: 0%;
+              @include transition(.4s, all);
+            }
         }
+
+        .loading-text{
+          color: #777;
+          font-weight: 400;
+          margin-top: 10px;
+        }
+      }
+    } // end of form
+
+    // Preview
+    #preview{
+      display: none;
+      margin-top: 20px;
+
+      .general-info{
+        .artwork{
+          width: 100px;
+          height: 100px;
+          padding: 10px;
+          border: 1px solid #777;
+          margin: 0 auto;
+        }
+
+        .label-release-genre{
+          margin-top: 10px;
+          color: #777;
+          font-weight: 300;
+        }
+      }
+      
+      .additional-info{
+        margin-top: 10px;
+      }
+
     }
+  }
+
+  .overlaycontent{
+    width: 800px;
+    height: 100%;
+    margin: 100px auto;
+    color: white;
+
+    .headline{
+      font-size: 18px;
+      border-bottom: 1px solid #505050;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+  }
 }
