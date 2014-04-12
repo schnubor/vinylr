@@ -1,80 +1,415 @@
-/*
-Syntax error: Invalid CSS after "": expected selector or at-rule, was "</* Welcome to ..."
-        on line 1 of /Users/christiankorndoerfer/Projekte/vinylr/sass/global.scss
-        from line 1 of /Users/christiankorndoerfer/Projekte/vinylr/sass/header_footer.scss
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700|Playball);
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Mixins & Variables */
+/* General stuff */
+/* line 60, ../sass/global.scss */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
 
-1: /Users/christiankorndoerfer/Projekte/vinylr/sass/header_footer.scss
+/* line 64, ../sass/global.scss */
+html {
+  width: 100%;
+  height: 100%;
+}
 
-Backtrace:
-/Users/christiankorndoerfer/Projekte/vinylr/sass/global.scss:1
-/Users/christiankorndoerfer/Projekte/vinylr/sass/header_footer.scss:1
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/scss/parser.rb:1147:in `expected'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/scss/parser.rb:1085:in `expected'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/scss/parser.rb:28:in `parse'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/engine.rb:342:in `_to_tree'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/engine.rb:274:in `to_tree'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:225:in `visit_import'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:100:in `visit'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:100:in `visit'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/tree/root_node.rb:20:in `render'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/engine.rb:315:in `_render'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/sass-3.2.13/lib/sass/engine.rb:262:in `render'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `block (2 levels) in compile'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `block in compile'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `block (2 levels) in run'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `block in run'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `call'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `run_callback'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/path.rb:55:in `callback_action'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/path.rb:35:in `update'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:39:in `block in modified'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `each'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `modified'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:18:in `refresh'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:30:in `block in temporary_multipath_handler'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:27:in `each'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:27:in `temporary_multipath_handler'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:17:in `block (2 levels) in run'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:16:in `each'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:16:in `block in run'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/rb-fsevent-0.9.4/lib/rb-fsevent/fsevent.rb:45:in `call'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/rb-fsevent-0.9.4/lib/rb-fsevent/fsevent.rb:45:in `run'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:20:in `run'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm/monitor.rb:26:in `run'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/fssm-0.2.10/lib/fssm.rb:70:in `monitor'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:87:in `perform'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/bin/compass:30:in `block in <top (required)>'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/bin/compass:44:in `call'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/bin/compass:44:in `<top (required)>'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/bin/compass:23:in `load'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/bin/compass:23:in `<main>'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/bin/ruby_executable_hooks:15:in `eval'
-/Users/christiankorndoerfer/.rvm/gems/ruby-2.1.0/bin/ruby_executable_hooks:15:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"\": expected selector or at-rule, was \"</* Welcome to ...\"\A         on line 1 of /Users/christiankorndoerfer/Projekte/vinylr/sass/global.scss\A         from line 1 of /Users/christiankorndoerfer/Projekte/vinylr/sass/header_footer.scss\A \A 1: /Users/christiankorndoerfer/Projekte/vinylr/sass/header_footer.scss"; }
+/* line 69, ../sass/global.scss */
+body {
+  background-color: #ddd;
+  font-family: 'Lato', Helvetica, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 76, ../sass/global.scss */
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+/* line 80, ../sass/global.scss */
+.container p {
+  padding: 20px 0;
+}
+/* line 83, ../sass/global.scss */
+.container p em {
+  font-size: 2em;
+}
+
+/* line 89, ../sass/global.scss */
+.centeredtext {
+  text-align: center;
+}
+
+/* line 93, ../sass/global.scss */
+.button {
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  border: 0;
+  background-color: #45b29d;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: 'Lato';
+  letter-spacing: 1px;
+  font-weight: 300;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+}
+/* line 108, ../sass/global.scss */
+.button:hover {
+  background-color: #e27a3f;
+}
+
+/* === LOGGED IN CONTENT ================== */
+/* line 115, ../sass/global.scss */
+#loggedInWrapper {
+  display: none;
+  padding: 0px 0px 50px 0px;
+  min-height: calc(100% - 197px);
+}
+
+/* === HEADER ======================== */
+/* line 5, ../sass/header_footer.scss */
+header {
+  background-color: #202020;
+  text-align: left;
+  height: 40px;
+  padding: 10px;
+}
+/* line 11, ../sass/header_footer.scss */
+header h1 {
+  font-family: Lato, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 24px;
+  color: white;
+  text-align: left;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  margin: 0;
+  vertical-align: top;
+  letter-spacing: -1px;
+}
+/* line 23, ../sass/header_footer.scss */
+header h1 a {
+  text-decoration: none;
+  color: white;
+}
+/* line 28, ../sass/header_footer.scss */
+header h1 span {
+  font-size: 23px;
+  margin-left: 4px;
+  font-weight: 400;
+  color: #df5a49;
+}
+/* line 36, ../sass/header_footer.scss */
+header h3 {
+  color: #aaa;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  display: inline-block;
+  letter-spacing: 1px;
+  padding-left: 10px;
+  line-height: 50px;
+  height: 40px;
+  margin: 0;
+}
+/* line 49, ../sass/header_footer.scss */
+header #currentuser {
+  text-align: center;
+  display: inline-block;
+  float: right;
+  height: 60px;
+  line-height: 60px;
+  margin-top: -10px;
+  padding-left: 10px;
+  font-weight: 300;
+  color: white;
+  margin-left: 0px;
+  border-left: 1px solid #404040;
+  cursor: pointer;
+}
+/* line 63, ../sass/header_footer.scss */
+header #currentuser img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  vertical-align: top;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+/* line 72, ../sass/header_footer.scss */
+header #currentuser #username {
+  margin-left: 10px;
+  margin-right: 20px;
+}
+/* line 77, ../sass/header_footer.scss */
+header #currentuser #logout {
+  padding-left: 20px;
+  border-left: 1px solid grey;
+  cursor: pointer;
+}
+/* line 82, ../sass/header_footer.scss */
+header #currentuser #logout:hover {
+  color: #df5a49;
+}
+/* line 88, ../sass/header_footer.scss */
+header #loading {
+  color: white;
+  float: right;
+  height: 60px;
+  line-height: 60px;
+  margin-top: -10px;
+  margin-left: 10px;
+}
+
+/* line 98, ../sass/header_footer.scss */
+#sign-in-button, #register-button {
+  float: right;
+  height: 60px;
+  line-height: 60px;
+}
+/* line 103, ../sass/header_footer.scss */
+#sign-in-button button, #register-button button {
+  height: 40px;
+  line-height: 40px;
+  border: none;
+  border-radius: 4px;
+  padding: 0 10px;
+  margin-left: 10px;
+  color: white;
+  font-family: "Lato", Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 300;
+}
+/* line 114, ../sass/header_footer.scss */
+#sign-in-button button i, #register-button button i {
+  margin-right: 5px;
+}
+/* line 118, ../sass/header_footer.scss */
+#sign-in-button button.grey, #register-button button.grey {
+  background-color: silver;
+}
+/* line 121, ../sass/header_footer.scss */
+#sign-in-button button.grey:hover, #register-button button.grey:hover {
+  background-color: #A0A0A0;
+}
+/* line 126, ../sass/header_footer.scss */
+#sign-in-button button.orange, #register-button button.orange {
+  background-color: #e27a3f;
+}
+/* line 129, ../sass/header_footer.scss */
+#sign-in-button button.orange:hover, #register-button button.orange:hover {
+  background-color: #bf6736;
+}
+
+/* line 137, ../sass/header_footer.scss */
+#fb-button {
+  display: none;
+  float: right;
+  height: 60px;
+  line-height: 60px;
+}
+
+/* line 144, ../sass/header_footer.scss */
+#fb-auth {
+  padding: 0 20px 0 10px;
+  background-color: #3b5998;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Lato', Helvetica, sans-serif;
+  font-weight: 300;
+  border: 0;
+  height: 40px;
+}
+/* line 154, ../sass/header_footer.scss */
+#fb-auth span {
+  height: 40px;
+  line-height: 40px;
+}
+
+/* line 160, ../sass/header_footer.scss */
+#search {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  margin-left: 20px;
+  display: none;
+}
+/* line 167, ../sass/header_footer.scss */
+#search i {
+  position: absolute;
+  color: silver;
+  top: 11px;
+  left: 10px;
+}
+/* line 174, ../sass/header_footer.scss */
+#search #filter {
+  border-radius: 5px;
+  height: 30px;
+  padding: 0 10px 0 35px;
+  float: left;
+  border: 1px solid #cacaca;
+  width: 203px;
+  font-family: 'Lato';
+  line-height: 32px;
+  margin-top: 3px;
+}
+
+/* line 187, ../sass/header_footer.scss */
+#controls {
+  margin-bottom: 10px;
+  display: inline-block;
+  float: right;
+  display: none;
+}
+/* line 193, ../sass/header_footer.scss */
+#controls #vinylcount {
+  height: 40px;
+  text-align: center;
+  padding: 0 10px;
+  color: white;
+  float: right;
+  line-height: 60px;
+  font-weight: bold;
+  font-size: 24px;
+}
+/* line 204, ../sass/header_footer.scss */
+#controls .control-button {
+  height: 60px;
+  padding: 0 20px;
+  color: white;
+  float: right;
+  margin-top: -10px;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1;
+  transition: 0.4s all;
+  -webkit-transition: 0.4s all;
+  font-family: Lato, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
+  border-left: 1px solid #404040;
+  border-right: 1px solid black;
+}
+/* line 220, ../sass/header_footer.scss */
+#controls .control-button.addvinyl:hover {
+  background-color: #45b29d;
+  border-left: 1px solid #45b29d;
+  border-right: 1px solid #368a7a;
+}
+/* line 228, ../sass/header_footer.scss */
+#controls .control-button.stats:hover {
+  background-color: #e27a3f;
+  border-left: 1px solid #e27a3f;
+  border-right: 1px solid #bf6736;
+}
+/* line 236, ../sass/header_footer.scss */
+#controls .control-button.import:hover {
+  background-color: #4f768c;
+  border-left: 1px solid #4f768c;
+  border-right: 1px solid #334d5c;
+}
+/* line 243, ../sass/header_footer.scss */
+#controls .control-button .button-icon {
+  line-height: 60px;
+}
+
+/* line 250, ../sass/header_footer.scss */
+#dropdown-menu {
+  display: none;
+  margin: 60px 0 0 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  list-style-type: none;
+  color: white;
+  font-weight: 300;
+}
+/* line 261, ../sass/header_footer.scss */
+#dropdown-menu li {
+  width: 105px;
+  padding: 20px;
+  background-color: #202020;
+  cursor: pointer;
+}
+/* line 267, ../sass/header_footer.scss */
+#dropdown-menu li i {
+  margin-right: 10px;
+}
+/* line 271, ../sass/header_footer.scss */
+#dropdown-menu li:hover {
+  color: #df5a49;
+}
+/* line 275, ../sass/header_footer.scss */
+#dropdown-menu li.mobile-add, #dropdown-menu li.mobile-stats {
+  display: none;
+}
+
+/* line 281, ../sass/header_footer.scss */
+#vinylCount {
+  text-align: center;
+  width: 100%;
+}
+/* line 285, ../sass/header_footer.scss */
+#vinylCount p {
+  font-weight: bold;
+  font-size: 5em;
+}
+/* line 290, ../sass/header_footer.scss */
+#vinylCount span {
+  font-size: 1em;
+}
+
+/* line 295, ../sass/header_footer.scss */
+#addvinyl {
+  cursor: pointer;
+  text-align: center;
+}
+/* line 299, ../sass/header_footer.scss */
+#addvinyl p {
+  font-size: 8em;
+  font-weight: bold;
+  margin-top: 116px;
+  color: #df5a49;
+}
+/* line 306, ../sass/header_footer.scss */
+#addvinyl span {
+  text-transform: uppercase;
+}
+
+/* === FOOTER ===================*/
+/* line 313, ../sass/header_footer.scss */
+footer {
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  padding: 40px;
+  font-weight: lighter;
+  background-color: #df5a49;
+  letter-spacing: 1px;
+  width: calc(100%-80px);
+}
+/* line 323, ../sass/header_footer.scss */
+footer a {
+  text-decoration: none;
+  font-weight: normal;
+  color: white;
+}
+/* line 328, ../sass/header_footer.scss */
+footer a:hover {
+  text-decoration: underline;
+}
