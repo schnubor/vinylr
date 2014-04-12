@@ -1,0 +1,124 @@
+@import "global.scss";
+
+#importform{
+  
+  .description{
+
+    border-bottom: 1px solid #505050;
+
+    p{
+      font-weight: 300;
+
+      a{
+        color: $green;
+        text-decoration: none;
+
+        &:hover{
+          color: $orange;
+        }
+      }
+
+      span{
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 24px;
+      }
+    }
+  }
+
+  #inputs{
+    margin-top: 20px;
+  }
+
+  #filedetails{
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
+  }
+
+  button{
+    &#startimport{
+      width: 300px;
+      margin: 20px auto;
+      display: block;
+    }
+  }
+
+  .importprogress{
+    text-align: center;
+    font-weight: 300;
+
+    .fa-refresh{
+      font-size: 60px;
+    }
+
+    .status{
+      .counter{
+        font-size: 24px;
+      }
+
+      .vinylname{
+        color: #777;
+      }
+
+      .dbstatus{
+        color: $orange;
+      }
+    }
+
+    .progress{
+      width: auto;
+      padding: 5px;
+      height: 10px;
+      border: 1px solid #777;
+      margin-top: 20px;
+
+      .progressbar{
+          background-color: $green;
+          height: 100%;
+          width: 0%;
+          @include transition(.4s, all);
+      }
+    }
+  }
+
+  #importreport{
+    margin-top: 20px;
+    color: #777;
+    text-align: center;
+
+    .success-title{
+      color: white;
+      text-transform: uppercase;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .report{
+      font-weight: 300;
+
+      span{
+        font-weight: 400;
+      }
+
+      .success{
+        color: $positiv;
+      }
+
+      .exists{
+        color: $neutral;
+      }
+
+      .not-found{
+        color: $negativ;
+      }
+    }
+
+    .done{
+      margin: 20px auto;
+      width: 150px;
+      display: block;
+    }
+  }
+
+}

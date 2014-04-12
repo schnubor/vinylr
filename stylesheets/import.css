@@ -1,0 +1,193 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700|Playball);
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Mixins & Variables */
+/* General stuff */
+/* line 59, ../sass/global.scss */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/* line 63, ../sass/global.scss */
+html {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 68, ../sass/global.scss */
+body {
+  background-color: #ddd;
+  font-family: 'Lato', Helvetica, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 75, ../sass/global.scss */
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+/* line 79, ../sass/global.scss */
+.container p {
+  padding: 20px 0;
+}
+/* line 82, ../sass/global.scss */
+.container p em {
+  font-size: 2em;
+}
+
+/* line 88, ../sass/global.scss */
+.centeredtext {
+  text-align: center;
+}
+
+/* line 92, ../sass/global.scss */
+.button {
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  border: 0;
+  background-color: #45b29d;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: 'Lato';
+  letter-spacing: 1px;
+  font-weight: 300;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+}
+/* line 107, ../sass/global.scss */
+.button:hover {
+  background-color: #e27a3f;
+}
+
+/* === LOGGED IN CONTENT ================== */
+/* line 114, ../sass/global.scss */
+#loggedInWrapper {
+  display: none;
+  padding: 0px 0px 50px 0px;
+  min-height: calc(100% - 197px);
+}
+
+/* line 5, ../sass/import.scss */
+#importform .description {
+  border-bottom: 1px solid #505050;
+}
+/* line 9, ../sass/import.scss */
+#importform .description p {
+  font-weight: 300;
+}
+/* line 12, ../sass/import.scss */
+#importform .description p a {
+  color: #45b29d;
+  text-decoration: none;
+}
+/* line 16, ../sass/import.scss */
+#importform .description p a:hover {
+  color: #e27a3f;
+}
+/* line 21, ../sass/import.scss */
+#importform .description p span {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 24px;
+}
+/* line 29, ../sass/import.scss */
+#importform #inputs {
+  margin-top: 20px;
+}
+/* line 33, ../sass/import.scss */
+#importform #filedetails {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 20px;
+}
+/* line 40, ../sass/import.scss */
+#importform button#startimport {
+  width: 300px;
+  margin: 20px auto;
+  display: block;
+}
+/* line 47, ../sass/import.scss */
+#importform .importprogress {
+  text-align: center;
+  font-weight: 300;
+}
+/* line 51, ../sass/import.scss */
+#importform .importprogress .fa-refresh {
+  font-size: 60px;
+}
+/* line 56, ../sass/import.scss */
+#importform .importprogress .status .counter {
+  font-size: 24px;
+}
+/* line 60, ../sass/import.scss */
+#importform .importprogress .status .vinylname {
+  color: #777;
+}
+/* line 64, ../sass/import.scss */
+#importform .importprogress .status .dbstatus {
+  color: #e27a3f;
+}
+/* line 69, ../sass/import.scss */
+#importform .importprogress .progress {
+  width: auto;
+  padding: 5px;
+  height: 10px;
+  border: 1px solid #777;
+  margin-top: 20px;
+}
+/* line 76, ../sass/import.scss */
+#importform .importprogress .progress .progressbar {
+  background-color: #45b29d;
+  height: 100%;
+  width: 0%;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+}
+/* line 85, ../sass/import.scss */
+#importform #importreport {
+  margin-top: 20px;
+  color: #777;
+  text-align: center;
+}
+/* line 90, ../sass/import.scss */
+#importform #importreport .success-title {
+  color: white;
+  text-transform: uppercase;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+/* line 97, ../sass/import.scss */
+#importform #importreport .report {
+  font-weight: 300;
+}
+/* line 100, ../sass/import.scss */
+#importform #importreport .report span {
+  font-weight: 400;
+}
+/* line 104, ../sass/import.scss */
+#importform #importreport .report .success {
+  color: #64c370;
+}
+/* line 108, ../sass/import.scss */
+#importform #importreport .report .exists {
+  color: #f6ce4e;
+}
+/* line 112, ../sass/import.scss */
+#importform #importreport .report .not-found {
+  color: #ee5353;
+}
+/* line 117, ../sass/import.scss */
+#importform #importreport .done {
+  margin: 20px auto;
+  width: 150px;
+  display: block;
+}

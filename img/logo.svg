@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="280px" height="280px" viewBox="0 0 280 280" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+<svg width="150px" height="150px" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <title>Slice 1</title>
     <description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
-    <defs>
-        <rect id="path-1" x="0" y="0" width="280" height="280" rx="20"></rect>
-    </defs>
+    <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Rectangle-1">
-            <use stroke="#328675" stroke-width="2" fill="#45B29D" fill-rule="evenodd" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
-            <use stroke="none" fill="none" xlink:href="#path-1"></use>
-            <use stroke="none" fill="none" xlink:href="#path-1"></use>
+        <g id="Rectangle-1-+-D" sketch:type="MSLayerGroup">
+            <rect id="Rectangle-1" stroke="#000000" stroke-width="9" sketch:type="MSShapeGroup" x="0" y="0" width="150" height="150" rx="2"></rect>
+            <path d="M112.526616,75.493 C112.526616,81.430789 111.537,86.8830167 109.557737,91.8498465 C107.578474,96.8166763 104.796344,101.092567 101.211263,104.677647 C97.6261833,108.262727 93.3129484,111.044857 88.2714295,113.02412 C83.2299105,115.003383 77.6469788,115.993 71.5224668,115.993 L40.601305,115.993 L40.601305,34.993 L71.5224668,34.993 C77.6469788,34.993 83.2299105,35.9919527 88.2714295,37.989888 C93.3129484,39.9878233 97.6261833,42.7699531 101.211263,46.336361 C104.796344,49.9027689 107.578474,54.1693237 109.557737,59.1361535 C111.537,64.1029833 112.526616,69.555211 112.526616,75.493 Z M97.1220519,75.493 C97.1220519,71.0489944 96.5245475,67.0625197 95.3295207,63.5334564 C94.134494,60.0043931 92.4353409,57.0168712 90.2320104,54.5708008 C88.0286799,52.1247305 85.3492461,50.2481933 82.1936286,48.9411328 C79.0380112,47.6340723 75.4809928,46.9805519 71.5224668,46.9805519 L55.7818029,46.9805519 L55.7818029,104.005448 L71.5224668,104.005448 C75.4809928,104.005448 79.0380112,103.351928 82.1936286,102.044867 C85.3492461,100.737807 88.0286799,98.8612695 90.2320104,96.4151992 C92.4353409,93.9691288 94.134494,90.9816069 95.3295207,87.4525436 C96.5245475,83.9234803 97.1220519,79.9370056 97.1220519,75.493 Z" id="D" fill="#000000" sketch:type="MSShapeGroup"></path>
         </g>
-        <text id="V" stroke="#FFFFFF" stroke-width="2" sketch:type="MSTextLayer" font-family="Playball" font-size="220" font-weight="normal" fill="#FFFFFF">
-            <tspan x="70" y="220">V</tspan>
-        </text>
     </g>
 </svg>

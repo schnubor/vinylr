@@ -2,55 +2,51 @@
 
 /* === User Profile ================== */
 
-.user-name{
-	font-size: 18px;
-	border-bottom: 1px solid #505050;
-	padding-bottom: 10px;
-	margin-bottom: 20px;
-}
+#profileform{
 
-.user-location{
-	font-size: 14px;
-	color: #cacaca;
-	font-weight: 300;
-	padding-left: 10px;
-}
-
-
-.general-info{
-	width: 150px;
-	display: inline-block;
-
-	.user-pic{
-		padding: 10px;
-		width: 100px;
-		height: 100px;
-		border: 1px solid #505050;
+	.user-location{
+		font-size: 14px;
+		color: #cacaca;
+		font-weight: 300;
+		padding-left: 10px;
 	}
 
-	.vinyl-count, .price-value, .top-label, .top-artist{
-		p{
-			margin: 10px 0 0 0;
-			color: #cacaca;
-			font-weight: 300;
+
+	.general-info{
+		width: 150px;
+		display: inline-block;
+
+		.user-pic{
+			padding: 10px;
+			width: 100px;
+			height: 100px;
+			border: 1px solid #505050;
 		}
-		span{
-			font-size: 24px;
+
+		.vinyl-count, .price-value, .top-label, .top-artist{
+			p{
+				margin: 10px 0 0 0;
+				color: #cacaca;
+				font-weight: 300;
+			}
+			span{
+				font-size: 24px;
+			}
+		}
+
+		.top-artist{
+			text-transform: capitalize;
 		}
 	}
 
-	.top-artist{
-		text-transform: capitalize;
-	}
-}
+	.detailed-info{
+		width: 640px;
+		display: inline-block;
+		vertical-align: top;
 
-.detailed-info{
-	width: 640px;
-	display: inline-block;
-	vertical-align: top;
-
-	#genrePieChart{
-		width: 100%;
-		height: 380px;
+		#genrePieChart{
+			width: 100%;
+			height: 380px;
+		}
 	}
 }
