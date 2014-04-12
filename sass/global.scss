@@ -26,11 +26,14 @@
 
 @mixin font($font){
     font-family: $font, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 // Colors
 
 $grey: #202020;
+$light-grey: #A0A0A0;
 $white: #FAFAFA;
 
 $fb-blue: #3B5998;
@@ -111,116 +114,8 @@ body{
 
 #loggedInWrapper{
     display: none;
-    padding: 10px;
+    padding: 0px 0px 50px 0px;
     min-height: calc(100% - 197px);
-
-    #controls{
-        margin-bottom: 10px;
-
-        #filter{
-            border-radius: 5px;
-            height: 40px;
-            padding: 0 10px;
-            float: left;
-            border: 1px solid #cacaca;
-            width: 280px;
-            font-family: 'Lato';
-            line-height: 42px;
-        }
-
-        #vinylcount{
-            height: 40px;
-            @include radius(5px);
-            background-color: white;
-            border: 1px solid #cacaca;
-            text-align: center;
-            padding: 0 10px;
-            color: #505050;
-            float: right;
-            line-height: 40px;
-            font-weight: bold;
-            font-size: 24px;
-            margin-right: 10px;
-        }
-
-        .control-button{
-            @include radius(5px);
-            height: 40px;
-            padding: 0 20px 0 15px;
-            color: white;
-            float: right;
-            margin-top: 1px;
-            font-weight: 300;
-            line-height: 1;
-            @include transition(all,.4s);
-            @include font(Lato);
-
-            &.addvinyl{
-                background-color: $green;
-                border: 1px solid $green;
-                &:hover{
-                    background-color: $dark-green;
-                }
-            }
-
-            &.stats{
-                background-color: $orange;
-                border: 1px solid $orange;
-                margin-left: 10px;
-
-                &:hover{
-                    background-color: $dark-orange;
-                }
-            }
-
-            &.import{
-                background-color: $blue;
-                border: 1px solid $blue;
-                margin-left: 10px;
-
-                &:hover{
-                    background-color: $dark-blue;
-                }
-            }
-            
-
-            .button-icon{
-                margin-right: 10px;
-            }
-        }
-
-        
-    }
-}
-
-#vinylCount{
-    text-align: center;
-    width: 100%;
-
-    p{
-        font-weight: bold;
-        font-size: 5em;
-    }
-
-    span{
-        font-size: 1em;
-    }
-}
-
-#addvinyl{
-    cursor: pointer;
-    text-align: center;
-
-    p{
-        font-size: 8em;
-        font-weight: bold;
-        margin-top: 116px;
-        color: $orange;
-    }
-
-    span{
-        text-transform: uppercase;
-    }
 }
 
 

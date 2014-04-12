@@ -1,12 +1,23 @@
-var VINYLS = null;
+// === Globals ======================
+
+var VINYLS = [];
+var sortedVinyls = [];
+var paginationVinyls = [];
 var latestVinyl = null;
 var vinylcount = 0;
+var pageSize = 15;
+var currentPage = 1;
+var pages = 0;
+var footable_initiliazed = false;
+
+// === Main actions =================
 
 var Main = (function()
 {
 
   function _init(){
     Select.init(); // style selectboxes
+
     $("#colorpicker").spectrum({
       color: "#000000",
       showInput: true,
@@ -16,6 +27,7 @@ var Main = (function()
 
   // this is where stuff happens
 	function _doAfterLogin(name, fbid){
+    _init();
 		_addUserToDb(name, fbid);
     _updateForms(fbid);
 		_getExistingData(fbid);
@@ -63,7 +75,7 @@ var Main = (function()
           //console.log(response);
           if(response.length){
             VINYLS = $.parseJSON(response);
-            _displayVinylData(VINYLS); // display the resceived data
+            _displayVinylData(VINYLS, 'artist'); // display the resceived data and sort by artist / price / title / color
           }
           else{ // no vinyls in DB yet
             console.log("no vinyls yet");
@@ -79,17 +91,197 @@ var Main = (function()
 	}
 
   // Build actual Vinyl List and display it
-  function _displayVinylData(vinyls){
-    console.log("call _displayVinylData");
+  function _displayVinylData(vinyls, sortKey){
+    //console.log("call _displayVinylData");
 
+    var sortingFilter = '';
+
+    // if footable is invisible, show it
     if(!$('.footable').is(':visible')){
       $('.footable').show();
     }
 
-    var index = 0;
+    // get sorting order
+    var ascending = true;
+    $('.sort-toggle').hasClass('asc') ? ascending=true : ascending=false;
 
-    $.each(vinyls, function(){
-      content = '<tr class="vinyl">';
+    switch(sortKey)
+    {
+      case 'artist':
+        console.log("sort by artist!");
+        sortingFilter = "sorted by artist.";
+        // Sort by artist
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(a.Artist.toUpperCase() < b.Artist.toUpperCase()) return -1;
+            if(a.Artist.toUpperCase() > b.Artist.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        else{ // desscending
+          vinyls.sort(function(a,b){
+            if(a.Artist.toUpperCase() > b.Artist.toUpperCase()) return -1;
+            if(a.Artist.toUpperCase() < b.Artist.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        break;
+      case 'title':
+        console.log("sort by title!");
+        sortingFilter = "sorted by title.";
+        // Sort by title
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(a.Album.toUpperCase() < b.Album.toUpperCase()) return -1;
+            if(a.Album.toUpperCase() > b.Album.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        else{ // desscending
+          vinyls.sort(function(a,b){
+            if(a.Album.toUpperCase() > b.Album.toUpperCase()) return -1;
+            if(a.Album.toUpperCase() < b.Album.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        break;
+      case 'label':
+        console.log("sort by label!");
+        sortingFilter = "sorted by label.";
+        // Sort by title
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(a.Label.toUpperCase() < b.Label.toUpperCase()) return -1;
+            if(a.Label.toUpperCase() > b.Label.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        else{ // desscending
+          vinyls.sort(function(a,b){
+            if(a.Label.toUpperCase() > b.Label.toUpperCase()) return -1;
+            if(a.Label.toUpperCase() < b.Label.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        break;
+      case 'price':
+        console.log("sort by price!");
+        sortingFilter = "sorted by price.";
+        // Sort by price
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(parseFloat(a.Price) < parseFloat(b.Price)) return -1;
+            if(parseFloat(a.Price) > parseFloat(b.Price)) return 1;
+            return 0;
+          });
+        }
+        else{
+          vinyls.sort(function(a,b){
+            if(parseFloat(a.Price) > parseFloat(b.Price)) return -1;
+            if(parseFloat(a.Price) < parseFloat(b.Price)) return 1;
+            return 0;
+          });
+        }
+        break;
+      case 'color':
+        console.log("sort by color!");
+        sortingFilter = "sorted by color.";
+        // Sort by artist
+        if(ascending){
+          vinyls.sort(function(a,b){
+            if(a.Color.toUpperCase() < b.Color.toUpperCase()) return -1;
+            if(a.Color.toUpperCase() > b.Color.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        else{
+          vinyls.sort(function(a,b){
+            if(a.Color.toUpperCase() > b.Color.toUpperCase()) return -1;
+            if(a.Color.toUpperCase() < b.Color.toUpperCase()) return 1;
+            return 0;
+          });
+        }
+        break;
+      default:
+        console.log("sort by artist!");
+        sortingFilter = "sorted by artist.";
+        // Sort by artist
+        vinyls.sort(function(a,b){
+          if(a.Artist.toUpperCase() < b.Artist.toUpperCase()) return -1;
+          if(a.Artist.toUpperCase() > b.Artist.toUpperCase()) return 1;
+          return 0;
+        });
+    }
+
+    // default = sorted artists alphabetically descending
+    sortedVinyls = vinyls;
+
+    // Display 15 initial Vinyls
+    if(vinyls.length > pageSize){
+      var content = _createVinylRows(0,pageSize,sortedVinyls);
+    }
+    else{ // if less than pageSize display them all
+      var content = _createVinylRows(0,sortedVinyls.length,sortedVinyls);
+    }
+
+    $('#tablecontent').html('').append(content);
+
+    // redraw the whole table -> too much to handle in big data sets
+    if(footable_initiliazed){
+      $('.footable').trigger('footable_redraw');
+    }
+    else{
+      $('.footable').trigger('footable_initialize');
+      footable_initiliazed = true;
+    }
+
+    // update vinyl count
+    vinylcount = sortedVinyls.length;
+    $('#vinylcount').text(vinylcount);
+
+    // update display status
+    $('.sort-status').find('.result-count').text(sortedVinyls.length);
+    $('.sort-status').find('.sorting-filter').text(sortingFilter);
+
+    // update pagination
+    _updatePagination(sortedVinyls);
+  }
+
+  // show/hide pagination if needed and reset to default state page 1
+  function _updatePagination(vinyldata){
+
+    paginationVinyls = vinyldata;
+    // show pagination arrows
+    if(paginationVinyls.length > pageSize){ // Do you actually need pages?
+      pages = Math.ceil(paginationVinyls.length / pageSize);
+      currentPage = 1;
+
+      // restore buttons
+      $('#pagination').find('.prev-page').removeClass('active');
+      $('#pagination').find('.next-page').addClass('active');
+
+      // check if pagination container is present
+      if(!$('#pagination').length){
+        $('footer').before('<div id="pagination"><div class="prev-page"><i class="fa fa-angle-left"></i></div><div class="current-page"><span>Page </span> '+currentPage+' / '+pages+'</div><div class="next-page active"><i class="fa fa-angle-right"></i></div></div>')
+      }
+      else{
+        $('#pagination').find('.current-page').html('<span>Page </span> '+currentPage+' / '+pages);
+      }
+    }
+    else{ // no pagination needed
+      if($('#pagination').length){
+        $('#pagination').remove();
+      }
+    }
+  }
+
+  // get vinyls from VINYL obj and return as table rows
+  function _createVinylRows(start,end,vinyls){
+    // console.log('call _createVinylRows');
+    var content = '';
+
+    for(var index=start; index<end; index++){
+      content += '<tr class="vinyl">';
       content += '<td><div class="vinyl-artwork"><img src="'+vinyls[index].Artwork+'" alt="'+vinyls[index].Artist+' - '+vinyls[index].Album+'"></div></td>'
       content += '<td class="vinyl-id">'+vinyls[index].VinylID+'</td>';
       content += '<td class="vinyl-artist">'+vinyls[index].Artist+'</td>';
@@ -123,20 +315,9 @@ var Main = (function()
       content += '<td class="genre">'+vinyls[index].Genre+'</td>';
       content += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
       content += '</tr>';
-      
-      $('#tablecontent').append(content);
-      index += 1;
-    });
+    }
 
-    console.log('done.');
-
-    // redraw the whole table
-    $('.footable').trigger('footable_initialize');
-
-    // update vinyl count
-    vinylcount = vinyls.length;
-    $('#vinylcount').text(vinylcount);
-
+    return content;
   }
 
   // pause all other audio players when another audio is playing
@@ -154,47 +335,15 @@ var Main = (function()
     var footable = $('.footable').data('footable');
 
     // push latest vinyl to existing VINYLS obj
-    VINYLS.push(latestVinyl[0]);
+    VINYLS.push(latestVinyl[0]); // seems enough, no idea why...
+    sortedVinyls.sort(function(a,b){
+      if(a.Artist.toUpperCase() < b.Artist.toUpperCase()) return -1;
+      if(a.Artist.toUpperCase() > b.Artist.toUpperCase()) return 1;
+      return 0;
+    });
 
-    // Create new table row
-    var row = '<tr class="vinyl">';
-    row += '<td><div class="vinyl-artwork"><img src="'+latestVinyl[0].Artwork+'" alt="'+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'"></div></td>'
-    row += '<td class="vinyl-id">'+latestVinyl[0].VinylID+'</td>';
-    row += '<td class="vinyl-artist">'+latestVinyl[0].Artist+'</td>';
-    row += '<td class="vinyl-name">'+latestVinyl[0].Album+'</td>';
-    row += '<td class="label">'+latestVinyl[0].Label+'</td>';
-    row += '<td class="format">'+latestVinyl[0].Format+' '+latestVinyl[0].Type+'</td>';
-    row += '<td class="count">'+latestVinyl[0].Count+'</td>'
-    row += '<td class="color"><div class="circle" style="background-color:'+latestVinyl[0].Color+';">'+latestVinyl[0].Color+'</div></td>'
-    row += '<td class="date">'+latestVinyl[0].Releasedate+'</td>';
-    row += '<td class="catalog">'+latestVinyl[0].Catalog+'</td>';
-    row += '<td class="itunes"><a href="'+latestVinyl[0].iTunes+'" title="buy digital version of '+latestVinyl[0].Artist+' - '+latestVinyl[0].Album+'">iTunes</a></td>';
-    row += '<td class="price">'+latestVinyl[0].Price+'</td>';
-    row += '<td class="sample"><audio controls onplay="Main.audioHandler()"><source src="'+latestVinyl[0].Sample+'" type="audio/mp4">Sorry. Your browser does not seem to support the m4a audio format.</audio></td>';
-    row += '<td class="artistpic"><img src="'+latestVinyl[0].Artistpic+'" alt="'+latestVinyl[0].Artist+'"></td>';
-    // Video
-    if(latestVinyl[0].Video != '-'){
-      //row += '<td class="video">'+latestVinyl[0].Video.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, '<iframe width="300" height="170" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen style="vertical-align: middle;"></iframe>')+'</td>';
-      row += '<td class="video"><a href="'+latestVinyl[0].Video+'" target="_blank">'+latestVinyl[0].Video+'</a></td>';
-    }
-    else{
-      row += '<td class="video">-</td>';
-    }
-    // Tracklist
-    var tracklist = latestVinyl[0].Tracklist.split(";");
-    row += '<td class="tracklist">'+tracklist[0]+'<br/>'
-    for(var i=1; i<tracklist.length; i++){
-      row += tracklist[i]+'<br/>'
-    }
-    row += '</td>';
-
-    row += '<td class="genre">'+latestVinyl[0].Genre+'</td>';
-    row += '<td><span class="delete fa fa-trash-o fa-fw"></span><span class="edit fa fa-pencil fa-fw"></span></td>';
-    row += '</tr>';
-  
-    // Redraw the table
-    footable.appendRow(row);
-    footable.redraw();
+    // Update Pagination
+    _updatePagination(sortedVinyls);
 
     // Update Vinylcount
     vinylcount = vinylcount + 1;
@@ -453,6 +602,8 @@ var Main = (function()
     updateForms: _updateForms,
 		getExistingData: _getExistingData,
     displayVinylData: _displayVinylData,
+    updatePagination: _updatePagination,
+    createVinylRows: _createVinylRows,
     audioHandler: _audioHandler,
     fetchData: _fetchData,
     showPreview: _showPreview,

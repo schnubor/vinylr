@@ -6,6 +6,9 @@ function displayControls() {
   $('#loading').fadeOut();
   $('#loggedOutWrapper').fadeOut();
 
+  $('#search').css('display','inline-block');
+  $('#controls').css('display','inline-block');
+
   FB.api('/me', function(response) {
     FBDATA = response;
     console.log(FBDATA);
@@ -14,19 +17,16 @@ function displayControls() {
 }
 
 function displayFacebookData(username,name){
-    if(username && name){
-        $('#sign-in-button, #register-button').fadeOut(function(){
 
-            if(!$('#currentuser').length > 0){ // if not already logged in
-              $('header').append('<div id="currentuser"><img id="profilepic" src="https://graph.facebook.com/'+username+'/picture?width=120&height=120" alt="'+name+'"/><span id="username">'+name+'</span><span id="logout" onclick="FB.logout();"><span class="fa fa-sign-out fa-fw"></span>Logout</span></div>');
-              $('#loggedInWrapper').fadeIn();
+  if(username && name){
+    if(!$('#currentuser').length > 0){ // if not already logged in
+      $('#controls').before('<div id="currentuser"><img id="profilepic" src="https://graph.facebook.com/'+username+'/picture?width=120&height=120" alt="'+name+'"/><span class="fa fa-chevron-down menu"></span></div>');
+      $('#loggedInWrapper').fadeIn();
 
-              // Jump to main.js
-              Main.doAfterLogin(FBDATA.name, FBDATA.id);
-            }
-        });
-          
-    }
+      // Jump to main.js
+      Main.doAfterLogin(FBDATA.name, FBDATA.id);
+    }   
+  }
 }
 
 function hideControls(){
@@ -35,7 +35,11 @@ function hideControls(){
     $('#loggedInWrapper').fadeOut(function(){
         $('#loggedOutWrapper').fadeIn();
         $('#currentuser').remove();
+        $('#pagination').remove();
         displayFacebookButton();
+        $('#search').css('display','none');
+        $('#controls').css('display','none');
+        $('#dropdown-menu').css('display','none');
     });
 }
 
@@ -51,7 +55,7 @@ window.fbAsyncInit = function() {
   FB.init({
     // Production
     //appId      : '289597984498582', // App ID
-    //channelUrl : '//vinylr.chko.org', // Channel File
+    //channelUrl : '//diskollect.com', // Channel File
 
     // Development
     appId      : '178518429016660', // Dev App ID

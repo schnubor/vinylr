@@ -5,7 +5,11 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /* Mixins & Variables */
 /* General stuff */
+<<<<<<< HEAD
 /* line 57, ../sass/global.scss */
+=======
+/* line 59, ../sass/global.scss */
+>>>>>>> master
 input:focus,
 select:focus,
 textarea:focus,
@@ -13,13 +17,21 @@ button:focus {
   outline: none;
 }
 
+<<<<<<< HEAD
 /* line 61, ../sass/global.scss */
+=======
+/* line 63, ../sass/global.scss */
+>>>>>>> master
 html {
   width: 100%;
   height: 100%;
 }
 
+<<<<<<< HEAD
 /* line 66, ../sass/global.scss */
+=======
+/* line 68, ../sass/global.scss */
+>>>>>>> master
 body {
   background-color: #ddd;
   font-family: 'Lato', Helvetica, sans-serif;
@@ -27,26 +39,46 @@ body {
   width: 100%;
 }
 
+<<<<<<< HEAD
 /* line 73, ../sass/global.scss */
+=======
+/* line 75, ../sass/global.scss */
+>>>>>>> master
 .container {
   width: 100%;
   margin: 0 auto;
 }
+<<<<<<< HEAD
 /* line 77, ../sass/global.scss */
 .container p {
   padding: 20px 0;
 }
 /* line 80, ../sass/global.scss */
+=======
+/* line 79, ../sass/global.scss */
+.container p {
+  padding: 20px 0;
+}
+/* line 82, ../sass/global.scss */
+>>>>>>> master
 .container p em {
   font-size: 2em;
 }
 
+<<<<<<< HEAD
 /* line 86, ../sass/global.scss */
+=======
+/* line 88, ../sass/global.scss */
+>>>>>>> master
 .centeredtext {
   text-align: center;
 }
 
+<<<<<<< HEAD
 /* line 90, ../sass/global.scss */
+=======
+/* line 92, ../sass/global.scss */
+>>>>>>> master
 .button {
   margin-top: 10px;
   width: 100%;
@@ -63,18 +95,27 @@ body {
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
 }
+<<<<<<< HEAD
 /* line 105, ../sass/global.scss */
+=======
+/* line 107, ../sass/global.scss */
+>>>>>>> master
 .button:hover {
   background-color: #e27a3f;
 }
 
 /* === LOGGED IN CONTENT ================== */
+<<<<<<< HEAD
 /* line 112, ../sass/global.scss */
+=======
+/* line 114, ../sass/global.scss */
+>>>>>>> master
 #loggedInWrapper {
   display: none;
-  padding: 10px;
+  padding: 0px 0px 50px 0px;
   min-height: calc(100% - 197px);
 }
+<<<<<<< HEAD
 /* line 117, ../sass/global.scss */
 #loggedInWrapper #controls {
   margin-bottom: 10px;
@@ -188,6 +229,8 @@ body {
 #addvinyl span {
   text-transform: uppercase;
 }
+=======
+>>>>>>> master
 
 /* === User Profile ================== */
 /* line 7, ../sass/profile.scss */

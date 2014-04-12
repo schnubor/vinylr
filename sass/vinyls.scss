@@ -4,6 +4,16 @@
 
 .footable{
 
+  a{
+    color: $red;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
     // Controls
     .edit, .delete{
         cursor: pointer;
@@ -11,7 +21,7 @@
         font-size: 18px;
 
         &:hover{
-            color: $green;
+            color: $red;
         }
     }
     
@@ -65,37 +75,59 @@
     }
 }
 
-.pagination{
-    
+/* === PAGINATION ============== */
+
+#pagination{
     text-align: center;
+    color: #FFFFFF;
+    vertical-align: middle;
+    background-color: #202020;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 
-    ul{
-        list-style-type: none;
+    div{
+      display: inline-block;
+      text-align: center;
+      height: 50px;
+      line-height: 50px;
+    }
 
-        li{
-            display: inline-block;
-            margin: 0 10px;
-            font-size: 18px;
+    .next-page, .prev-page{
+      width: 50px;
+      font-size: 42px;
+      cursor: default;
+      border-left: 1px solid #505050;
+      border-right: 1px solid #505050;
 
-            &.footable-page-arrow{
-                font-size: 26px;
-            }
+      i{
+        vertical-align: top;
+        line-height: 50px;
+        opacity: .5;
+      }
 
-            &.active{
-                a{
-                    color: $orange;
-                    font-weight: bold;
-                }
-            }
-
-            a{
-                text-decoration: none;  
-                color: $grey;
-
-                &:hover{
-                    color: $green;
-                }
-            }
+      &.active{
+        cursor: pointer;
+        i{
+          opacity: 1;
         }
+
+        &:hover{
+          color: $red;
+        }
+      }
+
+    }
+
+    .current-page{
+      width: 200px;
+      font-size: 24px;
+      vertical-align: top;
+
+      span{
+        color: $light-grey;
+        text-transform: uppercase;
+        font-weight: 300;
+      }
     }
 }

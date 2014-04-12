@@ -1,0 +1,50 @@
+@import "global.scss";
+
+/* === Sorting ============== */
+
+#sorting{
+  background-color: #E0E0E0;
+  height: 60px;
+  padding: 0 10px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #777;
+  line-height: 50px;
+
+  .result-count{
+    color: #202020;
+  }
+
+  .sorting-filter{
+    color: $red;
+  }
+
+  .sort-select{
+    display: inline-block;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 400;
+    vertical-align: middle;
+  }
+
+  .sort-toggle{
+    display: inline-block;
+    color: $grey;
+    vertical-align: middle;
+    margin-right: 10px;
+    cursor: pointer;
+
+    &:hover{
+      color: #606060;
+    }
+  }
+
+  .sort-status{
+    display: inline-block;
+    vertical-align: middle;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 10px;
+    border-left: 1px solid #cacaca;
+  }
+}

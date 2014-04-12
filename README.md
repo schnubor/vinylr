@@ -6,4 +6,4 @@ Vinylr is your personal vinyl collection tool. Storing and sharing your collecti
 
 1. check FB App ID in facebook.js
 2. check DB login in db_connect.php
-3. if importing fails change line 6 of importvinyl.php to ```$vinyl = json_decode(stripslashes($_POST['vinyldata']));``` - that should do the trick
+3. if importing fails change line 6 of importvinyl.php to ```$vinyl = json_decode(stripslashes($_POST['vinyldata']));``` - that should do the trick 
